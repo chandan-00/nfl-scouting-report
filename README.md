@@ -14,6 +14,15 @@ cp .env.example .env   # add your ANTHROPIC_API_KEY
 uv run pytest
 ```
 
+## Data
+
+```bash
+uv run python -m nfl_scout.data.ingest     # download nflverse tables into data/nfl.duckdb
+uv run python -m nfl_scout.data.coverage   # write docs/data_coverage.md
+```
+
+Re-run both after each week's games to refresh the in-season data. `docs/data_coverage.md` lists which fields are populated for the eval season, and therefore which metrics the agents can use.
+
 ## Configuration
 
 `config/settings.yaml` sets the model and effort for each graph node (Claude Haiku 5.5 by default), the seasons to load, and the eval weeks. To run every node on one model for a comparison run, set `NFL_SCOUT_MODEL=haiku|sonnet|opus`.
@@ -22,7 +31,8 @@ uv run pytest
 
 ```
 config/        settings.yaml
-src/nfl_scout/ package code
+src/nfl_scout/ package code (data/: ingest + coverage audit)
+docs/          generated reports (data coverage)
 tests/         pytest suite
 data/          local nflverse data and DuckDB file (git-ignored)
 runs/          saved agent runs, scored offline (git-ignored)

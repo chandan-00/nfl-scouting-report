@@ -6,10 +6,10 @@ __pycache__/
 .DS_Store
 
 # local data (nflverse downloads, DuckDB file)
-data/
+/data/
 
 # saved agent runs; scored locally, regenerated only when prompts/graph/model change
-runs/
+/runs/
 
 # local MLflow tracking store
 mlruns/
