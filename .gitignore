@@ -1,0 +1,16 @@
+.venv/
+.env
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.DS_Store
+
+# local data (nflverse downloads, DuckDB file)
+data/
+
+# saved agent runs; scored locally, regenerated only when prompts/graph/model change
+runs/
+
+# local MLflow tracking store
+mlruns/
+mlartifacts/

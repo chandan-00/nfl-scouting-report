@@ -1,0 +1,42 @@
+[project]
+name = "nfl-scouting-report"
+version = "0.1.0"
+description = "Multi-agent NFL opponent scouting reports with an independent fact-checker and a measured evaluation harness."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic>=1.14.0",
+    "duckdb>=1.5.6",
+    "langgraph>=1.2.15",
+    "nflreadpy>=0.1.5",
+    "polars>=2.0.0",
+    "pyarrow>=26.0.0",
+    "pydantic>=2.14.1",
+    "python-dotenv>=1.2.4",
+    "pyyaml>=6.0.3",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.17.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/nfl_scout"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
