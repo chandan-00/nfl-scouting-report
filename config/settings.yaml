@@ -1,0 +1,39 @@
+# Project settings. Code reads this through nfl_scout.config.load_settings().
+
+models:
+  # Short names used everywhere else in this file and in NFL_SCOUT_MODEL.
+  aliases:
+    haiku: claude-haiku-5-5
+    sonnet: claude-sonnet-5-5
+    opus: claude-opus-5-5
+
+  # Haiku throughout; Sonnet/Opus only for the optional comparison runs.
+  default: haiku
+
+  # Per-node model and effort. Any node missing here uses `default` and `default_effort`.
+  default_effort: low
+  nodes:
+    planner:          {model: haiku, effort: low}
+    offense_analyst:  {model: haiku, effort: low}
+    defense_analyst:  {model: haiku, effort: low}
+    injury_analyst:   {model: haiku, effort: low}
+    matchup_analyst:  {model: haiku, effort: medium}
+    fact_checker:     {model: haiku, effort: low}
+    editor:           {model: haiku, effort: medium}
+
+  max_revision_loops: 2
+
+data:
+  # Seasons loaded into DuckDB. 2026 is the clean eval season (after every model's training cutoff).
+  seasons: [2025, 2026]
+  eval_season: 2026
+  duckdb_path: data/nfl.duckdb
+
+eval:
+  # Weeks the frozen eval matchups are drawn from; each runs with through_week = week - 1.
+  weeks: [4, 5, 6, 7]
+  n_matchups: 40
+  independent_check_fraction: 0.2
+
+paths:
+  runs_dir: runs
