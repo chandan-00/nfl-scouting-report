@@ -31,7 +31,7 @@ Re-run both after each week's games to refresh the in-season data. `docs/data_co
 
 ```
 config/        settings.yaml
-src/nfl_scout/ package code (data/: ingest + coverage audit)
+src/nfl_scout/ package code (data/: ingest + coverage audit; tools/: metric functions)
 docs/          generated reports (data coverage)
 tests/         pytest suite
 data/          local nflverse data and DuckDB file (git-ignored)
