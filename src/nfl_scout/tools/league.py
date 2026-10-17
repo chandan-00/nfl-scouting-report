@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import inspect
 from typing import Any
 
 import duckdb
@@ -25,6 +26,16 @@ def league_rank(
     if spec is None or not spec.rankable:
         rankable = sorted(n for n, s in TOOLS.items() if s.rankable)
         raise ValueError(f"cannot rank {metric!r}; rankable metrics: {rankable}")
+    splits = sorted(
+        p
+        for p in inspect.signature(spec.fn).parameters
+        if p not in ("team", "season", "through_week")
+    )
+    unknown = sorted(set(metric_args) - set(splits))
+    if unknown:
+        raise ValueError(
+            f"{metric} accepts: {', '.join(splits) or 'no splits'}; drop {', '.join(unknown)}"
+        )
 
     side = metric_args.get("side", "offense")
     better = spec.better.get(side) if spec.better else None
