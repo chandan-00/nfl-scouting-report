@@ -135,21 +135,32 @@ def run_direction_rate(
     )
 
 
+SUFFIXES = {"jr", "sr", "ii", "iii", "iv", "v"}
+
+
+def _pbp_name(full: str) -> str | None:
+    """'George Holani' -> 'g.holani' (play-by-play style); None if it isn't a full name."""
+    words = [w for w in full.lower().split() if w.strip(".") not in SUFFIXES]
+    return f"{words[0][0]}.{words[-1]}" if len(words) >= 2 and "." not in words[0] else None
+
+
 def _resolve_player(
     con: duckdb.DuckDBPyConnection, plays_where: str, id_col: str, name_col: str, params: dict
 ) -> tuple[str, str, int]:
-    """Match `player` (id or name, case-insensitive) among the team's plays: (id, name, count)."""
-    rows = con.execute(
-        f"""
+    """Match `player` among the team's plays: (id, name, count). Accepts the id, the play-by-play
+    name ('G.Holani') or a full name ('George Holani', as on the injury report)."""
+    sql = f"""
         {PLAYS_CTE}
         SELECT p.{id_col}, any_value(p.{name_col}), count(*)
         FROM plays p
         WHERE p.posteam = $team AND {plays_where}
           AND (lower(p.{id_col}) = lower($player) OR lower(p.{name_col}) = lower($player))
         GROUP BY 1 ORDER BY 3 DESC
-        """,
-        params,
-    ).fetchall()
+    """
+    rows = con.execute(sql, params).fetchall()
+    short = _pbp_name(params["player"])
+    if not rows and short:
+        rows = con.execute(sql, {**params, "player": short}).fetchall()
     if not rows:
         raise ValueError(
             f"player {params['player']!r} not found for {params['team']}; "
@@ -171,7 +182,7 @@ def player_share(
     kind: UsageKind,
 ) -> Measure:
     """A player's share of the team's targets or designed rushes, in percent. `player` is a
-    gsis id or the play-by-play name (e.g. 'T.Kelce')."""
+    gsis id (player_id), the play-by-play name (e.g. 'T.Kelce') or the full name."""
     plays_where, id_col, name_col = USAGE[kind]
     params = _params(team, season, through_week, player=player)
     pid, name, count = _resolve_player(con, plays_where, id_col, name_col, params)

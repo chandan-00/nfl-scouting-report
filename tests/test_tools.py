@@ -225,6 +225,14 @@ def test_player_share_by_name_or_id(con):
     assert (rush.value, rush.n_plays) == (approx(100.0), 1)
 
 
+def test_player_share_accepts_the_full_name(con):
+    # The injury report says "George Holani"; play-by-play says "G.Holani".
+    build_db(con, [{"receiver_player_name": "G.Holani"}, {"receiver_player_id": "00-TE1"}])
+    r = t.player_share("KC", 2026, 1, player="George Holani", kind="target", con=con)
+    assert r.value == approx(50.0)
+    assert r.query_meta["player"]["name"] == "G.Holani"
+
+
 def test_player_share_unknown_player_raises(con):
     build_db(con, [{}])
     with pytest.raises(ValueError, match="player"):
@@ -349,6 +357,7 @@ def test_injury_report_uses_latest_week_through_cutoff(con):
     assert r.value == [
         {
             "player": "Wide One",
+            "player_id": "00-WR1",
             "position": "WR",
             "status": "Questionable",
             "injury": "Hamstring",
@@ -374,7 +383,32 @@ def test_snap_share_average_and_recent_weeks(con):
     assert recent.query_meta["weeks"] == [2, 3]
 
 
-def test_league_rank_names_the_valid_splits(con):
+def test_snap_share_matches_on_last_name_when_first_names_differ(con):
+    # The injury report says "Pat Surtain II"; snap counts say "Patrick Surtain II".
+    build_db(con, snaps=[{"player": "Patrick Surtain II", "offense_pct": 0.0, "defense_pct": 0.8}])
+    r = t.snap_share("KC", 2026, 1, player="Pat Surtain II", con=con)
+    assert r.value == approx(80.0)
+    assert "Patrick Surtain II" in r.query_meta["definition"]
+
+
+def test_snap_share_last_name_fallback_refuses_ambiguity(con):
+    build_db(con, snaps=[{"player": "Ann Smith"}, {"player": "Bob Smith", "pfr_player_id": "B"}])
+    with pytest.raises(ValueError, match="ambiguous"):
+        t.snap_share("KC", 2026, 1, player="Cal Smith", con=con)
+
+
+def test_snap_share_says_when_a_player_has_no_snaps(con):
+    build_db(con, snaps=[{}])
+    with pytest.raises(ValueError, match="no snaps recorded"):
+        t.snap_share("KC", 2026, 1, player="Zach Nobody", con=con)
+
+
+def test_league_rank_ignores_splits_the_metric_does_not_take_and_says_so(con):
+    # Haiku repeated the same invalid split after an error, so extra splits are dropped instead
+    # and reported back; metric_args records what the rank actually used.
     _three_offenses(con)
-    with pytest.raises(ValueError, match=r"epa_per_play accepts: play_kind, side"):
-        t.league_rank("epa_per_play", "KC", 2026, 1, direction="left", con=con)
+    plain = t.league_rank("epa_per_play", "KC", 2026, 1, con=con)
+    r = t.league_rank("epa_per_play", "KC", 2026, 1, direction="left", con=con)
+    assert r.value == plain.value
+    assert r.query_meta["ignored_splits"] == ["direction"]
+    assert r.query_meta["metric_args"] == {}

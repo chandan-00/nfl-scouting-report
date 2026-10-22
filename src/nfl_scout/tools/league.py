@@ -21,7 +21,8 @@ def league_rank(
 ) -> Measure:
     """Rank of `team` among all teams on `metric` (another tool's name, called with
     `metric_args`). Rank 1 is the best value when the metric has a good direction (e.g. lowest
-    EPA allowed), otherwise the highest value. Tied teams share the best rank."""
+    EPA allowed), otherwise the highest value. Tied teams share the best rank. Splits the metric
+    doesn't take are ignored and listed in ignored_splits."""
     spec = TOOLS.get(metric)
     if spec is None or not spec.rankable:
         rankable = sorted(n for n, s in TOOLS.items() if s.rankable)
@@ -31,11 +32,10 @@ def league_rank(
         for p in inspect.signature(spec.fn).parameters
         if p not in ("team", "season", "through_week")
     )
-    unknown = sorted(set(metric_args) - set(splits))
-    if unknown:
-        raise ValueError(
-            f"{metric} accepts: {', '.join(splits) or 'no splits'}; drop {', '.join(unknown)}"
-        )
+    # Splits the metric doesn't take are dropped and reported back, not raised: Haiku repeated
+    # the same invalid split after an error. metric_args records what the rank actually used.
+    ignored = sorted(set(metric_args) - set(splits))
+    metric_args = {k: v for k, v in metric_args.items() if k in splits}
 
     side = metric_args.get("side", "offense")
     better = spec.better.get(side) if spec.better else None
@@ -53,6 +53,7 @@ def league_rank(
         "metric": metric,
         "metric_args": metric_args,
         "n_teams": len(values),
+        "ignored_splits": ignored,
         "rank_1_is": {"higher": "best (highest)", "lower": "best (lowest)"}.get(better, "highest"),
     }
     own = values.get(team)
