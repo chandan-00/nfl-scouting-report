@@ -27,6 +27,7 @@ class LLM:
         messages: list[dict],
         output_schema: dict[str, Any],
         tools: list[dict] | None = None,
+        tool_choice: str = "auto",
     ) -> tuple[Any, Usage]:
         """One Messages API request. The tools + system prefix carries the cache breakpoint; the
         top-level cache_control also caches the growing conversation in tool loops."""
@@ -45,7 +46,8 @@ class LLM:
         }
         if tools:
             kwargs["tools"] = tools
-            kwargs["tool_choice"] = {"type": "auto"}
+            # "auto", or "none" to force a final answer (forced tool use 400s on 5.5 models).
+            kwargs["tool_choice"] = {"type": tool_choice}
         start = time.perf_counter()
         response = self.client.messages.create(**kwargs)
         latency = time.perf_counter() - start

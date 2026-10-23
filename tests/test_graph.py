@@ -7,6 +7,7 @@ from types import SimpleNamespace as NS
 import pytest
 from conftest import KC_DEF_ROW, RUN, build_db
 
+from nfl_scout.config import load_settings
 from nfl_scout.graph.build import ROLE_TOOLS, build_graph
 from nfl_scout.graph.llm_tools import ToolExecutor, tool_schemas
 from nfl_scout.graph.state import Claim, Request, parse_section
@@ -197,57 +198,128 @@ def test_claim_needs_a_source():
 # --- Graph -------------------------------------------------------------------------------------
 
 
+def _claim(cid, value, call_id, measure="value"):
+    return {
+        "claim_id": cid,
+        "text": "t",
+        "stated_value": value,
+        "tool_call_id": call_id,
+        "derived_from": None,
+        "op": None,
+        "measure": measure,
+    }
+
+
 def _scripts():
-    plan = {"offense_focus": ["How often do they pass?"], "defense_focus": ["Do they blitz?"]}
+    plan = {
+        "offense_focus": ["How often do they pass?"],
+        "defense_focus": ["Do they blitz?"],
+        "injury_focus": ["Who is out?"],
+    }
     offense = [
         tool_response(("pass_rate", {"team": "KC"})),
         text_response(
             {
-                "prose": "KC drops back on 50% of plays [c1].",
-                "claims": [
-                    {
-                        "claim_id": "c1",
-                        "text": "KC dropback rate",
-                        "stated_value": 50.0,
-                        "tool_call_id": "o1",
-                        "derived_from": None,
-                        "op": None,
-                    }
-                ],
+                "prose": "KC drops back on 50.0% of plays [c1] on 2 plays [c2].",
+                "claims": [_claim("c1", 50.0, "o1"), _claim("c2", 2, "o1", "n_plays")],
             }
         ),
     ]
     defense = [text_response({"prose": "Not enough data.", "claims": []})]
+    injury = [
+        tool_response(("injury_report", {"team": "KC"})),
+        text_response({"prose": "Nobody was listed.", "claims": []}),
+    ]
+    matchup = [
+        text_response(
+            {"prose": "KC throws 50.0% of the time [c1].", "claims": [_claim("c1", 50.0, "o1")]}
+        )
+    ]
+    report = {
+        "title": "KC scouting report",
+        "summary": "KC drops back on 50.0% of plays [oc1].",
+        "sections": [
+            {"heading": "Opponent offense", "body": "KC passes on 50.0% [oc1] of 2 plays."},
+            {"heading": "Key matchups", "body": "KC throws 50.0% of the time [mc1]."},
+        ],
+    }
     return {
         "planner": [text_response(plan)],
         "offense_analyst": offense,
         "defense_analyst": defense,
+        "injury_analyst": injury,
+        "matchup_analyst": matchup,
+        "editor": [text_response(report)],
     }
 
 
-def test_graph_runs_planner_then_both_analysts(con):
+def _run(con, client):
+    return build_graph(client=client, con=con, teams=TEAMS).invoke(
+        {"request": Request(team="DEN", opponent="KC", season=2026, week=2)}
+    )
+
+
+def test_graph_runs_planner_then_parallel_analysts(con):
     build_db(con, [{}, {**RUN}, {**KC_DEF_ROW}])
-    client = FakeClient(_scripts())
-    graph = build_graph(client=client, con=con, teams=TEAMS)
-    out = graph.invoke({"request": Request(team="DEN", opponent="KC", season=2026, week=2)})
+    out = _run(con, FakeClient(_scripts()))
 
     assert out["plan"]["offense_focus"] == ["How often do they pass?"]
     offense = out["sections"]["offense_analyst"]
-    assert offense.claims[0].claim_id == "oc1"
-    assert offense.claims[0].tool_call_id == "o1"
+    assert [c.claim_id for c in offense.claims] == ["oc1", "oc2"]
+    assert offense.claims[1].measure == "n_plays"
     assert out["sections"]["defense_analyst"].claims == []
     # The tool value lives in the trace, not in the section.
-    (call,) = out["tool_calls"]
-    assert (call.call_id, call.args["through_week"], call.result["value"]) == ("o1", 1, 50.0)
-    assert {u.node for u in out["usage"]} == {"planner", "offense_analyst", "defense_analyst"}
+    calls = {c.call_id: c for c in out["tool_calls"]}
+    assert set(calls) == {"o1", "i1"}
+    assert (calls["o1"].args["through_week"], calls["o1"].result["value"]) == (1, 50.0)
+    nodes = {u.node for u in out["usage"]}
+    assert nodes == {
+        "planner",
+        "offense_analyst",
+        "defense_analyst",
+        "injury_analyst",
+        "matchup_analyst",
+        "editor",
+    }
+
+
+def test_matchup_analyst_sees_every_section_and_can_cite_their_calls(con):
+    build_db(con, [{}, {**RUN}])
+    client = FakeClient(_scripts())
+    out = _run(con, client)
+
+    (first,) = [
+        r["messages"][0]["content"]
+        for r in client.requests
+        if "<role>matchup_analyst</role>" in r["messages"][0]["content"]
+    ]
+    assert "KC drops back on 50.0% of plays [oc1]" in first
+    assert "Nobody was listed." in first and "Not enough data." in first
+    assert "oc1 = 50.0 (call o1" in first
+    (claim,) = out["sections"]["matchup_analyst"].claims
+    assert (claim.claim_id, claim.tool_call_id) == ("mc1", "o1")
+
+
+def test_editor_report_keeps_markers_and_numbers_are_checked(con):
+    build_db(con, [{}, {**RUN}])
+    out = _run(con, FakeClient(_scripts()))
+
+    report = out["report"]
+    assert report.title == "KC scouting report"
+    assert "## Key matchups" in report.markdown()
+    statuses = [(c.mention.text, c.mention.claim_id, c.status) for c in out["number_checks"]]
+    assert statuses == [
+        ("50.0%", "oc1", "ok"),
+        ("50.0%", "oc1", "ok"),
+        ("2", None, "unlinked"),  # the editor dropped the sample-size marker
+        ("50.0%", "mc1", "ok"),
+    ]
 
 
 def test_each_analyst_keeps_a_stable_cached_prefix(con):
     build_db(con, [{}, {**RUN}])
     client = FakeClient(_scripts())
-    build_graph(client=client, con=con, teams=TEAMS).invoke(
-        {"request": Request(team="DEN", opponent="KC", season=2026, week=2)}
-    )
+    _run(con, client)
     analyst = [r for r in client.requests if r.get("tools")]
     by_node: dict[str, set] = {}
     for r in analyst:
@@ -266,7 +338,27 @@ def test_role_tools_fit_the_strict_tool_limit():
         assert len(schemas) <= 20, role  # API limit on strict tools per request
     assert "blitz_rate" not in ROLE_TOOLS["offense_analyst"]
     assert "pass_rate" not in ROLE_TOOLS["defense_analyst"]
+    assert "injury_report" in ROLE_TOOLS["injury_analyst"]
 
 
 def test_through_week_is_week_minus_one():
     assert Request(team="DEN", opponent="KC", season=2026, week=6).through_week == 5
+
+
+def test_analyst_is_made_to_answer_on_its_last_turn(con):
+    # A model that keeps calling tools gets tool_choice "none" on the final turn and must answer.
+    from nfl_scout.graph import nodes
+
+    build_db(con, [{}])
+    loop = [tool_response(("epa_per_play", {"team": "KC"})) for _ in range(nodes.MAX_TURNS - 1)]
+    final = text_response({"prose": "Done.", "claims": []})
+    client = FakeClient({"offense_analyst": [*loop, final]})
+    llm = nodes.LLM(client, load_settings())
+    tools = tool_schemas(TEAMS, ROLE_TOOLS["offense_analyst"])
+    state = {"request": Request(team="DEN", opponent="KC", season=2026, week=2)}
+    out = nodes.analyst(state, "offense_analyst", llm, tools, con)
+
+    assert out["sections"]["offense_analyst"].prose == "Done."
+    assert [r["tool_choice"]["type"] for r in client.requests][-2:] == ["auto", "none"]
+    last_user = client.requests[-1]["messages"][-1]["content"]
+    assert last_user[-1]["type"] == "text"

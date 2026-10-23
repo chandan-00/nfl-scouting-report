@@ -13,6 +13,8 @@ from typing import Annotated, Any, Literal, TypedDict
 from pydantic import BaseModel, computed_field, model_validator
 
 DerivedOp = Literal["ratio", "difference", "sum"]
+# Which field of the cited tool result the claim states: its value, or its sample size.
+Measured = Literal["value", "n_plays"]
 
 
 class Request(BaseModel):
@@ -36,6 +38,7 @@ class Claim(BaseModel):
     tool_call_id: str | None = None
     derived_from: list[str] | None = None
     op: DerivedOp | None = None
+    measure: Measured = "value"
 
     @model_validator(mode="after")
     def _one_source(self) -> Claim:
@@ -54,6 +57,28 @@ class Section(BaseModel):
     role: str
     prose: str
     claims: list[Claim]
+
+
+class ReportSection(BaseModel):
+    heading: str
+    body: str
+
+
+class Report(BaseModel):
+    """The editor's final report. Bodies keep the claim markers, so every number stays linked."""
+
+    title: str
+    summary: str
+    sections: list[ReportSection]
+
+    def text(self) -> str:
+        """Summary and section bodies: the prose the number checks run over."""
+        return "\n\n".join([self.summary, *(s.body for s in self.sections)])
+
+    def markdown(self) -> str:
+        parts = [f"# {self.title}", self.summary]
+        parts += [f"## {s.heading}\n{s.body}" for s in self.sections]
+        return "\n\n".join(parts)
 
 
 class ToolCall(BaseModel):
@@ -85,6 +110,8 @@ class ScoutState(TypedDict, total=False):
     request: Request
     plan: dict[str, list[str]]
     sections: Annotated[dict[str, Section], _merge]
+    report: Report
+    number_checks: list[Any]  # nfl_scout.numbers.NumberCheck, over the final report
     tool_calls: Annotated[list[ToolCall], operator.add]
     usage: Annotated[list[Usage], operator.add]
 
@@ -113,6 +140,7 @@ SECTION_SCHEMA: dict[str, Any] = {
                             {"type": "null"},
                         ]
                     },
+                    "measure": {"type": "string", "enum": ["value", "n_plays"]},
                 },
                 "required": [
                     "claim_id",
@@ -121,6 +149,7 @@ SECTION_SCHEMA: dict[str, Any] = {
                     "tool_call_id",
                     "derived_from",
                     "op",
+                    "measure",
                 ],
                 "additionalProperties": False,
             },
@@ -135,12 +164,38 @@ PLAN_SCHEMA: dict[str, Any] = {
     "properties": {
         "offense_focus": {"type": "array", "items": {"type": "string"}},
         "defense_focus": {"type": "array", "items": {"type": "string"}},
+        "injury_focus": {"type": "array", "items": {"type": "string"}},
     },
-    "required": ["offense_focus", "defense_focus"],
+    "required": ["offense_focus", "defense_focus", "injury_focus"],
     "additionalProperties": False,
 }
 
-ROLE_PREFIX = {"offense_analyst": "o", "defense_analyst": "d"}
+REPORT_SCHEMA: dict[str, Any] = {
+    "type": "object",
+    "properties": {
+        "title": {"type": "string"},
+        "summary": {"type": "string"},
+        "sections": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {"heading": {"type": "string"}, "body": {"type": "string"}},
+                "required": ["heading", "body"],
+                "additionalProperties": False,
+            },
+        },
+    },
+    "required": ["title", "summary", "sections"],
+    "additionalProperties": False,
+}
+
+# Prefix for each role's tool call ids (o1, ...) and claim ids (oc1, ...).
+ROLE_PREFIX = {
+    "offense_analyst": "o",
+    "defense_analyst": "d",
+    "injury_analyst": "i",
+    "matchup_analyst": "m",
+}
 
 
 def parse_section(role: str, raw: dict[str, Any]) -> Section:

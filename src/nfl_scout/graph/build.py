@@ -1,6 +1,8 @@
-"""Assemble the LangGraph: planner -> (offense analyst || defense analyst).
+"""Assemble the LangGraph:
 
-Day 4 adds the injury/roster agent, matchup analyst and editor; day 5 the fact-checker.
+planner -> (offense || defense || injury analysts) -> matchup analyst -> editor -> number check
+
+Day 5 adds the draft snapshot and fact-checker between the matchup analyst and the editor.
 """
 
 from __future__ import annotations
@@ -43,8 +45,12 @@ ROLE_TOOLS = {
         "ftn_play_rate",
     ],
     "defense_analyst": EFFICIENCY + ["blitz_rate", "average_pass_rushers", "average_box_defenders"],
+    "injury_analyst": ["injury_report", "snap_share", "player_share", "usage_leaders"],
+    "matchup_analyst": EFFICIENCY
+    + ["pass_rate", "pass_rate_over_expected", "blitz_rate", "average_box_defenders"],
 }
-ANALYSTS = tuple(ROLE_TOOLS)
+# Run in parallel after the planner; the matchup analyst reads all of their sections.
+ANALYSTS = ("offense_analyst", "defense_analyst", "injury_analyst")
 
 
 def season_teams(con: duckdb.DuckDBPyConnection, season: int) -> list[str]:
@@ -65,20 +71,22 @@ def build_graph(
     llm = LLM(client or default_client(), settings)
     teams = teams or season_teams(con or default_connection(), settings.data.eval_season)
 
+    def analyst_node(role: str, **kwargs: Any):
+        tools = tool_schemas(teams, ROLE_TOOLS[role])
+        return partial(nodes.analyst, role=role, llm=llm, tools=tools, con=con, **kwargs)
+
     g = StateGraph(ScoutState)
     g.add_node("planner", partial(nodes.planner, llm=llm))
     for role in ANALYSTS:
-        g.add_node(
-            role,
-            partial(
-                nodes.analyst,
-                role=role,
-                llm=llm,
-                tools=tool_schemas(teams, ROLE_TOOLS[role]),
-                con=con,
-            ),
-        )
+        g.add_node(role, analyst_node(role))
         g.add_edge("planner", role)
-        g.add_edge(role, END)
+    g.add_node("matchup_analyst", analyst_node("matchup_analyst", reads_sections=True))
+    g.add_node("editor", partial(nodes.editor, llm=llm))
+    g.add_node("number_check", nodes.number_check)
+
     g.add_edge(START, "planner")
+    g.add_edge(list(ANALYSTS), "matchup_analyst")  # waits for all three
+    g.add_edge("matchup_analyst", "editor")
+    g.add_edge("editor", "number_check")
+    g.add_edge("number_check", END)
     return g.compile()

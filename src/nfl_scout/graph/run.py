@@ -1,4 +1,5 @@
-"""Run the graph for one matchup and print the sections, claims and usage.
+"""Run the graph for one matchup and print the sections, claims, final report, number checks and
+usage.
 
     uv run python -m nfl_scout.graph.run --team DEN --opponent KC --week 6
 
@@ -8,6 +9,7 @@ Debug helper only; saving runs to runs/<config>/<matchup>.json comes on day 5.
 from __future__ import annotations
 
 import argparse
+from collections import Counter
 
 from nfl_scout.config import load_settings
 from nfl_scout.graph.build import build_graph
@@ -32,11 +34,19 @@ def main() -> None:
         print(f"== {role} ==\n{section.prose}\n")
         for c in section.claims:
             call = calls.get(c.tool_call_id or "")
-            actual = call.result["value"] if call and call.result else None
+            field = "n_plays" if c.measure == "n_plays" else "value"
+            actual = call.result[field] if call and call.result else None
             source = c.tool_call_id or f"{c.op}({', '.join(c.derived_from or [])})"
             values = f"stated={c.stated_value!s:8} tool={actual!s:.8}"
             print(f"  {c.claim_id:5} {values} [{source}] {c.text}")
         print()
+    print("== REPORT ==", out["report"].markdown(), sep="\n", end="\n\n")
+    checks = out["number_checks"]
+    print("number checks:", dict(Counter(c.status for c in checks)))
+    for c in checks:
+        if c.status != "ok":
+            print(f"  {c.status:15} {c.mention.text!r} -> {c.mention.claim_id}")
+    print()
     errors = [c for c in out["tool_calls"] if c.error]
     print(f"tool calls: {len(calls)} ({len(errors)} errors)")
     for e in errors:
