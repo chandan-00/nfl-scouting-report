@@ -1,8 +1,8 @@
 """Assemble the LangGraph:
 
-planner -> (offense || defense || injury analysts) -> matchup analyst -> editor -> number check
-
-Day 5 adds the draft snapshot and fact-checker between the matchup analyst and the editor.
+planner -> (offense || defense || injury analysts) -> matchup analyst -> draft snapshot
+  -> fact-checker -> (reviser per failing role -> fact-checker, at most max_revision_loops)
+  -> editor -> number check
 """
 
 from __future__ import annotations
@@ -81,12 +81,22 @@ def build_graph(
         g.add_node(role, analyst_node(role))
         g.add_edge("planner", role)
     g.add_node("matchup_analyst", analyst_node("matchup_analyst", reads_sections=True))
+    g.add_node("snapshot", nodes.snapshot)
+    g.add_node(
+        "fact_checker",
+        partial(nodes.fact_checker, max_loops=settings.models.max_revision_loops, con=con),
+    )
+    all_tools = {role: tool_schemas(teams, names) for role, names in ROLE_TOOLS.items()}
+    g.add_node("reviser", partial(nodes.reviser, llm=llm, tools=all_tools, con=con))
     g.add_node("editor", partial(nodes.editor, llm=llm))
     g.add_node("number_check", nodes.number_check)
 
     g.add_edge(START, "planner")
     g.add_edge(list(ANALYSTS), "matchup_analyst")  # waits for all three
-    g.add_edge("matchup_analyst", "editor")
+    g.add_edge("matchup_analyst", "snapshot")
+    g.add_edge("snapshot", "fact_checker")
+    g.add_conditional_edges("fact_checker", nodes.route_after_check, ["reviser", "editor"])
+    g.add_edge("reviser", "fact_checker")
     g.add_edge("editor", "number_check")
     g.add_edge("number_check", END)
     return g.compile()

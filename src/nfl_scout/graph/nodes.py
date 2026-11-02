@@ -2,10 +2,13 @@
 
 from __future__ import annotations
 
+import copy
 from typing import Any
 
 import duckdb
+from langgraph.types import Send
 
+from nfl_scout.checker import check_sections
 from nfl_scout.graph import prompts
 from nfl_scout.graph.llm import LLM, final_json
 from nfl_scout.graph.llm_tools import ToolExecutor
@@ -43,21 +46,27 @@ def analyst(
     tools: list[dict],
     con: duckdb.DuckDBPyConnection | None = None,
     reads_sections: bool = False,
+    revision: tuple[Any, list] | None = None,
 ) -> dict[str, Any]:
     """One analyst's tool loop. With `reads_sections` (the matchup analyst) the first message
-    holds the other analysts' sections and claims instead of planner questions."""
+    holds the other analysts' sections and claims instead of planner questions. With `revision`
+    (previous section, failed checks) the analyst rewrites its section."""
     r = state["request"]
     focus = state.get("plan", {}).get(prompts.FOCUS_KEY.get(role, ""), [])
-    sections = state.get("sections", {}) if reads_sections else None
-    executor = ToolExecutor(r.season, r.through_week, ROLE_PREFIX[role], node=role, con=con)
-    messages: list[dict] = [
-        {
-            "role": "user",
-            "content": prompts.analyst_message(
-                role, r.team, r.opponent, r.season, r.week, r.through_week, focus, sections
-            ),
-        }
-    ]
+    sections = (
+        {k: v for k, v in state.get("sections", {}).items() if k != role}
+        if reads_sections
+        else None
+    )
+    prefix = ROLE_PREFIX[role]
+    done = sum(1 for c in state.get("tool_calls", []) if c.node == role)
+    executor = ToolExecutor(r.season, r.through_week, prefix, node=role, con=con, start=done)
+    content = prompts.analyst_message(
+        role, r.team, r.opponent, r.season, r.week, r.through_week, focus, sections
+    )
+    if revision:
+        content += prompts.revision_block(*revision)
+    messages: list[dict] = [{"role": "user", "content": content}]
     usages = []
     for turn in range(MAX_TURNS):
         # The last turn keeps the tools (cached prefix) but forbids calling them.
@@ -94,6 +103,76 @@ def analyst(
             results.append({"type": "text", "text": prompts.LAST_TURN})
         messages.append({"role": "user", "content": results})
     raise RuntimeError(f"{role}: no final answer after {MAX_TURNS} turns")
+
+
+def snapshot(state: ScoutState) -> dict[str, Any]:
+    """Freeze the analysts' sections before any fact-check, so drafts can be scored."""
+    return {"draft": copy.deepcopy(state["sections"]), "checks_run": 0}
+
+
+def fact_checker(
+    state: ScoutState, max_loops: int, con: duckdb.DuckDBPyConnection | None = None
+) -> dict[str, Any]:
+    """Check every section. Roles with failures are sent back for revision until `max_loops`
+    revisions have run; after that, failing claims are dropped (and logged)."""
+    results = check_sections(state["sections"], state.get("tool_calls", []), con)
+    failed = [f for f in results if not f.ok]
+    n = state.get("checks_run", 0) + 1
+    claims = {c.claim_id: c for s in state["sections"].values() for c in s.claims}
+    log = [
+        {
+            "round": n,
+            "role": f.role,
+            "claim_id": f.claim_id,
+            "check": f.check,
+            "detail": f.detail,
+            "text": claims[f.claim_id].text if f.claim_id in claims else None,
+            "stated_value": claims[f.claim_id].stated_value if f.claim_id in claims else None,
+        }
+        for f in failed
+    ]
+    update: dict[str, Any] = {"checks": results, "check_log": log, "checks_run": n}
+    if failed and n <= max_loops:
+        update["revise_roles"] = sorted({f.role for f in failed})
+        return update
+
+    update["revise_roles"] = []
+    bad = {f.claim_id for f in failed if f.claim_id in claims}
+    update["dropped"] = [e for e in log if e["claim_id"] in bad or e["claim_id"] is None]
+    if bad:
+        update["sections"] = {
+            role: s.model_copy(update={"claims": [c for c in s.claims if c.claim_id not in bad]})
+            for role, s in state["sections"].items()
+            if any(c.claim_id in bad for c in s.claims)
+        }
+    return update
+
+
+def route_after_check(state: ScoutState) -> list[Send] | str:
+    roles = state.get("revise_roles", [])
+    if not roles:
+        return "editor"
+    return [Send("reviser", {**state, "revise_role": role}) for role in roles]
+
+
+def reviser(
+    state: ScoutState,
+    llm: LLM,
+    tools: dict[str, list[dict]],
+    con: duckdb.DuckDBPyConnection | None = None,
+) -> dict[str, Any]:
+    """Re-run one analyst with its previous section and the checks it failed."""
+    role = state["revise_role"]
+    failures = [f for f in state["checks"] if f.role == role and not f.ok]
+    return analyst(
+        state,
+        role,
+        llm,
+        tools[role],
+        con,
+        reads_sections=role == "matchup_analyst",
+        revision=(state["sections"][role], failures),
+    )
 
 
 def editor(state: ScoutState, llm: LLM) -> dict[str, Any]:

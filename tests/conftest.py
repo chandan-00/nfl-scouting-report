@@ -99,6 +99,12 @@ SNAP = {
 }
 
 TEAMS = ["KC", "DEN", "LV", "LAC"]
+TEAM_NAMES = {
+    "KC": "Kansas City Chiefs",
+    "DEN": "Denver Broncos",
+    "LV": "Las Vegas Raiders",
+    "LAC": "Los Angeles Chargers",
+}
 
 # A DEN offensive play against the KC defense.
 KC_DEF_ROW = {"posteam": "DEN", "defteam": "KC"}
@@ -133,7 +139,15 @@ def build_db(
     _create(con, "ftn_charting", list(ftn), FTN)
     _create(con, "injuries", list(injuries), INJURY)
     _create(con, "snap_counts", list(snaps), SNAP)
-    _create(con, "teams", [{"team_abbr": t} for t in TEAMS], {"team_abbr": "KC"})
+    _create(
+        con,
+        "teams",
+        [
+            {"team_abbr": t, "team_name": n, "team_nick": n.split()[-1]}
+            for t, n in TEAM_NAMES.items()
+        ],
+        {"team_abbr": "KC", "team_name": "Kansas City Chiefs", "team_nick": "Chiefs"},
+    )
     return con
 
 

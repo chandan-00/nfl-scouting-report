@@ -198,10 +198,10 @@ def test_claim_needs_a_source():
 # --- Graph -------------------------------------------------------------------------------------
 
 
-def _claim(cid, value, call_id, measure="value"):
+def _claim(cid, value, call_id, measure="value", text="KC offense pass rate"):
     return {
         "claim_id": cid,
-        "text": "t",
+        "text": text,
         "stated_value": value,
         "tool_call_id": call_id,
         "derived_from": None,
@@ -362,3 +362,81 @@ def test_analyst_is_made_to_answer_on_its_last_turn(con):
     assert [r["tool_choice"]["type"] for r in client.requests][-2:] == ["auto", "none"]
     last_user = client.requests[-1]["messages"][-1]["content"]
     assert last_user[-1]["type"] == "text"
+
+
+# --- Fact-checker and revise loop ------------------------------------------------------------
+
+
+def _offense(value):
+    return text_response(
+        {
+            "prose": f"KC drops back on {value}% of plays [c1].",
+            "claims": [_claim("c1", value, "o1")],
+        }
+    )
+
+
+def test_failed_claim_goes_back_to_its_analyst_and_draft_is_kept(con):
+    build_db(con, [{}, {**RUN}])
+    scripts = _scripts()
+    # First answer says 60.0 (the tool says 50.0); the revision fixes it.
+    scripts["offense_analyst"] = [tool_response(("pass_rate", {"team": "KC"})), _offense(60.0)]
+    scripts["offense_analyst"] += [_offense(50.0)]
+    client = FakeClient(scripts)
+    out = _run(con, client)
+
+    assert out["draft"]["offense_analyst"].claims[0].stated_value == 60.0
+    assert out["sections"]["offense_analyst"].claims[0].stated_value == 50.0
+    assert out["checks_run"] == 2 and out["dropped"] == []
+    (failed,) = out["check_log"]
+    assert (failed["round"], failed["role"], failed["claim_id"], failed["check"]) == (
+        1,
+        "offense_analyst",
+        "oc1",
+        "value",
+    )
+    revision = [
+        r["messages"][0]["content"]
+        for r in client.requests
+        if "<role>offense_analyst</role>" in r["messages"][0]["content"]
+    ][-1]
+    assert "<failed_checks>" in revision and "stated 60.0" in revision
+    # The reviser's own tool calls keep numbering after the first pass (no clash with o1).
+    assert len({c.call_id for c in out["tool_calls"]}) == len(out["tool_calls"])
+
+
+def test_claims_still_failing_after_the_last_loop_are_dropped(con):
+    build_db(con, [{}, {**RUN}])
+    scripts = _scripts()
+    scripts["offense_analyst"] = [tool_response(("pass_rate", {"team": "KC"}))]
+    scripts["offense_analyst"] += [_offense(60.0)] * 3  # draft + 2 revisions, all wrong
+    client = FakeClient(scripts)
+    out = _run(con, client)
+
+    assert out["checks_run"] == 3
+    assert [d["claim_id"] for d in out["dropped"]] == ["oc1"]
+    assert out["sections"]["offense_analyst"].claims == []
+    assert {e["round"] for e in out["check_log"]} == {1, 2, 3}
+    editor = next(
+        r["messages"][0]["content"]
+        for r in client.requests
+        if "<role>editor</role>" in r["messages"][0]["content"]
+    )
+    assert "oc1 = " not in editor  # the dropped claim isn't offered to the editor
+
+
+def test_run_is_saved_with_draft_final_and_cost(con, tmp_path):
+    from nfl_scout.runs import load_run, save_run
+
+    build_db(con, [{}, {**RUN}])
+    out = _run(con, FakeClient(_scripts()))
+    path = save_run(out, "full", load_settings(), runs_dir=tmp_path)
+
+    assert path == tmp_path / "full" / "2026_w02_DEN_vs_KC.json"
+    run = load_run(path)
+    assert run["config"] == "full"
+    assert run["draft"]["offense_analyst"]["claims"][0]["claim_id"] == "oc1"
+    assert run["report"]["title"] == "KC scouting report"
+    assert run["tool_calls"][0]["call_id"] in {"o1", "i1"}
+    assert run["cost_usd"]["total"] > 0
+    assert run["number_checks"][0]["status"] == "ok"

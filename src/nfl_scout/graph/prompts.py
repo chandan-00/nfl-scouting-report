@@ -92,7 +92,7 @@ gives the value behind every marker; use it to keep each number with its own mar
 - Each marker belongs to exactly one number, including sample sizes ("on 18 drives [oc15]"). \
 Never move a marker to another number or reuse it; if you keep a number, keep its own marker.
 - Never add, round, combine or change a number, and never write a number without its marker. If \
-a number has no marker in the sections, leave it out.
+a number has no marker, or its marker isn't in the claims list, leave it out (it failed checks).
 
 Writing
 - Cut repetition and weaker points, reorder for flow, and keep what matters for the game plan.
@@ -163,6 +163,23 @@ def sections_context(sections: dict, with_claims: bool = False) -> str:
             part += "\nClaims:\n" + "\n".join(lines)
         parts.append(part + "\n</section>")
     return "\n\n".join(parts)
+
+
+def revision_block(section, failures: list) -> str:
+    """Appended to an analyst's first message when its section failed fact-checks."""
+    claims = "\n".join(
+        f"{c.claim_id} = {c.stated_value} (call {c.tool_call_id or c.op}): {c.text}"
+        for c in section.claims
+    )
+    failed = "\n".join(f"- {f.claim_id or 'prose'} ({f.check}): {f.detail}" for f in failures)
+    return (
+        "\n\nYou already wrote this section, and some of it failed fact-checking.\n"
+        f"<previous_section>\n{section.prose}\nClaims:\n{claims}\n</previous_section>\n"
+        f"<failed_checks>\n{failed}\n</failed_checks>\n"
+        "Write the whole section again. For each failed check, correct the number, the claim "
+        "text or the citation (call tools again if needed), give an unlinked number its own "
+        "claim, or leave the point out. Keep the points that passed. Number claims from c1 again."
+    )
 
 
 def editor_message(team: str, opponent: str, season: int, week: int, sections: dict) -> str:

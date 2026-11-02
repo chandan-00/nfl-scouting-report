@@ -110,6 +110,13 @@ class ScoutState(TypedDict, total=False):
     request: Request
     plan: dict[str, list[str]]
     sections: Annotated[dict[str, Section], _merge]
+    draft: dict[str, Section]  # sections before the first fact-check (scored as drafts)
+    checks: list[Any]  # nfl_scout.checker.CheckResult, latest round
+    check_log: Annotated[list[dict[str, Any]], operator.add]  # every failure, every round
+    checks_run: int
+    revise_roles: list[str]
+    revise_role: str  # set on each reviser's Send
+    dropped: list[dict[str, Any]]  # claims and numbers still failing after the last loop
     report: Report
     number_checks: list[Any]  # nfl_scout.numbers.NumberCheck, over the final report
     tool_calls: Annotated[list[ToolCall], operator.add]

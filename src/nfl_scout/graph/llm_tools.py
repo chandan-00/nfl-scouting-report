@@ -132,7 +132,10 @@ class ToolExecutor:
         prefix: str,
         node: str = "",
         con: duckdb.DuckDBPyConnection | None = None,
+        start: int = 0,
     ):
+        """`start` is the number of calls this prefix already has (a reviser continues the
+        analyst's numbering, so call ids stay unique)."""
         self.season = season
         self.through_week = through_week
         self.prefix = prefix
@@ -141,10 +144,11 @@ class ToolExecutor:
         # shared across threads mixes up query results.
         self.con = (con or default_connection()).cursor()
         self.calls: list[ToolCall] = []
+        self.start = start
 
     def run(self, name: str, args: dict[str, Any]) -> tuple[str, bool]:
         """Execute one call. Returns (tool_result content for the model, is_error)."""
-        call_id = f"{self.prefix}{len(self.calls) + 1}"
+        call_id = f"{self.prefix}{self.start + len(self.calls) + 1}"
         args = {k: v for k, v in args.items() if v is not None}
         full = {**args, "season": self.season, "through_week": self.through_week}
         call = ToolCall(call_id=call_id, node=self.node, tool=name, args=full)
