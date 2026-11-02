@@ -56,6 +56,24 @@ class FakeClient:
         node = next(n for n in self.scripts if f"<role>{n}</role>" in first)
         return self.scripts[node].pop(0)
 
+    def stream(self, **kwargs):
+        response = self.create(**{**kwargs, "_streamed": True})
+        return _Stream(response)
+
+
+class _Stream:
+    def __init__(self, response):
+        self.response = response
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        return False
+
+    def get_final_message(self):
+        return self.response
+
 
 # --- Tool schemas ----------------------------------------------------------------------------
 
@@ -440,3 +458,56 @@ def test_run_is_saved_with_draft_final_and_cost(con, tmp_path):
     assert run["tool_calls"][0]["call_id"] in {"o1", "i1"}
     assert run["cost_usd"]["total"] > 0
     assert run["number_checks"][0]["status"] == "ok"
+
+
+# --- Baselines -----------------------------------------------------------------------------
+
+
+def _single_scripts():
+    report = {
+        "title": "KC scouting report",
+        "summary": "KC drops back on 50.0% of plays [c1].",
+        "sections": [{"heading": "Opponent offense", "body": "Over 2 plays [c2]."}],
+        "claims": [_claim("c1", 50.0, "s1"), _claim("c2", 2, "s1", "n_plays")],
+    }
+    return {
+        "single_agent": [
+            tool_response(("pass_rate", {"team": "KC"})),
+            NS(content=[NS(type="text", text="Done.")], stop_reason="end_turn", usage=_usage()),
+            text_response(report),
+        ]
+    }
+
+
+def test_single_agent_writes_the_whole_report_in_the_same_claim_format(con):
+    build_db(con, [{}, {**RUN}])
+    client = FakeClient(_single_scripts())
+    out = build_graph(client=client, con=con, teams=TEAMS, config="single").invoke(
+        {"request": Request(team="DEN", opponent="KC", season=2026, week=2)}
+    )
+
+    section = out["sections"]["single_agent"]
+    assert [c.claim_id for c in section.claims] == ["sc1", "sc2"]
+    assert "[sc1]" in out["report"].summary and "[sc2]" in out["report"].sections[0].body
+    assert out["draft"]["single_agent"].claims == section.claims
+    assert [c.status for c in out["number_checks"]] == ["ok", "ok"]
+    assert {u.node for u in out["usage"]} == {"single_agent"}
+    # Tool turns carry no output schema (20 strict tools + a schema is too large a grammar);
+    # the last call forbids tools and asks for the structured report.
+    assert ["format" in r["output_config"] for r in client.requests] == [False, False, True]
+    assert client.requests[-1]["tool_choice"] == {"type": "none"}
+    # The whole report is long: the final call streams with a larger output budget.
+    assert client.requests[-1]["_streamed"] and client.requests[-1]["max_tokens"] > 16000
+    assert not any(r.get("_streamed") for r in client.requests[:-1])
+    assert len({json.dumps(r["tools"]) for r in client.requests}) == 1  # cached prefix holds
+    assert len(client.requests[0]["tools"]) == 20
+
+
+def test_no_checker_config_goes_straight_from_draft_to_editor(con):
+    build_db(con, [{}, {**RUN}])
+    out = build_graph(
+        client=FakeClient(_scripts()), con=con, teams=TEAMS, config="no_checker"
+    ).invoke({"request": Request(team="DEN", opponent="KC", season=2026, week=2)})
+    assert "checks_run" not in out or out["checks_run"] == 0
+    assert out["draft"]["offense_analyst"].claims[0].claim_id == "oc1"
+    assert out["report"].title == "KC scouting report"

@@ -20,6 +20,7 @@ models:
     matchup_analyst:  {model: haiku, effort: medium}
     fact_checker:     {model: haiku, effort: low}
     editor:           {model: haiku, effort: medium}
+    single_agent:     {model: haiku, effort: medium}
 
   max_revision_loops: 2
 

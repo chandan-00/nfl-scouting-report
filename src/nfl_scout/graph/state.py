@@ -196,8 +196,19 @@ REPORT_SCHEMA: dict[str, Any] = {
     "additionalProperties": False,
 }
 
+# The single-agent baseline's final answer: the whole report plus one claims list.
+SINGLE_SCHEMA: dict[str, Any] = {
+    **REPORT_SCHEMA,
+    "properties": {
+        **REPORT_SCHEMA["properties"],
+        "claims": SECTION_SCHEMA["properties"]["claims"],
+    },
+    "required": [*REPORT_SCHEMA["required"], "claims"],
+}
+
 # Prefix for each role's tool call ids (o1, ...) and claim ids (oc1, ...).
 ROLE_PREFIX = {
+    "single_agent": "s",
     "offense_analyst": "o",
     "defense_analyst": "d",
     "injury_analyst": "i",
@@ -205,17 +216,36 @@ ROLE_PREFIX = {
 }
 
 
-def parse_section(role: str, raw: dict[str, Any]) -> Section:
-    """Validate an analyst's output and namespace its claim ids (c1 -> oc1) in claims and prose."""
+def _namespace(role: str, raw_claims: list[dict]) -> tuple[list[Claim], Any]:
+    """Claims with ids prefixed per role (c1 -> oc1), and a function that renames markers."""
     prefix = ROLE_PREFIX.get(role, role[0])
-    ids = {c["claim_id"]: f"{prefix}{c['claim_id']}" for c in raw["claims"]}
+    ids = {c["claim_id"]: f"{prefix}{c['claim_id']}" for c in raw_claims}
     claims = []
-    for c in raw["claims"]:
+    for c in raw_claims:
         derived = [ids.get(d, d) for d in c.get("derived_from") or []] or None
         claims.append(Claim(**{**c, "claim_id": ids[c["claim_id"]], "derived_from": derived}))
 
     def _rename(m: re.Match) -> str:
         return "[" + ", ".join(ids.get(x.strip(), x.strip()) for x in m.group(1).split(",")) + "]"
 
-    prose = re.sub(r"\[([^\]]+)\]", _rename, raw["prose"])
-    return Section(role=role, prose=prose, claims=claims)
+    return claims, lambda text: re.sub(r"\[([^\]]+)\]", _rename, text)
+
+
+def parse_section(role: str, raw: dict[str, Any]) -> Section:
+    """Validate an analyst's output and namespace its claim ids (c1 -> oc1) in claims and prose."""
+    claims, rename = _namespace(role, raw["claims"])
+    return Section(role=role, prose=rename(raw["prose"]), claims=claims)
+
+
+def parse_single(raw: dict[str, Any]) -> tuple[Section, Report]:
+    """The single agent's report, plus a section holding all its claims (prose = report text),
+    so the checker and scorer treat it like any other section."""
+    claims, rename = _namespace("single_agent", raw["claims"])
+    report = Report(
+        title=raw["title"],
+        summary=rename(raw["summary"]),
+        sections=[
+            ReportSection(heading=s["heading"], body=rename(s["body"])) for s in raw["sections"]
+        ],
+    )
+    return Section(role="single_agent", prose=report.text(), claims=claims), report

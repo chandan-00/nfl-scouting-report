@@ -39,6 +39,40 @@ Claims (your final answer is JSON: prose plus a claims list)
 "8 points higher" = difference); list those claim ids and set op. Otherwise null.
 """
 
+
+def _single_system() -> str:
+    """The analysts' rules, reworded for one agent writing the whole report."""
+    out = SYSTEM
+    for old, new in [
+        (
+            "writing one section of an opponent scouting report",
+            "writing a complete opponent scouting report",
+        ),
+        (
+            "- Write tight, specific prose for coaches, at the length the task gives, with what "
+            "each point means for the game plan. No headings, no bullet lists.\n",
+            "",
+        ),
+        ("the planner or these", "these"),
+        (
+            "(your final answer is JSON: prose plus a claims list)",
+            "(one claims list for the whole report)",
+        ),
+    ]:
+        assert old in out, f"SYSTEM changed; update _single_system: {old[:40]!r}"
+        out = out.replace(old, new)
+    return out + SINGLE_WRITING
+
+
+SINGLE_WRITING = """
+Report
+- title: short, naming both teams and the week. summary: 3-4 sentences with the biggest takeaways.
+- sections, in this order: "Opponent offense", "Opponent defense", "Injuries and availability", \
+"Key matchups". Plain paragraphs for coaches, with what each point means for the game plan; no \
+bullet lists. 400-600 words in all.
+- Claim markers (c1, c2, ...) run in order across the summary and all sections.
+"""
+
 PLANNER_SYSTEM = """\
 You plan an NFL opponent scouting report. Given a matchup, list the questions the offense and \
 defense analysts should answer. Keep each list to 3-5 short, concrete questions that the available \
@@ -187,4 +221,26 @@ def editor_message(team: str, opponent: str, season: int, week: int, sections: d
         "<role>editor</role>\n"
         f"Report for {team} on {opponent}, week {week} of the {season} season.\n\n"
         + sections_context(sections, with_claims=True)
+    )
+
+
+SINGLE_SYSTEM = _single_system()
+
+SINGLE_TASK = (
+    "Scout {opponent} for {team}: the {opponent} offense against the {team} defense "
+    '(side="defense" for {team}), the {opponent} defense (side="defense" for {opponent}) against '
+    "the {team} offense, the latest injury reports and snap shares for both teams, and the 3-4 "
+    "matchups that will decide the game. Use the tools until you have what you need, then reply "
+    'with just the word "ready": the report itself is asked for in the next message.'
+)
+
+SINGLE_FINAL = "Now write the final report as JSON, using only the tool results above."
+
+
+def single_message(team: str, opponent: str, season: int, week: int, through_week: int) -> str:
+    return (
+        "<role>single_agent</role>\n"
+        f"Matchup: {team} plays {opponent} in week {week} of the {season} season. "
+        f"Data runs through week {through_week}.\n"
+        + SINGLE_TASK.format(team=team, opponent=opponent)
     )

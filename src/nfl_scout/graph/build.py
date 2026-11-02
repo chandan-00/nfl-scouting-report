@@ -3,6 +3,8 @@
 planner -> (offense || defense || injury analysts) -> matchup analyst -> draft snapshot
   -> fact-checker -> (reviser per failing role -> fact-checker, at most max_revision_loops)
   -> editor -> number check
+
+Baselines: "no_checker" skips the fact-checker; "single" is one agent with every tool.
 """
 
 from __future__ import annotations
@@ -49,6 +51,10 @@ ROLE_TOOLS = {
     "matchup_analyst": EFFICIENCY
     + ["pass_rate", "pass_rate_over_expected", "blitz_rate", "average_box_defenders"],
 }
+# The single-agent baseline gets every tool the analysts have (exactly the 20-tool API limit).
+SINGLE_TOOLS = sorted({name for names in ROLE_TOOLS.values() for name in names})
+# Graph configurations compared in the eval.
+CONFIGS = ("full", "no_checker", "single")
 # Run in parallel after the planner; the matchup analyst reads all of their sections.
 ANALYSTS = ("offense_analyst", "defense_analyst", "injury_analyst")
 
@@ -66,7 +72,12 @@ def build_graph(
     con: duckdb.DuckDBPyConnection | None = None,
     teams: list[str] | None = None,
     settings: Settings | None = None,
+    config: str = "full",
 ):
+    """`config`: "full" (fact-checker + revise loop), "no_checker" (drafts go straight to the
+    editor) or "single" (one agent with every tool, no checker)."""
+    if config not in CONFIGS:
+        raise ValueError(f"config must be one of {CONFIGS}, not {config!r}")
     settings = settings or load_settings()
     llm = LLM(client or default_client(), settings)
     teams = teams or season_teams(con or default_connection(), settings.data.eval_season)
@@ -76,27 +87,40 @@ def build_graph(
         return partial(nodes.analyst, role=role, llm=llm, tools=tools, con=con, **kwargs)
 
     g = StateGraph(ScoutState)
+    g.add_node("snapshot", nodes.snapshot)
+    g.add_node("number_check", nodes.number_check)
+    g.add_edge("number_check", END)
+
+    if config == "single":
+        tools = tool_schemas(teams, SINGLE_TOOLS)
+        g.add_node("single_agent", partial(nodes.single_agent, llm=llm, tools=tools, con=con))
+        g.add_edge(START, "single_agent")
+        g.add_edge("single_agent", "snapshot")
+        g.add_edge("snapshot", "number_check")
+        return g.compile()
+
     g.add_node("planner", partial(nodes.planner, llm=llm))
     for role in ANALYSTS:
         g.add_node(role, analyst_node(role))
         g.add_edge("planner", role)
     g.add_node("matchup_analyst", analyst_node("matchup_analyst", reads_sections=True))
-    g.add_node("snapshot", nodes.snapshot)
+    g.add_node("editor", partial(nodes.editor, llm=llm))
+    g.add_edge(START, "planner")
+    g.add_edge(list(ANALYSTS), "matchup_analyst")  # waits for all three
+    g.add_edge("matchup_analyst", "snapshot")
+    g.add_edge("editor", "number_check")
+
+    if config == "no_checker":
+        g.add_edge("snapshot", "editor")
+        return g.compile()
+
     g.add_node(
         "fact_checker",
         partial(nodes.fact_checker, max_loops=settings.models.max_revision_loops, con=con),
     )
     all_tools = {role: tool_schemas(teams, names) for role, names in ROLE_TOOLS.items()}
     g.add_node("reviser", partial(nodes.reviser, llm=llm, tools=all_tools, con=con))
-    g.add_node("editor", partial(nodes.editor, llm=llm))
-    g.add_node("number_check", nodes.number_check)
-
-    g.add_edge(START, "planner")
-    g.add_edge(list(ANALYSTS), "matchup_analyst")  # waits for all three
-    g.add_edge("matchup_analyst", "snapshot")
     g.add_edge("snapshot", "fact_checker")
     g.add_conditional_edges("fact_checker", nodes.route_after_check, ["reviser", "editor"])
     g.add_edge("reviser", "fact_checker")
-    g.add_edge("editor", "number_check")
-    g.add_edge("number_check", END)
     return g.compile()

@@ -11,7 +11,7 @@ from collections import Counter
 
 from nfl_scout.config import load_settings
 from nfl_scout.costs import cost_by_node
-from nfl_scout.graph.build import build_graph
+from nfl_scout.graph.build import CONFIGS, build_graph
 from nfl_scout.graph.state import Request
 from nfl_scout.runs import save_run
 
@@ -23,14 +23,15 @@ def main() -> None:
     ap.add_argument("--opponent", required=True, help="the team being scouted")
     ap.add_argument("--week", type=int, required=True, help="game week (data through week - 1)")
     ap.add_argument("--season", type=int, default=settings.data.eval_season)
-    ap.add_argument("--config", default="full", help="run name under runs/ (default: full)")
+    ap.add_argument("--graph", choices=CONFIGS, default="full", help="graph configuration")
+    ap.add_argument("--config", help="run name under runs/ (default: the graph name)")
     ap.add_argument("--no-save", action="store_true", help="don't write the run file")
     a = ap.parse_args()
 
     request = Request(team=a.team, opponent=a.opponent, season=a.season, week=a.week)
-    out = build_graph(settings=settings).invoke({"request": request})
+    out = build_graph(settings=settings, config=a.graph).invoke({"request": request})
 
-    print("PLAN", out["plan"], sep="\n", end="\n\n")
+    print("PLAN", out.get("plan"), sep="\n", end="\n\n")
     calls = {c.call_id: c for c in out["tool_calls"]}
     for role, section in out["sections"].items():
         print(f"== {role} ==\n{section.prose}\n")
@@ -42,10 +43,10 @@ def main() -> None:
             values = f"stated={c.stated_value!s:8} tool={actual!s:.8}"
             print(f"  {c.claim_id:5} {values} [{source}] {c.text}")
         print()
-    print(f"fact-check rounds: {out['checks_run']}")
-    for e in out["check_log"]:
+    print(f"fact-check rounds: {out.get('checks_run', 0)}")
+    for e in out.get("check_log", []):
         print(f"  r{e['round']} {e['claim_id'] or '-':5} {e['check']:8} {e['detail']}")
-    print(f"dropped: {[d['claim_id'] for d in out['dropped']]}\n")
+    print(f"dropped: {[d['claim_id'] for d in out.get('dropped', [])]}\n")
     print("== REPORT ==", out["report"].markdown(), sep="\n", end="\n\n")
     checks = out["number_checks"]
     print("number checks:", dict(Counter(c.status for c in checks)))
@@ -72,7 +73,7 @@ def main() -> None:
         "cost USD", {k: round(v, 4) for k, v in costs.items()}, f"total={sum(costs.values()):.4f}"
     )
     if not a.no_save:
-        print("saved", save_run(out, a.config, settings))
+        print("saved", save_run(out, a.config or a.graph, settings))
 
 
 if __name__ == "__main__":
