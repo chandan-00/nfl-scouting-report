@@ -7,13 +7,13 @@ A field counts as available when at least 95% of its relevant plays are non-null
 
 | Table | Rows | Latest week by season | Loaded (UTC) |
 |---|---|---|---|
-| pbp | 62,613 | 2025: wk 22, 2026: wk 5 | 2026-10-15 16:29 |
-| schedules | 557 | 2025: wk 22, 2026: wk 18 | 2026-10-15 16:29 |
-| rosters_weekly | 62,175 | 2025: wk 22, 2026: wk 6 | 2026-10-15 16:30 |
-| injuries | 7,765 | 2025: wk 22, 2026: wk 6 | 2026-10-15 16:30 |
-| snap_counts | 33,983 | 2025: wk 22, 2026: wk 5 | 2026-10-15 16:30 |
-| ftn_charting | 60,754 | 2025: wk 22, 2026: wk 5 | 2026-10-15 16:30 |
-| teams | 36 | - | 2026-10-15 16:30 |
+| pbp | 69,789 | 2025: wk 22, 2026: wk 8 | 2026-11-02 18:04 |
+| schedules | 557 | 2025: wk 22, 2026: wk 18 | 2026-11-02 18:04 |
+| rosters_weekly | 66,714 | 2025: wk 22, 2026: wk 8 | 2026-11-02 18:04 |
+| injuries | 8,527 | 2025: wk 22, 2026: wk 8 | 2026-11-02 18:04 |
+| snap_counts | 37,812 | 2025: wk 22, 2026: wk 8 | 2026-11-02 18:04 |
+| ftn_charting | 65,690 | 2025: wk 22, 2026: wk 8 | 2026-11-02 18:04 |
+| teams | 36 | - | 2026-11-02 18:04 |
 
 ## 2026 games with play-by-play
 
@@ -24,34 +24,37 @@ A field counts as available when at least 95% of its relevant plays are non-null
 | 3 | 16 | 16 |
 | 4 | 16 | 16 |
 | 5 | 15 | 15 |
+| 6 | 14 | 14 |
+| 7 | 14 | 14 |
+| 8 | 13 | 14 |
 
 ## Play-by-play fields
 
 | Field | Measured over | Non-null | Plays |
 |---|---|---|---|
-| `epa` | scrimmage | 100.0% | 9,693 |
-| `yards_gained` | scrimmage | 100.0% | 9,693 |
-| `success` | scrimmage | 100.0% | 9,693 |
-| `down` | scrimmage | 99.6% | 9,693 |
-| `ydstogo` | scrimmage | 100.0% | 9,693 |
-| `yardline_100` | scrimmage | 100.0% | 9,693 |
-| `shotgun` | scrimmage | 100.0% | 9,693 |
-| `no_huddle` | scrimmage | 100.0% | 9,693 |
-| `xpass` | scrimmage | 99.6% | 9,693 |
-| `pass_oe` | scrimmage | 99.6% | 9,693 |
-| `sack` | dropbacks | 100.0% | 5,902 |
-| `qb_hit` | dropbacks | 100.0% | 5,902 |
-| `air_yards` | pass_attempts | 99.4% | 5,236 |
-| `pass_location` | pass_attempts | 99.4% | 5,236 |
-| `receiver_player_id` | pass_attempts | 95.6% | 5,236 |
-| `cpoe` | pass_attempts | 95.1% | 5,236 |
-| `rusher_player_id` | designed_runs | 100.0% | 3,791 |
-| `run_location` | designed_runs | 99.2% | 3,791 |
-| `run_gap` | outside_runs | 100.0% | 2,686 |
+| `epa` | scrimmage | 100.0% | 14,784 |
+| `yards_gained` | scrimmage | 100.0% | 14,784 |
+| `success` | scrimmage | 100.0% | 14,784 |
+| `down` | scrimmage | 99.6% | 14,784 |
+| `ydstogo` | scrimmage | 100.0% | 14,784 |
+| `yardline_100` | scrimmage | 100.0% | 14,784 |
+| `shotgun` | scrimmage | 100.0% | 14,784 |
+| `no_huddle` | scrimmage | 100.0% | 14,784 |
+| `xpass` | scrimmage | 99.6% | 14,784 |
+| `pass_oe` | scrimmage | 99.6% | 14,784 |
+| `sack` | dropbacks | 100.0% | 8,935 |
+| `qb_hit` | dropbacks | 100.0% | 8,935 |
+| `air_yards` | pass_attempts | 99.4% | 7,950 |
+| `pass_location` | pass_attempts | 99.4% | 7,950 |
+| `receiver_player_id` | pass_attempts | 95.7% | 7,950 |
+| `cpoe` | pass_attempts | 95.2% | 7,950 |
+| `rusher_player_id` | designed_runs | 100.0% | 5,849 |
+| `run_location` | designed_runs | 99.2% | 5,849 |
+| `run_gap` | outside_runs | 100.0% | 4,073 |
 
 ## FTN charting
 
-Scrimmage plays with an FTN row: **100.0%** of 9,693.
+Scrimmage plays with an FTN row: **90.1%** of 14,784.
 
 | Field | Non-null (matched plays) |
 |---|---|
@@ -92,9 +95,9 @@ nflverse participation data is only published through 2025, so these are unavail
 | Depth of target (air yards) | `air_yards` | yes |
 | Sack rate | `sack` | yes |
 | Pressure proxy (sacks + QB hits per dropback) | `sack`, `qb_hit` | yes |
-| Blitz rate (5+ rushers) and rushers per dropback | `ftn.n_blitzers`, `ftn.n_pass_rushers` | yes |
-| Defenders in the box | `ftn.n_defense_box` | yes |
-| Play-action / motion / screen / RPO rates | `ftn.is_play_action`, `ftn.is_motion`, `ftn.is_screen_pass`, `ftn.is_rpo` | yes |
+| Blitz rate (5+ rushers) and rushers per dropback | `ftn.n_blitzers`, `ftn.n_pass_rushers` | **no** |
+| Defenders in the box | `ftn.n_defense_box` | **no** |
+| Play-action / motion / screen / RPO rates | `ftn.is_play_action`, `ftn.is_motion`, `ftn.is_screen_pass`, `ftn.is_rpo` | **no** |
 | Third-down conversion / stop rate | `down` | yes |
 | Personnel groupings | `participation` | **no** |
 | Coverage type (man/zone) | `participation` | **no** |
