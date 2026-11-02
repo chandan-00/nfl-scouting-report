@@ -25,12 +25,22 @@ class NodeModel(BaseModel):
     effort: Effort
 
 
+class Price(BaseModel):
+    """USD per million tokens."""
+
+    input: float
+    output: float
+    cache_read: float
+    cache_write: float
+
+
 class ModelSettings(BaseModel):
     aliases: dict[str, str]
     default: str
     default_effort: Effort
     nodes: dict[str, NodeModel]
     max_revision_loops: int
+    prices: dict[str, Price]
 
     @model_validator(mode="after")
     def _check_aliases(self) -> ModelSettings:
@@ -78,6 +88,13 @@ class Settings(BaseModel):
                 f"{MODEL_OVERRIDE_ENV}={alias!r} is not one of {sorted(self.models.aliases)}"
             )
         return NodeModel(model=self.models.aliases[alias], effort=cfg.effort)
+
+    def price(self, model_id: str) -> Price:
+        """Price for a full model ID (e.g. claude-haiku-5-5)."""
+        for alias, mid in self.models.aliases.items():
+            if mid == model_id:
+                return self.models.prices[alias]
+        raise KeyError(f"no price for model {model_id!r}")
 
     def resolve(self, path: Path) -> Path:
         """Resolve a settings path relative to the project root."""
