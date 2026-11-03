@@ -165,6 +165,16 @@ def test_player_claims_wording_false_positives_from_the_live_run(db):
     assert wording == []
 
 
+def test_naming_the_player_doesnt_excuse_naming_the_wrong_team(db):
+    # Found by the seeded-error set: "DEN ... of Wide One" for a KC call passed.
+    build_db(db, [{}], snaps=[{"team": "KC", "player": "Wide One"}])
+    calls = run_calls(db, ("snap_share", {"team": "KC", "player": "Wide One"}))
+    text = "DEN snap share of Wide One"
+    results = check_sections(section("A 90.0% [c1].", claim("c1", 90.0, text=text)), calls, db)
+    wording = [r.detail for r in results if r.check == "wording" and not r.ok]
+    assert len(wording) == 1 and "names DEN" in wording[0]
+
+
 def test_league_rank_wording_uses_the_splits_actually_applied(db):
     # direction is ignored by epa_per_play, so a claim that names no direction is fine.
     calls = run_calls(

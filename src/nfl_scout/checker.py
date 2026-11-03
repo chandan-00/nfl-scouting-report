@@ -229,8 +229,8 @@ class Checker:
         text = claim.text
         params = set(inspect.signature(TOOLS[tool].fn).parameters) if tool in TOOLS else set()
         player_named = "player" in args and _mentions(text, _surname(str(args["player"])))
-        # A claim naming the player needn't name the team too.
-        problems = [] if player_named else [self._team(text, args.get("team"))]
+        # A claim naming the player needn't name the team too, but must not name a wrong one.
+        problems = [self._team(text, args.get("team"), required=not player_named)]
         if "side" in params or tool in OFFENSE_ONLY | DEFENSE_ONLY:
             problems.append(self._side(text, tool, args.get("side", "offense")))
         if "play_kind" in params:
@@ -251,7 +251,7 @@ class Checker:
         problems.append(self._weeks(text, args, max(weeks) if weeks else None))
         return [p for p in problems if p]
 
-    def _team(self, text: str, team: str | None) -> str | None:
+    def _team(self, text: str, team: str | None, required: bool = True) -> str | None:
         if team is None:
             return None
 
@@ -266,7 +266,7 @@ class Checker:
         others = sorted(t for t in self.aliases if t != team and named(t))
         if others:
             return f"the text names {', '.join(others)}, but the call is for {team}"
-        return f"the text doesn't name {team}"
+        return f"the text doesn't name {team}" if required else None
 
     @staticmethod
     def _side(text: str, tool: str, side: str) -> str | None:
