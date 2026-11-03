@@ -1,0 +1,328 @@
+{
+ "version": "v1",
+ "created_at": "2026-11-03T01:14:25+00:00",
+ "seed": 2026,
+ "per_week": 10,
+ "matchups": [
+  {
+   "game_id": "2026_04_ATL_NO",
+   "week": 4,
+   "team": "ATL",
+   "opponent": "NO",
+   "through_week": 3,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_04_DEN_SF",
+   "week": 4,
+   "team": "DEN",
+   "opponent": "SF",
+   "through_week": 3,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_04_GB_TB",
+   "week": 4,
+   "team": "GB",
+   "opponent": "TB",
+   "through_week": 3,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_04_IND_WAS",
+   "week": 4,
+   "team": "WAS",
+   "opponent": "IND",
+   "through_week": 3,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_04_JAX_CIN",
+   "week": 4,
+   "team": "JAX",
+   "opponent": "CIN",
+   "through_week": 3,
+   "hand_graded": true
+  },
+  {
+   "game_id": "2026_04_KC_LV",
+   "week": 4,
+   "team": "LV",
+   "opponent": "KC",
+   "through_week": 3,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_04_LA_PHI",
+   "week": 4,
+   "team": "PHI",
+   "opponent": "LA",
+   "through_week": 3,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_04_NE_BUF",
+   "week": 4,
+   "team": "BUF",
+   "opponent": "NE",
+   "through_week": 3,
+   "hand_graded": true
+  },
+  {
+   "game_id": "2026_04_NYJ_CHI",
+   "week": 4,
+   "team": "CHI",
+   "opponent": "NYJ",
+   "through_week": 3,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_04_TEN_BAL",
+   "week": 4,
+   "team": "BAL",
+   "opponent": "TEN",
+   "through_week": 3,
+   "hand_graded": true
+  },
+  {
+   "game_id": "2026_05_BAL_ATL",
+   "week": 5,
+   "team": "BAL",
+   "opponent": "ATL",
+   "through_week": 4,
+   "hand_graded": true
+  },
+  {
+   "game_id": "2026_05_CHI_GB",
+   "week": 5,
+   "team": "CHI",
+   "opponent": "GB",
+   "through_week": 4,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_05_CIN_MIA",
+   "week": 5,
+   "team": "CIN",
+   "opponent": "MIA",
+   "through_week": 4,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_05_DEN_LAC",
+   "week": 5,
+   "team": "DEN",
+   "opponent": "LAC",
+   "through_week": 4,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_05_DET_ARI",
+   "week": 5,
+   "team": "DET",
+   "opponent": "ARI",
+   "through_week": 4,
+   "hand_graded": true
+  },
+  {
+   "game_id": "2026_05_HOU_TEN",
+   "week": 5,
+   "team": "TEN",
+   "opponent": "HOU",
+   "through_week": 4,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_05_MIN_NO",
+   "week": 5,
+   "team": "NO",
+   "opponent": "MIN",
+   "through_week": 4,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_05_NYG_WAS",
+   "week": 5,
+   "team": "NYG",
+   "opponent": "WAS",
+   "through_week": 4,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_05_PHI_JAX",
+   "week": 5,
+   "team": "JAX",
+   "opponent": "PHI",
+   "through_week": 4,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_05_SF_SEA",
+   "week": 5,
+   "team": "SEA",
+   "opponent": "SF",
+   "through_week": 4,
+   "hand_graded": true
+  },
+  {
+   "game_id": "2026_06_ARI_LA",
+   "week": 6,
+   "team": "LA",
+   "opponent": "ARI",
+   "through_week": 5,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_06_BUF_LV",
+   "week": 6,
+   "team": "BUF",
+   "opponent": "LV",
+   "through_week": 5,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_06_CAR_PHI",
+   "week": 6,
+   "team": "CAR",
+   "opponent": "PHI",
+   "through_week": 5,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_06_CHI_ATL",
+   "week": 6,
+   "team": "CHI",
+   "opponent": "ATL",
+   "through_week": 5,
+   "hand_graded": true
+  },
+  {
+   "game_id": "2026_06_DAL_GB",
+   "week": 6,
+   "team": "GB",
+   "opponent": "DAL",
+   "through_week": 5,
+   "hand_graded": true
+  },
+  {
+   "game_id": "2026_06_LAC_KC",
+   "week": 6,
+   "team": "LAC",
+   "opponent": "KC",
+   "through_week": 5,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_06_NYJ_NE",
+   "week": 6,
+   "team": "NYJ",
+   "opponent": "NE",
+   "through_week": 5,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_06_PIT_TB",
+   "week": 6,
+   "team": "PIT",
+   "opponent": "TB",
+   "through_week": 5,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_06_SEA_DEN",
+   "week": 6,
+   "team": "DEN",
+   "opponent": "SEA",
+   "through_week": 5,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_06_TEN_IND",
+   "week": 6,
+   "team": "TEN",
+   "opponent": "IND",
+   "through_week": 5,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_07_CIN_BAL",
+   "week": 7,
+   "team": "CIN",
+   "opponent": "BAL",
+   "through_week": 6,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_07_CLE_TEN",
+   "week": 7,
+   "team": "CLE",
+   "opponent": "TEN",
+   "through_week": 6,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_07_GB_DET",
+   "week": 7,
+   "team": "GB",
+   "opponent": "DET",
+   "through_week": 6,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_07_IND_MIN",
+   "week": 7,
+   "team": "IND",
+   "opponent": "MIN",
+   "through_week": 6,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_07_KC_SEA",
+   "week": 7,
+   "team": "KC",
+   "opponent": "SEA",
+   "through_week": 6,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_07_LA_LV",
+   "week": 7,
+   "team": "LV",
+   "opponent": "LA",
+   "through_week": 6,
+   "hand_graded": true
+  },
+  {
+   "game_id": "2026_07_MIA_NYJ",
+   "week": 7,
+   "team": "NYJ",
+   "opponent": "MIA",
+   "through_week": 6,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_07_NE_CHI",
+   "week": 7,
+   "team": "NE",
+   "opponent": "CHI",
+   "through_week": 6,
+   "hand_graded": true
+  },
+  {
+   "game_id": "2026_07_PIT_NO",
+   "week": 7,
+   "team": "PIT",
+   "opponent": "NO",
+   "through_week": 6,
+   "hand_graded": false
+  },
+  {
+   "game_id": "2026_07_TB_CAR",
+   "week": 7,
+   "team": "CAR",
+   "opponent": "TB",
+   "through_week": 6,
+   "hand_graded": false
+  }
+ ]
+}
