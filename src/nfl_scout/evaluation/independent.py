@@ -41,7 +41,10 @@ def _scrimmage(df: pl.DataFrame, through_week: int) -> pl.DataFrame:
     )
 
 
-def _side(df: pl.DataFrame, team: str, side: str) -> pl.DataFrame:
+def _side(df: pl.DataFrame, team: str | None, side: str) -> pl.DataFrame:
+    """The team's plays on one side; team=None keeps every team (the league as a whole)."""
+    if team is None:
+        return df
     return df.filter(pl.col("posteam" if side == "offense" else "defteam") == team)
 
 
@@ -153,6 +156,11 @@ METRICS: dict[str, Callable[..., tuple[float | None, int]]] = {
         run_direction_rate,
     )
 }
+
+
+def week_plays(df: pl.DataFrame, week: int) -> pl.DataFrame:
+    """Scrimmage plays of one week only (e.g. the game a report was written for)."""
+    return _scrimmage(df, week).filter(pl.col("week") == week)
 
 
 def independent_value(
