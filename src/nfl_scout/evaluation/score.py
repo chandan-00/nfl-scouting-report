@@ -246,6 +246,17 @@ def _fmt(v: Any) -> str:
     return str(v)
 
 
+def _table_rows(agg: dict[str, Any]) -> dict[str, Any]:
+    """One row per metric; nested dicts (catch rate per kind) become indented rows."""
+    out: dict[str, Any] = {}
+    for k, v in agg.items():
+        if isinstance(v, dict):
+            out.update({f"  {k}.{sub}": x for sub, x in v.items()})
+        else:
+            out[k] = v
+    return out
+
+
 def main() -> None:
     from nfl_scout.config import load_settings
     from nfl_scout.tools.base import default_connection
@@ -273,10 +284,11 @@ def main() -> None:
             from nfl_scout.evaluation.tracking import log_config
 
             log_config(config, results[config], settings)
-    keys = list(next(iter(results.values()))["aggregate"]) if results else []
-    print(f"{'metric':32}" + "".join(f"{c:>22}" for c in results))
+    rows = {c: _table_rows(r["aggregate"]) for c, r in results.items()}
+    keys = list(dict.fromkeys(k for r in rows.values() for k in r))
+    print(f"{'metric':34}" + "".join(f"{c:>18}" for c in results))
     for k in keys:
-        print(f"{k:32}" + "".join(f"{_fmt(results[c]['aggregate'][k]):>22}" for c in results))
+        print(f"{k:34}" + "".join(f"{_fmt(rows[c].get(k)):>18}" for c in results))
 
 
 if __name__ == "__main__":
