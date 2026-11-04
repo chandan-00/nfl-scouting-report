@@ -1,0 +1,6 @@
+{
+ "path": "data/snapshots/nfl_2026-11-02.duckdb",
+ "sha256": "75d2056509454cbf2da6e7ccbc90527c5eab784a59e642745e172f048bb1e0f3",
+ "recorded_at": "2026-11-04T23:35:57+00:00",
+ "note": "nflverse ingest of 2026-11-02 (2026 pbp through week 8, 13/14 games); the data every eval run of matchups_v1 was generated with"
+}

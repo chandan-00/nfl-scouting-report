@@ -259,6 +259,7 @@ def _table_rows(agg: dict[str, Any]) -> dict[str, Any]:
 
 def main() -> None:
     from nfl_scout.config import load_settings
+    from nfl_scout.evaluation.snapshot import snapshot_connection
     from nfl_scout.tools.base import default_connection
 
     settings = load_settings()
@@ -266,10 +267,16 @@ def main() -> None:
     ap.add_argument("--config", nargs="+", default=["full", "no_checker", "single"])
     ap.add_argument("--seeds", type=int, default=3, help="seeded-error draws per run")
     ap.add_argument("--mlflow", action="store_true", help="log each config to MLflow")
+    ap.add_argument(
+        "--live-db",
+        action="store_true",
+        help="score against data/nfl.duckdb instead of the frozen eval snapshot",
+    )
     a = ap.parse_args()
 
     runs_dir = settings.resolve(settings.paths.runs_dir)
-    con = default_connection()
+    # Re-runs must see the data the runs were generated with, not a later refresh.
+    con = default_connection() if a.live_db else snapshot_connection()
     results = {}
     for config in a.config:
         rows = score_config(config, runs_dir, con, a.seeds)
