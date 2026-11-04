@@ -17,7 +17,7 @@ from typing import Any
 
 import duckdb
 
-from nfl_scout.checker import DEFENSE_ONLY, OFFENSE_ONLY, _close, check_sections
+from nfl_scout.checker import DEFENSE_ONLY, OFFENSE_ONLY, Checker, _close, check_sections
 from nfl_scout.graph.state import Claim, Section, ToolCall
 from nfl_scout.numbers import extract_numbers
 
@@ -200,12 +200,14 @@ def score_seeded(
     manifest: list[dict[str, Any]],
     tool_calls: list[ToolCall],
     con: duckdb.DuckDBPyConnection | None = None,
+    checker: Checker | None = None,
 ) -> dict[str, Any]:
     """Per kind: errors seeded and caught. False positives: failures on the seeded draft that
     neither the clean draft nor an injected error explains."""
+    checker = checker or Checker(tool_calls, con)
     before = {(r.role, r.claim_id, r.check, r.detail if r.claim_id is None else "")
-              for r in check_sections(clean, tool_calls, con) if not r.ok}  # fmt: skip
-    after = [r for r in check_sections(seeded, tool_calls, con) if not r.ok]
+              for r in check_sections(clean, tool_calls, con, checker) if not r.ok}  # fmt: skip
+    after = [r for r in check_sections(seeded, tool_calls, con, checker) if not r.ok]
 
     def relates(r, m) -> bool:
         """The failure is about this injected error (caused by it, not necessarily catching it)."""

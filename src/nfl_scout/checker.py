@@ -321,10 +321,12 @@ def check_sections(
     sections: dict[str, Section],
     tool_calls: Iterable[ToolCall],
     con: duckdb.DuckDBPyConnection | None = None,
+    checker: Checker | None = None,
 ) -> list[CheckResult]:
     """Run all three checks over every section. One value and one wording result per claim,
-    plus one prose result per number that doesn't link to a matching claim."""
-    checker = Checker(tool_calls, con)
+    plus one prose result per number that doesn't link to a matching claim. Pass a `checker`
+    built on the same tool calls to reuse its cached re-runs."""
+    checker = checker or Checker(tool_calls, con)
     claims = {c.claim_id: c for s in sections.values() for c in s.claims}
     results: list[CheckResult] = []
     for role, section in sections.items():
