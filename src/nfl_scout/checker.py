@@ -115,9 +115,8 @@ def _same_result(a: dict[str, Any], b: dict[str, Any]) -> bool:
 
 
 def _surname(name: str) -> str:
-    if "." in name:
-        return name.split(".")[-1].split()[0].lower()
-    words = [w for w in name.lower().split() if w.strip(".") not in SUFFIXES]
+    """Last name from 'Marvin Mims Jr.', 'G.Holani' or 'A.St. Brown' (suffixes dropped)."""
+    words = [w for w in re.split(r"[\s.]+", name.lower()) if w and w not in SUFFIXES]
     return words[-1] if words else name.lower()
 
 

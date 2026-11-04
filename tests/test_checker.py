@@ -211,3 +211,20 @@ def test_results_say_which_role_failed(db):
     calls = [ToolCall(call_id="o1", node="x", tool="pass_rate", args={}, error="boom")]
     (r, *_) = check_sections(section("KC 1.0 [c1].", claim("c1", 1.0)), calls, db)
     assert r.role == "offense_analyst"
+
+
+@pytest.mark.parametrize(
+    ("name", "surname"),
+    [
+        ("Marvin Mims Jr.", "mims"),  # crashed the fact-checker on two eval matchups
+        ("Pat Surtain II", "surtain"),
+        ("G.Holani", "holani"),
+        ("A.St. Brown", "brown"),
+        ("Odell Beckham Jr", "beckham"),
+        ("Holani", "holani"),
+    ],
+)
+def test_surname_handles_suffixes_and_initials(name, surname):
+    from nfl_scout.checker import _surname
+
+    assert _surname(name) == surname

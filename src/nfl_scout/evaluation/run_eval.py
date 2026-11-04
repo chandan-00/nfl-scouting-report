@@ -94,7 +94,8 @@ def run_eval(
                     "matchup": name,
                     "repeat": m["repeat"],
                     "error": f"{type(e).__name__}: {e}",
-                    "traceback": traceback.format_exc(limit=5),
+                    # Innermost frames: where it actually failed.
+                    "traceback": traceback.format_exc(limit=-8),
                     "at": datetime.now(UTC).isoformat(timespec="seconds"),
                 }
                 with lock:
