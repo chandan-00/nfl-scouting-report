@@ -23,7 +23,7 @@ def write_runs(tmp_path, configs=CONFIGS):
             name = f"2026_w{m['week']:02d}_{m['team']}_vs_{m['opponent']}.json"
             report = {
                 "title": f"{m['opponent']} report",
-                "summary": f"Passes 61.2% [oc1] of plays [oc2, oc3].",
+                "summary": "Passes 61.2% [oc1] of plays [oc2, oc3].",
                 "sections": [{"heading": "Opponent offense", "body": "They rank 3rd [sc4]."}],
             }
             (d / name).write_text(json.dumps({"config": c, "report": report}))
