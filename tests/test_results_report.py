@@ -48,3 +48,15 @@ def test_missing_metrics_render_as_dash():
     s["aggregate"]["final_accuracy"] = None
     s["aggregate"]["final_accuracy_ci"] = [None, None]
     assert "| Final claim accuracy | — |" in render({"full": s}, context={})
+
+
+def test_render_adds_the_forward_check_when_given():
+    forward = {
+        "full": {"aggregate": {"claims": 100, "report_closer": 0.48,
+                               "by_tool": {"pass_rate": {"claims": 40, "report_closer": 0.42,
+                                                         "report_mae": 10.9, "naive_mae": 9.8}}}},
+    }  # fmt: skip
+    md = render({"full": scores(0.9)}, context={}, forward=forward)
+    assert "## Forward check" in md
+    assert "| Full graph | 100 | 48.0% |" in md
+    assert "| pass_rate | 40 | 42.0% | 10.900 | 9.800 |" in md

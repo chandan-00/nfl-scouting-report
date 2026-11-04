@@ -71,7 +71,11 @@ def _table(header: list[str], rows: list[list[str]]) -> list[str]:
     ]
 
 
-def render(scores: dict[str, dict[str, Any]], context: dict[str, str]) -> str:
+def render(
+    scores: dict[str, dict[str, Any]],
+    context: dict[str, str],
+    forward: dict[str, dict[str, Any]] | None = None,
+) -> str:
     configs = list(scores)
     names = [CONFIG_NAMES.get(c, c) for c in configs]
     lines = ["# Evaluation results", ""]
@@ -107,7 +111,38 @@ def render(scores: dict[str, dict[str, Any]], context: dict[str, str]) -> str:
                 cells.append(_pct(ok / claims if claims else None))
             rows.append([c, *cells])
         lines += _table(["Config", *(f"r{k}" for k in repeats)], rows) + [""]
+    if forward:
+        lines += _forward_section(forward)
     return "\n".join(lines)
+
+
+def _forward_section(forward: dict[str, dict[str, Any]]) -> list[str]:
+    lines = [
+        "## Forward check",
+        "",
+        "For each team-level number a final report cites: is the season-to-date value closer to "
+        "the same metric in the game itself than the league average through the same week? Each "
+        "(game, metric, split) counts once.",
+        "",
+    ]
+    rows = [
+        [CONFIG_NAMES.get(c, c), f"{f['aggregate']['claims']:,}",
+         _pct(f["aggregate"].get("report_closer"))]
+        for c, f in forward.items()
+        if f["aggregate"].get("claims")
+    ]  # fmt: skip
+    lines += _table(["Config", "Claims", "Report closer than league average"], rows) + [""]
+    first = next((c for c, f in forward.items() if f["aggregate"].get("claims")), None)
+    if first:
+        lines += [f"By metric ({CONFIG_NAMES.get(first, first)}):", ""]
+        rows = [
+            [tool, str(t["claims"]), _pct(t["report_closer"]), f"{t['report_mae']:.3f}",
+             f"{t['naive_mae']:.3f}"]
+            for tool, t in forward[first]["aggregate"]["by_tool"].items()
+        ]  # fmt: skip
+        header = ["Metric", "Claims", "Report closer", "MAE report", "MAE league"]
+        lines += _table(header, rows) + [""]
+    return lines
 
 
 def main() -> None:
@@ -126,8 +161,11 @@ def main() -> None:
         "training cutoff)",
         "Data snapshot": f"{snapshot['path']} (sha256 {snapshot['sha256'][:12]})",
     }
+    forward_path = scores_dir / "forward.json"
+    forward = json.loads(forward_path.read_text()) if forward_path.exists() else None
+    forward = {c: f for c, f in (forward or {}).items() if c in scores} or None
     out = PROJECT_ROOT / "docs" / "results.md"
-    out.write_text(render(scores, context) + "\n")
+    out.write_text(render(scores, context, forward) + "\n")
     print(f"wrote {out}")
 
 
