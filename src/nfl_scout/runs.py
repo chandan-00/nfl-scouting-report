@@ -20,6 +20,12 @@ def matchup_name(r: Request) -> str:
     return f"{r.season}_w{r.week:02d}_{r.team}_vs_{r.opponent}"
 
 
+def run_path(runs_dir: Path, config: str, request: Request, repeat: int | None = None) -> Path:
+    """runs/<config>/[r<repeat>/]<matchup>.json"""
+    folder = runs_dir / config / (f"r{repeat}" if repeat is not None else "")
+    return folder / f"{matchup_name(request)}.json"
+
+
 def _plain(x: Any) -> Any:
     if isinstance(x, BaseModel):
         return x.model_dump(mode="json")
@@ -33,16 +39,21 @@ def _plain(x: Any) -> Any:
 
 
 def save_run(
-    out: dict[str, Any], config: str, settings: Settings, runs_dir: Path | None = None
+    out: dict[str, Any],
+    config: str,
+    settings: Settings,
+    runs_dir: Path | None = None,
+    repeat: int | None = None,
 ) -> Path:
     """Write the run (draft, final sections, report, checks, trace, usage, cost) to disk."""
     request: Request = out["request"]
     runs_dir = runs_dir or settings.resolve(settings.paths.runs_dir)
-    path = runs_dir / config / f"{matchup_name(request)}.json"
+    path = run_path(runs_dir, config, request, repeat)
     path.parent.mkdir(parents=True, exist_ok=True)
     costs = cost_by_node(out.get("usage", []), settings)
     record = {
         "config": config,
+        "repeat": repeat,
         "created_at": datetime.now(UTC).isoformat(timespec="seconds"),
         "models": {node: settings.node_model(node).model_dump() for node in settings.models.nodes},
         "max_revision_loops": settings.models.max_revision_loops,
