@@ -57,6 +57,9 @@ class Section(BaseModel):
     role: str
     prose: str
     claims: list[Claim]
+    # Claims the model wrote with no source (or two). Kept out of `claims` so their markers
+    # count as unsupported numbers, and recorded here for the scorer.
+    unsourced: list[dict[str, Any]] = []
 
 
 class ReportSection(BaseModel):
@@ -216,31 +219,36 @@ ROLE_PREFIX = {
 }
 
 
-def _namespace(role: str, raw_claims: list[dict]) -> tuple[list[Claim], Any]:
-    """Claims with ids prefixed per role (c1 -> oc1), and a function that renames markers."""
+def _namespace(role: str, raw_claims: list[dict]) -> tuple[list[Claim], list[dict], Any]:
+    """Claims with ids prefixed per role (c1 -> oc1), the claims set aside for having no single
+    source, and a function that renames markers."""
     prefix = ROLE_PREFIX.get(role, role[0])
     ids = {c["claim_id"]: f"{prefix}{c['claim_id']}" for c in raw_claims}
-    claims = []
+    claims, unsourced = [], []
     for c in raw_claims:
         derived = [ids.get(d, d) for d in c.get("derived_from") or []] or None
-        claims.append(Claim(**{**c, "claim_id": ids[c["claim_id"]], "derived_from": derived}))
+        renamed = {**c, "claim_id": ids[c["claim_id"]], "derived_from": derived}
+        if (c.get("tool_call_id") is None) == (derived is None) or (derived and not c.get("op")):
+            unsourced.append(renamed)
+            continue
+        claims.append(Claim(**renamed))
 
     def _rename(m: re.Match) -> str:
         return "[" + ", ".join(ids.get(x.strip(), x.strip()) for x in m.group(1).split(",")) + "]"
 
-    return claims, lambda text: re.sub(r"\[([^\]]+)\]", _rename, text)
+    return claims, unsourced, lambda text: re.sub(r"\[([^\]]+)\]", _rename, text)
 
 
 def parse_section(role: str, raw: dict[str, Any]) -> Section:
     """Validate an analyst's output and namespace its claim ids (c1 -> oc1) in claims and prose."""
-    claims, rename = _namespace(role, raw["claims"])
-    return Section(role=role, prose=rename(raw["prose"]), claims=claims)
+    claims, unsourced, rename = _namespace(role, raw["claims"])
+    return Section(role=role, prose=rename(raw["prose"]), claims=claims, unsourced=unsourced)
 
 
 def parse_single(raw: dict[str, Any]) -> tuple[Section, Report]:
     """The single agent's report, plus a section holding all its claims (prose = report text),
     so the checker and scorer treat it like any other section."""
-    claims, rename = _namespace("single_agent", raw["claims"])
+    claims, unsourced, rename = _namespace("single_agent", raw["claims"])
     report = Report(
         title=raw["title"],
         summary=rename(raw["summary"]),
@@ -248,4 +256,5 @@ def parse_single(raw: dict[str, Any]) -> tuple[Section, Report]:
             ReportSection(heading=s["heading"], body=rename(s["body"])) for s in raw["sections"]
         ],
     )
-    return Section(role="single_agent", prose=report.text(), claims=claims), report
+    section = Section(role="single_agent", prose=report.text(), claims=claims, unsourced=unsourced)
+    return section, report

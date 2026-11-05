@@ -26,6 +26,7 @@ ROWS = [
     ("Final claim accuracy", "final_accuracy", "pct_ci"),
     ("Draft wording correct", "draft_wording_ok", "pct"),
     ("Final wording correct", "final_wording_ok", "pct"),
+    ("Claims written with no source", "unsourced_claims", "int"),
     ("Unsupported numbers per draft", "draft_unsupported_per_report", "num"),
     ("Report numbers per report", "report_numbers_per_report", "num"),
     ("Report numbers unsupported", "report_unsupported_rate", "pct"),

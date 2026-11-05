@@ -70,3 +70,11 @@ def test_config_aggregate_pools_claims_and_reports_intervals(runs):
     assert lo <= agg["draft_accuracy"] <= hi
     assert agg["final_accuracy"] == 1.0
     assert agg["cost_per_report"] >= 0
+
+
+def test_unsourced_claims_are_counted(runs):
+    clean, _, con, _ = runs
+    clean["draft"]["offense_analyst"]["unsourced"] = [{"claim_id": "oc9", "text": "x"}]
+    s = score_run(clean, con, seeds=0)
+    assert s["draft"]["unsourced_claims"] == 1
+    assert aggregate([s])["unsourced_claims"] == 1

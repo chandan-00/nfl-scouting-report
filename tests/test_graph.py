@@ -511,3 +511,40 @@ def test_no_checker_config_goes_straight_from_draft_to_editor(con):
     assert "checks_run" not in out or out["checks_run"] == 0
     assert out["draft"]["offense_analyst"].claims[0].claim_id == "oc1"
     assert out["report"].title == "KC scouting report"
+
+
+def test_a_claim_without_a_source_is_set_aside_not_fatal():
+    # Seen in 8/120 single-agent eval runs: the run crashed instead of being scored.
+    from nfl_scout.numbers import check_numbers
+
+    raw = {
+        "prose": "KC passes 61.2% [c1] and ranks 3rd [c2].",
+        "claims": [
+            {"claim_id": "c1", "text": "KC pass rate", "stated_value": 61.2,
+             "tool_call_id": "o1", "derived_from": None, "op": None, "measure": "value"},
+            {"claim_id": "c2", "text": "KC rank", "stated_value": 3,
+             "tool_call_id": None, "derived_from": None, "op": None, "measure": "value"},
+        ],
+    }  # fmt: skip
+    section = parse_section("offense_analyst", raw)
+    assert [c.claim_id for c in section.claims] == ["oc1"]
+    assert [u["claim_id"] for u in section.unsourced] == ["oc2"]
+    statuses = [c.status for c in check_numbers(section.prose, section.claims)]
+    assert statuses == ["ok", "unknown_claim"]  # the number counts as unsupported
+
+
+def test_single_agent_report_survives_an_unsourced_claim():
+    from nfl_scout.graph.state import parse_single
+
+    raw = {
+        "title": "t",
+        "summary": "KC passes 61.2% [c1].",
+        "sections": [],
+        "claims": [
+            {"claim_id": "c1", "text": "KC pass rate", "stated_value": 61.2,
+             "tool_call_id": None, "derived_from": None, "op": None, "measure": "value"},
+        ],
+    }  # fmt: skip
+    section, report = parse_single(raw)
+    assert section.claims == [] and section.unsourced[0]["claim_id"] == "sc1"
+    assert "[sc1]" in report.summary

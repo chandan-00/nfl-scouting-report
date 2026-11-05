@@ -104,6 +104,7 @@ def score_run(
 
     draft_results = check_sections(draft, calls, con, checker)
     draft_scores = _claim_checks(draft_results)
+    draft_scores["unsourced_claims"] = sum(len(sec.unsourced) for sec in draft.values())
     draft_scores["unsupported"] = sum(
         r.check == "prose" and r.claim_id is None for r in draft_results
     )
@@ -207,6 +208,7 @@ def aggregate(rows: list[dict[str, Any]]) -> dict[str, Any]:
             rows, lambda r: r["draft"]["value_ok"], lambda r: r["draft"]["claims"]
         ),
         "draft_wording_ok": _ratio(total("draft.wording_ok"), total("draft.claims")),
+        "unsourced_claims": sum(r["draft"].get("unsourced_claims", 0) for r in rows),
         "draft_unsupported_per_report": total("draft.unsupported") / len(rows) if rows else None,
         "final_claims": total("final.claims"),
         "final_accuracy": _ratio(total("final.value_ok"), total("final.claims")),
