@@ -127,8 +127,9 @@ def single_agent(
 
     Tool turns carry no output schema: all 20 strict tools plus a schema compile to a grammar
     the API rejects. When the agent stops calling tools (or runs out of turns), one more call
-    with tool_choice "none" asks for the structured report; the tools stay in the request so
-    the cached prefix holds.
+    with tool_choice "none" asks for the structured report. That call sends the tools
+    non-strict (no tool can be called): with strict tools the schema's grammar can take many
+    minutes to compile on a cold cache, which hung every run on 2026-11-05.
     """
     r = state["request"]
     node = "single_agent"
@@ -162,7 +163,7 @@ def single_agent(
         system=prompts.SINGLE_SYSTEM,
         messages=messages,
         output_schema=SINGLE_SCHEMA,
-        tools=tools,
+        tools=[{**t, "strict": False} for t in tools],
         tool_choice="none",
         max_tokens=SINGLE_FINAL_MAX_TOKENS,
     )

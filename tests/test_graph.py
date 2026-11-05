@@ -499,7 +499,11 @@ def test_single_agent_writes_the_whole_report_in_the_same_claim_format(con):
     # The whole report is long: the final call streams with a larger output budget.
     assert client.requests[-1]["_streamed"] and client.requests[-1]["max_tokens"] > 16000
     assert not any(r.get("_streamed") for r in client.requests[:-1])
-    assert len({json.dumps(r["tools"]) for r in client.requests}) == 1  # cached prefix holds
+    # Tool turns share one strict tool list. The final call can't use tools, so it sends them
+    # non-strict: strict tools plus the schema can hang compiling a grammar on a cold cache.
+    assert len({json.dumps(r["tools"]) for r in client.requests[:-1]}) == 1
+    assert all(t["strict"] for t in client.requests[0]["tools"])
+    assert not any(t["strict"] for t in client.requests[-1]["tools"])
     assert len(client.requests[0]["tools"]) == 20
 
 
