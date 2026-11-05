@@ -165,8 +165,10 @@ def main() -> None:
     forward_path = scores_dir / "forward.json"
     forward = json.loads(forward_path.read_text()) if forward_path.exists() else None
     forward = {c: f for c, f in (forward or {}).items() if c in scores} or None
+    notes_path = EVAL_DIR / "results_notes.md"  # hand-written context, kept across regenerations
+    notes = "\n" + notes_path.read_text() if notes_path.exists() else ""
     out = PROJECT_ROOT / "docs" / "results.md"
-    out.write_text(render(scores, context, forward) + "\n")
+    out.write_text(render(scores, context, forward) + "\n" + notes)
     print(f"wrote {out}")
 
 
