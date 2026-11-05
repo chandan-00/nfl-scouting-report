@@ -31,6 +31,7 @@ MAX_TURNS = 12
 # answer (the whole report and every claim) gets a larger, streamed output budget.
 SINGLE_MAX_TURNS = 24
 SINGLE_FINAL_MAX_TOKENS = 32000
+SINGLE_MAX_NUDGES = 2
 
 
 def planner(state: ScoutState, llm: LLM) -> dict[str, Any]:
@@ -135,6 +136,7 @@ def single_agent(
     msg = prompts.single_message(r.team, r.opponent, r.season, r.week, r.through_week)
     messages: list[dict] = [{"role": "user", "content": msg}]
     usages = []
+    nudges = 0
     for _ in range(SINGLE_MAX_TURNS):
         response, usage = llm.call(
             node, system=prompts.SINGLE_SYSTEM, messages=messages, output_schema=None, tools=tools
@@ -142,6 +144,13 @@ def single_agent(
         usages.append(usage)
         messages.append({"role": "assistant", "content": response.content})
         if response.stop_reason != "tool_use":
+            if not executor.calls:
+                # About 10% of runs said "ready" on turn 1, with nothing to write a report from.
+                nudges += 1
+                if nudges > SINGLE_MAX_NUDGES:
+                    raise RuntimeError("single_agent: no tool calls; nothing to report on")
+                messages.append({"role": "user", "content": prompts.SINGLE_NO_TOOLS})
+                continue
             messages.append({"role": "user", "content": prompts.SINGLE_FINAL})
             break
         results = _run_tools(response, executor)

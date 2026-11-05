@@ -234,6 +234,8 @@ SINGLE_TASK = (
     'with just the word "ready": the report itself is asked for in the next message.'
 )
 
+SINGLE_NO_TOOLS = "You haven't called any tools yet. Call the tools now to gather the data."
+
 SINGLE_FINAL = "Now write the final report as JSON, using only the tool results above."
 
 

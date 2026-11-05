@@ -548,3 +548,34 @@ def test_single_agent_report_survives_an_unsourced_claim():
     section, report = parse_single(raw)
     assert section.claims == [] and section.unsourced[0]["claim_id"] == "sc1"
     assert "[sc1]" in report.summary
+
+
+def _ready():
+    return NS(content=[NS(type="text", text="ready")], stop_reason="end_turn", usage=_usage())
+
+
+def _single(con, client):
+    return build_graph(client=client, con=con, teams=TEAMS, config="single").invoke(
+        {"request": Request(team="DEN", opponent="KC", season=2026, week=2)}
+    )
+
+
+def test_single_agent_saying_ready_before_any_tool_call_is_sent_back(con):
+    # 12/120 eval runs said "ready" on turn 1 and produced an empty placeholder report.
+    build_db(con, [{}, {**RUN}])
+    scripts = _single_scripts()
+    scripts["single_agent"].insert(0, _ready())
+    client = FakeClient(scripts)
+    out = _single(con, client)
+
+    assert [c.call_id for c in out["tool_calls"]] == ["s1"]
+    assert out["sections"]["single_agent"].claims[0].claim_id == "sc1"
+    texts = [m["content"] for m in client.requests[-1]["messages"] if m["role"] == "user"]
+    assert any("haven't called any tools" in str(t) for t in texts)
+
+
+def test_single_agent_that_never_calls_a_tool_fails_instead_of_saving_a_placeholder(con):
+    build_db(con, [{}, {**RUN}])
+    client = FakeClient({"single_agent": [_ready() for _ in range(5)]})
+    with pytest.raises(RuntimeError, match="no tool calls"):
+        _single(con, client)
