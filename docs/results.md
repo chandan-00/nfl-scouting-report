@@ -12,32 +12,33 @@ Percentages show a 95% bootstrap interval over reports.
 | Metric | Full graph | No fact-checker | Single agent |
 |---|---|---|---|
 | Reports | 120 | 120 | 120 |
-| Draft claims | 10,611 | 10,647 | 5,089 |
-| Draft claim accuracy | 99.0% (98.7–99.2) | 99.1% (98.9–99.3) | 99.3% (99.0–99.6) |
+| Reports with no tool calls | 0 | 0 | 0 |
+| Draft claims | 10,611 | 10,647 | 5,706 |
+| Draft claim accuracy | 99.0% (98.7–99.2) | 99.1% (98.9–99.3) | 99.2% (99.0–99.5) |
 | Final claim accuracy | 100.0% (100.0–100.0) | 99.5% (99.3–99.7) | 99.5% (99.3–99.7) |
-| Draft wording correct | 97.7% | 97.2% | 98.9% |
-| Final wording correct | 100.0% | 96.9% | 98.9% |
-| Claims written with no source | 0 | 0 | 0 |
+| Draft wording correct | 97.7% | 97.2% | 98.8% |
+| Final wording correct | 100.0% | 96.9% | 98.8% |
+| Claims written with no source | 0 | 0 | 1 |
 | Unsupported numbers per draft | 1.3 | 1.5 | 0.7 |
-| Report numbers per report | 65.9 | 69.0 | 42.2 |
-| Report numbers unsupported | 0.1% | 0.3% | 1.6% |
-| Report numbers mismatched | 0.0% | 0.1% | 0.0% |
+| Report numbers per report | 65.9 | 69.0 | 47.2 |
+| Report numbers unsupported | 0.1% | 0.3% | 1.5% |
+| Report numbers mismatched | 0.0% | 0.1% | 0.3% |
 | Claims corrected by revision | 244 | 0 | 0 |
 | Claims dropped | 120 | 0 | 0 |
 | Independent sample: tool agrees | 100.0% | 100.0% | 100.0% |
-| Independent sample: stated value agrees | 99.5% | 99.8% | 99.3% |
-| Seeded errors caught | 99.7% | 99.2% | 99.7% |
+| Independent sample: stated value agrees | 99.5% | 99.8% | 99.1% |
+| Seeded errors caught | 99.7% | 99.2% | 99.6% |
 | Checker false positives (seeded) | 1 | 2 | 1 |
-| Tool error rate | 1.7% | 2.3% | 5.8% |
-| Output tokens per report | 48,797 | 33,243 | 20,380 |
-| Cost per report | $0.031 | $0.021 | $0.013 |
+| Tool error rate | 1.7% | 2.3% | 5.7% |
+| Output tokens per report | 48,797 | 33,243 | 22,803 |
+| Cost per report | $0.031 | $0.021 | $0.014 |
 
 ## Seeded errors caught, by kind
 
 | Kind | Full graph | No fact-checker | Single agent |
 |---|---|---|---|
 | unlinked_number | 100.0% | 100.0% | 100.0% |
-| wrong_split | 98.6% | 96.9% | 99.4% |
+| wrong_split | 98.6% | 96.9% | 98.9% |
 | wrong_team | 100.0% | 100.0% | 99.4% |
 | wrong_value | 100.0% | 100.0% | 100.0% |
 
@@ -47,7 +48,7 @@ Percentages show a 95% bootstrap interval over reports.
 |---|---|---|---|
 | full | 99.1% | 98.9% | 98.8% |
 | no_checker | 99.3% | 98.9% | 99.1% |
-| single | 99.2% | 99.3% | 99.4% |
+| single | 99.2% | 99.2% | 99.4% |
 
 ## Forward check
 
@@ -57,7 +58,7 @@ For each team-level number a final report cites: is the season-to-date value clo
 |---|---|---|
 | Full graph | 1,214 | 46.8% |
 | No fact-checker | 1,249 | 46.2% |
-| Single agent | 1,049 | 48.3% |
+| Single agent | 1,150 | 46.8% |
 
 By metric (Full graph):
 
@@ -76,7 +77,7 @@ By metric (Full graph):
 
 ## Notes
 
-- **Single-agent crashes:** 8 of the single agent's first 120 attempts (6.7%) crashed. Each wrote a claim with no source, and claim validation failed. The multi-agent graph had none in 240 attempts. The fix sets such claims aside (their numbers count as unsupported), and the 8 reports were regenerated: none had an unsourced claim. The single agent's real reliability is therefore lower than the "0" row suggests.
+- **Single-agent harness bug, fixed.** The first results (commit c817ace) were wrong for this config. About 10% of single-agent runs replied "ready" on turn 1, as the baseline prompt invites, and the forced final call then had no data. That produced 12 empty placeholder reports and very likely the 8 "no source" crashes (their traces weren't saved). This was a bug in the harness, not a weakness of the single agent, so those failures don't count against it. The agent is now sent back if it stops before calling a tool, and the prompt is unchanged. The 20 affected runs were regenerated, and all 120 now made at least 18 tool calls. The empty runs are kept in `runs/_invalid/`.
 - **Seeded-error rows describe the checker, not the config.** Each config's drafts were seeded and run through the same deterministic checker. In the pipeline, the checker only runs in the full graph.
 - **How accuracy is judged.** The project's checker re-runs each cited tool call. As an independent check, about 2,840 claims were re-derived with separate code. The tools agreed 100%, and the stated values agreed 99.3–99.8%.
 - **Forward check is about the data, not the configs.** Season-to-date numbers through weeks 3–6 are no closer to the next game than the league average (46–48% "closer" in every config). The one exception is run direction. With 3–6 games of data, team splits regress toward the mean.

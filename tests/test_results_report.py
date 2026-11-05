@@ -60,3 +60,10 @@ def test_render_adds_the_forward_check_when_given():
     assert "## Forward check" in md
     assert "| Full graph | 100 | 48.0% |" in md
     assert "| pass_rate | 40 | 42.0% | 10.900 | 9.800 |" in md
+
+
+def test_render_flags_reports_made_without_any_tool_call():
+    s = scores(0.9)
+    s["runs"][0]["tool_calls"] = 0
+    s["runs"][1]["tool_calls"] = 30
+    assert "| Reports with no tool calls | 1 |" in render({"full": s}, context={})

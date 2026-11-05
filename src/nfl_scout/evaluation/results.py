@@ -21,6 +21,7 @@ CONFIG_NAMES = {
 # (label, aggregate key, format); "pct_ci" also reads <key>_ci.
 ROWS = [
     ("Reports", "runs", "int"),
+    ("Reports with no tool calls", "zero_tool_reports", "int"),
     ("Draft claims", "draft_claims", "int"),
     ("Draft claim accuracy", "draft_accuracy", "pct_ci"),
     ("Final claim accuracy", "final_accuracy", "pct_ci"),
@@ -79,6 +80,9 @@ def render(
 ) -> str:
     configs = list(scores)
     names = [CONFIG_NAMES.get(c, c) for c in configs]
+    for c in configs:  # an integrity check: a report with no tool calls has no data behind it
+        zero = sum(r.get("tool_calls", 1) == 0 for r in scores[c]["runs"])
+        scores[c]["aggregate"]["zero_tool_reports"] = zero
     lines = ["# Evaluation results", ""]
     if context:
         lines += [f"- **{k}:** {v}" for k, v in context.items()] + [""]

@@ -125,11 +125,12 @@ def main() -> None:
     ap.add_argument("action", choices=["build", "score"])
     ap.add_argument("--configs", nargs="+", default=["full", "no_checker", "single"])
     ap.add_argument("--repeat", type=int, default=1)
+    ap.add_argument("--seed", type=int, default=2026, help="label shuffle seed")
     a = ap.parse_args()
     runs_dir = settings.resolve(settings.paths.runs_dir)
     out_dir = runs_dir / "grading"
     if a.action == "build":
-        build_packet(load_matchups(), a.configs, runs_dir, out_dir, a.repeat)
+        build_packet(load_matchups(), a.configs, runs_dir, out_dir, a.repeat, a.seed)
         print(f"wrote {out_dir}/packet.md and grades.csv (don't open key.json)")
     else:
         print(json.dumps(score_grades(out_dir), indent=1))
