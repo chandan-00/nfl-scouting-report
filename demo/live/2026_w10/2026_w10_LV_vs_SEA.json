@@ -1,0 +1,6266 @@
+{
+ "config": "full",
+ "repeat": 1,
+ "created_at": "2026-11-12T01:33:41+00:00",
+ "models": {
+  "planner": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "offense_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "defense_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "injury_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "matchup_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "medium"
+  },
+  "fact_checker": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "editor": {
+   "model": "claude-haiku-5-5",
+   "effort": "medium"
+  },
+  "single_agent": {
+   "model": "claude-haiku-5-5",
+   "effort": "medium"
+  }
+ },
+ "max_revision_loops": 2,
+ "request": {
+  "team": "LV",
+  "opponent": "SEA",
+  "season": 2026,
+  "week": 10,
+  "through_week": 9
+ },
+ "plan": {
+  "offense_focus": [
+   "Does SEA lean on early-down runs or pass on early downs, and how does its neutral-situation pass rate compare to league average?",
+   "How does SEA's pass rate over expected look by down and distance, and where does it move off its baseline?",
+   "Which run directions and play-action or RPO rates does SEA use most, and how efficient are they in EPA and success rate?",
+   "Where does SEA generate explosive plays by depth of target and target share, and does LV's defense allow them?",
+   "How does SEA perform on third down and in the red zone, and what league ranks do those numbers produce?"
+  ],
+  "defense_focus": [
+   "How often does SEA's defense blitz, and do its sacks plus QB hits (pressure proxy) hold up against LV's offensive tendencies?",
+   "Which SEA pass rushers take the most sacks and pressure, and what does that suggest about how LV's pass protection will be tested?",
+   "How does SEA's defense allow EPA and success rate by down and distance, and where does LV's offense profit most?",
+   "Does SEA's defense give up explosive plays on deep targets, and how does that match LV's depth of target?",
+   "What is SEA's box count tendency against the run, and do LV's run directions attack the weak spots?"
+  ],
+  "injury_focus": [
+   "Which SEA offensive players are on the latest injury report, and how do their snap and target or rush shares suggest their absence would shift SEA's pass or run usage?",
+   "Which SEA defensive players are listed or limited, and does losing a pass rusher or back seven player change SEA's pressure proxy or run defense?",
+   "Which LV offensive players are injured or limited, and how would their snap and target or rush shares move LV's usage against SEA?",
+   "Which LV defensive players are listed or limited, and does that affect LV's ability to match SEA's pass and run tendencies?"
+  ]
+ },
+ "draft": {
+  "defense_analyst": {
+   "role": "defense_analyst",
+   "prose": "SEA sends five or more rushers on 24.8% of dropbacks [dc1] over 318 plays [dc2], which ranks 24th in the league [dc3], and averages 4.3 rushers per dropback [dc4]. That is mostly a four-man rush, so LV should expect base-front protection tests more than exotic pressure. SEA's pressure proxy is 18.9% of dropbacks [dc5] with a 6.6% sack rate [dc6]. LV has allowed a 16.6% pressure proxy [dc7] and a 3.3% sack rate [dc8], so its protection has been stable, but SEA's sack rate is the number to plan around on quick-game timing. Against the pass, SEA allows -0.09 EPA per dropback [dc9] and explosive pass plays on 4.7% of attempts [dc10], and its overall defense ranks 5th in EPA allowed [dc11]. LV's passing offense posts 0.12 EPA per dropback [dc12], its clear strength, while its run game sits at -0.22 EPA per carry [dc13]. SEA's run defense allows -0.11 EPA per carry [dc14] on 207 run plays [dc15], with 6.4 defenders in the box on runs [dc16] and 6.3 on passes [dc17]. The sample does not show SEA is vulnerable on the ground, so the plan should lean on the passing game and protect against the blitz-light, four-man rush.",
+   "claims": [
+    {
+     "claim_id": "dc1",
+     "text": "SEA defense blitz rate: share of dropbacks faced with 5+ pass rushers, weeks 1-9",
+     "stated_value": 24.8,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc2",
+     "text": "SEA defense sample size for blitz rate (dropbacks faced)",
+     "stated_value": 318.0,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc3",
+     "text": "League rank of SEA defense blitz rate (24th highest of 32 teams)",
+     "stated_value": 24.0,
+     "tool_call_id": "d22",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc4",
+     "text": "SEA defense average pass rushers per dropback faced",
+     "stated_value": 4.3,
+     "tool_call_id": "d2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc5",
+     "text": "SEA defense pressure proxy rate (sacks plus QB hits per dropback)",
+     "stated_value": 18.9,
+     "tool_call_id": "d3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc6",
+     "text": "SEA defense sack rate (sacks per dropback)",
+     "stated_value": 6.6,
+     "tool_call_id": "d5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc7",
+     "text": "LV offense pressure proxy rate allowed (sacks plus QB hits per dropback)",
+     "stated_value": 16.6,
+     "tool_call_id": "d4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc8",
+     "text": "LV offense sack rate allowed (sacks per dropback)",
+     "stated_value": 3.3,
+     "tool_call_id": "d6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc9",
+     "text": "SEA defense EPA per pass play allowed",
+     "stated_value": -0.09,
+     "tool_call_id": "d7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc10",
+     "text": "SEA defense explosive pass play rate allowed (20+ yards on pass plays)",
+     "stated_value": 4.7,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc11",
+     "text": "League rank of SEA overall defense EPA allowed per play (5th best of 32)",
+     "stated_value": 5.0,
+     "tool_call_id": "d23",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc12",
+     "text": "LV offense EPA per pass play",
+     "stated_value": 0.12,
+     "tool_call_id": "d17",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc13",
+     "text": "LV offense EPA per run play",
+     "stated_value": -0.22,
+     "tool_call_id": "d18",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc14",
+     "text": "SEA defense EPA per run play allowed",
+     "stated_value": -0.11,
+     "tool_call_id": "d8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc15",
+     "text": "SEA defense sample size for run plays allowed",
+     "stated_value": 207.0,
+     "tool_call_id": "d8",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc16",
+     "text": "SEA defense average defenders in the box on run plays",
+     "stated_value": 6.4,
+     "tool_call_id": "d11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc17",
+     "text": "SEA defense average defenders in the box on pass plays",
+     "stated_value": 6.3,
+     "tool_call_id": "d12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "injury_analyst": {
+   "role": "injury_analyst",
+   "prose": "SEA lists eight players on the week 9 report [ic1], led on offense by LT Charles Cross, Out [ic2], who played 97.6% of snaps [ic3] over 7 games [ic4]. WR Rashid Shaheed is Out [ic5] and takes 10.8% of targets [ic6] on 277 team targets [ic7]. QB Sam Darnold is Out [ic8], so expect a backup-led offense with less shot-play volume. On defense, DT Leonard Williams is Out [ic9] after 71.5% of snaps [ic10] over 8 games [ic11], and LB Uchenna Nwosu is Out [ic12] after 51.0% of snaps [ic13] over 7 games [ic14]; LB Connor O'Toole is Questionable [ic15]. Losing Williams and Nwosu thins the interior and edge against SEA's run game. LV has two players listed: DT Thomas Booker is Out [ic16] after 37.7% of snaps [ic17] over 7 games [ic18], and CB Darien Porter is Questionable [ic19] with full practice participation, having played 43.4% of snaps [ic20] over 8 games [ic21]. No LV offensive players are on the report.",
+   "claims": [
+    {
+     "claim_id": "ic1",
+     "text": "Players on SEA's latest (week 9) injury report",
+     "stated_value": 8.0,
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic2",
+     "text": "Charles Cross (SEA OT) status on week 9 injury report",
+     "stated_value": "Out",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic3",
+     "text": "Charles Cross (SEA) mean snap share per game, weeks 1-7",
+     "stated_value": 97.6,
+     "tool_call_id": "i3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic4",
+     "text": "Games in Charles Cross snap share sample",
+     "stated_value": 7.0,
+     "tool_call_id": "i3",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic5",
+     "text": "Rashid Shaheed (SEA WR) status on week 9 injury report",
+     "stated_value": "Out",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic6",
+     "text": "Rashid Shaheed share of SEA targets, weeks 1-9",
+     "stated_value": 10.8,
+     "tool_call_id": "i4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic7",
+     "text": "SEA team targets in Shaheed target-share sample, weeks 1-9",
+     "stated_value": 277.0,
+     "tool_call_id": "i4",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic8",
+     "text": "Sam Darnold (SEA QB) status on week 9 injury report",
+     "stated_value": "Out",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic9",
+     "text": "Leonard Williams (SEA DT) status on week 9 injury report",
+     "stated_value": "Out",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic10",
+     "text": "Leonard Williams (SEA) mean snap share per game, weeks 1-8",
+     "stated_value": 71.5,
+     "tool_call_id": "i7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic11",
+     "text": "Games in Leonard Williams snap share sample",
+     "stated_value": 8.0,
+     "tool_call_id": "i7",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic12",
+     "text": "Uchenna Nwosu (SEA LB) status on week 9 injury report",
+     "stated_value": "Out",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic13",
+     "text": "Uchenna Nwosu (SEA) mean snap share per game, weeks 1-7",
+     "stated_value": 51.0,
+     "tool_call_id": "i6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic14",
+     "text": "Games in Uchenna Nwosu snap share sample",
+     "stated_value": 7.0,
+     "tool_call_id": "i6",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic15",
+     "text": "Connor O'Toole (SEA LB) status on week 9 injury report",
+     "stated_value": "Questionable",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic16",
+     "text": "Thomas Booker (LV DT) status on week 9 injury report",
+     "stated_value": "Out",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic17",
+     "text": "Thomas Booker (LV) mean snap share per game, weeks 1-8",
+     "stated_value": 37.7,
+     "tool_call_id": "i8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic18",
+     "text": "Games in Thomas Booker snap share sample",
+     "stated_value": 7.0,
+     "tool_call_id": "i8",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic19",
+     "text": "Darien Porter (LV CB) status on week 9 injury report",
+     "stated_value": "Questionable",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic20",
+     "text": "Darien Porter (LV) mean snap share per game, weeks 1-9",
+     "stated_value": 43.4,
+     "tool_call_id": "i9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic21",
+     "text": "Games in Darien Porter snap share sample",
+     "stated_value": 8.0,
+     "tool_call_id": "i9",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    }
+   ],
+   "unsourced": []
+  },
+  "offense_analyst": {
+   "role": "offense_analyst",
+   "prose": "Seattle is a run-first team on early downs, passing on 49.9% of plays [oc1] over 433 plays [oc2], a rate that ranks 29th in the league [oc3]. Its early-down pass rate over expected is -6.74 [oc4], so it runs well below what the situation predicts; the all-down figure is -5.77 [oc5]. First-down passing is 44.2% [oc6]. The bigger shift comes with distance: it passes 33.9% on short [oc7], 66.9% on medium [oc8] and 57.1% on long [oc9]. Designed runs go left 29.9% [oc10], middle 31.1% [oc11] and right 39.0% [oc12] of 241 runs [oc13], and the run game is inefficient at -0.20 EPA per play [oc14]. Play action shows up on 26.3% of dropbacks [oc15] over 316 dropbacks [oc16], and RPOs on only 5.2% of plays [oc17]. The passing game is more productive at 0.08 EPA per play [oc18]. J.Smith-Njigba takes 35.7% of targets [oc19] over 277 targets [oc20], the aDOT is 6.8 yards [oc21], and explosive passes come on 7.6% of attempts [oc22]. LV's defense ranks 20th in limiting explosive passes [oc23], so the deep shot is a real threat to prepare for. Third-down conversion is 37.7% [oc24] on 114 plays [oc25], 20th in the league [oc26]. Red-zone TD rate is 53.6% [oc27] on 28 drives [oc28], 23rd [oc29], so SEA can stall near the end zone.",
+   "claims": [
+    {
+     "claim_id": "oc1",
+     "text": "SEA offense early-down pass rate (dropbacks as share of early-down plays)",
+     "stated_value": 49.9,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc2",
+     "text": "SEA early-down plays sample size for pass rate",
+     "stated_value": 433.0,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc3",
+     "text": "SEA early-down pass rate league rank (1 = highest pass rate)",
+     "stated_value": 29.0,
+     "tool_call_id": "o27",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc4",
+     "text": "SEA early-down pass rate over expected (percentage points)",
+     "stated_value": -6.74,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc5",
+     "text": "SEA all-down pass rate over expected (percentage points)",
+     "stated_value": -5.77,
+     "tool_call_id": "o3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc6",
+     "text": "SEA offense pass rate on first down",
+     "stated_value": 44.2,
+     "tool_call_id": "o5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc7",
+     "text": "SEA offense pass rate on short-distance plays (1-3 yards to go), all downs",
+     "stated_value": 33.9,
+     "tool_call_id": "o6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc8",
+     "text": "SEA offense pass rate on medium-distance plays (4-7 yards to go), all downs",
+     "stated_value": 66.9,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc9",
+     "text": "SEA offense pass rate on long-distance plays (8+ yards to go), all downs",
+     "stated_value": 57.1,
+     "tool_call_id": "o8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc10",
+     "text": "SEA designed runs going left, share of designed runs",
+     "stated_value": 29.9,
+     "tool_call_id": "o9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc11",
+     "text": "SEA designed runs up the middle, share of designed runs",
+     "stated_value": 31.1,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc12",
+     "text": "SEA designed runs going right, share of designed runs",
+     "stated_value": 39.0,
+     "tool_call_id": "o11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc13",
+     "text": "SEA designed run sample size",
+     "stated_value": 241.0,
+     "tool_call_id": "o9",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc14",
+     "text": "SEA offense run EPA per play",
+     "stated_value": -0.2,
+     "tool_call_id": "o14",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc15",
+     "text": "SEA play-action rate (share of dropbacks)",
+     "stated_value": 26.3,
+     "tool_call_id": "o12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc16",
+     "text": "SEA dropback sample size for play-action rate",
+     "stated_value": 316.0,
+     "tool_call_id": "o12",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc17",
+     "text": "SEA RPO rate (share of scrimmage plays)",
+     "stated_value": 5.2,
+     "tool_call_id": "o13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc18",
+     "text": "SEA offense pass EPA per play",
+     "stated_value": 0.08,
+     "tool_call_id": "o22",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc19",
+     "text": "J.Smith-Njigba share of SEA targets",
+     "stated_value": 35.7,
+     "tool_call_id": "o19",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc20",
+     "text": "SEA target sample size",
+     "stated_value": 277.0,
+     "tool_call_id": "o19",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc21",
+     "text": "SEA average depth of target (air yards per attempt)",
+     "stated_value": 6.8,
+     "tool_call_id": "o18",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc22",
+     "text": "SEA offense explosive pass rate (20+ air yards gained, share of pass plays)",
+     "stated_value": 7.6,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc23",
+     "text": "LV defense explosive pass rate allowed league rank (1 = lowest rate allowed)",
+     "stated_value": 20.0,
+     "tool_call_id": "o28",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc24",
+     "text": "SEA offense third-down conversion rate",
+     "stated_value": 37.7,
+     "tool_call_id": "o20",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc25",
+     "text": "SEA third-down sample size",
+     "stated_value": 114.0,
+     "tool_call_id": "o20",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc26",
+     "text": "SEA offense third-down conversion league rank (1 = highest)",
+     "stated_value": 20.0,
+     "tool_call_id": "o25",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc27",
+     "text": "SEA offense red-zone drive TD rate",
+     "stated_value": 53.6,
+     "tool_call_id": "o21",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc28",
+     "text": "SEA red-zone drive sample size",
+     "stated_value": 28.0,
+     "tool_call_id": "o21",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc29",
+     "text": "SEA offense red-zone TD rate league rank (1 = highest)",
+     "stated_value": 23.0,
+     "tool_call_id": "o26",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "matchup_analyst": {
+   "role": "matchup_analyst",
+   "prose": "The first matchup is LV's passing game against SEA's base rush. LV averages 0.12 EPA per dropback [mc1], and SEA sends heavy pressure on only 24.8% of dropbacks [mc2] while allowing -0.09 EPA per pass [mc3]. Expect a backup-led SEA offense with Sam Darnold out, so the pass game should be built on quick timing and clean downs. SEA's pressure proxy is 18.9% with a 6.6% sack rate [mc4], but LV has allowed a 3.3% sack rate [mc5], so protection is stable if the throws stay quick. The second matchup is LV's ground game against SEA's thinned front. LV's run offense is at -0.22 EPA per carry [mc6], but SEA allows -0.11 EPA per carry [mc7] with 6.4 defenders in the box [mc8]. Leonard Williams and Uchenna Nwosu are both out, which weakens the interior and edge. Run early to test the interior, and go away from it if the box stays crowded. The third matchup is J.Smith-Njigba against LV's secondary. He takes 35.7% of SEA targets [mc9] over 277 targets [mc10] with a 6.8-yard aDOT [mc11], and LV ranks 20th in limiting explosive passes [mc12]. With Rashid Shaheed out after taking 10.8% of targets [mc13], more volume should flow to him. Bracket him on deep routes and check Darien Porter's status, since he is Questionable.",
+   "claims": [
+    {
+     "claim_id": "mc1",
+     "text": "LV offense EPA per pass play (dropbacks), weeks 1-9",
+     "stated_value": 0.12,
+     "tool_call_id": "d17",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc2",
+     "text": "SEA defense blitz rate: share of dropbacks faced with 5+ pass rushers, weeks 1-9",
+     "stated_value": 24.8,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc3",
+     "text": "SEA defense EPA per pass play allowed, weeks 1-9",
+     "stated_value": -0.09,
+     "tool_call_id": "d7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc4",
+     "text": "SEA defense sack rate (sacks per dropback), weeks 1-9",
+     "stated_value": 6.6,
+     "tool_call_id": "d5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc5",
+     "text": "LV offense sack rate allowed (sacks per dropback), weeks 1-9",
+     "stated_value": 3.3,
+     "tool_call_id": "d6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc6",
+     "text": "LV offense EPA per run play, weeks 1-9",
+     "stated_value": -0.22,
+     "tool_call_id": "d18",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc7",
+     "text": "SEA defense EPA per run play allowed, weeks 1-9",
+     "stated_value": -0.11,
+     "tool_call_id": "d8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc8",
+     "text": "SEA defense average defenders in the box on run plays, weeks 1-9",
+     "stated_value": 6.4,
+     "tool_call_id": "d11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc9",
+     "text": "J.Smith-Njigba share of SEA targets, weeks 1-9",
+     "stated_value": 35.7,
+     "tool_call_id": "o19",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc10",
+     "text": "SEA target sample size for J.Smith-Njigba target share",
+     "stated_value": 277.0,
+     "tool_call_id": "o19",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc11",
+     "text": "SEA offense average depth of target (air yards per attempt), weeks 1-9",
+     "stated_value": 6.8,
+     "tool_call_id": "o18",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc12",
+     "text": "LV defense explosive pass rate allowed league rank (1 = lowest rate allowed)",
+     "stated_value": 20.0,
+     "tool_call_id": "o28",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc13",
+     "text": "Rashid Shaheed share of SEA targets, weeks 1-9",
+     "stated_value": 10.8,
+     "tool_call_id": "i4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  }
+ },
+ "sections": {
+  "defense_analyst": {
+   "role": "defense_analyst",
+   "prose": "SEA sends five or more rushers on 24.8% of dropbacks [dc1] over 318 plays [dc2], which ranks 24th in the league [dc3], and averages 4.3 rushers per dropback [dc4]. That is mostly a four-man rush, so LV should expect base-front protection tests more than exotic pressure. SEA's pressure proxy is 18.9% of dropbacks [dc5] with a 6.6% sack rate [dc6]. LV has allowed a 16.6% pressure proxy [dc7] and a 3.3% sack rate [dc8], so its protection has been stable, but SEA's sack rate is the number to plan around on quick-game timing. Against the pass, SEA allows -0.09 EPA per dropback [dc9] and explosive pass plays on 4.7% of attempts [dc10], and its overall defense ranks 5th in EPA allowed [dc11]. LV's passing offense posts 0.12 EPA per dropback [dc12], its clear strength, while its run game sits at -0.22 EPA per carry [dc13]. SEA's run defense allows -0.11 EPA per carry [dc14] on 207 run plays [dc15], with 6.4 defenders in the box on runs [dc16] and 6.3 on passes [dc17]. The sample does not show SEA is vulnerable on the ground, so the plan should lean on the passing game and protect against the blitz-light, four-man rush.",
+   "claims": [
+    {
+     "claim_id": "dc1",
+     "text": "SEA defense blitz rate: share of dropbacks faced with 5+ pass rushers, weeks 1-9",
+     "stated_value": 24.8,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc2",
+     "text": "SEA defense sample size for blitz rate (dropbacks faced)",
+     "stated_value": 318.0,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc3",
+     "text": "League rank of SEA defense blitz rate (24th highest of 32 teams)",
+     "stated_value": 24.0,
+     "tool_call_id": "d22",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc4",
+     "text": "SEA defense average pass rushers per dropback faced",
+     "stated_value": 4.3,
+     "tool_call_id": "d2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc5",
+     "text": "SEA defense pressure proxy rate (sacks plus QB hits per dropback)",
+     "stated_value": 18.9,
+     "tool_call_id": "d3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc6",
+     "text": "SEA defense sack rate (sacks per dropback)",
+     "stated_value": 6.6,
+     "tool_call_id": "d5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc7",
+     "text": "LV offense pressure proxy rate allowed (sacks plus QB hits per dropback)",
+     "stated_value": 16.6,
+     "tool_call_id": "d4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc8",
+     "text": "LV offense sack rate allowed (sacks per dropback)",
+     "stated_value": 3.3,
+     "tool_call_id": "d6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc9",
+     "text": "SEA defense EPA per pass play allowed",
+     "stated_value": -0.09,
+     "tool_call_id": "d7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc10",
+     "text": "SEA defense explosive pass play rate allowed (20+ yards on pass plays)",
+     "stated_value": 4.7,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc11",
+     "text": "League rank of SEA overall defense EPA allowed per play (5th best of 32)",
+     "stated_value": 5.0,
+     "tool_call_id": "d23",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc12",
+     "text": "LV offense EPA per pass play",
+     "stated_value": 0.12,
+     "tool_call_id": "d17",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc13",
+     "text": "LV offense EPA per run play",
+     "stated_value": -0.22,
+     "tool_call_id": "d18",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc14",
+     "text": "SEA defense EPA per run play allowed",
+     "stated_value": -0.11,
+     "tool_call_id": "d8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc15",
+     "text": "SEA defense sample size for run plays allowed",
+     "stated_value": 207.0,
+     "tool_call_id": "d8",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc16",
+     "text": "SEA defense average defenders in the box on run plays",
+     "stated_value": 6.4,
+     "tool_call_id": "d11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc17",
+     "text": "SEA defense average defenders in the box on pass plays",
+     "stated_value": 6.3,
+     "tool_call_id": "d12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "injury_analyst": {
+   "role": "injury_analyst",
+   "prose": "SEA lists eight players on the week 9 report [ic1], led on offense by LT Charles Cross, Out [ic2], who played 97.6% of snaps [ic3] over 7 games [ic4]. WR Rashid Shaheed is Out [ic5] and takes 10.8% of targets [ic6] on 277 team targets [ic7]. QB Sam Darnold is Out [ic8], so expect a backup-led offense with less shot-play volume. On defense, DT Leonard Williams is Out [ic9] after 71.5% of snaps [ic10] over 8 games [ic11], and LB Uchenna Nwosu is Out [ic12] after 51.0% of snaps [ic13] over 7 games [ic14]; LB Connor O'Toole is Questionable [ic15]. Losing Williams and Nwosu thins the interior and edge against SEA's run game. LV has two players listed: DT Thomas Booker is Out [ic16] after 37.7% of snaps [ic17] over 7 games [ic18], and CB Darien Porter is Questionable [ic19] with full practice participation, having played 43.4% of snaps [ic20] over 8 games [ic21]. No LV offensive players are on the report.",
+   "claims": [
+    {
+     "claim_id": "ic1",
+     "text": "Players on SEA's latest (week 9) injury report",
+     "stated_value": 8.0,
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic2",
+     "text": "Charles Cross (SEA OT) status on week 9 injury report",
+     "stated_value": "Out",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic3",
+     "text": "Charles Cross (SEA) mean snap share per game, weeks 1-7",
+     "stated_value": 97.6,
+     "tool_call_id": "i3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic4",
+     "text": "Games in Charles Cross snap share sample",
+     "stated_value": 7.0,
+     "tool_call_id": "i3",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic5",
+     "text": "Rashid Shaheed (SEA WR) status on week 9 injury report",
+     "stated_value": "Out",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic6",
+     "text": "Rashid Shaheed share of SEA targets, weeks 1-9",
+     "stated_value": 10.8,
+     "tool_call_id": "i4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic7",
+     "text": "SEA team targets in Shaheed target-share sample, weeks 1-9",
+     "stated_value": 277.0,
+     "tool_call_id": "i4",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic8",
+     "text": "Sam Darnold (SEA QB) status on week 9 injury report",
+     "stated_value": "Out",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic9",
+     "text": "Leonard Williams (SEA DT) status on week 9 injury report",
+     "stated_value": "Out",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic10",
+     "text": "Leonard Williams (SEA) mean snap share per game, weeks 1-8",
+     "stated_value": 71.5,
+     "tool_call_id": "i7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic11",
+     "text": "Games in Leonard Williams snap share sample",
+     "stated_value": 8.0,
+     "tool_call_id": "i7",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic12",
+     "text": "Uchenna Nwosu (SEA LB) status on week 9 injury report",
+     "stated_value": "Out",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic13",
+     "text": "Uchenna Nwosu (SEA) mean snap share per game, weeks 1-7",
+     "stated_value": 51.0,
+     "tool_call_id": "i6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic14",
+     "text": "Games in Uchenna Nwosu snap share sample",
+     "stated_value": 7.0,
+     "tool_call_id": "i6",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic15",
+     "text": "Connor O'Toole (SEA LB) status on week 9 injury report",
+     "stated_value": "Questionable",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic16",
+     "text": "Thomas Booker (LV DT) status on week 9 injury report",
+     "stated_value": "Out",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic17",
+     "text": "Thomas Booker (LV) mean snap share per game, weeks 1-8",
+     "stated_value": 37.7,
+     "tool_call_id": "i8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic18",
+     "text": "Games in Thomas Booker snap share sample",
+     "stated_value": 7.0,
+     "tool_call_id": "i8",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic19",
+     "text": "Darien Porter (LV CB) status on week 9 injury report",
+     "stated_value": "Questionable",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic20",
+     "text": "Darien Porter (LV) mean snap share per game, weeks 1-9",
+     "stated_value": 43.4,
+     "tool_call_id": "i9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic21",
+     "text": "Games in Darien Porter snap share sample",
+     "stated_value": 8.0,
+     "tool_call_id": "i9",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    }
+   ],
+   "unsourced": []
+  },
+  "offense_analyst": {
+   "role": "offense_analyst",
+   "prose": "Seattle leans run on early downs, passing on 49.9% of plays [oc1] over 433 early-down plays [oc2], which ranks 29th in the league [oc3]. Its early-down pass rate over expected is -6.74 points [oc4], and the all-down figure is -5.77 points [oc5], so it runs more than the situation predicts. First-down passing is 44.2% [oc6]. The shift comes with distance: it passes 33.9% on short [oc7], 66.9% on medium [oc8] and 57.1% on long [oc9]. Designed runs go left 29.9% [oc10], middle 31.1% [oc11] and right 39.0% [oc12], and the run game is inefficient at -0.20 EPA per play [oc13]. Play action shows up on 26.3% of dropbacks [oc14] over 316 dropbacks [oc15], and RPOs on only 5.2% of plays [oc16]. The passing game is more productive at 0.08 EPA per play [oc17]. J.Smith-Njigba takes 35.7% of targets [oc18] over 277 targets [oc19], the aDOT is 6.8 yards [oc20], and explosive passes come on 7.6% of attempts [oc21]. LV's defense ranks 20th in limiting explosive passes [oc22], so the deep shot is a real threat to prepare for. Third-down conversion is 37.7% [oc23] on 114 plays [oc24], 20th in the league [oc25]. Red-zone TD rate is 53.6% [oc26] on 28 drives [oc27], 23rd in the league [oc28], so SEA can stall near the end zone.",
+   "claims": [
+    {
+     "claim_id": "oc1",
+     "text": "SEA offense pass rate on early downs (dropbacks as share of early-down plays), all teams' scale",
+     "stated_value": 49.9,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc2",
+     "text": "SEA early-down plays sample size for pass rate",
+     "stated_value": 433.0,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc3",
+     "text": "SEA offense early-down pass rate league rank (1 = highest pass rate)",
+     "stated_value": 29.0,
+     "tool_call_id": "o27",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc4",
+     "text": "SEA offense early-down pass rate over expected (percentage points)",
+     "stated_value": -6.74,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc5",
+     "text": "SEA offense all-down pass rate over expected (percentage points)",
+     "stated_value": -5.77,
+     "tool_call_id": "o3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc6",
+     "text": "SEA offense pass rate on first down",
+     "stated_value": 44.2,
+     "tool_call_id": "o5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc7",
+     "text": "SEA offense pass rate on short-distance plays (1-3 yards to go), all downs",
+     "stated_value": 33.9,
+     "tool_call_id": "o6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc8",
+     "text": "SEA offense pass rate on medium-distance plays (4-7 yards to go), all downs",
+     "stated_value": 66.9,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc9",
+     "text": "SEA offense pass rate on long-distance plays (8+ yards to go), all downs",
+     "stated_value": 57.1,
+     "tool_call_id": "o8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc10",
+     "text": "SEA designed runs going left, share of designed runs",
+     "stated_value": 29.9,
+     "tool_call_id": "o9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc11",
+     "text": "SEA designed runs up the middle, share of designed runs",
+     "stated_value": 31.1,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc12",
+     "text": "SEA designed runs going right, share of designed runs",
+     "stated_value": 39.0,
+     "tool_call_id": "o11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc13",
+     "text": "SEA offense run EPA per play",
+     "stated_value": -0.2,
+     "tool_call_id": "o14",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc14",
+     "text": "SEA play-action rate (share of dropbacks)",
+     "stated_value": 26.3,
+     "tool_call_id": "o12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc15",
+     "text": "SEA dropback sample size for play-action rate",
+     "stated_value": 316.0,
+     "tool_call_id": "o12",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc16",
+     "text": "SEA RPO rate (share of scrimmage plays)",
+     "stated_value": 5.2,
+     "tool_call_id": "o13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc17",
+     "text": "SEA offense pass EPA per play",
+     "stated_value": 0.08,
+     "tool_call_id": "o22",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc18",
+     "text": "J.Smith-Njigba share of SEA targets",
+     "stated_value": 35.7,
+     "tool_call_id": "o19",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc19",
+     "text": "SEA target sample size",
+     "stated_value": 277.0,
+     "tool_call_id": "o19",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc20",
+     "text": "SEA average depth of target (air yards per attempt)",
+     "stated_value": 6.8,
+     "tool_call_id": "o18",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc21",
+     "text": "SEA offense explosive pass rate (20+ air yards gained, share of pass plays)",
+     "stated_value": 7.6,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc22",
+     "text": "LV defense explosive pass rate allowed league rank (1 = lowest rate allowed)",
+     "stated_value": 20.0,
+     "tool_call_id": "o28",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc23",
+     "text": "SEA offense third-down conversion rate",
+     "stated_value": 37.7,
+     "tool_call_id": "o20",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc24",
+     "text": "SEA third-down sample size",
+     "stated_value": 114.0,
+     "tool_call_id": "o20",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc25",
+     "text": "SEA offense third-down conversion league rank (1 = highest)",
+     "stated_value": 20.0,
+     "tool_call_id": "o25",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc26",
+     "text": "SEA offense red-zone drive TD rate",
+     "stated_value": 53.6,
+     "tool_call_id": "o21",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc27",
+     "text": "SEA red-zone drive sample size",
+     "stated_value": 28.0,
+     "tool_call_id": "o21",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc28",
+     "text": "SEA offense red-zone TD rate league rank (1 = highest)",
+     "stated_value": 23.0,
+     "tool_call_id": "o26",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "matchup_analyst": {
+   "role": "matchup_analyst",
+   "prose": "The first matchup is LV's passing game against SEA's base rush. LV averages 0.12 EPA per dropback [mc1], and SEA sends five or more rushers on only 24.8% of dropbacks [mc2] while allowing -0.09 EPA per pass [mc3]. Expect a backup-led SEA offense with Sam Darnold out, so the pass game should be built on quick timing and clean downs. SEA's pressure proxy is 18.9% [mc4] with a 6.6% sack rate [mc5], but LV has allowed a 3.3% sack rate [mc6], so protection is stable if the throws stay quick. The second matchup is LV's ground game against SEA's thinned front. LV's run offense is at -0.22 EPA per carry [mc7], but SEA allows -0.11 EPA per carry [mc8] with 6.4 defenders in the box [mc9]. Leonard Williams and Uchenna Nwosu are both out, which weakens the interior and edge. Run early to test the interior, and go away from it if the box stays crowded. The third matchup is J.Smith-Njigba against LV's secondary. He takes 35.7% of SEA targets [mc10] over 277 targets [mc11] with a 6.8-yard aDOT [mc12], and LV ranks 20th in limiting explosive passes [mc13]. With Rashid Shaheed out after taking 10.8% of targets [mc14], more volume should flow to him. Bracket him on deep routes and check Darien Porter's status, since he is Questionable.",
+   "claims": [
+    {
+     "claim_id": "mc1",
+     "text": "LV offense EPA per pass play (dropbacks), weeks 1-9",
+     "stated_value": 0.12,
+     "tool_call_id": "d17",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc2",
+     "text": "SEA defense blitz rate: share of dropbacks faced with 5+ pass rushers, weeks 1-9",
+     "stated_value": 24.8,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc3",
+     "text": "SEA defense EPA per pass play allowed, weeks 1-9",
+     "stated_value": -0.09,
+     "tool_call_id": "d7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc4",
+     "text": "SEA defense pressure proxy rate (sacks plus QB hits per dropback), weeks 1-9",
+     "stated_value": 18.9,
+     "tool_call_id": "d3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc5",
+     "text": "SEA defense sack rate (sacks per dropback), weeks 1-9",
+     "stated_value": 6.6,
+     "tool_call_id": "d5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc6",
+     "text": "LV offense sack rate allowed (sacks per dropback), weeks 1-9",
+     "stated_value": 3.3,
+     "tool_call_id": "d6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc7",
+     "text": "LV offense EPA per run play, weeks 1-9",
+     "stated_value": -0.22,
+     "tool_call_id": "d18",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc8",
+     "text": "SEA defense EPA per run play allowed, weeks 1-9",
+     "stated_value": -0.11,
+     "tool_call_id": "d8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc9",
+     "text": "SEA defense average defenders in the box on run plays, weeks 1-9",
+     "stated_value": 6.4,
+     "tool_call_id": "d11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc10",
+     "text": "J.Smith-Njigba share of SEA targets, weeks 1-9",
+     "stated_value": 35.7,
+     "tool_call_id": "o19",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc11",
+     "text": "SEA target sample size for J.Smith-Njigba target share, weeks 1-9",
+     "stated_value": 277.0,
+     "tool_call_id": "o19",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc12",
+     "text": "SEA offense average depth of target (air yards per attempt), weeks 1-9",
+     "stated_value": 6.8,
+     "tool_call_id": "o18",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc13",
+     "text": "LV defense explosive pass rate allowed league rank (1 = lowest rate allowed)",
+     "stated_value": 20.0,
+     "tool_call_id": "o28",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc14",
+     "text": "Rashid Shaheed share of SEA targets, weeks 1-9",
+     "stated_value": 10.8,
+     "tool_call_id": "i4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  }
+ },
+ "checks": [
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc16",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc16",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc17",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc17",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic16",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic16",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic17",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic17",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic18",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic18",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic19",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic19",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic20",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic20",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic21",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic21",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc16",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc16",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc17",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc17",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc18",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc18",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc19",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc19",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc20",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc20",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc21",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc21",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc22",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc22",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc23",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc23",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc24",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc24",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc25",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc25",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc26",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc26",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc27",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc27",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc28",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc28",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  }
+ ],
+ "check_log": [
+  {
+   "round": 1,
+   "role": "offense_analyst",
+   "claim_id": "oc13",
+   "check": "wording",
+   "detail": "the call is for left, the text doesn't say so",
+   "text": "SEA designed run sample size",
+   "stated_value": 241.0
+  },
+  {
+   "round": 1,
+   "role": "matchup_analyst",
+   "claim_id": null,
+   "check": "prose",
+   "detail": "'18.9%' in the prose: unlinked",
+   "text": null,
+   "stated_value": null
+  }
+ ],
+ "checks_run": 2,
+ "dropped": [],
+ "report": {
+  "title": "LV vs SEA: Week Ten Scouting Report",
+  "summary": "Seattle runs more than the situation predicts on early downs, and its run game is inefficient at -0.2 EPA per play [oc13]. Sam Darnold, Leonard Williams and Uchenna Nwosu are out, so expect a backup-led offense facing a thinner front. LV's passing game is its clear strength at 0.12 EPA per dropback [dc12], and SEA allows -0.09 EPA per pass play [dc9]. Lean on quick timing and the passing game while testing the interior early.",
+  "sections": [
+   {
+    "heading": "Opponent offense",
+    "body": "Seattle leans run on early downs, passing on 49.9% of plays [oc1] over 433 early-down plays [oc2], which ranks 29th [oc3] in the league. Its early-down pass rate is -6.74 points over expected [oc4], so it runs more than the situation predicts. Designed runs go left 29.9% [oc10], middle 31.1% [oc11] and right 39.0% [oc12], and the run game is inefficient at -0.2 EPA per play [oc13]. The passing game is more productive at 0.08 EPA per play [oc17], with J.Smith-Njigba taking 35.7% of targets [oc18] over 277 targets [oc19] and explosive passes on 7.6% of attempts [oc21]. LV ranks 20th in limiting explosive passes [oc22], so the deep shot is a real threat. Third-down conversion is 37.7% [oc23] on 114 plays [oc24], and red-zone TD rate is 53.6% [oc26] on 28 drives [oc27]."
+   },
+   {
+    "heading": "Opponent defense",
+    "body": "SEA sends five or more rushers on 24.8% of dropbacks [dc1] over 318 plays [dc2], ranking 24th [dc3] in the league, so LV should expect a mostly four-man rush and base-front protection tests. SEA's pressure proxy is 18.9% [dc5] with a 6.6% sack rate [dc6], while LV has allowed a 3.3% sack rate [dc8], so the sack threat matters most on quick-game timing. SEA allows -0.09 EPA per pass play [dc9] and explosive passes on 4.7% of attempts [dc10]. LV's passing offense posts 0.12 EPA per dropback [dc12], while its run game sits at -0.22 EPA per carry [dc13]. SEA's run defense allows -0.11 EPA per carry [dc14] on 207 run plays [dc15], so the plan should lean on the passing game."
+   },
+   {
+    "heading": "Injuries and availability",
+    "body": "SEA's latest report lists 8 players [ic1]. Charles Cross, Out, played 97.6% of snaps [ic3] over 7 games [ic4]. Rashid Shaheed is Out after taking 10.8% of targets [ic6] on 277 team targets [ic7], and Sam Darnold is Out, so expect less shot-play volume. On defense, Leonard Williams is Out after 71.5% of snaps [ic10] over 8 games [ic11], and Uchenna Nwosu is Out after 51.0% of snaps [ic13] over 7 games [ic14], thinning the interior and edge. LB Connor O'Toole is Questionable. For LV, DT Thomas Booker is Out after 37.7% of snaps [ic17] over 7 games [ic18], and CB Darien Porter is Questionable after 43.4% of snaps [ic20] over 8 games [ic21]. No LV offensive players are listed."
+   },
+   {
+    "heading": "Key matchups",
+    "body": "LV's passing game faces SEA's base rush. LV averages 0.12 EPA per dropback [mc1], and SEA sends five or more rushers on only 24.8% of dropbacks [mc2] while allowing -0.09 EPA per pass [mc3]. Build the pass game on quick timing and clean downs, since SEA's 6.6% sack rate [mc5] is the risk. LV's ground game faces a thinned front: -0.22 EPA per carry [mc7] against SEA's -0.11 EPA per carry allowed [mc8], with 6.4 defenders in the box [mc9]. Run early to test the interior and go away from it if the box stays crowded. J.Smith-Njigba takes 35.7% of SEA targets [mc10] over 277 targets [mc11] with a 6.8-yard aDOT [mc12], and LV ranks 20th in limiting explosive passes [mc13]. With Shaheed out after 10.8% of targets [mc14], more volume should flow to Smith-Njigba, so bracket him on deep routes and check Porter's status."
+   }
+  ]
+ },
+ "number_checks": [
+  {
+   "mention": {
+    "text": "-0.2",
+    "value": -0.2,
+    "kind": "number",
+    "decimals": 1,
+    "start": 97,
+    "claim_id": "oc13",
+    "group": 1,
+    "group_ids": [
+     "oc13"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "0.12",
+    "value": 0.12,
+    "kind": "number",
+    "decimals": 2,
+    "start": 278,
+    "claim_id": "dc12",
+    "group": 5,
+    "group_ids": [
+     "dc12"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "-0.09",
+    "value": -0.09,
+    "kind": "number",
+    "decimals": 2,
+    "start": 323,
+    "claim_id": "dc9",
+    "group": 7,
+    "group_ids": [
+     "dc9"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "49.9%",
+    "value": 49.9,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 476,
+    "claim_id": "oc1",
+    "group": 11,
+    "group_ids": [
+     "oc1"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "433",
+    "value": 433.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 502,
+    "claim_id": "oc2",
+    "group": 13,
+    "group_ids": [
+     "oc2"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "29th",
+    "value": 29.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 542,
+    "claim_id": "oc3",
+    "group": 15,
+    "group_ids": [
+     "oc3"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "-6.74",
+    "value": -6.74,
+    "kind": "number",
+    "decimals": 2,
+    "start": 596,
+    "claim_id": "oc4",
+    "group": 18,
+    "group_ids": [
+     "oc4"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "29.9%",
+    "value": 29.9,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 697,
+    "claim_id": "oc10",
+    "group": 21,
+    "group_ids": [
+     "oc10"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "31.1%",
+    "value": 31.1,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 718,
+    "claim_id": "oc11",
+    "group": 23,
+    "group_ids": [
+     "oc11"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "39.0%",
+    "value": 39.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 741,
+    "claim_id": "oc12",
+    "group": 25,
+    "group_ids": [
+     "oc12"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "-0.2",
+    "value": -0.2,
+    "kind": "number",
+    "decimals": 1,
+    "start": 790,
+    "claim_id": "oc13",
+    "group": 27,
+    "group_ids": [
+     "oc13"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "0.08",
+    "value": 0.08,
+    "kind": "number",
+    "decimals": 2,
+    "start": 855,
+    "claim_id": "oc17",
+    "group": 30,
+    "group_ids": [
+     "oc17"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "35.7%",
+    "value": 35.7,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 908,
+    "claim_id": "oc18",
+    "group": 32,
+    "group_ids": [
+     "oc18"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "277",
+    "value": 277.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 937,
+    "claim_id": "oc19",
+    "group": 34,
+    "group_ids": [
+     "oc19"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "7.6%",
+    "value": 7.6,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 980,
+    "claim_id": "oc21",
+    "group": 36,
+    "group_ids": [
+     "oc21"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "20th",
+    "value": 20.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 1014,
+    "claim_id": "oc22",
+    "group": 39,
+    "group_ids": [
+     "oc22"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "37.7%",
+    "value": 37.7,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1116,
+    "claim_id": "oc23",
+    "group": 42,
+    "group_ids": [
+     "oc23"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "114",
+    "value": 114.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1132,
+    "claim_id": "oc24",
+    "group": 44,
+    "group_ids": [
+     "oc24"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "53.6%",
+    "value": 53.6,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1174,
+    "claim_id": "oc26",
+    "group": 46,
+    "group_ids": [
+     "oc26"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "28",
+    "value": 28.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1190,
+    "claim_id": "oc27",
+    "group": 48,
+    "group_ids": [
+     "oc27"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "24.8%",
+    "value": 24.8,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1243,
+    "claim_id": "dc1",
+    "group": 51,
+    "group_ids": [
+     "dc1"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "318",
+    "value": 318.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1273,
+    "claim_id": "dc2",
+    "group": 53,
+    "group_ids": [
+     "dc2"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "24th",
+    "value": 24.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 1298,
+    "claim_id": "dc3",
+    "group": 55,
+    "group_ids": [
+     "dc3"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "18.9%",
+    "value": 18.9,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1424,
+    "claim_id": "dc5",
+    "group": 58,
+    "group_ids": [
+     "dc5"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "6.6%",
+    "value": 6.6,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1443,
+    "claim_id": "dc6",
+    "group": 60,
+    "group_ids": [
+     "dc6"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "3.3%",
+    "value": 3.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1488,
+    "claim_id": "dc8",
+    "group": 62,
+    "group_ids": [
+     "dc8"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "-0.09",
+    "value": -0.09,
+    "kind": "number",
+    "decimals": 2,
+    "start": 1575,
+    "claim_id": "dc9",
+    "group": 65,
+    "group_ids": [
+     "dc9"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "4.7%",
+    "value": 4.7,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1629,
+    "claim_id": "dc10",
+    "group": 67,
+    "group_ids": [
+     "dc10"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "0.12",
+    "value": 0.12,
+    "kind": "number",
+    "decimals": 2,
+    "start": 1681,
+    "claim_id": "dc12",
+    "group": 70,
+    "group_ids": [
+     "dc12"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "-0.22",
+    "value": -0.22,
+    "kind": "number",
+    "decimals": 2,
+    "start": 1738,
+    "claim_id": "dc13",
+    "group": 72,
+    "group_ids": [
+     "dc13"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "-0.11",
+    "value": -0.11,
+    "kind": "number",
+    "decimals": 2,
+    "start": 1791,
+    "claim_id": "dc14",
+    "group": 75,
+    "group_ids": [
+     "dc14"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "207",
+    "value": 207.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1821,
+    "claim_id": "dc15",
+    "group": 77,
+    "group_ids": [
+     "dc15"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "8",
+    "value": 8.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1915,
+    "claim_id": "ic1",
+    "group": 80,
+    "group_ids": [
+     "ic1"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "97.6%",
+    "value": 97.6,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1959,
+    "claim_id": "ic3",
+    "group": 83,
+    "group_ids": [
+     "ic3"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "7",
+    "value": 7.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1985,
+    "claim_id": "ic4",
+    "group": 85,
+    "group_ids": [
+     "ic4"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "10.8%",
+    "value": 10.8,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2035,
+    "claim_id": "ic6",
+    "group": 88,
+    "group_ids": [
+     "ic6"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "277",
+    "value": 277.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2061,
+    "claim_id": "ic7",
+    "group": 90,
+    "group_ids": [
+     "ic7"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "71.5%",
+    "value": 71.5,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2184,
+    "claim_id": "ic10",
+    "group": 93,
+    "group_ids": [
+     "ic10"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "8",
+    "value": 8.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2211,
+    "claim_id": "ic11",
+    "group": 95,
+    "group_ids": [
+     "ic11"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "51.0%",
+    "value": 51.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2258,
+    "claim_id": "ic13",
+    "group": 97,
+    "group_ids": [
+     "ic13"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "7",
+    "value": 7.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2285,
+    "claim_id": "ic14",
+    "group": 99,
+    "group_ids": [
+     "ic14"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "37.7%",
+    "value": 37.7,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2406,
+    "claim_id": "ic17",
+    "group": 103,
+    "group_ids": [
+     "ic17"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "7",
+    "value": 7.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2433,
+    "claim_id": "ic18",
+    "group": 105,
+    "group_ids": [
+     "ic18"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "43.4%",
+    "value": 43.4,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2492,
+    "claim_id": "ic20",
+    "group": 107,
+    "group_ids": [
+     "ic20"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "8",
+    "value": 8.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2519,
+    "claim_id": "ic21",
+    "group": 109,
+    "group_ids": [
+     "ic21"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "0.12",
+    "value": 0.12,
+    "kind": "number",
+    "decimals": 2,
+    "start": 2625,
+    "claim_id": "mc1",
+    "group": 114,
+    "group_ids": [
+     "mc1"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "24.8%",
+    "value": 24.8,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2697,
+    "claim_id": "mc2",
+    "group": 116,
+    "group_ids": [
+     "mc2"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "-0.09",
+    "value": -0.09,
+    "kind": "number",
+    "decimals": 2,
+    "start": 2737,
+    "claim_id": "mc3",
+    "group": 118,
+    "group_ids": [
+     "mc3"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "6.6%",
+    "value": 6.6,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2828,
+    "claim_id": "mc5",
+    "group": 121,
+    "group_ids": [
+     "mc5"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "-0.22",
+    "value": -0.22,
+    "kind": "number",
+    "decimals": 2,
+    "start": 2902,
+    "claim_id": "mc7",
+    "group": 124,
+    "group_ids": [
+     "mc7"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "-0.11",
+    "value": -0.11,
+    "kind": "number",
+    "decimals": 2,
+    "start": 2942,
+    "claim_id": "mc8",
+    "group": 126,
+    "group_ids": [
+     "mc8"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "6.4",
+    "value": 6.4,
+    "kind": "number",
+    "decimals": 1,
+    "start": 2982,
+    "claim_id": "mc9",
+    "group": 128,
+    "group_ids": [
+     "mc9"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "35.7%",
+    "value": 35.7,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3112,
+    "claim_id": "mc10",
+    "group": 132,
+    "group_ids": [
+     "mc10"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "277",
+    "value": 277.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 3145,
+    "claim_id": "mc11",
+    "group": 134,
+    "group_ids": [
+     "mc11"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "6.8",
+    "value": 6.8,
+    "kind": "number",
+    "decimals": 1,
+    "start": 3171,
+    "claim_id": "mc12",
+    "group": 136,
+    "group_ids": [
+     "mc12"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "20th",
+    "value": 20.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 3206,
+    "claim_id": "mc13",
+    "group": 138,
+    "group_ids": [
+     "mc13"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "10.8%",
+    "value": 10.8,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3271,
+    "claim_id": "mc14",
+    "group": 141,
+    "group_ids": [
+     "mc14"
+    ]
+   },
+   "status": "ok"
+  }
+ ],
+ "tool_calls": [
+  {
+   "call_id": "d1",
+   "node": "defense_analyst",
+   "tool": "blitz_rate",
+   "args": {
+    "team": "SEA",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 24.842767295597483,
+    "n_plays": 318,
+    "query_meta": {
+     "tool": "blitz_rate",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks faced with 5+ pass rushers (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d2",
+   "node": "defense_analyst",
+   "tool": "average_pass_rushers",
+   "args": {
+    "team": "SEA",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 4.3081761006289305,
+    "n_plays": 318,
+    "query_meta": {
+     "tool": "average_pass_rushers",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "rushers",
+     "definition": "Mean pass rushers per dropback faced (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d3",
+   "node": "defense_analyst",
+   "tool": "pressure_proxy_rate",
+   "args": {
+    "team": "SEA",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 18.867924528301888,
+    "n_plays": 318,
+    "query_meta": {
+     "tool": "pressure_proxy_rate",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Pressure proxy: percent of dropbacks with a sack or QB hit (defense). Not true pressure rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d4",
+   "node": "defense_analyst",
+   "tool": "pressure_proxy_rate",
+   "args": {
+    "team": "LV",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 16.56804733727811,
+    "n_plays": 338,
+    "query_meta": {
+     "tool": "pressure_proxy_rate",
+     "args": {
+      "team": "LV",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Pressure proxy: percent of dropbacks with a sack or QB hit (offense). Not true pressure rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d5",
+   "node": "defense_analyst",
+   "tool": "sack_rate",
+   "args": {
+    "team": "SEA",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 6.60377358490566,
+    "n_plays": 318,
+    "query_meta": {
+     "tool": "sack_rate",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks ending in a sack (defense).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d6",
+   "node": "defense_analyst",
+   "tool": "sack_rate",
+   "args": {
+    "team": "LV",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 3.2544378698224854,
+    "n_plays": 338,
+    "query_meta": {
+     "tool": "sack_rate",
+     "args": {
+      "team": "LV",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks ending in a sack (offense).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d7",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "SEA",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -0.08982953257918122,
+    "n_plays": 318,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d8",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "SEA",
+    "side": "defense",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -0.11225656246680973,
+    "n_plays": 207,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "run"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per run play allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d9",
+   "node": "defense_analyst",
+   "tool": "success_rate",
+   "args": {
+    "team": "SEA",
+    "side": "defense",
+    "play_kind": "all",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 39.04761904761905,
+    "n_plays": 525,
+    "query_meta": {
+     "tool": "success_rate",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "all"
+     },
+     "unit": "percent",
+     "definition": "Percent of all plays with EPA > 0, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d10",
+   "node": "defense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "SEA",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 4.716981132075472,
+    "n_plays": 318,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d11",
+   "node": "defense_analyst",
+   "tool": "average_box_defenders",
+   "args": {
+    "team": "SEA",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 6.449275362318841,
+    "n_plays": 207,
+    "query_meta": {
+     "tool": "average_box_defenders",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "play_kind": "run"
+     },
+     "unit": "defenders",
+     "definition": "Mean defenders in the box on run plays (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d12",
+   "node": "defense_analyst",
+   "tool": "average_box_defenders",
+   "args": {
+    "team": "SEA",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 6.267295597484277,
+    "n_plays": 318,
+    "query_meta": {
+     "tool": "average_box_defenders",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "play_kind": "pass"
+     },
+     "unit": "defenders",
+     "definition": "Mean defenders in the box on pass plays (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d13",
+   "node": "defense_analyst",
+   "tool": "average_box_defenders",
+   "args": {
+    "team": "SEA",
+    "play_kind": "all",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 6.339047619047619,
+    "n_plays": 525,
+    "query_meta": {
+     "tool": "average_box_defenders",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "play_kind": "all"
+     },
+     "unit": "defenders",
+     "definition": "Mean defenders in the box on all plays (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d14",
+   "node": "defense_analyst",
+   "tool": "average_box_defenders",
+   "args": {
+    "team": "LV",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 6.487603305785124,
+    "n_plays": 242,
+    "query_meta": {
+     "tool": "average_box_defenders",
+     "args": {
+      "team": "LV",
+      "season": 2026,
+      "through_week": 9,
+      "play_kind": "run"
+     },
+     "unit": "defenders",
+     "definition": "Mean defenders in the box on run plays (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d15",
+   "node": "defense_analyst",
+   "tool": "average_box_defenders",
+   "args": {
+    "team": "LV",
+    "play_kind": "all",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 6.359066427289049,
+    "n_plays": 557,
+    "query_meta": {
+     "tool": "average_box_defenders",
+     "args": {
+      "team": "LV",
+      "season": 2026,
+      "through_week": 9,
+      "play_kind": "all"
+     },
+     "unit": "defenders",
+     "definition": "Mean defenders in the box on all plays (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d16",
+   "node": "defense_analyst",
+   "tool": "average_box_defenders",
+   "args": {
+    "team": "LV",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 6.26031746031746,
+    "n_plays": 315,
+    "query_meta": {
+     "tool": "average_box_defenders",
+     "args": {
+      "team": "LV",
+      "season": 2026,
+      "through_week": 9,
+      "play_kind": "pass"
+     },
+     "unit": "defenders",
+     "definition": "Mean defenders in the box on pass plays (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d17",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "LV",
+    "side": "offense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 0.11565948364185676,
+    "n_plays": 338,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "LV",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d18",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "LV",
+    "side": "offense",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -0.21523534557197488,
+    "n_plays": 206,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "LV",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "run"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per run play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d19",
+   "node": "defense_analyst",
+   "tool": "average_pass_rushers",
+   "args": {
+    "team": "LV",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 4.304761904761905,
+    "n_plays": 315,
+    "query_meta": {
+     "tool": "average_pass_rushers",
+     "args": {
+      "team": "LV",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "rushers",
+     "definition": "Mean pass rushers per dropback faced (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d20",
+   "node": "defense_analyst",
+   "tool": "blitz_rate",
+   "args": {
+    "team": "LV",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 27.3015873015873,
+    "n_plays": 315,
+    "query_meta": {
+     "tool": "blitz_rate",
+     "args": {
+      "team": "LV",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks faced with 5+ pass rushers (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d21",
+   "node": "defense_analyst",
+   "tool": "average_pass_rushers",
+   "args": {
+    "team": "SEA",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 4.3081761006289305,
+    "n_plays": 318,
+    "query_meta": {
+     "tool": "average_pass_rushers",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "rushers",
+     "definition": "Mean pass rushers per dropback faced (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d22",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "blitz_rate",
+    "team": "SEA",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 24,
+    "n_plays": 318,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "blitz_rate",
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "rank",
+     "metric": "blitz_rate",
+     "metric_args": {},
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "highest",
+     "team_value": 24.842767295597483,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d23",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "SEA",
+    "side": "defense",
+    "early_downs_only": false,
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 5,
+    "n_plays": 525,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "early_downs_only": false,
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction",
+      "early_downs_only"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": -0.09867219007773188,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i1",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "SEA",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Brandon Pili",
+      "player_id": "00-0038694",
+      "position": "DT",
+      "status": "Out",
+      "injury": "Back",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Charles Cross",
+      "player_id": "00-0037821",
+      "position": "T",
+      "status": "Out",
+      "injury": "Ankle",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Leonard Williams",
+      "player_id": "00-0031933",
+      "position": "DT",
+      "status": "Out",
+      "injury": "Stinger",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Quenton Nelson",
+      "player_id": "00-0034342",
+      "position": "G",
+      "status": "Out",
+      "injury": "Knee",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Rashid Shaheed",
+      "player_id": "00-0037545",
+      "position": "WR",
+      "status": "Out",
+      "injury": "Knee",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Sam Darnold",
+      "player_id": "00-0034869",
+      "position": "QB",
+      "status": "Out",
+      "injury": "Quadricep",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Uchenna Nwosu",
+      "player_id": "00-0034350",
+      "position": "LB",
+      "status": "Out",
+      "injury": "Ankle",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Connor O'Toole",
+      "player_id": "00-0040061",
+      "position": "LB",
+      "status": "Questionable",
+      "injury": "Foot",
+      "practice_status": "Did Not Participate In Practice"
+     }
+    ],
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 9,
+     "weeks": [
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i2",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "LV",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Thomas Booker",
+      "player_id": "00-0037262",
+      "position": "DT",
+      "status": "Out",
+      "injury": "Ankle",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Darien Porter",
+      "player_id": "00-0040641",
+      "position": "CB",
+      "status": "Questionable",
+      "injury": "Groin",
+      "practice_status": "Full Participation in Practice"
+     }
+    ],
+    "n_plays": 2,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "LV",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 9,
+     "weeks": [
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i3",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "SEA",
+    "player": "Charles Cross",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 97.57142857142857,
+    "n_plays": 7,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Charles Cross",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Charles Cross's mean snap share per game, weeks 1-9.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "n_games": 7
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i4",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "SEA",
+    "player": "Rashid Shaheed",
+    "kind": "target",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 10.830324909747292,
+    "n_plays": 277,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Rashid Shaheed",
+      "kind": "target"
+     },
+     "unit": "percent",
+     "definition": "R.Shaheed's percent of team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9,
+     "player": {
+      "id": "00-0037545",
+      "name": "R.Shaheed",
+      "count": 30
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i5",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "SEA",
+    "player": "Sam Darnold",
+    "kind": "rush",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": null,
+   "error": "player 'Sam Darnold' not found for SEA; use usage_leaders to list players"
+  },
+  {
+   "call_id": "i6",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "SEA",
+    "player": "Uchenna Nwosu",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 51.0,
+    "n_plays": 7,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Uchenna Nwosu",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Uchenna Nwosu's mean snap share per game, weeks 1-9.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "n_games": 7
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i7",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "SEA",
+    "player": "Leonard Williams",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 71.5,
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Leonard Williams",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Leonard Williams's mean snap share per game, weeks 1-9.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i8",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "LV",
+    "player": "Thomas Booker",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 37.714285714285715,
+    "n_plays": 7,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "LV",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Thomas Booker",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Thomas Booker's mean snap share per game, weeks 1-9.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8
+     ],
+     "n_games": 7
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i9",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "LV",
+    "player": "Darien Porter",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 43.375,
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "LV",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Darien Porter",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Darien Porter's mean snap share per game, weeks 1-9.",
+     "weeks": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o1",
+   "node": "offense_analyst",
+   "tool": "pass_rate",
+   "args": {
+    "team": "SEA",
+    "early_downs_only": true,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 49.88452655889146,
+    "n_plays": 433,
+    "query_meta": {
+     "tool": "pass_rate",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "down": null,
+      "distance": null,
+      "early_downs_only": true
+     },
+     "unit": "percent",
+     "definition": "Percent of plays that are dropbacks (early downs).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o2",
+   "node": "offense_analyst",
+   "tool": "pass_rate",
+   "args": {
+    "team": "SEA",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 56.732495511669654,
+    "n_plays": 557,
+    "query_meta": {
+     "tool": "pass_rate",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "down": null,
+      "distance": null,
+      "early_downs_only": false
+     },
+     "unit": "percent",
+     "definition": "Percent of plays that are dropbacks (all downs).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o3",
+   "node": "offense_analyst",
+   "tool": "pass_rate_over_expected",
+   "args": {
+    "team": "SEA",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -5.767516372474563,
+    "n_plays": 557,
+    "query_meta": {
+     "tool": "pass_rate_over_expected",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "early_downs_only": false
+     },
+     "unit": "percentage_points",
+     "definition": "Mean pass_oe (all downs).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o4",
+   "node": "offense_analyst",
+   "tool": "pass_rate_over_expected",
+   "args": {
+    "team": "SEA",
+    "early_downs_only": true,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -6.737566335819334,
+    "n_plays": 433,
+    "query_meta": {
+     "tool": "pass_rate_over_expected",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "early_downs_only": true
+     },
+     "unit": "percentage_points",
+     "definition": "Mean pass_oe (early downs).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o5",
+   "node": "offense_analyst",
+   "tool": "pass_rate",
+   "args": {
+    "team": "SEA",
+    "down": 1,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 44.223107569721115,
+    "n_plays": 251,
+    "query_meta": {
+     "tool": "pass_rate",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "down": 1,
+      "distance": null,
+      "early_downs_only": false
+     },
+     "unit": "percent",
+     "definition": "Percent of plays that are dropbacks (down 1).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o6",
+   "node": "offense_analyst",
+   "tool": "pass_rate",
+   "args": {
+    "team": "SEA",
+    "distance": "short",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 33.89830508474576,
+    "n_plays": 59,
+    "query_meta": {
+     "tool": "pass_rate",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "down": null,
+      "distance": "short",
+      "early_downs_only": false
+     },
+     "unit": "percent",
+     "definition": "Percent of plays that are dropbacks (short distance).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o7",
+   "node": "offense_analyst",
+   "tool": "pass_rate",
+   "args": {
+    "team": "SEA",
+    "distance": "medium",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 66.94915254237289,
+    "n_plays": 118,
+    "query_meta": {
+     "tool": "pass_rate",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "down": null,
+      "distance": "medium",
+      "early_downs_only": false
+     },
+     "unit": "percent",
+     "definition": "Percent of plays that are dropbacks (medium distance).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o8",
+   "node": "offense_analyst",
+   "tool": "pass_rate",
+   "args": {
+    "team": "SEA",
+    "distance": "long",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 57.10526315789474,
+    "n_plays": 380,
+    "query_meta": {
+     "tool": "pass_rate",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "down": null,
+      "distance": "long",
+      "early_downs_only": false
+     },
+     "unit": "percent",
+     "definition": "Percent of plays that are dropbacks (long distance).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o9",
+   "node": "offense_analyst",
+   "tool": "run_direction_rate",
+   "args": {
+    "team": "SEA",
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 29.87551867219917,
+    "n_plays": 241,
+    "query_meta": {
+     "tool": "run_direction_rate",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "direction": "left"
+     },
+     "unit": "percent",
+     "definition": "Percent of designed runs to the left.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o10",
+   "node": "offense_analyst",
+   "tool": "run_direction_rate",
+   "args": {
+    "team": "SEA",
+    "direction": "middle",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 31.12033195020747,
+    "n_plays": 241,
+    "query_meta": {
+     "tool": "run_direction_rate",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "direction": "middle"
+     },
+     "unit": "percent",
+     "definition": "Percent of designed runs to the middle.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o11",
+   "node": "offense_analyst",
+   "tool": "run_direction_rate",
+   "args": {
+    "team": "SEA",
+    "direction": "right",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 39.004149377593365,
+    "n_plays": 241,
+    "query_meta": {
+     "tool": "run_direction_rate",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "direction": "right"
+     },
+     "unit": "percent",
+     "definition": "Percent of designed runs to the right.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o12",
+   "node": "offense_analyst",
+   "tool": "ftn_play_rate",
+   "args": {
+    "team": "SEA",
+    "feature": "play_action",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 26.265822784810126,
+    "n_plays": 316,
+    "query_meta": {
+     "tool": "ftn_play_rate",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "feature": "play_action"
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks with play action (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o13",
+   "node": "offense_analyst",
+   "tool": "ftn_play_rate",
+   "args": {
+    "team": "SEA",
+    "feature": "rpo",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 5.206463195691203,
+    "n_plays": 557,
+    "query_meta": {
+     "tool": "ftn_play_rate",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "feature": "rpo"
+     },
+     "unit": "percent",
+     "definition": "Percent of scrimmage plays with rpo (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o14",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "SEA",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -0.2017990171425536,
+    "n_plays": 241,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "run"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per run play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o15",
+   "node": "offense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "SEA",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 7.59493670886076,
+    "n_plays": 316,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o16",
+   "node": "offense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "SEA",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 7.468879668049793,
+    "n_plays": 241,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "run"
+     },
+     "unit": "percent",
+     "definition": "Percent of run plays gaining 20+ yds (pass) or 10+ yds (run), by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o17",
+   "node": "offense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "LV",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 9.171597633136095,
+    "n_plays": 338,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "LV",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o18",
+   "node": "offense_analyst",
+   "tool": "average_depth_of_target",
+   "args": {
+    "team": "SEA",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 6.839160839160839,
+    "n_plays": 286,
+    "query_meta": {
+     "tool": "average_depth_of_target",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "yards",
+     "definition": "Mean air yards per pass attempt.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o19",
+   "node": "offense_analyst",
+   "tool": "usage_leaders",
+   "args": {
+    "team": "SEA",
+    "kind": "target",
+    "top_n": 5,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "J.Smith-Njigba",
+      "player_id": "00-0038543",
+      "count": 99,
+      "share": 35.74007220216607
+     },
+     {
+      "player": "A.Barner",
+      "player_id": "00-0039793",
+      "count": 38,
+      "share": 13.71841155234657
+     },
+     {
+      "player": "C.Kupp",
+      "player_id": "00-0033908",
+      "count": 34,
+      "share": 12.274368231046932
+     },
+     {
+      "player": "R.Shaheed",
+      "player_id": "00-0037545",
+      "count": 30,
+      "share": 10.830324909747292
+     },
+     {
+      "player": "T.Horton",
+      "player_id": "00-0040648",
+      "count": 19,
+      "share": 6.859205776173285
+     }
+    ],
+    "n_plays": 277,
+    "query_meta": {
+     "tool": "usage_leaders",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "kind": "target",
+      "top_n": 5
+     },
+     "unit": "players",
+     "definition": "Top 5 players by team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o20",
+   "node": "offense_analyst",
+   "tool": "third_down_conversion_rate",
+   "args": {
+    "team": "SEA",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 37.719298245614034,
+    "n_plays": 114,
+    "query_meta": {
+     "tool": "third_down_conversion_rate",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Percent of third-down plays converted, by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o21",
+   "node": "offense_analyst",
+   "tool": "red_zone_td_rate",
+   "args": {
+    "team": "SEA",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 53.57142857142857,
+    "n_plays": 28,
+    "query_meta": {
+     "tool": "red_zone_td_rate",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Percent of red-zone drives ending in a TD, by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o22",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "SEA",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 0.07571066719136475,
+    "n_plays": 316,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o23",
+   "node": "offense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "LV",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 9.171597633136095,
+    "n_plays": 338,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "LV",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o24",
+   "node": "offense_analyst",
+   "tool": "average_depth_of_target",
+   "args": {
+    "team": "LV",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 8.006230529595015,
+    "n_plays": 321,
+    "query_meta": {
+     "tool": "average_depth_of_target",
+     "args": {
+      "team": "LV",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "yards",
+     "definition": "Mean air yards per pass attempt.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o25",
+   "node": "offense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "third_down_conversion_rate",
+    "team": "SEA",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 20,
+    "n_plays": 114,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "third_down_conversion_rate",
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "rank",
+     "metric": "third_down_conversion_rate",
+     "metric_args": {
+      "side": "offense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (highest)",
+     "team_value": 37.719298245614034,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o26",
+   "node": "offense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "red_zone_td_rate",
+    "team": "SEA",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 23,
+    "n_plays": 28,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "red_zone_td_rate",
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "rank",
+     "metric": "red_zone_td_rate",
+     "metric_args": {
+      "side": "offense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (highest)",
+     "team_value": 53.57142857142857,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o27",
+   "node": "offense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "pass_rate",
+    "team": "SEA",
+    "early_downs_only": true,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 29,
+    "n_plays": 433,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "pass_rate",
+      "team": "SEA",
+      "season": 2026,
+      "through_week": 9,
+      "early_downs_only": true
+     },
+     "unit": "rank",
+     "metric": "pass_rate",
+     "metric_args": {
+      "early_downs_only": true
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "highest",
+     "team_value": 49.88452655889146,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o28",
+   "node": "offense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "explosive_play_rate",
+    "team": "LV",
+    "play_kind": "pass",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 20,
+    "n_plays": 315,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "explosive_play_rate",
+      "team": "LV",
+      "season": 2026,
+      "through_week": 9,
+      "play_kind": "pass",
+      "side": "defense"
+     },
+     "unit": "rank",
+     "metric": "explosive_play_rate",
+     "metric_args": {
+      "play_kind": "pass",
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (lowest)",
+     "team_value": 8.88888888888889,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o29",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "LV",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 0.11565948364185676,
+    "n_plays": 338,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "LV",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  }
+ ],
+ "usage": [
+  {
+   "node": "planner",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 586,
+   "cache_read_input_tokens": 540,
+   "cache_creation_input_tokens": 138,
+   "latency_s": 4.018725532805547
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 2064,
+   "cache_read_input_tokens": 5976,
+   "cache_creation_input_tokens": 375,
+   "latency_s": 6.944969064090401
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 4775,
+   "cache_read_input_tokens": 6351,
+   "cache_creation_input_tokens": 5197,
+   "latency_s": 19.589351701783016
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 116,
+   "cache_read_input_tokens": 2987,
+   "cache_creation_input_tokens": 442,
+   "latency_s": 1.4105717071797699
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 729,
+   "cache_read_input_tokens": 3429,
+   "cache_creation_input_tokens": 1018,
+   "latency_s": 2.766362447058782
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 4369,
+   "cache_read_input_tokens": 4447,
+   "cache_creation_input_tokens": 1590,
+   "latency_s": 16.366394554963335
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 1199,
+   "cache_read_input_tokens": 7496,
+   "cache_creation_input_tokens": 358,
+   "latency_s": 4.118611410958692
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 852,
+   "cache_read_input_tokens": 7854,
+   "cache_creation_input_tokens": 2977,
+   "latency_s": 3.232562744989991
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 707,
+   "cache_read_input_tokens": 10831,
+   "cache_creation_input_tokens": 2385,
+   "latency_s": 3.2563402191735804
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 5837,
+   "cache_read_input_tokens": 13216,
+   "cache_creation_input_tokens": 1449,
+   "latency_s": 22.39440690493211
+  },
+  {
+   "node": "matchup_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 6610,
+   "cache_read_input_tokens": 6451,
+   "cache_creation_input_tokens": 4111,
+   "latency_s": 28.397307571955025
+  },
+  {
+   "node": "matchup_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 3349,
+   "cache_read_input_tokens": 6451,
+   "cache_creation_input_tokens": 5308,
+   "latency_s": 11.790310669923201
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 4428,
+   "cache_read_input_tokens": 7496,
+   "cache_creation_input_tokens": 2069,
+   "latency_s": 15.04796897387132
+  },
+  {
+   "node": "editor",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 8277,
+   "cache_read_input_tokens": 747,
+   "cache_creation_input_tokens": 5047,
+   "latency_s": 29.381857527885586
+  }
+ ],
+ "cost_usd": {
+  "total": 0.02685412,
+  "by_node": {
+   "planner": 0.00031604999999999996,
+   "defense_analyst": 0.00423987,
+   "injury_analyst": 0.0030976799999999994,
+   "offense_analyst": 0.008136580000000001,
+   "matchup_analyst": 0.006286695,
+   "editor": 0.004777245
+  }
+ }
+}

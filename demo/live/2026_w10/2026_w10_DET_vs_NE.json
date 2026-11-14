@@ -1,0 +1,8050 @@
+{
+ "config": "full",
+ "repeat": 1,
+ "created_at": "2026-11-12T01:31:15+00:00",
+ "models": {
+  "planner": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "offense_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "defense_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "injury_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "matchup_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "medium"
+  },
+  "fact_checker": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "editor": {
+   "model": "claude-haiku-5-5",
+   "effort": "medium"
+  },
+  "single_agent": {
+   "model": "claude-haiku-5-5",
+   "effort": "medium"
+  }
+ },
+ "max_revision_loops": 2,
+ "request": {
+  "team": "DET",
+  "opponent": "NE",
+  "season": 2026,
+  "week": 10,
+  "through_week": 9
+ },
+ "plan": {
+  "offense_focus": [
+   "How does NE's pass rate by down and distance compare to league average, and where does DET's defense give up the most EPA per dropback?",
+   "Do NE's explosive pass plays (depth of target past 20 air yards) come mainly on play action or motion looks that DET's defense must account for?",
+   "Which run directions and downs produce NE's best success rate, and how does that line up against DET's run defense by gap?",
+   "How often does NE use screens or RPOs on early downs, and do those plays hold up in success rate against DET?",
+   "What are NE's third down and red zone conversion rates, and do they rely on a particular target or rush share pattern?"
+  ],
+  "defense_focus": [
+   "How does NE's defense rank in EPA and success rate allowed against the pass, and which DET offensive looks (play action, motion, depth) hurt it most?",
+   "What is NE's blitz rate and sack plus QB hit total, and does DET's offense protect well enough to handle that pressure?",
+   "Where does NE's defense allow explosive plays (depth of target and run direction), and which DET skill players are most likely to exploit it?",
+   "Does NE's box count and run defense success rate on early downs suggest DET should lean on the run or stay balanced?",
+   "How does NE's third down and red zone defense rank, and where does DET's offense stall most often in those situations?"
+  ],
+  "injury_focus": [
+   "Which NE starters or key rotational players are on the latest injury report, and what are their snap and target or rush shares that would need replacing?",
+   "Which DET starters or key rotational players are on the latest injury report, and how much of their snap, target, or rush share would shift to others?",
+   "Given the injury statuses, which NE offensive or defensive units would lose the most production, and does that change the pass or run tendencies from the earlier analysis?",
+   "Are any DET pass rushers, defensive backs, or run defenders limited, and does that affect how NE's offense would attack their weakest unit?"
+  ]
+ },
+ "draft": {
+  "defense_analyst": {
+   "role": "defense_analyst",
+   "prose": "NE's pass defense allows 0.15 EPA per dropback [dc1] on 321 pass plays [dc2] and a 48.0% success rate [dc3]. Across all plays, NE ranks 23rd in EPA allowed [dc4] and 18th in success allowed [dc5]. Expect a heavy pressure look: NE blitzes on 36.4% of dropbacks [dc6], 9th-highest in the league [dc7], and averages 4.5 pass rushers [dc8], with a 16.2% pressure proxy [dc9] and 7.8% sacks [dc10]. DET has allowed a 16.4% pressure proxy [dc11] and a 6.4% sack rate [dc12] over 299 dropbacks [dc13], so the quick-release game matters against that heat. DET's pass offense has 0.21 EPA per play [dc14], while its run offense sits at -0.04 [dc15]. NE allows a 37.4% run success rate [dc16] on 211 run plays [dc17] with 6.6 defenders in the box [dc18], and 9.5% of runs gain 10-plus [dc19]. The explosive threat is through the air: NE allows 20-plus gains on 10.0% of passes [dc20], and its overall explosive rate ranks 28th [dc21]. On third down NE allows conversions on 37.6% of attempts [dc22] over 109 plays [dc23], ranking 11th [dc24]. In the red zone it allows touchdowns on 58.6% of drives [dc25], but that is a small sample of 29 drives [dc26], ranking 14th [dc27]. Game plan: stay balanced early to keep NE's light box honest, then attack the downfield passing lanes where NE gives up explosives, using quick throws to beat the blitz.",
+   "claims": [
+    {
+     "claim_id": "dc1",
+     "text": "NE defense EPA allowed per pass play",
+     "stated_value": 0.15,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc2",
+     "text": "NE defense pass plays sample size for EPA allowed",
+     "stated_value": 321.0,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc3",
+     "text": "NE defense pass success rate allowed (percent of pass plays with EPA above 0)",
+     "stated_value": 48.0,
+     "tool_call_id": "d2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc4",
+     "text": "NE defense EPA allowed rank across all plays (1 is best)",
+     "stated_value": 23.0,
+     "tool_call_id": "d22",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc5",
+     "text": "NE defense success rate allowed rank across all plays (1 is best)",
+     "stated_value": 18.0,
+     "tool_call_id": "d28",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc6",
+     "text": "NE defense blitz rate (share of dropbacks with 5+ pass rushers)",
+     "stated_value": 36.4,
+     "tool_call_id": "d3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc7",
+     "text": "NE defense blitz rate rank (1 is highest)",
+     "stated_value": 9.0,
+     "tool_call_id": "d24",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc8",
+     "text": "NE defense average pass rushers per dropback",
+     "stated_value": 4.5,
+     "tool_call_id": "d12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc9",
+     "text": "NE defense pressure proxy rate (sacks plus QB hits per dropback)",
+     "stated_value": 16.2,
+     "tool_call_id": "d4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc10",
+     "text": "NE defense sack rate per dropback",
+     "stated_value": 7.8,
+     "tool_call_id": "d5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc11",
+     "text": "DET offense pressure proxy rate allowed (sacks plus QB hits per dropback)",
+     "stated_value": 16.4,
+     "tool_call_id": "d16",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc12",
+     "text": "DET offense sack rate allowed per dropback",
+     "stated_value": 6.4,
+     "tool_call_id": "d17",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc13",
+     "text": "DET offense dropback sample size for pressure and sack rates",
+     "stated_value": 299.0,
+     "tool_call_id": "d16",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc14",
+     "text": "DET offense EPA per pass play",
+     "stated_value": 0.21,
+     "tool_call_id": "d14",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc15",
+     "text": "DET offense EPA per run play",
+     "stated_value": -0.04,
+     "tool_call_id": "d15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc16",
+     "text": "NE defense run success rate allowed (percent of run plays with EPA above 0)",
+     "stated_value": 37.4,
+     "tool_call_id": "d9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc17",
+     "text": "NE defense run plays sample size",
+     "stated_value": 211.0,
+     "tool_call_id": "d9",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc18",
+     "text": "NE defense average defenders in the box on run plays",
+     "stated_value": 6.6,
+     "tool_call_id": "d8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc19",
+     "text": "NE defense explosive run rate allowed (10-plus yard runs)",
+     "stated_value": 9.5,
+     "tool_call_id": "d7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc20",
+     "text": "NE defense explosive pass rate allowed (20-plus yard passes)",
+     "stated_value": 10.0,
+     "tool_call_id": "d6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc21",
+     "text": "NE defense overall explosive play rate allowed rank (1 is best)",
+     "stated_value": 28.0,
+     "tool_call_id": "d33",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc22",
+     "text": "NE defense third-down conversion rate allowed",
+     "stated_value": 37.6,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc23",
+     "text": "NE defense third-down plays sample size",
+     "stated_value": 109.0,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc24",
+     "text": "NE defense third-down conversion allowed rank (1 is best)",
+     "stated_value": 11.0,
+     "tool_call_id": "d26",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc25",
+     "text": "NE defense red zone TD rate allowed (percent of red zone drives ending in TD)",
+     "stated_value": 58.6,
+     "tool_call_id": "d11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc26",
+     "text": "NE defense red zone drive sample size",
+     "stated_value": 29.0,
+     "tool_call_id": "d11",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc27",
+     "text": "NE defense red zone TD allowed rank (1 is best)",
+     "stated_value": 14.0,
+     "tool_call_id": "d27",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "injury_analyst": {
+   "role": "injury_analyst",
+   "prose": "NE, week 9 report: A.J. Brown is Out [ic1] with an ankle injury, and RB TreVeyon Henderson is Out [ic2] with an illness. Henderson carries 24.0% of team rushes [ic3] over 217 rushing plays [ic4], so NE's run game loses its main back. TE Hunter Henry is Questionable [ic5] and takes 14.0% of targets [ic6] on 264 team targets [ic7]. DET, week 9 report: LB Jack Campbell is Out [ic8] and has played 96.7% of snaps per game [ic9] over 7 games [ic10]. WR Amon-Ra St. Brown is Questionable [ic11] and draws 32.0% of targets [ic12] on 269 team targets [ic13]. DE DJ Wonnum [ic14] and CB D.J. Reed [ic15] are also Out. Expect NE to lean on its healthy backs and tight ends, and expect DET's linebacker replacement to be tested in run defense.",
+   "claims": [
+    {
+     "claim_id": "ic1",
+     "text": "NE injury report status for WR A.J. Brown, week 9 report",
+     "stated_value": "Out",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic2",
+     "text": "NE injury report status for RB TreVeyon Henderson, week 9 report",
+     "stated_value": "Out",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic3",
+     "text": "TreVeyon Henderson share of NE team rushing attempts, weeks 1-9",
+     "stated_value": 24.0,
+     "tool_call_id": "i4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic4",
+     "text": "NE team rushing attempts, weeks 1-9 (sample base for Henderson rush share)",
+     "stated_value": 217.0,
+     "tool_call_id": "i4",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic5",
+     "text": "NE injury report status for TE Hunter Henry, week 9 report",
+     "stated_value": "Questionable",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic6",
+     "text": "Hunter Henry share of NE team targets, weeks 1-9",
+     "stated_value": 14.0,
+     "tool_call_id": "i9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic7",
+     "text": "NE team targets, weeks 1-9 (sample base for Henry target share)",
+     "stated_value": 264.0,
+     "tool_call_id": "i9",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic8",
+     "text": "DET injury report status for LB Jack Campbell, week 9 report",
+     "stated_value": "Out",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic9",
+     "text": "Jack Campbell average share of DET defensive snaps per game, weeks 1-9",
+     "stated_value": 96.7,
+     "tool_call_id": "i8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic10",
+     "text": "Games played by Jack Campbell, weeks 1-9 (sample base for snap share)",
+     "stated_value": 7.0,
+     "tool_call_id": "i8",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic11",
+     "text": "DET injury report status for WR Amon-Ra St. Brown, week 9 report",
+     "stated_value": "Questionable",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic12",
+     "text": "Amon-Ra St. Brown share of DET team targets, weeks 1-9",
+     "stated_value": 32.0,
+     "tool_call_id": "i10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic13",
+     "text": "DET team targets, weeks 1-9 (sample base for St. Brown target share)",
+     "stated_value": 269.0,
+     "tool_call_id": "i10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic14",
+     "text": "DET injury report status for DE DJ Wonnum, week 9 report",
+     "stated_value": "Out",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic15",
+     "text": "DET injury report status for CB D.J. Reed, week 9 report",
+     "stated_value": "Out",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "offense_analyst": {
+   "role": "offense_analyst",
+   "prose": "NE is a pass-leaning offense: it drops back on 60.2% of plays [oc1] over 545 plays [oc2], and on early downs it throws 55.6% of the time [oc3] over 426 plays [oc4], 15th of 32 teams [oc5]. On first down the rate is 51.0% [oc6] over 249 plays [oc7], so expect a real run-pass mix early. The passing game is efficient at 0.15 EPA per dropback [oc8] over 328 plays [oc9]. DET's pass defense allows 0.17 EPA per dropback [oc10] over 351 plays [oc11], so this is a matchup NE should win on volume. NE hits 10.7% explosive pass plays [oc12]. Play action appears on 21.0% of dropbacks [oc13] and motion on 57.6% of plays [oc14]; DET allows explosives on 10.0% of pass plays [oc15], so the safeties must respect both the deep shot and the play-action fake. The run game is middling at 37.8% success [oc16] over 217 runs [oc17], against a DET run defense allowing 36.0% [oc18]. Designed runs go between the tackles 42.3% of the time [oc19], left 32.1% [oc20] and right 25.6% [oc21], so DET's interior run fits will be tested most. Screens are 7.0% of dropbacks [oc22] and RPOs 2.6% of plays [oc23], so they are minor tools. Third downs convert at 41.5% [oc24] over 106 plays [oc25]. The red zone TD rate is 56.0% [oc26] but on only 25 drives [oc27], a small sample. Targets funnel to D.Douglas at 17.4% [oc28] and H.Henry at 14.0% [oc29]; R.Stevenson takes 47.0% of rushes [oc30].",
+   "claims": [
+    {
+     "claim_id": "oc1",
+     "text": "NE offense dropback rate, all downs",
+     "stated_value": 60.2,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc2",
+     "text": "NE offense total scrimmage plays in pass-rate sample",
+     "stated_value": 545.0,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc3",
+     "text": "NE offense dropback rate, early downs (1st and 2nd)",
+     "stated_value": 55.6,
+     "tool_call_id": "o19",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc4",
+     "text": "NE early-down plays in sample",
+     "stated_value": 426.0,
+     "tool_call_id": "o19",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc5",
+     "text": "NE early-down pass rate rank among 32 teams (15th, highest is rank 1)",
+     "stated_value": 15.0,
+     "tool_call_id": "o2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc6",
+     "text": "NE offense dropback rate on first down",
+     "stated_value": 51.0,
+     "tool_call_id": "o18",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc7",
+     "text": "NE first-down plays in sample",
+     "stated_value": 249.0,
+     "tool_call_id": "o18",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc8",
+     "text": "NE offense EPA per pass play",
+     "stated_value": 0.15,
+     "tool_call_id": "o23",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc9",
+     "text": "NE pass plays in EPA sample",
+     "stated_value": 328.0,
+     "tool_call_id": "o23",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc10",
+     "text": "DET defense EPA allowed per pass play",
+     "stated_value": 0.17,
+     "tool_call_id": "o16",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc11",
+     "text": "DET defense pass plays faced in sample",
+     "stated_value": 351.0,
+     "tool_call_id": "o16",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc12",
+     "text": "NE offense explosive pass play rate (20+ air yards gains)",
+     "stated_value": 10.7,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc13",
+     "text": "NE play action share of dropbacks",
+     "stated_value": 21.0,
+     "tool_call_id": "o5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc14",
+     "text": "NE pre-snap motion share of scrimmage plays",
+     "stated_value": 57.6,
+     "tool_call_id": "o6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc15",
+     "text": "DET defense explosive pass play rate allowed",
+     "stated_value": 10.0,
+     "tool_call_id": "o24",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc16",
+     "text": "NE offense run success rate",
+     "stated_value": 37.8,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc17",
+     "text": "NE run plays in success sample",
+     "stated_value": 217.0,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc18",
+     "text": "DET defense run success rate allowed",
+     "stated_value": 36.0,
+     "tool_call_id": "o17",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc19",
+     "text": "NE designed runs to the middle share",
+     "stated_value": 42.3,
+     "tool_call_id": "o21",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc20",
+     "text": "NE designed runs to the left share",
+     "stated_value": 32.1,
+     "tool_call_id": "o20",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc21",
+     "text": "NE designed runs to the right share",
+     "stated_value": 25.6,
+     "tool_call_id": "o22",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc22",
+     "text": "NE screen share of dropbacks",
+     "stated_value": 7.0,
+     "tool_call_id": "o9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc23",
+     "text": "NE RPO share of scrimmage plays",
+     "stated_value": 2.6,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc24",
+     "text": "NE offense third-down conversion rate",
+     "stated_value": 41.5,
+     "tool_call_id": "o11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc25",
+     "text": "NE third-down plays in sample",
+     "stated_value": 106.0,
+     "tool_call_id": "o11",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc26",
+     "text": "NE offense red zone drive TD rate",
+     "stated_value": 56.0,
+     "tool_call_id": "o12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc27",
+     "text": "NE red zone drives in sample",
+     "stated_value": 25.0,
+     "tool_call_id": "o12",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc28",
+     "text": "NE target share, D.Douglas",
+     "stated_value": 17.4,
+     "tool_call_id": "o13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc29",
+     "text": "NE target share, H.Henry",
+     "stated_value": 14.0,
+     "tool_call_id": "o13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc30",
+     "text": "NE rush share, R.Stevenson",
+     "stated_value": 47.0,
+     "tool_call_id": "o14",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "matchup_analyst": {
+   "role": "matchup_analyst",
+   "prose": "The game turns on these matchups. Early-down passing against DET's safeties: NE throws on 55.6% of early downs [mc1] over 426 plays [mc2], and play action shows up on 21.0% of dropbacks [mc3]. DET allows explosives on 10.0% of pass plays [mc4] while NE hits 10.7% [mc5], so the safeties must hold depth against play action without biting on the fake. Interior run fits without Jack Campbell: Campbell is Out after playing 96.7% of snaps per game [mc6]. NE runs between the tackles on 42.3% of designed carries [mc7] and succeeds on 37.8% of runs [mc8] against DET's 36.0% run success allowed [mc9]. With Henderson Out, R.Stevenson's 47.0% share of rushes [mc10] becomes the focus, so DET's replacement linebacker must fit gaps first. Pressure versus quick timing: NE blitzes on 36.4% of dropbacks [mc11], and DET has allowed a 16.4% pressure proxy [mc12] with a 6.4% sack rate [mc13]. Lean on quick game and slide protection, and keep the 0.21 EPA per pass play [mc14] working on early downs. Targets: St. Brown is Questionable and draws 32.0% of DET targets [mc15]; if he sits, the plan shifts underneath against an NE defense allowing 0.15 EPA per dropback [mc16] over 321 plays [mc17]. Henry, also Questionable, takes 14.0% of NE targets [mc18], so NE's tight-end usage hinges on his status.",
+   "claims": [
+    {
+     "claim_id": "mc1",
+     "text": "NE offense dropback rate on early downs (1st and 2nd), all play types",
+     "stated_value": 55.6,
+     "tool_call_id": "o19",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc2",
+     "text": "NE offense early-down plays in pass-rate sample",
+     "stated_value": 426.0,
+     "tool_call_id": "o19",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc3",
+     "text": "NE offense play action share of dropbacks",
+     "stated_value": 21.0,
+     "tool_call_id": "o5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc4",
+     "text": "DET defense explosive pass play rate allowed (20-plus yard gains)",
+     "stated_value": 10.0,
+     "tool_call_id": "o24",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc5",
+     "text": "NE offense explosive pass play rate (20-plus yard gains)",
+     "stated_value": 10.7,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc6",
+     "text": "Jack Campbell average share of DET defensive snaps per game, weeks 1-9",
+     "stated_value": 96.7,
+     "tool_call_id": "i8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc7",
+     "text": "NE offense designed runs to the middle share",
+     "stated_value": 42.3,
+     "tool_call_id": "o21",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc8",
+     "text": "NE offense run success rate, all run plays",
+     "stated_value": 37.8,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc9",
+     "text": "DET defense run success rate allowed",
+     "stated_value": 36.0,
+     "tool_call_id": "o17",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc10",
+     "text": "NE offense rush share, R.Stevenson",
+     "stated_value": 47.0,
+     "tool_call_id": "o14",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc11",
+     "text": "NE defense blitz rate (share of dropbacks with 5+ pass rushers)",
+     "stated_value": 36.4,
+     "tool_call_id": "d3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc12",
+     "text": "DET offense pressure proxy rate allowed (sacks plus QB hits per dropback)",
+     "stated_value": 16.4,
+     "tool_call_id": "d16",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc13",
+     "text": "DET offense sack rate allowed per dropback",
+     "stated_value": 6.4,
+     "tool_call_id": "d17",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc14",
+     "text": "DET offense EPA per pass play",
+     "stated_value": 0.21,
+     "tool_call_id": "d14",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc15",
+     "text": "Amon-Ra St. Brown share of DET team targets, weeks 1-9",
+     "stated_value": 32.0,
+     "tool_call_id": "i10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc16",
+     "text": "NE defense EPA allowed per pass play",
+     "stated_value": 0.15,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc17",
+     "text": "NE defense pass plays sample size for EPA allowed",
+     "stated_value": 321.0,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc18",
+     "text": "Hunter Henry share of NE team targets, weeks 1-9",
+     "stated_value": 14.0,
+     "tool_call_id": "o13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  }
+ },
+ "sections": {
+  "defense_analyst": {
+   "role": "defense_analyst",
+   "prose": "NE's pass defense allows 0.15 EPA per dropback [dc1] on 321 pass plays [dc2] and a 48.0% success rate [dc3]. Across all plays, NE ranks 23rd in EPA allowed [dc4] and 18th in success allowed [dc5]. Expect a heavy pressure look: NE blitzes on 36.4% of dropbacks [dc6], 9th-highest in the league [dc7], and averages 4.5 pass rushers [dc8], with a 16.2% pressure proxy [dc9] and 7.8% sacks [dc10]. DET has allowed a 16.4% pressure proxy [dc11] and a 6.4% sack rate [dc12] over 299 dropbacks [dc13], so the quick-release game matters against that heat. DET's pass offense has 0.21 EPA per play [dc14], while its run offense sits at -0.04 [dc15]. NE allows a 37.4% run success rate [dc16] on 211 run plays [dc17] with 6.6 defenders in the box [dc18], and 9.5% of runs gain 10-plus [dc19]. The explosive threat is through the air: NE allows 20-plus gains on 10.0% of passes [dc20], and its overall explosive rate ranks 28th [dc21]. On third down NE allows conversions on 37.6% of attempts [dc22] over 109 plays [dc23], ranking 11th [dc24]. In the red zone it allows touchdowns on 58.6% of drives [dc25], but that is a small sample of 29 drives [dc26], ranking 14th [dc27]. Game plan: stay balanced early to keep NE's light box honest, then attack the downfield passing lanes where NE gives up explosives, using quick throws to beat the blitz.",
+   "claims": [
+    {
+     "claim_id": "dc1",
+     "text": "NE defense EPA allowed per pass play",
+     "stated_value": 0.15,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc2",
+     "text": "NE defense pass plays sample size for EPA allowed",
+     "stated_value": 321.0,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc3",
+     "text": "NE defense pass success rate allowed (percent of pass plays with EPA above 0)",
+     "stated_value": 48.0,
+     "tool_call_id": "d2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc4",
+     "text": "NE defense EPA allowed rank across all plays (1 is best)",
+     "stated_value": 23.0,
+     "tool_call_id": "d22",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc5",
+     "text": "NE defense success rate allowed rank across all plays (1 is best)",
+     "stated_value": 18.0,
+     "tool_call_id": "d28",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc6",
+     "text": "NE defense blitz rate (share of dropbacks with 5+ pass rushers)",
+     "stated_value": 36.4,
+     "tool_call_id": "d3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc7",
+     "text": "NE defense blitz rate rank (1 is highest)",
+     "stated_value": 9.0,
+     "tool_call_id": "d24",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc8",
+     "text": "NE defense average pass rushers per dropback",
+     "stated_value": 4.5,
+     "tool_call_id": "d12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc9",
+     "text": "NE defense pressure proxy rate (sacks plus QB hits per dropback)",
+     "stated_value": 16.2,
+     "tool_call_id": "d4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc10",
+     "text": "NE defense sack rate per dropback",
+     "stated_value": 7.8,
+     "tool_call_id": "d5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc11",
+     "text": "DET offense pressure proxy rate allowed (sacks plus QB hits per dropback)",
+     "stated_value": 16.4,
+     "tool_call_id": "d16",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc12",
+     "text": "DET offense sack rate allowed per dropback",
+     "stated_value": 6.4,
+     "tool_call_id": "d17",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc13",
+     "text": "DET offense dropback sample size for pressure and sack rates",
+     "stated_value": 299.0,
+     "tool_call_id": "d16",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc14",
+     "text": "DET offense EPA per pass play",
+     "stated_value": 0.21,
+     "tool_call_id": "d14",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc15",
+     "text": "DET offense EPA per run play",
+     "stated_value": -0.04,
+     "tool_call_id": "d15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc16",
+     "text": "NE defense run success rate allowed (percent of run plays with EPA above 0)",
+     "stated_value": 37.4,
+     "tool_call_id": "d9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc17",
+     "text": "NE defense run plays sample size",
+     "stated_value": 211.0,
+     "tool_call_id": "d9",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc18",
+     "text": "NE defense average defenders in the box on run plays",
+     "stated_value": 6.6,
+     "tool_call_id": "d8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc19",
+     "text": "NE defense explosive run rate allowed (10-plus yard runs)",
+     "stated_value": 9.5,
+     "tool_call_id": "d7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc20",
+     "text": "NE defense explosive pass rate allowed (20-plus yard passes)",
+     "stated_value": 10.0,
+     "tool_call_id": "d6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc21",
+     "text": "NE defense overall explosive play rate allowed rank (1 is best)",
+     "stated_value": 28.0,
+     "tool_call_id": "d33",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc22",
+     "text": "NE defense third-down conversion rate allowed",
+     "stated_value": 37.6,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc23",
+     "text": "NE defense third-down plays sample size",
+     "stated_value": 109.0,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc24",
+     "text": "NE defense third-down conversion allowed rank (1 is best)",
+     "stated_value": 11.0,
+     "tool_call_id": "d26",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc25",
+     "text": "NE defense red zone TD rate allowed (percent of red zone drives ending in TD)",
+     "stated_value": 58.6,
+     "tool_call_id": "d11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc26",
+     "text": "NE defense red zone drive sample size",
+     "stated_value": 29.0,
+     "tool_call_id": "d11",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc27",
+     "text": "NE defense red zone TD allowed rank (1 is best)",
+     "stated_value": 14.0,
+     "tool_call_id": "d27",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "injury_analyst": {
+   "role": "injury_analyst",
+   "prose": "NE's week 9 report lists WR A.J. Brown Out [ic1] with an ankle injury and RB TreVeyon Henderson Out [ic2] with an illness. Henderson has taken 24.0% of team rushes [ic3] on 217 team rushing plays [ic4], so NE's run game loses its lead back and the backfield shifts to depth players. TE Hunter Henry is Questionable [ic5] and draws 14.0% of targets [ic6] on 264 team targets [ic7]. DET's week 9 report lists LB Jack Campbell Out [ic8], who has averaged 96.7% of defensive snaps per game [ic9] across 7 games [ic10], so expect a replacement to be tested in run defense. WR Amon-Ra St. Brown is Questionable [ic11] and has drawn 32.0% of targets [ic12] on 269 team targets [ic13]. DE DJ Wonnum [ic14] and CB D.J. Reed [ic15] are also Out.",
+   "claims": [
+    {
+     "claim_id": "ic1",
+     "text": "NE week 9 injury report status for WR A.J. Brown",
+     "stated_value": "Out",
+     "tool_call_id": "i11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic2",
+     "text": "NE week 9 injury report status for RB TreVeyon Henderson",
+     "stated_value": "Out",
+     "tool_call_id": "i11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic3",
+     "text": "TreVeyon Henderson share of NE team rushing attempts, weeks 1-9",
+     "stated_value": 24.0,
+     "tool_call_id": "i13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic4",
+     "text": "NE team rushing attempts, weeks 1-9 (sample base for Henderson rush share)",
+     "stated_value": 217.0,
+     "tool_call_id": "i13",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic5",
+     "text": "NE week 9 injury report status for TE Hunter Henry",
+     "stated_value": "Questionable",
+     "tool_call_id": "i11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic6",
+     "text": "Hunter Henry share of NE team targets, weeks 1-9",
+     "stated_value": 14.0,
+     "tool_call_id": "i14",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic7",
+     "text": "NE team targets, weeks 1-9 (sample base for Henry target share)",
+     "stated_value": 264.0,
+     "tool_call_id": "i14",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic8",
+     "text": "DET week 9 injury report status for LB Jack Campbell",
+     "stated_value": "Out",
+     "tool_call_id": "i12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic9",
+     "text": "Jack Campbell average share of DET defensive snaps per game over seven games played this season",
+     "stated_value": 96.7,
+     "tool_call_id": "i15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic10",
+     "text": "Games played by Jack Campbell this season (sample base for snap share)",
+     "stated_value": 7.0,
+     "tool_call_id": "i15",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic11",
+     "text": "DET week 9 injury report status for WR Amon-Ra St. Brown",
+     "stated_value": "Questionable",
+     "tool_call_id": "i12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic12",
+     "text": "Amon-Ra St. Brown share of DET team targets, weeks 1-9",
+     "stated_value": 32.0,
+     "tool_call_id": "i18",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic13",
+     "text": "DET team targets, weeks 1-9 (sample base for St. Brown target share)",
+     "stated_value": 269.0,
+     "tool_call_id": "i18",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic14",
+     "text": "DET week 9 injury report status for DE DJ Wonnum",
+     "stated_value": "Out",
+     "tool_call_id": "i12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic15",
+     "text": "DET week 9 injury report status for CB D.J. Reed",
+     "stated_value": "Out",
+     "tool_call_id": "i12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "offense_analyst": {
+   "role": "offense_analyst",
+   "prose": "NE is a pass-leaning offense: it drops back on 60.2% of plays [oc1] over 545 plays [oc2], and on early downs it throws 55.6% of the time [oc3] over 426 plays [oc4], 15th in the league [oc5]. On first down the rate is 51.0% [oc6] over 249 plays [oc7], so expect a real run-pass mix early. The passing game is efficient at 0.15 EPA per dropback [oc8] over 328 plays [oc9], against a DET pass defense allowing 0.17 [oc10] over 351 plays [oc11]. NE hits 10.7% explosive pass plays [oc12]; play action shows on 21.0% of dropbacks [oc13] and motion on 57.6% of plays [oc14], while DET allows explosives on 10.0% of pass plays [oc15], so the safeties must respect both the deep shot and the play-action fake. The run game is middling at 37.8% success [oc16] over 217 runs [oc17], against a DET run defense allowing 36.0% [oc18]. Designed runs go between the tackles 42.3% of the time [oc19], left 32.1% [oc20] and right 25.6% [oc21], so DET's interior run fits will be tested most. Screens are 7.0% of dropbacks [oc22] and RPOs 2.6% of plays [oc23], so they are minor tools. Third downs convert at 41.5% [oc24] over 106 plays [oc25]. The red zone TD rate is 56.0% [oc26] but on only 25 drives [oc27], a small sample. Targets funnel to D.Douglas at 17.4% [oc28] and H.Henry at 14.0% [oc29]; R.Stevenson takes 47.0% of rushes [oc30].",
+   "claims": [
+    {
+     "claim_id": "oc1",
+     "text": "NE offense dropback rate, all downs",
+     "stated_value": 60.2,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc2",
+     "text": "NE offense total scrimmage plays in pass-rate sample",
+     "stated_value": 545.0,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc3",
+     "text": "NE offense dropback rate, early downs (1st and 2nd)",
+     "stated_value": 55.6,
+     "tool_call_id": "o19",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc4",
+     "text": "NE early-down plays in sample",
+     "stated_value": 426.0,
+     "tool_call_id": "o19",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc5",
+     "text": "NE early-down pass rate rank among 32 teams (15th, highest is rank 1)",
+     "stated_value": 15.0,
+     "tool_call_id": "o2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc6",
+     "text": "NE offense dropback rate on first down",
+     "stated_value": 51.0,
+     "tool_call_id": "o18",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc7",
+     "text": "NE first-down plays in sample",
+     "stated_value": 249.0,
+     "tool_call_id": "o18",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc8",
+     "text": "NE offense EPA per pass play",
+     "stated_value": 0.15,
+     "tool_call_id": "o23",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc9",
+     "text": "NE pass plays in EPA sample",
+     "stated_value": 328.0,
+     "tool_call_id": "o23",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc10",
+     "text": "DET defense EPA allowed per pass play",
+     "stated_value": 0.17,
+     "tool_call_id": "o16",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc11",
+     "text": "DET defense pass plays faced in sample",
+     "stated_value": 351.0,
+     "tool_call_id": "o16",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc12",
+     "text": "NE offense explosive pass play rate (20+ air yards gains)",
+     "stated_value": 10.7,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc13",
+     "text": "NE play action share of dropbacks",
+     "stated_value": 21.0,
+     "tool_call_id": "o5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc14",
+     "text": "NE pre-snap motion share of scrimmage plays",
+     "stated_value": 57.6,
+     "tool_call_id": "o6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc15",
+     "text": "DET defense explosive pass play rate allowed",
+     "stated_value": 10.0,
+     "tool_call_id": "o24",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc16",
+     "text": "NE offense run success rate",
+     "stated_value": 37.8,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc17",
+     "text": "NE run plays in success sample",
+     "stated_value": 217.0,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc18",
+     "text": "DET defense run success rate allowed",
+     "stated_value": 36.0,
+     "tool_call_id": "o17",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc19",
+     "text": "NE designed runs to the middle share",
+     "stated_value": 42.3,
+     "tool_call_id": "o21",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc20",
+     "text": "NE designed runs to the left share",
+     "stated_value": 32.1,
+     "tool_call_id": "o20",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc21",
+     "text": "NE designed runs to the right share",
+     "stated_value": 25.6,
+     "tool_call_id": "o22",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc22",
+     "text": "NE screen share of dropbacks",
+     "stated_value": 7.0,
+     "tool_call_id": "o9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc23",
+     "text": "NE RPO share of scrimmage plays",
+     "stated_value": 2.6,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc24",
+     "text": "NE offense third-down conversion rate",
+     "stated_value": 41.5,
+     "tool_call_id": "o11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc25",
+     "text": "NE third-down plays in sample",
+     "stated_value": 106.0,
+     "tool_call_id": "o11",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc26",
+     "text": "NE offense red zone drive TD rate",
+     "stated_value": 56.0,
+     "tool_call_id": "o12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc27",
+     "text": "NE red zone drives in sample",
+     "stated_value": 25.0,
+     "tool_call_id": "o12",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc28",
+     "text": "NE target share, D.Douglas",
+     "stated_value": 17.4,
+     "tool_call_id": "o13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc29",
+     "text": "NE target share, H.Henry",
+     "stated_value": 14.0,
+     "tool_call_id": "o13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc30",
+     "text": "NE rush share, R.Stevenson",
+     "stated_value": 47.0,
+     "tool_call_id": "o14",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "matchup_analyst": {
+   "role": "matchup_analyst",
+   "prose": "Four matchups will decide this game. First, early-down play action against DET's safeties. NE throws on 55.6% of early downs [mc1] over 426 plays [mc2] and fakes on 21.0% of dropbacks [mc3]. DET allows explosives on 10.0% of pass plays [mc4] against NE's 10.7% [mc5], so the safeties must hold depth on play action without biting on the fake. Second, the interior run fit without Jack Campbell. Campbell, Out this week, has averaged 96.7% of defensive snaps [mc6] over 7 games [mc7]. NE runs between the tackles on 42.3% of designed carries [mc8] and succeeds on 37.8% of runs [mc9] against DET's 36.0% run success allowed [mc10]. With Henderson Out, R.Stevenson's 47.0% share of rushes [mc11] becomes the focus, so the replacement linebacker must fit gaps first. Third, pressure against quick timing. NE blitzes on 36.4% of dropbacks [mc12], and DET has allowed a 16.4% pressure proxy [mc13] with a 6.4% sack rate [mc14]. Lean on quick game and slide protection, and keep DET's 0.21 EPA per pass play [mc15] working on early downs. Fourth, the target distribution. St. Brown is Questionable and draws 32.0% of DET targets [mc16]; if he sits, shift the plan underneath against an NE defense allowing 0.15 EPA per dropback [mc17] over 321 plays [mc18].",
+   "claims": [
+    {
+     "claim_id": "mc1",
+     "text": "NE offense dropback rate on early downs (1st and 2nd), all play types",
+     "stated_value": 55.6,
+     "tool_call_id": "o19",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc2",
+     "text": "NE offense early-down plays in pass-rate sample",
+     "stated_value": 426.0,
+     "tool_call_id": "o19",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc3",
+     "text": "NE offense play action share of dropbacks",
+     "stated_value": 21.0,
+     "tool_call_id": "o5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc4",
+     "text": "DET defense explosive pass play rate allowed (20-plus yard gains)",
+     "stated_value": 10.0,
+     "tool_call_id": "o24",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc5",
+     "text": "NE offense explosive pass play rate (20-plus yard gains)",
+     "stated_value": 10.7,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc6",
+     "text": "Jack Campbell average share of DET defensive snaps per game over his games played this season",
+     "stated_value": 96.7,
+     "tool_call_id": "i15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc7",
+     "text": "Games played by Jack Campbell this season (snap-share sample)",
+     "stated_value": 7.0,
+     "tool_call_id": "i15",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc8",
+     "text": "NE offense designed runs to the middle share",
+     "stated_value": 42.3,
+     "tool_call_id": "o21",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc9",
+     "text": "NE offense run success rate, all run plays",
+     "stated_value": 37.8,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc10",
+     "text": "DET defense run success rate allowed",
+     "stated_value": 36.0,
+     "tool_call_id": "o17",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc11",
+     "text": "NE offense rush share, R.Stevenson",
+     "stated_value": 47.0,
+     "tool_call_id": "o14",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc12",
+     "text": "NE defense blitz rate (share of dropbacks with 5+ pass rushers)",
+     "stated_value": 36.4,
+     "tool_call_id": "d3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc13",
+     "text": "DET offense pressure proxy rate allowed (sacks plus QB hits per dropback)",
+     "stated_value": 16.4,
+     "tool_call_id": "d16",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc14",
+     "text": "DET offense sack rate allowed per dropback",
+     "stated_value": 6.4,
+     "tool_call_id": "d17",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc15",
+     "text": "DET offense EPA per pass play",
+     "stated_value": 0.21,
+     "tool_call_id": "d14",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc16",
+     "text": "Amon-Ra St. Brown share of DET team targets, weeks 1-9",
+     "stated_value": 32.0,
+     "tool_call_id": "i18",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc17",
+     "text": "NE defense EPA allowed per pass play",
+     "stated_value": 0.15,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc18",
+     "text": "NE defense pass plays sample size for EPA allowed",
+     "stated_value": 321.0,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    }
+   ],
+   "unsourced": []
+  }
+ },
+ "checks": [
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc16",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc16",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc17",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc17",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc18",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc18",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc19",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc19",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc20",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc20",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc21",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc21",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc22",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc22",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc23",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc23",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc24",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc24",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc25",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc25",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc26",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc26",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc27",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc27",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc16",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc16",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc17",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc17",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc18",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc18",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc19",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc19",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc20",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc20",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc21",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc21",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc22",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc22",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc23",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc23",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc24",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc24",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc25",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc25",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc26",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc26",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc27",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc27",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc28",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc28",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc29",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc29",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc30",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc30",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc16",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc16",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc17",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc17",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc18",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc18",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  }
+ ],
+ "check_log": [
+  {
+   "round": 1,
+   "role": "injury_analyst",
+   "claim_id": "ic9",
+   "check": "wording",
+   "detail": "the text says weeks through 9, the data runs through week 8",
+   "text": "Jack Campbell average share of DET defensive snaps per game, weeks 1-9",
+   "stated_value": 96.7
+  },
+  {
+   "round": 1,
+   "role": "injury_analyst",
+   "claim_id": "ic10",
+   "check": "wording",
+   "detail": "the text says weeks through 9, the data runs through week 8",
+   "text": "Games played by Jack Campbell, weeks 1-9 (sample base for snap share)",
+   "stated_value": 7.0
+  },
+  {
+   "round": 1,
+   "role": "offense_analyst",
+   "claim_id": null,
+   "check": "prose",
+   "detail": "'32' in the prose: unlinked",
+   "text": null,
+   "stated_value": null
+  },
+  {
+   "round": 1,
+   "role": "matchup_analyst",
+   "claim_id": "mc6",
+   "check": "wording",
+   "detail": "the text says weeks through 9, the data runs through week 8",
+   "text": "Jack Campbell average share of DET defensive snaps per game, weeks 1-9",
+   "stated_value": 96.7
+  },
+  {
+   "round": 2,
+   "role": "matchup_analyst",
+   "claim_id": "mc6",
+   "check": "wording",
+   "detail": "the text says weeks through 9, the data runs through week 8",
+   "text": "Jack Campbell average share of DET defensive snaps per game, weeks 1-9 data through week 8",
+   "stated_value": 96.7
+  },
+  {
+   "round": 2,
+   "role": "matchup_analyst",
+   "claim_id": "mc7",
+   "check": "value",
+   "detail": "i8 snap_share gives 96.714 (n_plays 7); stated 7.0",
+   "text": "Games played by Jack Campbell in the snap-share sample",
+   "stated_value": 7.0
+  }
+ ],
+ "checks_run": 3,
+ "dropped": [],
+ "report": {
+  "title": "DET at NE Scouting Report: Week Ten Preview",
+  "summary": "New England leans on the pass early, and its efficient passing game meets a Detroit defense that is exposed to play action and explosive plays. The run game is middling, so Detroit's interior fits are the key concern, especially with Jack Campbell out. New England's blitz-heavy approach will test Detroit's quick game and protection. Detroit should stay balanced early and attack the downfield lanes where New England gives up big plays.",
+  "sections": [
+   {
+    "heading": "Opponent offense",
+    "body": "New England is a pass-leaning offense, dropping back on 60.2% of plays [oc1] across 545 plays [oc2]. On early downs the rate is 55.6% [oc3] over 426 plays [oc4], 15th in the league [oc5], and on first down it is 51.0% [oc6] over 249 plays [oc7], so expect a real run-pass mix early. The passing game is efficient at 0.15 EPA per dropback [oc8] over 328 plays [oc9], against a Detroit pass defense allowing 0.17 [oc10] over 351 plays [oc11]. New England hits 10.7% explosive pass plays [oc12] and shows play action on 21.0% of dropbacks [oc13] and motion on 57.6% of plays [oc14], while Detroit allows explosives on 10.0% of pass plays [oc15], so the safeties must respect both the deep shot and the play-action fake. The run game is middling at 37.8% success [oc16] over 217 runs [oc17], against a Detroit run defense allowing 36.0% [oc18]. Designed runs go between the tackles 42.3% of the time [oc19], left 32.1% [oc20] and right 25.6% [oc21], so Detroit's interior run fits will be tested most. Screens at 7.0% of dropbacks [oc22] and RPOs at 2.6% of plays [oc23] are minor tools. Third downs convert at 41.5% [oc24] over 106 plays [oc25]. The red zone TD rate is 56.0% [oc26] but on only 25 drives [oc27], a small sample. Targets funnel to D.Douglas at 17.4% [oc28] and H.Henry at 14.0% [oc29], and R.Stevenson takes 47.0% of rushes [oc30]."
+   },
+   {
+    "heading": "Opponent defense",
+    "body": "New England's pass defense allows 0.15 EPA per dropback [dc1] on 321 pass plays [dc2] and a 48.0% success rate [dc3]. Across all plays it ranks 23rd in EPA allowed [dc4] and 18th in success allowed [dc5]. Expect a heavy pressure look: New England blitzes on 36.4% of dropbacks [dc6], ranked 9th in the league in blitz rate [dc7], and averages 4.5 pass rushers [dc8], with a 16.2% pressure proxy [dc9] and a 7.8% sack rate [dc10]. Detroit has allowed a 16.4% pressure proxy [dc11] and a 6.4% sack rate [dc12] over 299 dropbacks [dc13], so the quick-release game matters against that heat. Detroit's pass offense has 0.21 EPA per play [dc14], while its run offense sits at -0.04 [dc15]. New England allows a 37.4% run success rate [dc16] on 211 run plays [dc17] with 6.6 defenders in the box [dc18], and 9.5% of runs go for explosive gains [dc19]. The explosive threat is through the air: New England allows explosive passes on 10.0% of attempts [dc20], and its overall explosive rate ranks 28th [dc21]. On third down it allows conversions on 37.6% of attempts [dc22] over 109 plays [dc23], ranking 11th [dc24]. In the red zone it allows touchdowns on 58.6% of drives [dc25], a small sample of 29 drives [dc26], ranking 14th [dc27]. Game plan: stay balanced early to keep the light box honest, then attack the downfield lanes where New England gives up explosives, using quick throws to beat the blitz."
+   },
+   {
+    "heading": "Injuries and availability",
+    "body": "New England's report lists WR A.J. Brown as Out with an ankle injury and RB TreVeyon Henderson as Out with an illness. Henderson has taken 24.0% of team rushes [ic3] on 217 team rushing plays [ic4], so New England's run game loses its lead back and the backfield shifts to depth players. TE Hunter Henry is Questionable and draws 14.0% of targets [ic6] on 264 team targets [ic7]. Detroit's report lists LB Jack Campbell as Out. He has averaged 96.7% of defensive snaps per game [ic9] across 7 games [ic10], so expect a replacement to be tested in run defense. WR Amon-Ra St. Brown is Questionable and has drawn 32.0% of targets [ic12] on 269 team targets [ic13]. DE DJ Wonnum and CB D.J. Reed are also Out."
+   },
+   {
+    "heading": "Key matchups",
+    "body": "Four matchups will decide this game. First, early-down play action against Detroit's safeties. New England throws on 55.6% of early downs [mc1] over 426 plays [mc2] and fakes on 21.0% of dropbacks [mc3]. Detroit allows explosives on 10.0% of pass plays [mc4] against New England's 10.7% [mc5], so the safeties must hold depth on play action without biting on the fake. Second, the interior run fit without Jack Campbell. Campbell, Out this week, has averaged 96.7% of defensive snaps [mc6] over 7 games [mc7]. New England runs between the tackles on 42.3% of designed carries [mc8] and succeeds on 37.8% of runs [mc9] against Detroit's 36.0% run success allowed [mc10]. With Henderson Out, R.Stevenson's 47.0% share of rushes [mc11] becomes the focus, so the replacement linebacker must fit gaps first. Third, pressure against quick timing. New England blitzes on 36.4% of dropbacks [mc12], and Detroit has allowed a 16.4% pressure proxy [mc13] with a 6.4% sack rate [mc14]. Lean on quick game and slide protection, and keep Detroit's 0.21 EPA per pass play [mc15] working on early downs. Fourth, the target distribution. St. Brown is Questionable and draws 32.0% of Detroit's targets [mc16]; if he sits, shift the plan underneath against a New England defense allowing 0.15 EPA per dropback [mc17] over 321 plays [mc18]."
+   }
+  ]
+ },
+ "number_checks": [
+  {
+   "mention": {
+    "text": "60.2%",
+    "value": 60.2,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 496,
+    "claim_id": "oc1",
+    "group": 5,
+    "group_ids": [
+     "oc1"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "545",
+    "value": 545.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 524,
+    "claim_id": "oc2",
+    "group": 7,
+    "group_ids": [
+     "oc2"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "55.6%",
+    "value": 55.6,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 568,
+    "claim_id": "oc3",
+    "group": 10,
+    "group_ids": [
+     "oc3"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "426",
+    "value": 426.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 585,
+    "claim_id": "oc4",
+    "group": 12,
+    "group_ids": [
+     "oc4"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "15th",
+    "value": 15.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 602,
+    "claim_id": "oc5",
+    "group": 14,
+    "group_ids": [
+     "oc5"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "51.0%",
+    "value": 51.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 652,
+    "claim_id": "oc6",
+    "group": 16,
+    "group_ids": [
+     "oc6"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "249",
+    "value": 249.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 669,
+    "claim_id": "oc7",
+    "group": 18,
+    "group_ids": [
+     "oc7"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "0.15",
+    "value": 0.15,
+    "kind": "number",
+    "decimals": 2,
+    "start": 756,
+    "claim_id": "oc8",
+    "group": 21,
+    "group_ids": [
+     "oc8"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "328",
+    "value": 328.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 789,
+    "claim_id": "oc9",
+    "group": 23,
+    "group_ids": [
+     "oc9"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "0.17",
+    "value": 0.17,
+    "kind": "number",
+    "decimals": 2,
+    "start": 846,
+    "claim_id": "oc10",
+    "group": 25,
+    "group_ids": [
+     "oc10"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "351",
+    "value": 351.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 863,
+    "claim_id": "oc11",
+    "group": 27,
+    "group_ids": [
+     "oc11"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "10.7%",
+    "value": 10.7,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 898,
+    "claim_id": "oc12",
+    "group": 30,
+    "group_ids": [
+     "oc12"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "21.0%",
+    "value": 21.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 957,
+    "claim_id": "oc13",
+    "group": 32,
+    "group_ids": [
+     "oc13"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "57.6%",
+    "value": 57.6,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 997,
+    "claim_id": "oc14",
+    "group": 34,
+    "group_ids": [
+     "oc14"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "10.0%",
+    "value": 10.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1055,
+    "claim_id": "oc15",
+    "group": 36,
+    "group_ids": [
+     "oc15"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "37.8%",
+    "value": 37.8,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1185,
+    "claim_id": "oc16",
+    "group": 39,
+    "group_ids": [
+     "oc16"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "217",
+    "value": 217.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1211,
+    "claim_id": "oc17",
+    "group": 41,
+    "group_ids": [
+     "oc17"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "36.0%",
+    "value": 36.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1267,
+    "claim_id": "oc18",
+    "group": 43,
+    "group_ids": [
+     "oc18"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "42.3%",
+    "value": 42.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1318,
+    "claim_id": "oc19",
+    "group": 46,
+    "group_ids": [
+     "oc19"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "32.1%",
+    "value": 32.1,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1349,
+    "claim_id": "oc20",
+    "group": 48,
+    "group_ids": [
+     "oc20"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "25.6%",
+    "value": 25.6,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1372,
+    "claim_id": "oc21",
+    "group": 50,
+    "group_ids": [
+     "oc21"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "7.0%",
+    "value": 7.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1449,
+    "claim_id": "oc22",
+    "group": 53,
+    "group_ids": [
+     "oc22"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "2.6%",
+    "value": 2.6,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1486,
+    "claim_id": "oc23",
+    "group": 55,
+    "group_ids": [
+     "oc23"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "41.5%",
+    "value": 41.5,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1547,
+    "claim_id": "oc24",
+    "group": 58,
+    "group_ids": [
+     "oc24"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "106",
+    "value": 106.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1565,
+    "claim_id": "oc25",
+    "group": 60,
+    "group_ids": [
+     "oc25"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "56.0%",
+    "value": 56.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1607,
+    "claim_id": "oc26",
+    "group": 63,
+    "group_ids": [
+     "oc26"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "25",
+    "value": 25.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1632,
+    "claim_id": "oc27",
+    "group": 65,
+    "group_ids": [
+     "oc27"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "17.4%",
+    "value": 17.4,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1697,
+    "claim_id": "oc28",
+    "group": 68,
+    "group_ids": [
+     "oc28"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "14.0%",
+    "value": 14.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1725,
+    "claim_id": "oc29",
+    "group": 70,
+    "group_ids": [
+     "oc29"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "47.0%",
+    "value": 47.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1761,
+    "claim_id": "oc30",
+    "group": 72,
+    "group_ids": [
+     "oc30"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "0.15",
+    "value": 0.15,
+    "kind": "number",
+    "decimals": 2,
+    "start": 1820,
+    "claim_id": "dc1",
+    "group": 75,
+    "group_ids": [
+     "dc1"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "321",
+    "value": 321.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1851,
+    "claim_id": "dc2",
+    "group": 77,
+    "group_ids": [
+     "dc2"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "48.0%",
+    "value": 48.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1878,
+    "claim_id": "dc3",
+    "group": 79,
+    "group_ids": [
+     "dc3"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "23rd",
+    "value": 23.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 1930,
+    "claim_id": "dc4",
+    "group": 82,
+    "group_ids": [
+     "dc4"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "18th",
+    "value": 18.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 1960,
+    "claim_id": "dc5",
+    "group": 84,
+    "group_ids": [
+     "dc5"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "36.4%",
+    "value": 36.4,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2044,
+    "claim_id": "dc6",
+    "group": 87,
+    "group_ids": [
+     "dc6"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "9th",
+    "value": 9.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 2077,
+    "claim_id": "dc7",
+    "group": 89,
+    "group_ids": [
+     "dc7"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "4.5",
+    "value": 4.5,
+    "kind": "number",
+    "decimals": 1,
+    "start": 2129,
+    "claim_id": "dc8",
+    "group": 91,
+    "group_ids": [
+     "dc8"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "16.2%",
+    "value": 16.2,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2160,
+    "claim_id": "dc9",
+    "group": 93,
+    "group_ids": [
+     "dc9"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "7.8%",
+    "value": 7.8,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2193,
+    "claim_id": "dc10",
+    "group": 95,
+    "group_ids": [
+     "dc10"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "16.4%",
+    "value": 16.4,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2238,
+    "claim_id": "dc11",
+    "group": 98,
+    "group_ids": [
+     "dc11"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "6.4%",
+    "value": 6.4,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2272,
+    "claim_id": "dc12",
+    "group": 100,
+    "group_ids": [
+     "dc12"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "299",
+    "value": 299.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2299,
+    "claim_id": "dc13",
+    "group": 102,
+    "group_ids": [
+     "dc13"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "0.21",
+    "value": 0.21,
+    "kind": "number",
+    "decimals": 2,
+    "start": 2401,
+    "claim_id": "dc14",
+    "group": 105,
+    "group_ids": [
+     "dc14"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "-0.04",
+    "value": -0.04,
+    "kind": "number",
+    "decimals": 2,
+    "start": 2457,
+    "claim_id": "dc15",
+    "group": 107,
+    "group_ids": [
+     "dc15"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "37.4%",
+    "value": 37.4,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2492,
+    "claim_id": "dc16",
+    "group": 110,
+    "group_ids": [
+     "dc16"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "211",
+    "value": 211.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2525,
+    "claim_id": "dc17",
+    "group": 112,
+    "group_ids": [
+     "dc17"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "6.6",
+    "value": 6.6,
+    "kind": "number",
+    "decimals": 1,
+    "start": 2551,
+    "claim_id": "dc18",
+    "group": 114,
+    "group_ids": [
+     "dc18"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "9.5%",
+    "value": 9.5,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2588,
+    "claim_id": "dc19",
+    "group": 116,
+    "group_ids": [
+     "dc19"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "10.0%",
+    "value": 10.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2712,
+    "claim_id": "dc20",
+    "group": 119,
+    "group_ids": [
+     "dc20"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "28th",
+    "value": 28.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 2775,
+    "claim_id": "dc21",
+    "group": 121,
+    "group_ids": [
+     "dc21"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "37.6%",
+    "value": 37.6,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2827,
+    "claim_id": "dc22",
+    "group": 124,
+    "group_ids": [
+     "dc22"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "109",
+    "value": 109.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2857,
+    "claim_id": "dc23",
+    "group": 126,
+    "group_ids": [
+     "dc23"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "11th",
+    "value": 11.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 2883,
+    "claim_id": "dc24",
+    "group": 128,
+    "group_ids": [
+     "dc24"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "58.6%",
+    "value": 58.6,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2936,
+    "claim_id": "dc25",
+    "group": 131,
+    "group_ids": [
+     "dc25"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "29",
+    "value": 29.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2978,
+    "claim_id": "dc26",
+    "group": 133,
+    "group_ids": [
+     "dc26"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "14th",
+    "value": 14.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 3004,
+    "claim_id": "dc27",
+    "group": 135,
+    "group_ids": [
+     "dc27"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "24.0%",
+    "value": 24.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3327,
+    "claim_id": "ic3",
+    "group": 141,
+    "group_ids": [
+     "ic3"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "217",
+    "value": 217.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 3357,
+    "claim_id": "ic4",
+    "group": 143,
+    "group_ids": [
+     "ic4"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "14.0%",
+    "value": 14.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3518,
+    "claim_id": "ic6",
+    "group": 146,
+    "group_ids": [
+     "ic6"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "264",
+    "value": 264.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 3544,
+    "claim_id": "ic7",
+    "group": 148,
+    "group_ids": [
+     "ic7"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "96.7%",
+    "value": 96.7,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3632,
+    "claim_id": "ic9",
+    "group": 152,
+    "group_ids": [
+     "ic9"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "7",
+    "value": 7.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 3679,
+    "claim_id": "ic10",
+    "group": 154,
+    "group_ids": [
+     "ic10"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "32.0%",
+    "value": 32.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3799,
+    "claim_id": "ic12",
+    "group": 158,
+    "group_ids": [
+     "ic12"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "269",
+    "value": 269.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 3826,
+    "claim_id": "ic13",
+    "group": 160,
+    "group_ids": [
+     "ic13"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "55.6%",
+    "value": 55.6,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 4013,
+    "claim_id": "mc1",
+    "group": 167,
+    "group_ids": [
+     "mc1"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "426",
+    "value": 426.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 4045,
+    "claim_id": "mc2",
+    "group": 169,
+    "group_ids": [
+     "mc2"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "21.0%",
+    "value": 21.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 4074,
+    "claim_id": "mc3",
+    "group": 171,
+    "group_ids": [
+     "mc3"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "10.0%",
+    "value": 10.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 4129,
+    "claim_id": "mc4",
+    "group": 174,
+    "group_ids": [
+     "mc4"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "10.7%",
+    "value": 10.7,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 4177,
+    "claim_id": "mc5",
+    "group": 176,
+    "group_ids": [
+     "mc5"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "96.7%",
+    "value": 96.7,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 4355,
+    "claim_id": "mc6",
+    "group": 180,
+    "group_ids": [
+     "mc6"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "7",
+    "value": 7.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 4391,
+    "claim_id": "mc7",
+    "group": 182,
+    "group_ids": [
+     "mc7"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "42.3%",
+    "value": 42.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 4446,
+    "claim_id": "mc8",
+    "group": 185,
+    "group_ids": [
+     "mc8"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "37.8%",
+    "value": 37.8,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 4494,
+    "claim_id": "mc9",
+    "group": 187,
+    "group_ids": [
+     "mc9"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "36.0%",
+    "value": 36.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 4532,
+    "claim_id": "mc10",
+    "group": 189,
+    "group_ids": [
+     "mc10"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "47.0%",
+    "value": 47.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 4600,
+    "claim_id": "mc11",
+    "group": 192,
+    "group_ids": [
+     "mc11"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "36.4%",
+    "value": 36.4,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 4760,
+    "claim_id": "mc12",
+    "group": 196,
+    "group_ids": [
+     "mc12"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "16.4%",
+    "value": 16.4,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 4813,
+    "claim_id": "mc13",
+    "group": 198,
+    "group_ids": [
+     "mc13"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "6.4%",
+    "value": 6.4,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 4848,
+    "claim_id": "mc14",
+    "group": 200,
+    "group_ids": [
+     "mc14"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "0.21",
+    "value": 0.21,
+    "kind": "number",
+    "decimals": 2,
+    "start": 4931,
+    "claim_id": "mc15",
+    "group": 203,
+    "group_ids": [
+     "mc15"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "32.0%",
+    "value": 32.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 5054,
+    "claim_id": "mc16",
+    "group": 208,
+    "group_ids": [
+     "mc16"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "0.15",
+    "value": 0.15,
+    "kind": "number",
+    "decimals": 2,
+    "start": 5166,
+    "claim_id": "mc17",
+    "group": 210,
+    "group_ids": [
+     "mc17"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "321",
+    "value": 321.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 5200,
+    "claim_id": "mc18",
+    "group": 212,
+    "group_ids": [
+     "mc18"
+    ]
+   },
+   "status": "ok"
+  }
+ ],
+ "tool_calls": [
+  {
+   "call_id": "d1",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "NE",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 0.14642383433546344,
+    "n_plays": 321,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d2",
+   "node": "defense_analyst",
+   "tool": "success_rate",
+   "args": {
+    "team": "NE",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 47.97507788161994,
+    "n_plays": 321,
+    "query_meta": {
+     "tool": "success_rate",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays with EPA > 0, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d3",
+   "node": "defense_analyst",
+   "tool": "blitz_rate",
+   "args": {
+    "team": "NE",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 36.44859813084112,
+    "n_plays": 321,
+    "query_meta": {
+     "tool": "blitz_rate",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks faced with 5+ pass rushers (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d4",
+   "node": "defense_analyst",
+   "tool": "pressure_proxy_rate",
+   "args": {
+    "team": "NE",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 16.1993769470405,
+    "n_plays": 321,
+    "query_meta": {
+     "tool": "pressure_proxy_rate",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Pressure proxy: percent of dropbacks with a sack or QB hit (defense). Not true pressure rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d5",
+   "node": "defense_analyst",
+   "tool": "sack_rate",
+   "args": {
+    "team": "NE",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 7.78816199376947,
+    "n_plays": 321,
+    "query_meta": {
+     "tool": "sack_rate",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks ending in a sack (defense).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d6",
+   "node": "defense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "NE",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 9.968847352024921,
+    "n_plays": 321,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d7",
+   "node": "defense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "NE",
+    "side": "defense",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 9.47867298578199,
+    "n_plays": 211,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "run"
+     },
+     "unit": "percent",
+     "definition": "Percent of run plays gaining 20+ yds (pass) or 10+ yds (run), allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d8",
+   "node": "defense_analyst",
+   "tool": "average_box_defenders",
+   "args": {
+    "team": "NE",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 6.578199052132701,
+    "n_plays": 211,
+    "query_meta": {
+     "tool": "average_box_defenders",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "play_kind": "run"
+     },
+     "unit": "defenders",
+     "definition": "Mean defenders in the box on run plays (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d9",
+   "node": "defense_analyst",
+   "tool": "success_rate",
+   "args": {
+    "team": "NE",
+    "side": "defense",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 37.44075829383886,
+    "n_plays": 211,
+    "query_meta": {
+     "tool": "success_rate",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "run"
+     },
+     "unit": "percent",
+     "definition": "Percent of run plays with EPA > 0, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d10",
+   "node": "defense_analyst",
+   "tool": "third_down_conversion_rate",
+   "args": {
+    "team": "NE",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 37.61467889908257,
+    "n_plays": 109,
+    "query_meta": {
+     "tool": "third_down_conversion_rate",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of third-down plays converted, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d11",
+   "node": "defense_analyst",
+   "tool": "red_zone_td_rate",
+   "args": {
+    "team": "NE",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 58.620689655172406,
+    "n_plays": 29,
+    "query_meta": {
+     "tool": "red_zone_td_rate",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of red-zone drives ending in a TD, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d12",
+   "node": "defense_analyst",
+   "tool": "average_pass_rushers",
+   "args": {
+    "team": "NE",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 4.517133956386293,
+    "n_plays": 321,
+    "query_meta": {
+     "tool": "average_pass_rushers",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "rushers",
+     "definition": "Mean pass rushers per dropback faced (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d13",
+   "node": "defense_analyst",
+   "tool": "average_box_defenders",
+   "args": {
+    "team": "NE",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 6.355140186915888,
+    "n_plays": 321,
+    "query_meta": {
+     "tool": "average_box_defenders",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "play_kind": "pass"
+     },
+     "unit": "defenders",
+     "definition": "Mean defenders in the box on pass plays (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d14",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "DET",
+    "side": "offense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 0.21128348956626233,
+    "n_plays": 299,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "DET",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d15",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "DET",
+    "side": "offense",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -0.04373647899722044,
+    "n_plays": 217,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "DET",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "run"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per run play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d16",
+   "node": "defense_analyst",
+   "tool": "pressure_proxy_rate",
+   "args": {
+    "team": "DET",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 16.387959866220736,
+    "n_plays": 299,
+    "query_meta": {
+     "tool": "pressure_proxy_rate",
+     "args": {
+      "team": "DET",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Pressure proxy: percent of dropbacks with a sack or QB hit (offense). Not true pressure rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d17",
+   "node": "defense_analyst",
+   "tool": "sack_rate",
+   "args": {
+    "team": "DET",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 6.354515050167224,
+    "n_plays": 299,
+    "query_meta": {
+     "tool": "sack_rate",
+     "args": {
+      "team": "DET",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks ending in a sack (offense).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d18",
+   "node": "defense_analyst",
+   "tool": "average_box_defenders",
+   "args": {
+    "team": "NE",
+    "play_kind": "all",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 6.443609022556391,
+    "n_plays": 532,
+    "query_meta": {
+     "tool": "average_box_defenders",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "play_kind": "all"
+     },
+     "unit": "defenders",
+     "definition": "Mean defenders in the box on all plays (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d19",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "NE",
+    "side": "defense",
+    "early_downs_only": false,
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 23,
+    "n_plays": 532,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "early_downs_only": false,
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction",
+      "early_downs_only"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": 0.04455036355416936,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d20",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "NE",
+    "side": "defense",
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 23,
+    "n_plays": 532,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": 0.04455036355416936,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d21",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "NE",
+    "side": "defense",
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 23,
+    "n_plays": 532,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": 0.04455036355416936,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d22",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "NE",
+    "side": "defense",
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 23,
+    "n_plays": 532,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": 0.04455036355416936,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d23",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "success_rate",
+    "team": "NE",
+    "side": "defense",
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 18,
+    "n_plays": 532,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "success_rate",
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "success_rate",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": 43.796992481203006,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d24",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "blitz_rate",
+    "team": "NE",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 9,
+    "n_plays": 321,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "blitz_rate",
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "rank",
+     "metric": "blitz_rate",
+     "metric_args": {},
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "highest",
+     "team_value": 36.44859813084112,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d25",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "explosive_play_rate",
+    "team": "NE",
+    "side": "defense",
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 28,
+    "n_plays": 532,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "explosive_play_rate",
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "explosive_play_rate",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": 9.774436090225564,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d26",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "third_down_conversion_rate",
+    "team": "NE",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 11,
+    "n_plays": 109,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "third_down_conversion_rate",
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "rank",
+     "metric": "third_down_conversion_rate",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (lowest)",
+     "team_value": 37.61467889908257,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d27",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "red_zone_td_rate",
+    "team": "NE",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 14,
+    "n_plays": 29,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "red_zone_td_rate",
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "rank",
+     "metric": "red_zone_td_rate",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (lowest)",
+     "team_value": 58.620689655172406,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d28",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "success_rate",
+    "team": "NE",
+    "side": "defense",
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 18,
+    "n_plays": 532,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "success_rate",
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "success_rate",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": 43.796992481203006,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d29",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "NE",
+    "side": "defense",
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 23,
+    "n_plays": 532,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": 0.04455036355416936,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d30",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "NE",
+    "side": "defense",
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 23,
+    "n_plays": 532,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": 0.04455036355416936,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d31",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "NE",
+    "side": "defense",
+    "early_downs_only": false,
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 23,
+    "n_plays": 532,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "early_downs_only": false,
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction",
+      "early_downs_only"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": 0.04455036355416936,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d32",
+   "node": "defense_analyst",
+   "tool": "average_pass_rushers",
+   "args": {
+    "team": "DET",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 4.330484330484331,
+    "n_plays": 351,
+    "query_meta": {
+     "tool": "average_pass_rushers",
+     "args": {
+      "team": "DET",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "rushers",
+     "definition": "Mean pass rushers per dropback faced (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d33",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "explosive_play_rate",
+    "team": "NE",
+    "side": "defense",
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 28,
+    "n_plays": 532,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "explosive_play_rate",
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "explosive_play_rate",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": 9.774436090225564,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i1",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "NE",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "A.J. Brown",
+      "player_id": "00-0035676",
+      "position": "WR",
+      "status": "Out",
+      "injury": "Ankle",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Greg Van Roten",
+      "player_id": "00-0029685",
+      "position": "G",
+      "status": "Out",
+      "injury": "Hamstring",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "TreVeyon Henderson",
+      "player_id": "00-0040734",
+      "position": "RB",
+      "status": "Out",
+      "injury": "Illness",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Brenden Schooler",
+      "player_id": "00-0037205",
+      "position": "S",
+      "status": "Questionable",
+      "injury": "Hamstring",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Carlton Davis III",
+      "player_id": "00-0034778",
+      "position": "CB",
+      "status": "Questionable",
+      "injury": "Neck",
+      "practice_status": "Full Participation in Practice"
+     },
+     {
+      "player": "Hunter Henry",
+      "player_id": "00-0033090",
+      "position": "TE",
+      "status": "Questionable",
+      "injury": "Foot",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Kevin Byard",
+      "player_id": "00-0033132",
+      "position": "S",
+      "status": "Questionable",
+      "injury": "Chest",
+      "practice_status": "Full Participation in Practice"
+     },
+     {
+      "player": "Mack Hollins",
+      "player_id": "00-0033555",
+      "position": "WR",
+      "status": "Questionable",
+      "injury": "Calf",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Morgan Moses",
+      "player_id": "00-0031330",
+      "position": "T",
+      "status": "Questionable",
+      "injury": "Foot",
+      "practice_status": "Limited Participation in Practice"
+     }
+    ],
+    "n_plays": 9,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 9,
+     "weeks": [
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i2",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "DET",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Cade Mays",
+      "player_id": "00-0037297",
+      "position": "C",
+      "status": "Out",
+      "injury": "Ankle",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "D.J. Reed",
+      "player_id": "00-0034384",
+      "position": "CB",
+      "status": "Out",
+      "injury": "Hip",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "DJ Wonnum",
+      "player_id": "00-0036335",
+      "position": "DE",
+      "status": "Out",
+      "injury": "Concussion",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Jack Campbell",
+      "player_id": "00-0039018",
+      "position": "LB",
+      "status": "Out",
+      "injury": "Neck",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Kerby Joseph",
+      "player_id": "00-0037667",
+      "position": "S",
+      "status": "Out",
+      "injury": "Knee",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Amon-Ra St. Brown",
+      "player_id": "00-0036963",
+      "position": "WR",
+      "status": "Questionable",
+      "injury": "Rib",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Jacob Saylors",
+      "player_id": "00-0038896",
+      "position": "RB",
+      "status": "Questionable",
+      "injury": "Neck",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Sione Vaki",
+      "player_id": "00-0039364",
+      "position": "RB",
+      "status": "Questionable",
+      "injury": "Ankle",
+      "practice_status": "Did Not Participate In Practice"
+     }
+    ],
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "DET",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 9,
+     "weeks": [
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i3",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "NE",
+    "player": "A.J. Brown",
+    "kind": "target",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": null,
+   "error": "player 'A.J. Brown' not found for NE; use usage_leaders to list players"
+  },
+  {
+   "call_id": "i4",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "NE",
+    "player": "TreVeyon Henderson",
+    "kind": "rush",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 23.963133640552993,
+    "n_plays": 217,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "player": "TreVeyon Henderson",
+      "kind": "rush"
+     },
+     "unit": "percent",
+     "definition": "T.Henderson's percent of team rushs.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9,
+     "player": {
+      "id": "00-0040734",
+      "name": "T.Henderson",
+      "count": 52
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i5",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "DET",
+    "player": "Amon-Ra St. Brown",
+    "kind": "target",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": null,
+   "error": "player 'Amon-Ra St. Brown' not found for DET; use usage_leaders to list players"
+  },
+  {
+   "call_id": "i6",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "DET",
+    "player": "Jack Campbell",
+    "kind": "rush",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": null,
+   "error": "player 'Jack Campbell' not found for DET; use usage_leaders to list players"
+  },
+  {
+   "call_id": "i7",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "DET",
+    "player": "Kerby Joseph",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": null,
+   "error": "no snaps recorded for 'Kerby Joseph' with DET in weeks 1-9 (the player may not have played)"
+  },
+  {
+   "call_id": "i8",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "DET",
+    "player": "Jack Campbell",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 96.71428571428571,
+    "n_plays": 7,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "DET",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Jack Campbell",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Jack Campbell's mean snap share per game, weeks 1-9.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8
+     ],
+     "n_games": 7
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i9",
+   "node": "injury_analyst",
+   "tool": "usage_leaders",
+   "args": {
+    "team": "NE",
+    "kind": "target",
+    "top_n": 5,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "D.Douglas",
+      "player_id": "00-0038621",
+      "count": 46,
+      "share": 17.424242424242426
+     },
+     {
+      "player": "H.Henry",
+      "player_id": "00-0033090",
+      "count": 37,
+      "share": 14.015151515151516
+     },
+     {
+      "player": "R.Stevenson",
+      "player_id": "00-0036875",
+      "count": 31,
+      "share": 11.742424242424242
+     },
+     {
+      "player": "E.Raridon",
+      "player_id": "00-0041395",
+      "count": 26,
+      "share": 9.848484848484848
+     },
+     {
+      "player": "M.Hollins",
+      "player_id": "00-0033555",
+      "count": 26,
+      "share": 9.848484848484848
+     }
+    ],
+    "n_plays": 264,
+    "query_meta": {
+     "tool": "usage_leaders",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "kind": "target",
+      "top_n": 5
+     },
+     "unit": "players",
+     "definition": "Top 5 players by team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i10",
+   "node": "injury_analyst",
+   "tool": "usage_leaders",
+   "args": {
+    "team": "DET",
+    "kind": "target",
+    "top_n": 5,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "A.St. Brown",
+      "player_id": "00-0036963",
+      "count": 86,
+      "share": 31.970260223048328
+     },
+     {
+      "player": "S.LaPorta",
+      "player_id": "00-0039065",
+      "count": 49,
+      "share": 18.21561338289963
+     },
+     {
+      "player": "J.Williams",
+      "player_id": "00-0037240",
+      "count": 46,
+      "share": 17.100371747211895
+     },
+     {
+      "player": "J.Gibbs",
+      "player_id": "00-0039139",
+      "count": 45,
+      "share": 16.728624535315983
+     },
+     {
+      "player": "I.TeSlaa",
+      "player_id": "00-0040669",
+      "count": 23,
+      "share": 8.550185873605948
+     }
+    ],
+    "n_plays": 269,
+    "query_meta": {
+     "tool": "usage_leaders",
+     "args": {
+      "team": "DET",
+      "season": 2026,
+      "through_week": 9,
+      "kind": "target",
+      "top_n": 5
+     },
+     "unit": "players",
+     "definition": "Top 5 players by team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o1",
+   "node": "offense_analyst",
+   "tool": "pass_rate",
+   "args": {
+    "team": "NE",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 60.18348623853211,
+    "n_plays": 545,
+    "query_meta": {
+     "tool": "pass_rate",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "down": null,
+      "distance": null,
+      "early_downs_only": false
+     },
+     "unit": "percent",
+     "definition": "Percent of plays that are dropbacks (all downs).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o2",
+   "node": "offense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "pass_rate",
+    "team": "NE",
+    "early_downs_only": true,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 15,
+    "n_plays": 426,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "pass_rate",
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "early_downs_only": true
+     },
+     "unit": "rank",
+     "metric": "pass_rate",
+     "metric_args": {
+      "early_downs_only": true
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "highest",
+     "team_value": 55.633802816901415,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o3",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "DET",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 0.21128348956626233,
+    "n_plays": 299,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "DET",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o4",
+   "node": "offense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "NE",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 10.670731707317072,
+    "n_plays": 328,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o5",
+   "node": "offense_analyst",
+   "tool": "ftn_play_rate",
+   "args": {
+    "team": "NE",
+    "feature": "play_action",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 21.036585365853657,
+    "n_plays": 328,
+    "query_meta": {
+     "tool": "ftn_play_rate",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "feature": "play_action"
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks with play action (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o6",
+   "node": "offense_analyst",
+   "tool": "ftn_play_rate",
+   "args": {
+    "team": "NE",
+    "feature": "motion",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 57.61467889908257,
+    "n_plays": 545,
+    "query_meta": {
+     "tool": "ftn_play_rate",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "feature": "motion"
+     },
+     "unit": "percent",
+     "definition": "Percent of scrimmage plays with motion (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o7",
+   "node": "offense_analyst",
+   "tool": "success_rate",
+   "args": {
+    "team": "NE",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 37.78801843317972,
+    "n_plays": 217,
+    "query_meta": {
+     "tool": "success_rate",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "run"
+     },
+     "unit": "percent",
+     "definition": "Percent of run plays with EPA > 0, by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o8",
+   "node": "offense_analyst",
+   "tool": "success_rate",
+   "args": {
+    "team": "DET",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 47.004608294930875,
+    "n_plays": 217,
+    "query_meta": {
+     "tool": "success_rate",
+     "args": {
+      "team": "DET",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "run"
+     },
+     "unit": "percent",
+     "definition": "Percent of run plays with EPA > 0, by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o9",
+   "node": "offense_analyst",
+   "tool": "ftn_play_rate",
+   "args": {
+    "team": "NE",
+    "feature": "screen",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 7.01219512195122,
+    "n_plays": 328,
+    "query_meta": {
+     "tool": "ftn_play_rate",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "feature": "screen"
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks with screen (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o10",
+   "node": "offense_analyst",
+   "tool": "ftn_play_rate",
+   "args": {
+    "team": "NE",
+    "feature": "rpo",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 2.5688073394495414,
+    "n_plays": 545,
+    "query_meta": {
+     "tool": "ftn_play_rate",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "feature": "rpo"
+     },
+     "unit": "percent",
+     "definition": "Percent of scrimmage plays with rpo (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o11",
+   "node": "offense_analyst",
+   "tool": "third_down_conversion_rate",
+   "args": {
+    "team": "NE",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 41.509433962264154,
+    "n_plays": 106,
+    "query_meta": {
+     "tool": "third_down_conversion_rate",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Percent of third-down plays converted, by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o12",
+   "node": "offense_analyst",
+   "tool": "red_zone_td_rate",
+   "args": {
+    "team": "NE",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 56.00000000000001,
+    "n_plays": 25,
+    "query_meta": {
+     "tool": "red_zone_td_rate",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Percent of red-zone drives ending in a TD, by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o13",
+   "node": "offense_analyst",
+   "tool": "usage_leaders",
+   "args": {
+    "team": "NE",
+    "kind": "target",
+    "top_n": 3,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "D.Douglas",
+      "player_id": "00-0038621",
+      "count": 46,
+      "share": 17.424242424242426
+     },
+     {
+      "player": "H.Henry",
+      "player_id": "00-0033090",
+      "count": 37,
+      "share": 14.015151515151516
+     },
+     {
+      "player": "R.Stevenson",
+      "player_id": "00-0036875",
+      "count": 31,
+      "share": 11.742424242424242
+     }
+    ],
+    "n_plays": 264,
+    "query_meta": {
+     "tool": "usage_leaders",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "kind": "target",
+      "top_n": 3
+     },
+     "unit": "players",
+     "definition": "Top 3 players by team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o14",
+   "node": "offense_analyst",
+   "tool": "usage_leaders",
+   "args": {
+    "team": "NE",
+    "kind": "rush",
+    "top_n": 3,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "R.Stevenson",
+      "player_id": "00-0036875",
+      "count": 102,
+      "share": 47.004608294930875
+     },
+     {
+      "player": "T.Henderson",
+      "player_id": "00-0040734",
+      "count": 52,
+      "share": 23.963133640552996
+     },
+     {
+      "player": "C.Kiner",
+      "player_id": "00-0040556",
+      "count": 50,
+      "share": 23.04147465437788
+     }
+    ],
+    "n_plays": 217,
+    "query_meta": {
+     "tool": "usage_leaders",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "kind": "rush",
+      "top_n": 3
+     },
+     "unit": "players",
+     "definition": "Top 3 players by team rushs.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o15",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "DET",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 0.21128348956626233,
+    "n_plays": 299,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "DET",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o16",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "DET",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 0.16612315472458802,
+    "n_plays": 351,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "DET",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o17",
+   "node": "offense_analyst",
+   "tool": "success_rate",
+   "args": {
+    "team": "DET",
+    "side": "defense",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 35.97560975609756,
+    "n_plays": 164,
+    "query_meta": {
+     "tool": "success_rate",
+     "args": {
+      "team": "DET",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "run"
+     },
+     "unit": "percent",
+     "definition": "Percent of run plays with EPA > 0, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o18",
+   "node": "offense_analyst",
+   "tool": "pass_rate",
+   "args": {
+    "team": "NE",
+    "down": 1,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 51.00401606425703,
+    "n_plays": 249,
+    "query_meta": {
+     "tool": "pass_rate",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "down": 1,
+      "distance": null,
+      "early_downs_only": false
+     },
+     "unit": "percent",
+     "definition": "Percent of plays that are dropbacks (down 1).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o19",
+   "node": "offense_analyst",
+   "tool": "pass_rate",
+   "args": {
+    "team": "NE",
+    "early_downs_only": true,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 55.633802816901415,
+    "n_plays": 426,
+    "query_meta": {
+     "tool": "pass_rate",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "down": null,
+      "distance": null,
+      "early_downs_only": true
+     },
+     "unit": "percent",
+     "definition": "Percent of plays that are dropbacks (early downs).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o20",
+   "node": "offense_analyst",
+   "tool": "run_direction_rate",
+   "args": {
+    "team": "NE",
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 32.093023255813954,
+    "n_plays": 215,
+    "query_meta": {
+     "tool": "run_direction_rate",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "direction": "left"
+     },
+     "unit": "percent",
+     "definition": "Percent of designed runs to the left.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o21",
+   "node": "offense_analyst",
+   "tool": "run_direction_rate",
+   "args": {
+    "team": "NE",
+    "direction": "middle",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 42.32558139534884,
+    "n_plays": 215,
+    "query_meta": {
+     "tool": "run_direction_rate",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "direction": "middle"
+     },
+     "unit": "percent",
+     "definition": "Percent of designed runs to the middle.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o22",
+   "node": "offense_analyst",
+   "tool": "run_direction_rate",
+   "args": {
+    "team": "NE",
+    "direction": "right",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 25.581395348837212,
+    "n_plays": 215,
+    "query_meta": {
+     "tool": "run_direction_rate",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "direction": "right"
+     },
+     "unit": "percent",
+     "definition": "Percent of designed runs to the right.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o23",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "NE",
+    "side": "offense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 0.1494782013534686,
+    "n_plays": 328,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o24",
+   "node": "offense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "DET",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 9.971509971509972,
+    "n_plays": 351,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "DET",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i11",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "NE",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "A.J. Brown",
+      "player_id": "00-0035676",
+      "position": "WR",
+      "status": "Out",
+      "injury": "Ankle",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Greg Van Roten",
+      "player_id": "00-0029685",
+      "position": "G",
+      "status": "Out",
+      "injury": "Hamstring",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "TreVeyon Henderson",
+      "player_id": "00-0040734",
+      "position": "RB",
+      "status": "Out",
+      "injury": "Illness",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Brenden Schooler",
+      "player_id": "00-0037205",
+      "position": "S",
+      "status": "Questionable",
+      "injury": "Hamstring",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Carlton Davis III",
+      "player_id": "00-0034778",
+      "position": "CB",
+      "status": "Questionable",
+      "injury": "Neck",
+      "practice_status": "Full Participation in Practice"
+     },
+     {
+      "player": "Hunter Henry",
+      "player_id": "00-0033090",
+      "position": "TE",
+      "status": "Questionable",
+      "injury": "Foot",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Kevin Byard",
+      "player_id": "00-0033132",
+      "position": "S",
+      "status": "Questionable",
+      "injury": "Chest",
+      "practice_status": "Full Participation in Practice"
+     },
+     {
+      "player": "Mack Hollins",
+      "player_id": "00-0033555",
+      "position": "WR",
+      "status": "Questionable",
+      "injury": "Calf",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Morgan Moses",
+      "player_id": "00-0031330",
+      "position": "T",
+      "status": "Questionable",
+      "injury": "Foot",
+      "practice_status": "Limited Participation in Practice"
+     }
+    ],
+    "n_plays": 9,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 9,
+     "weeks": [
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i12",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "DET",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Cade Mays",
+      "player_id": "00-0037297",
+      "position": "C",
+      "status": "Out",
+      "injury": "Ankle",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "D.J. Reed",
+      "player_id": "00-0034384",
+      "position": "CB",
+      "status": "Out",
+      "injury": "Hip",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "DJ Wonnum",
+      "player_id": "00-0036335",
+      "position": "DE",
+      "status": "Out",
+      "injury": "Concussion",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Jack Campbell",
+      "player_id": "00-0039018",
+      "position": "LB",
+      "status": "Out",
+      "injury": "Neck",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Kerby Joseph",
+      "player_id": "00-0037667",
+      "position": "S",
+      "status": "Out",
+      "injury": "Knee",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Amon-Ra St. Brown",
+      "player_id": "00-0036963",
+      "position": "WR",
+      "status": "Questionable",
+      "injury": "Rib",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Jacob Saylors",
+      "player_id": "00-0038896",
+      "position": "RB",
+      "status": "Questionable",
+      "injury": "Neck",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Sione Vaki",
+      "player_id": "00-0039364",
+      "position": "RB",
+      "status": "Questionable",
+      "injury": "Ankle",
+      "practice_status": "Did Not Participate In Practice"
+     }
+    ],
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "DET",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 9,
+     "weeks": [
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i13",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "NE",
+    "player": "TreVeyon Henderson",
+    "kind": "rush",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 23.963133640552993,
+    "n_plays": 217,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "player": "TreVeyon Henderson",
+      "kind": "rush"
+     },
+     "unit": "percent",
+     "definition": "T.Henderson's percent of team rushs.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9,
+     "player": {
+      "id": "00-0040734",
+      "name": "T.Henderson",
+      "count": 52
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i14",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "NE",
+    "player": "Hunter Henry",
+    "kind": "target",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 14.015151515151514,
+    "n_plays": 264,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Hunter Henry",
+      "kind": "target"
+     },
+     "unit": "percent",
+     "definition": "H.Henry's percent of team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9,
+     "player": {
+      "id": "00-0033090",
+      "name": "H.Henry",
+      "count": 37
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i15",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "DET",
+    "player": "Jack Campbell",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 96.71428571428571,
+    "n_plays": 7,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "DET",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Jack Campbell",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Jack Campbell's mean snap share per game, weeks 1-9.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8
+     ],
+     "n_games": 7
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i16",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "DET",
+    "player": "Amon-Ra St. Brown",
+    "kind": "target",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": null,
+   "error": "player 'Amon-Ra St. Brown' not found for DET; use usage_leaders to list players"
+  },
+  {
+   "call_id": "i17",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "NE",
+    "player": "A.J. Brown",
+    "kind": "target",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": null,
+   "error": "player 'A.J. Brown' not found for NE; use usage_leaders to list players"
+  },
+  {
+   "call_id": "i18",
+   "node": "injury_analyst",
+   "tool": "usage_leaders",
+   "args": {
+    "team": "DET",
+    "kind": "target",
+    "top_n": 5,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "A.St. Brown",
+      "player_id": "00-0036963",
+      "count": 86,
+      "share": 31.970260223048328
+     },
+     {
+      "player": "S.LaPorta",
+      "player_id": "00-0039065",
+      "count": 49,
+      "share": 18.21561338289963
+     },
+     {
+      "player": "J.Williams",
+      "player_id": "00-0037240",
+      "count": 46,
+      "share": 17.100371747211895
+     },
+     {
+      "player": "J.Gibbs",
+      "player_id": "00-0039139",
+      "count": 45,
+      "share": 16.728624535315983
+     },
+     {
+      "player": "I.TeSlaa",
+      "player_id": "00-0040669",
+      "count": 23,
+      "share": 8.550185873605948
+     }
+    ],
+    "n_plays": 269,
+    "query_meta": {
+     "tool": "usage_leaders",
+     "args": {
+      "team": "DET",
+      "season": 2026,
+      "through_week": 9,
+      "kind": "target",
+      "top_n": 5
+     },
+     "unit": "players",
+     "definition": "Top 5 players by team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i19",
+   "node": "injury_analyst",
+   "tool": "usage_leaders",
+   "args": {
+    "team": "NE",
+    "kind": "target",
+    "top_n": 5,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "D.Douglas",
+      "player_id": "00-0038621",
+      "count": 46,
+      "share": 17.424242424242426
+     },
+     {
+      "player": "H.Henry",
+      "player_id": "00-0033090",
+      "count": 37,
+      "share": 14.015151515151516
+     },
+     {
+      "player": "R.Stevenson",
+      "player_id": "00-0036875",
+      "count": 31,
+      "share": 11.742424242424242
+     },
+     {
+      "player": "E.Raridon",
+      "player_id": "00-0041395",
+      "count": 26,
+      "share": 9.848484848484848
+     },
+     {
+      "player": "M.Hollins",
+      "player_id": "00-0033555",
+      "count": 26,
+      "share": 9.848484848484848
+     }
+    ],
+    "n_plays": 264,
+    "query_meta": {
+     "tool": "usage_leaders",
+     "args": {
+      "team": "NE",
+      "season": 2026,
+      "through_week": 9,
+      "kind": "target",
+      "top_n": 5
+     },
+     "unit": "players",
+     "definition": "Top 5 players by team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ]
+    }
+   },
+   "error": null
+  }
+ ],
+ "usage": [
+  {
+   "node": "planner",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 615,
+   "cache_read_input_tokens": 540,
+   "cache_creation_input_tokens": 134,
+   "latency_s": 4.379143361002207
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 1691,
+   "cache_read_input_tokens": 5976,
+   "cache_creation_input_tokens": 384,
+   "latency_s": 5.929679655935615
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 409,
+   "cache_read_input_tokens": 6360,
+   "cache_creation_input_tokens": 4123,
+   "latency_s": 2.6888690651394427
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 159,
+   "cache_read_input_tokens": 10483,
+   "cache_creation_input_tokens": 545,
+   "latency_s": 1.3104238780215383
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 122,
+   "cache_read_input_tokens": 11028,
+   "cache_creation_input_tokens": 293,
+   "latency_s": 1.1688011959195137
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 768,
+   "cache_read_input_tokens": 11321,
+   "cache_creation_input_tokens": 255,
+   "latency_s": 2.7041397399734706
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 256,
+   "cache_read_input_tokens": 11576,
+   "cache_creation_input_tokens": 1855,
+   "latency_s": 1.7763185100629926
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 151,
+   "cache_read_input_tokens": 13431,
+   "cache_creation_input_tokens": 390,
+   "latency_s": 1.345153649104759
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 204,
+   "cache_read_input_tokens": 13821,
+   "cache_creation_input_tokens": 286,
+   "latency_s": 1.5789476621430367
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 417,
+   "cache_read_input_tokens": 14107,
+   "cache_creation_input_tokens": 345,
+   "latency_s": 2.247278775088489
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 5204,
+   "cache_read_input_tokens": 14452,
+   "cache_creation_input_tokens": 711,
+   "latency_s": 19.093794328859076
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 114,
+   "cache_read_input_tokens": 2987,
+   "cache_creation_input_tokens": 440,
+   "latency_s": 1.337232462828979
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 733,
+   "cache_read_input_tokens": 3427,
+   "cache_creation_input_tokens": 1510,
+   "latency_s": 2.8567506649997085
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 225,
+   "cache_read_input_tokens": 4937,
+   "cache_creation_input_tokens": 1307,
+   "latency_s": 1.3277650300879031
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 3038,
+   "cache_read_input_tokens": 6244,
+   "cache_creation_input_tokens": 838,
+   "latency_s": 11.672964063007385
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 1282,
+   "cache_read_input_tokens": 7496,
+   "cache_creation_input_tokens": 373,
+   "latency_s": 5.0019222039263695
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 397,
+   "cache_read_input_tokens": 7869,
+   "cache_creation_input_tokens": 3323,
+   "latency_s": 2.571325663011521
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 545,
+   "cache_read_input_tokens": 11192,
+   "cache_creation_input_tokens": 497,
+   "latency_s": 2.0286243869923055
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 857,
+   "cache_read_input_tokens": 11689,
+   "cache_creation_input_tokens": 1425,
+   "latency_s": 4.456534238997847
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 4909,
+   "cache_read_input_tokens": 13114,
+   "cache_creation_input_tokens": 1138,
+   "latency_s": 17.717790401075035
+  },
+  {
+   "node": "matchup_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 5559,
+   "cache_read_input_tokens": 6451,
+   "cache_creation_input_tokens": 4245,
+   "latency_s": 21.956083530094475
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 753,
+   "cache_read_input_tokens": 2987,
+   "cache_creation_input_tokens": 1572,
+   "latency_s": 2.9458773038350046
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 405,
+   "cache_read_input_tokens": 4559,
+   "cache_creation_input_tokens": 2718,
+   "latency_s": 2.397594609996304
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 2894,
+   "cache_read_input_tokens": 7277,
+   "cache_creation_input_tokens": 1018,
+   "latency_s": 9.97079555504024
+  },
+  {
+   "node": "matchup_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 4105,
+   "cache_read_input_tokens": 6451,
+   "cache_creation_input_tokens": 5584,
+   "latency_s": 14.44811750901863
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 3940,
+   "cache_read_input_tokens": 7496,
+   "cache_creation_input_tokens": 2016,
+   "latency_s": 12.503913896158338
+  },
+  {
+   "node": "matchup_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 3903,
+   "cache_read_input_tokens": 6451,
+   "cache_creation_input_tokens": 5555,
+   "latency_s": 14.204535369062796
+  },
+  {
+   "node": "editor",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 6136,
+   "cache_read_input_tokens": 747,
+   "cache_creation_input_tokens": 5203,
+   "latency_s": 22.239688192959875
+  }
+ ],
+ "cost_usd": {
+  "total": 0.033158165,
+  "by_node": {
+   "planner": 0.00033004999999999997,
+   "defense_analyst": 0.006966625,
+   "injury_analyst": 0.005582355000000001,
+   "offense_analyst": 0.00765166,
+   "matchup_analyst": 0.008901230000000001,
+   "editor": 0.003726245
+  }
+ }
+}

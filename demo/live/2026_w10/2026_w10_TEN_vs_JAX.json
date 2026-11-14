@@ -1,0 +1,8891 @@
+{
+ "config": "full",
+ "repeat": 1,
+ "created_at": "2026-11-12T01:36:08+00:00",
+ "models": {
+  "planner": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "offense_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "defense_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "injury_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "matchup_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "medium"
+  },
+  "fact_checker": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "editor": {
+   "model": "claude-haiku-5-5",
+   "effort": "medium"
+  },
+  "single_agent": {
+   "model": "claude-haiku-5-5",
+   "effort": "medium"
+  }
+ },
+ "max_revision_loops": 2,
+ "request": {
+  "team": "TEN",
+  "opponent": "JAX",
+  "season": 2026,
+  "week": 10,
+  "through_week": 9
+ },
+ "plan": {
+  "offense_focus": [
+   "How often does JAX pass versus run on early downs and in neutral situations through week 9, and does that split shift on 3rd and long?",
+   "What is JAX's pass rate over expected and EPA per dropback, and how do those rank league-wide?",
+   "Which way does JAX run most often (inside vs outside, left vs right), and what is its rushing success rate on early downs?",
+   "How often does JAX use play action, motion, screens, or RPOs, and do those plays generate more explosive gains than its base dropbacks?",
+   "Which JAX targets get the largest target share and deepest average depth of target, and how does TEN's defense tend to allow those throws?"
+  ],
+  "defense_focus": [
+   "How often does JAX's defense blitz, and how do TEN's offensive sacks and QB hits allowed compare to league ranks?",
+   "Where does JAX's defense allow explosive plays and what is its EPA and success rate allowed on early downs?",
+   "How does JAX's defense perform on third down and in the red zone, and which pass rushers generate the most pressure proxy (sacks plus QB hits)?",
+   "Which run directions does JAX's defense give up the most yards on, and how many defenders are typically in the box when TEN runs?",
+   "How do JAX's pass defense numbers change against deep throws (depth of target) and against play action, which TEN may use to attack it?"
+  ],
+  "injury_focus": [
+   "Which JAX players are on the latest injury report, and how do their snap shares and target or rush shares suggest their absence or limitation would change the offense?",
+   "Which TEN players are on the latest injury report, and how do their snap shares and target or rush shares suggest their absence or limitation would change the offense or defense?",
+   "Is any JAX pass rusher, secondary player, or run defender listed as limited or out, and how much of that unit's snap share does he carry?",
+   "Are any of JAX's top target or rush-share players at risk of limited availability in week 10, and who is the likely replacement based on prior snap shares?"
+  ]
+ },
+ "draft": {
+  "defense_analyst": {
+   "role": "defense_analyst",
+   "prose": "JAX sends five or more rushers on 31.3% of dropbacks [dc1] over 291 plays [dc2], averaging 4.4 rushers per dropback [dc3]. TEN's offense has allowed a sack or QB hit on 13.0% of dropbacks [dc4] over 278 plays [dc5], the 4th-lowest mark in the league [dc6], and a 4.7% sack rate [dc7] ranks 8th-lowest [dc8]. Expect TEN to be ready for the blitz, so quick game and hot throws matter. JAX's own pressure proxy is 16.8% [dc9] on 291 plays [dc10]. JAX allows explosive plays on 7.1% of all plays [dc11] over 466 plays [dc12], and on passes specifically 7.2% [dc13] over 291 plays [dc14]. Overall EPA allowed is -0.13 per play [dc15] with a 41.0% success rate [dc16]; on pass plays success allowed is 44.0% [dc17]. Third downs convert at 34.4% [dc18] over 93 plays [dc19], while red-zone drives end in a TD 40.9% of the time [dc20], but that is only 22 drives [dc21], a small sample. On run direction, JAX's run-direction share ranks 9th for left [dc22], 27th up the middle [dc23] and 10th to the right [dc24]; the box averages 6.8 defenders on run plays [dc25] over 175 plays [dc26]. Opponents' average depth of target ranks 8th-highest against JAX [dc27] over 226 plays [dc28], so the deep shot is a real option. JAX faces play action at the 13th-highest rate [dc29] over 248 plays [dc30], so TEN should expect play-action looks.",
+   "claims": [
+    {
+     "claim_id": "dc1",
+     "text": "JAX defense blitz rate: share of dropbacks faced with 5+ pass rushers",
+     "stated_value": 31.3,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc2",
+     "text": "Sample size for JAX defense blitz rate (dropbacks)",
+     "stated_value": 291.0,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc3",
+     "text": "JAX defense average pass rushers per dropback faced",
+     "stated_value": 4.4,
+     "tool_call_id": "d11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc4",
+     "text": "TEN offense pressure proxy rate allowed (dropbacks with sack or QB hit)",
+     "stated_value": 13.0,
+     "tool_call_id": "d2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc5",
+     "text": "Sample size for TEN offense pressure proxy (dropbacks)",
+     "stated_value": 278.0,
+     "tool_call_id": "d2",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc6",
+     "text": "League rank of TEN offense pressure proxy allowed (1 = lowest)",
+     "stated_value": "4th",
+     "tool_call_id": "d5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc7",
+     "text": "TEN offense sack rate allowed (percent of dropbacks)",
+     "stated_value": 4.7,
+     "tool_call_id": "d3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc8",
+     "text": "League rank of TEN offense sack rate allowed (1 = lowest)",
+     "stated_value": "8th",
+     "tool_call_id": "d4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc9",
+     "text": "JAX defense pressure proxy rate (dropbacks with sack or QB hit)",
+     "stated_value": 16.8,
+     "tool_call_id": "d14",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc10",
+     "text": "Sample size for JAX defense pressure proxy (dropbacks)",
+     "stated_value": 291.0,
+     "tool_call_id": "d14",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc11",
+     "text": "JAX defense explosive play rate allowed, all plays (20+ pass or 10+ run)",
+     "stated_value": 7.1,
+     "tool_call_id": "d6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc12",
+     "text": "Sample size for JAX defense explosive play rate, all plays",
+     "stated_value": 466.0,
+     "tool_call_id": "d6",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc13",
+     "text": "JAX defense explosive play rate allowed on pass plays (20+ yards)",
+     "stated_value": 7.2,
+     "tool_call_id": "d15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc14",
+     "text": "Sample size for JAX defense pass explosive play rate (plays)",
+     "stated_value": 291.0,
+     "tool_call_id": "d15",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc15",
+     "text": "JAX defense EPA per play allowed, all plays",
+     "stated_value": -0.13,
+     "tool_call_id": "d7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc16",
+     "text": "JAX defense success rate allowed, all plays",
+     "stated_value": 41.0,
+     "tool_call_id": "d8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc17",
+     "text": "JAX defense success rate allowed on pass plays",
+     "stated_value": 44.0,
+     "tool_call_id": "d16",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc18",
+     "text": "JAX defense third-down conversion rate allowed",
+     "stated_value": 34.4,
+     "tool_call_id": "d9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc19",
+     "text": "Sample size for JAX defense third-down conversion rate (plays)",
+     "stated_value": 93.0,
+     "tool_call_id": "d9",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc20",
+     "text": "JAX defense red-zone drive TD rate allowed",
+     "stated_value": 40.9,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc21",
+     "text": "Sample size for JAX defense red-zone TD rate (red-zone drives)",
+     "stated_value": 22.0,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc22",
+     "text": "League rank of JAX defense run-direction share to the left (1 = highest)",
+     "stated_value": "9th",
+     "tool_call_id": "d19",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc23",
+     "text": "League rank of JAX defense run-direction share up the middle (1 = highest)",
+     "stated_value": "27th",
+     "tool_call_id": "d20",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc24",
+     "text": "League rank of JAX defense run-direction share to the right (1 = highest)",
+     "stated_value": "10th",
+     "tool_call_id": "d21",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc25",
+     "text": "JAX defense average defenders in the box on run plays",
+     "stated_value": 6.8,
+     "tool_call_id": "d12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc26",
+     "text": "Sample size for JAX defense box count on run plays (plays)",
+     "stated_value": 175.0,
+     "tool_call_id": "d12",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc27",
+     "text": "League rank of average depth of target faced by JAX defense (1 = highest)",
+     "stated_value": "8th",
+     "tool_call_id": "d17",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc28",
+     "text": "Sample size for JAX defense depth-of-target rank (plays)",
+     "stated_value": 226.0,
+     "tool_call_id": "d17",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc29",
+     "text": "League rank of play-action share of plays faced by JAX defense (1 = highest)",
+     "stated_value": "13th",
+     "tool_call_id": "d18",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc30",
+     "text": "Sample size for JAX defense play-action rank (plays)",
+     "stated_value": 248.0,
+     "tool_call_id": "d18",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    }
+   ],
+   "unsourced": []
+  },
+  "injury_analyst": {
+   "role": "injury_analyst",
+   "prose": "JAX's week 9 report [ic1] lists RB Bhayshul Tuten as Questionable [ic2] with an ankle injury. He has played 52.4% of snaps [ic3] and taken 57.3% of team rushes [ic4] over 8 games [ic5]; C.Rodriguez, at 25.8% of rushes [ic6], would take most carries. DE Travon Walker is also Questionable [ic7] and has played 74.0% of snaps [ic8]. TEN's week 8 report [ic9] lists WR Carnell Tate as Out [ic10]; he has a 21.8% target share [ic11] and 82.0% of snaps [ic12]. RB Tyjae Spears is Out [ic13] with a 10.5% rush share [ic14]. DE John Franklin-Myers is Questionable [ic15] and has played 52.3% of snaps [ic16]. WR Calvin Ridley is Questionable [ic17] with a 5.6% target share [ic18].",
+   "claims": [
+    {
+     "claim_id": "ic1",
+     "text": "JAX injury report is from week 9 (report_week)",
+     "stated_value": 9.0,
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic2",
+     "text": "JAX RB Bhayshul Tuten game status on latest report",
+     "stated_value": "Questionable",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic3",
+     "text": "JAX RB Bhayshul Tuten mean snap share per game, weeks 1-9",
+     "stated_value": 52.4,
+     "tool_call_id": "i3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic4",
+     "text": "JAX RB Bhayshul Tuten share of team designed rushes",
+     "stated_value": 57.3,
+     "tool_call_id": "i4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic5",
+     "text": "Games in Tuten snap share sample",
+     "stated_value": 8.0,
+     "tool_call_id": "i3",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic6",
+     "text": "JAX RB C.Rodriguez share of team designed rushes",
+     "stated_value": 25.8,
+     "tool_call_id": "i6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic7",
+     "text": "JAX DE Travon Walker game status on latest report",
+     "stated_value": "Questionable",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic8",
+     "text": "JAX DE Travon Walker mean snap share per game, weeks 1-9",
+     "stated_value": 74.0,
+     "tool_call_id": "i5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic9",
+     "text": "TEN injury report is from week 8 (report_week)",
+     "stated_value": 8.0,
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic10",
+     "text": "TEN WR Carnell Tate game status on latest report",
+     "stated_value": "Out",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic11",
+     "text": "TEN WR Carnell Tate share of team targets, weeks 1-8",
+     "stated_value": 21.8,
+     "tool_call_id": "i8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic12",
+     "text": "TEN WR Carnell Tate mean snap share per game, weeks 1-7",
+     "stated_value": 82.0,
+     "tool_call_id": "i7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic13",
+     "text": "TEN RB Tyjae Spears game status on latest report",
+     "stated_value": "Out",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic14",
+     "text": "TEN RB Tyjae Spears share of team designed rushes, weeks 1-8",
+     "stated_value": 10.5,
+     "tool_call_id": "i9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic15",
+     "text": "TEN DE John Franklin-Myers game status on latest report",
+     "stated_value": "Questionable",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic16",
+     "text": "TEN DE John Franklin-Myers mean snap share per game, weeks 1-8",
+     "stated_value": 52.3,
+     "tool_call_id": "i12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic17",
+     "text": "TEN WR Calvin Ridley game status on latest report",
+     "stated_value": "Questionable",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic18",
+     "text": "TEN WR Calvin Ridley share of team targets, weeks 1-8",
+     "stated_value": 5.6,
+     "tool_call_id": "i10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "offense_analyst": {
+   "role": "offense_analyst",
+   "prose": "JAX throws on 50.4% of early-down plays [oc1] over 361 early-down plays [oc2], so it is not a run-first team on first and second down. On 3rd and long it drops back on 86.5% of snaps [oc3], but that is a 37-play sample [oc4] and should be treated as small. Overall JAX passes 5.2 points below expectation [oc5], 25th in the league [oc6], so it runs more than the situation predicts. Its pass EPA is 0.27 per dropback [oc7], 2nd in the league [oc8], so the efficiency comes through the air. Designed runs split 39.4% left [oc9], 38.0% right [oc10] and 22.5% middle [oc11], with a 43.2% rushing success rate [oc12]. Play action appears on 23.8% of dropbacks [oc13], motion on 65.6% of plays [oc14], screens on 9.3% of dropbacks [oc15] and RPOs on 1.9% of plays [oc16]. Explosive plays come on 10.8% of pass plays [oc17] and 8.9% of runs [oc18]. Targets concentrate on P.Washington at 24.9% [oc19] of 221 team targets [oc20], with B.Strange and J.Meyers each at 16.7% [oc21][oc22]. The team aDOT is 8.3 yards [oc23] on 226 attempts [oc24], so the offense works short and intermediate. For the game plan, TEN should expect early-down passes and motion-heavy looks, and should keep its eyes on the middle-of-field throws to Washington.",
+   "claims": [
+    {
+     "claim_id": "oc1",
+     "text": "JAX pass rate on early downs (dropbacks as share of plays)",
+     "stated_value": 50.4,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc2",
+     "text": "JAX early-down plays in the pass-rate sample",
+     "stated_value": 361.0,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc3",
+     "text": "JAX pass rate on 3rd and long (8+ yards)",
+     "stated_value": 86.5,
+     "tool_call_id": "o2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc4",
+     "text": "JAX 3rd and long plays in the sample",
+     "stated_value": 37.0,
+     "tool_call_id": "o2",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc5",
+     "text": "JAX pass rate over expected, all downs (percentage points)",
+     "stated_value": 5.2,
+     "tool_call_id": "o3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc6",
+     "text": "JAX pass rate over expected league rank (1 = highest)",
+     "stated_value": 25.0,
+     "tool_call_id": "o20",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc7",
+     "text": "JAX offense EPA per pass play",
+     "stated_value": 0.27,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc8",
+     "text": "JAX offense pass EPA per play league rank (1 = best)",
+     "stated_value": 2.0,
+     "tool_call_id": "o21",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc9",
+     "text": "JAX designed runs to the left",
+     "stated_value": 39.4,
+     "tool_call_id": "o5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc10",
+     "text": "JAX designed runs to the right",
+     "stated_value": 38.0,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc11",
+     "text": "JAX designed runs up the middle",
+     "stated_value": 22.5,
+     "tool_call_id": "o6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc12",
+     "text": "JAX offense run success rate (EPA > 0)",
+     "stated_value": 43.2,
+     "tool_call_id": "o8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc13",
+     "text": "JAX play action share of dropbacks",
+     "stated_value": 23.8,
+     "tool_call_id": "o9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc14",
+     "text": "JAX pre-snap motion share of scrimmage plays",
+     "stated_value": 65.6,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc15",
+     "text": "JAX screen share of dropbacks",
+     "stated_value": 9.3,
+     "tool_call_id": "o11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc16",
+     "text": "JAX RPO share of scrimmage plays",
+     "stated_value": 1.9,
+     "tool_call_id": "o12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc17",
+     "text": "JAX offense explosive pass play rate (20+ yards)",
+     "stated_value": 10.8,
+     "tool_call_id": "o13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc18",
+     "text": "JAX offense explosive run rate (10+ yards)",
+     "stated_value": 8.9,
+     "tool_call_id": "o14",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc19",
+     "text": "P.Washington share of JAX targets",
+     "stated_value": 24.9,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc20",
+     "text": "JAX team target count in the leader sample",
+     "stated_value": 221.0,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc21",
+     "text": "B.Strange share of JAX targets",
+     "stated_value": 16.7,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc22",
+     "text": "J.Meyers share of JAX targets",
+     "stated_value": 16.7,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc23",
+     "text": "JAX average depth of target (air yards per attempt)",
+     "stated_value": 8.3,
+     "tool_call_id": "o16",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc24",
+     "text": "JAX pass attempts with air yards in the aDOT sample",
+     "stated_value": 226.0,
+     "tool_call_id": "o16",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    }
+   ],
+   "unsourced": []
+  },
+  "matchup_analyst": {
+   "role": "matchup_analyst",
+   "prose": "First, JAX's blitz against TEN's protection: JAX sends five or more rushers on 31.3% of dropbacks [mc1] over 291 plays [mc2], and TEN has allowed a sack or QB hit on 13.0% of dropbacks [mc3] over 278 plays [mc4], 4th-lowest in the league [mc5]. TEN should lean on quick game and hot throws against the blitz. Second, the middle of the field: P.Washington takes 24.9% of JAX targets [mc6], so TEN's linebackers and safeties must carry the short-intermediate throws and not give up the seam. Third, play action and the deep shot: JAX's defense faces play action at the 13th-highest rate [mc7] and opponents' average depth of target ranks 8th-highest against it [mc8], so TEN can pair play action with vertical looks while keeping its run game credible. Finally, the early-down run: RB Bhayshul Tuten is Questionable [mc9] and has taken 57.3% of JAX's designed rushes [mc10], with C.Rodriguez at 25.8% [mc11] ready to take most carries if he sits. TEN's defense should be ready for motion, which shows up on 65.6% of JAX plays [mc12].",
+   "claims": [
+    {
+     "claim_id": "mc1",
+     "text": "JAX defense blitz rate: share of dropbacks faced with 5+ pass rushers, all downs",
+     "stated_value": 31.3,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc2",
+     "text": "Sample size (dropbacks) for JAX defense blitz rate",
+     "stated_value": 291.0,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc3",
+     "text": "TEN offense pressure proxy rate allowed (dropbacks with sack or QB hit)",
+     "stated_value": 13.0,
+     "tool_call_id": "d2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc4",
+     "text": "Sample size (dropbacks) for TEN offense pressure proxy allowed",
+     "stated_value": 278.0,
+     "tool_call_id": "d2",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc5",
+     "text": "League rank of TEN offense pressure proxy allowed (1 = lowest)",
+     "stated_value": 4.0,
+     "tool_call_id": "d5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc6",
+     "text": "P.Washington share of JAX targets (offense, pass plays)",
+     "stated_value": 24.9,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc7",
+     "text": "League rank of play-action share of plays faced by JAX defense (1 = highest)",
+     "stated_value": 13.0,
+     "tool_call_id": "d18",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc8",
+     "text": "League rank of average depth of target faced by JAX defense (1 = highest)",
+     "stated_value": 8.0,
+     "tool_call_id": "d17",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc9",
+     "text": "JAX RB Bhayshul Tuten game status on latest (week 9) report",
+     "stated_value": "Questionable",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc10",
+     "text": "JAX RB Bhayshul Tuten share of team designed rushes",
+     "stated_value": 57.3,
+     "tool_call_id": "i4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc11",
+     "text": "JAX RB C.Rodriguez share of team designed rushes",
+     "stated_value": 25.8,
+     "tool_call_id": "i6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc12",
+     "text": "JAX offense pre-snap motion share of scrimmage plays",
+     "stated_value": 65.6,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  }
+ },
+ "sections": {
+  "defense_analyst": {
+   "role": "defense_analyst",
+   "prose": "JAX sends five or more rushers on 31.3% of dropbacks [dc1] over 291 plays [dc2], 15th-highest in the league [dc3], and averages 4.4 rushers per dropback [dc4]. TEN's offense has allowed a sack or QB hit on 13.0% of dropbacks [dc5] over 278 plays [dc6], 4th-lowest in the league [dc7], with a 4.7% sack rate [dc8] ranking 8th-lowest [dc9]. Expect a steady blitz diet, so quick game and hot throws matter for TEN. On pass plays JAX allows explosive plays on 7.2% of pass plays [dc10] over 291 plays [dc11], so the deep shot is available but not frequent. Overall EPA allowed is -0.13 per play [dc12] with a 41.0% success rate [dc13] over 466 plays [dc14]. Third downs convert at 34.4% [dc15] over 93 plays [dc16], and red-zone drives end in a TD 40.9% of the time [dc17], but that rests on only 22 drives [dc18], a small sample. The box averages 6.8 defenders on run plays [dc19] over 175 plays [dc20], so TEN's run game will face a crowded box and the run-game plan should account for it.",
+   "claims": [
+    {
+     "claim_id": "dc1",
+     "text": "JAX defense blitz rate: share of dropbacks faced with 5+ pass rushers, 2026 through week 9",
+     "stated_value": 31.3,
+     "tool_call_id": "d38",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc2",
+     "text": "Sample size (dropbacks) for JAX defense blitz rate",
+     "stated_value": 291.0,
+     "tool_call_id": "d38",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc3",
+     "text": "League rank of JAX defense blitz rate (1 = highest)",
+     "stated_value": 15.0,
+     "tool_call_id": "d39",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc4",
+     "text": "JAX defense average pass rushers per dropback faced",
+     "stated_value": 4.4,
+     "tool_call_id": "d40",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc5",
+     "text": "TEN offense pressure proxy rate allowed (dropbacks with sack or QB hit)",
+     "stated_value": 13.0,
+     "tool_call_id": "d41",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc6",
+     "text": "Sample size (dropbacks) for TEN offense pressure proxy allowed",
+     "stated_value": 278.0,
+     "tool_call_id": "d41",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc7",
+     "text": "League rank of TEN offense pressure proxy allowed (1 = lowest)",
+     "stated_value": 4.0,
+     "tool_call_id": "d42",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc8",
+     "text": "TEN offense sack rate allowed (percent of dropbacks)",
+     "stated_value": 4.7,
+     "tool_call_id": "d43",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc9",
+     "text": "League rank of TEN offense sack rate allowed (1 = lowest)",
+     "stated_value": 8.0,
+     "tool_call_id": "d44",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc10",
+     "text": "JAX defense explosive pass play rate allowed (20+ yards), share of pass plays",
+     "stated_value": 7.2,
+     "tool_call_id": "d56",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc11",
+     "text": "Sample size (pass plays) for JAX defense pass explosive rate allowed",
+     "stated_value": 291.0,
+     "tool_call_id": "d56",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc12",
+     "text": "JAX defense EPA per play allowed, all plays",
+     "stated_value": -0.13,
+     "tool_call_id": "d46",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc13",
+     "text": "JAX defense success rate allowed, all plays",
+     "stated_value": 41.0,
+     "tool_call_id": "d47",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc14",
+     "text": "Sample size (plays) for JAX defense EPA and success rate allowed, all plays",
+     "stated_value": 466.0,
+     "tool_call_id": "d46",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc15",
+     "text": "JAX defense third-down conversion rate allowed",
+     "stated_value": 34.4,
+     "tool_call_id": "d48",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc16",
+     "text": "Sample size (third-down plays) for JAX defense third-down conversion rate allowed",
+     "stated_value": 93.0,
+     "tool_call_id": "d48",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc17",
+     "text": "JAX defense red-zone drive TD rate allowed",
+     "stated_value": 40.9,
+     "tool_call_id": "d49",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc18",
+     "text": "Sample size (red-zone drives) for JAX defense red-zone TD rate allowed",
+     "stated_value": 22.0,
+     "tool_call_id": "d49",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc19",
+     "text": "JAX defense average defenders in the box on run plays",
+     "stated_value": 6.8,
+     "tool_call_id": "d50",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc20",
+     "text": "Sample size (run plays) for JAX defense box count on run plays",
+     "stated_value": 175.0,
+     "tool_call_id": "d50",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    }
+   ],
+   "unsourced": []
+  },
+  "injury_analyst": {
+   "role": "injury_analyst",
+   "prose": "JAX's latest injury report is from week 9 [ic1] and lists RB Bhayshul Tuten as Questionable [ic2] with an ankle injury. He averages 52.4% of snaps [ic3] over 8 games [ic4] and takes 57.3% of team rushes [ic5], so his absence shifts most carries to C.Rodriguez. DE Travon Walker is also Questionable [ic6]. He averages 74.0% of snaps [ic7] over 8 games [ic8], so losing him would thin the edge rotation. TEN's latest injury report is from week 8 [ic9] and lists WR Carnell Tate as Out [ic10]. Tate has a 21.8% target share [ic11] and 82.0% of snaps [ic12] over 7 games [ic13], so his absence pushes targets to the rest of the receivers, including Calvin Ridley, listed Questionable [ic16] with a 5.6% target share [ic17]. RB Tyjae Spears is Out [ic14] with a 10.5% rush share [ic15]. DE John Franklin-Myers is Questionable [ic18] at 52.3% of snaps [ic19].",
+   "claims": [
+    {
+     "claim_id": "ic2",
+     "text": "JAX RB Bhayshul Tuten game status on latest report (week 9), ankle",
+     "stated_value": "Questionable",
+     "tool_call_id": "i25",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic3",
+     "text": "JAX RB Bhayshul Tuten mean snap share per game, weeks 1-9",
+     "stated_value": 52.4,
+     "tool_call_id": "i27",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic4",
+     "text": "Games in Tuten snap share sample",
+     "stated_value": 8.0,
+     "tool_call_id": "i27",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic5",
+     "text": "JAX RB Bhayshul Tuten share of team designed rushes, weeks 1-9",
+     "stated_value": 57.3,
+     "tool_call_id": "i28",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic6",
+     "text": "JAX DE Travon Walker game status on latest report (week 9), rib",
+     "stated_value": "Questionable",
+     "tool_call_id": "i25",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic7",
+     "text": "JAX DE Travon Walker mean snap share per game, weeks 1-9",
+     "stated_value": 74.0,
+     "tool_call_id": "i29",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic8",
+     "text": "Games in Walker snap share sample",
+     "stated_value": 8.0,
+     "tool_call_id": "i29",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic10",
+     "text": "TEN WR Carnell Tate game status on latest report (week 8), shoulder",
+     "stated_value": "Out",
+     "tool_call_id": "i26",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic11",
+     "text": "TEN WR Carnell Tate share of team targets, weeks 1-8",
+     "stated_value": 21.8,
+     "tool_call_id": "i31",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic12",
+     "text": "TEN WR Carnell Tate mean snap share per game, weeks 1-7",
+     "stated_value": 82.0,
+     "tool_call_id": "i30",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic13",
+     "text": "Games in Tate snap share sample",
+     "stated_value": 7.0,
+     "tool_call_id": "i30",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic14",
+     "text": "TEN RB Tyjae Spears game status on latest report (week 8), knee",
+     "stated_value": "Out",
+     "tool_call_id": "i26",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic15",
+     "text": "TEN RB Tyjae Spears share of team designed rushes, weeks 1-8",
+     "stated_value": 10.5,
+     "tool_call_id": "i32",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic16",
+     "text": "TEN WR Calvin Ridley game status on latest report (week 8), hip",
+     "stated_value": "Questionable",
+     "tool_call_id": "i26",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic17",
+     "text": "TEN WR Calvin Ridley share of team targets, weeks 1-8",
+     "stated_value": 5.6,
+     "tool_call_id": "i34",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic18",
+     "text": "TEN DE John Franklin-Myers game status on latest report (week 8), groin",
+     "stated_value": "Questionable",
+     "tool_call_id": "i26",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic19",
+     "text": "TEN DE John Franklin-Myers mean snap share per game, weeks 1-8",
+     "stated_value": 52.3,
+     "tool_call_id": "i33",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "offense_analyst": {
+   "role": "offense_analyst",
+   "prose": "JAX throws on 50.4% of early-down plays [oc1] over 361 early-down plays [oc2], so it is not a run-first team on first and second down. On 3rd and long it drops back on 86.5% of snaps [oc3], but that is a 37-play sample [oc4] and should be treated as small. Overall JAX passes 5.2 points below expectation [oc5], 25th in the league [oc6], so it runs more than the situation predicts. Its pass EPA is 0.27 per dropback [oc7], 2nd in the league [oc8], so the efficiency comes through the air. Designed runs split 39.4% left [oc9], 38.0% right [oc10] and 22.5% middle [oc11], with a 43.2% rushing success rate [oc12]. Play action appears on 23.8% of dropbacks [oc13], motion on 65.6% of plays [oc14], screens on 9.3% of dropbacks [oc15] and RPOs on 1.9% of plays [oc16]. Explosive plays come on 10.8% of pass plays [oc17] and 8.9% of runs [oc18]. Targets concentrate on P.Washington at 24.9% [oc19] of 221 team targets [oc20], with B.Strange and J.Meyers each at 16.7% [oc21][oc22]. The team aDOT is 8.3 yards [oc23] on 226 attempts [oc24], so the offense works short and intermediate. For the game plan, TEN should expect early-down passes and motion-heavy looks, and should keep its eyes on the middle-of-field throws to Washington.",
+   "claims": [
+    {
+     "claim_id": "oc1",
+     "text": "JAX pass rate on early downs (dropbacks as share of plays)",
+     "stated_value": 50.4,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc2",
+     "text": "JAX early-down plays in the pass-rate sample",
+     "stated_value": 361.0,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc3",
+     "text": "JAX pass rate on 3rd and long (8+ yards)",
+     "stated_value": 86.5,
+     "tool_call_id": "o2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc4",
+     "text": "JAX 3rd and long plays in the sample",
+     "stated_value": 37.0,
+     "tool_call_id": "o2",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc5",
+     "text": "JAX pass rate over expected, all downs (percentage points)",
+     "stated_value": 5.2,
+     "tool_call_id": "o3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc6",
+     "text": "JAX pass rate over expected league rank (1 = highest)",
+     "stated_value": 25.0,
+     "tool_call_id": "o20",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc7",
+     "text": "JAX offense EPA per pass play",
+     "stated_value": 0.27,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc8",
+     "text": "JAX offense pass EPA per play league rank (1 = best)",
+     "stated_value": 2.0,
+     "tool_call_id": "o21",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc9",
+     "text": "JAX designed runs to the left",
+     "stated_value": 39.4,
+     "tool_call_id": "o5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc10",
+     "text": "JAX designed runs to the right",
+     "stated_value": 38.0,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc11",
+     "text": "JAX designed runs up the middle",
+     "stated_value": 22.5,
+     "tool_call_id": "o6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc12",
+     "text": "JAX offense run success rate (EPA > 0)",
+     "stated_value": 43.2,
+     "tool_call_id": "o8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc13",
+     "text": "JAX play action share of dropbacks",
+     "stated_value": 23.8,
+     "tool_call_id": "o9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc14",
+     "text": "JAX pre-snap motion share of scrimmage plays",
+     "stated_value": 65.6,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc15",
+     "text": "JAX screen share of dropbacks",
+     "stated_value": 9.3,
+     "tool_call_id": "o11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc16",
+     "text": "JAX RPO share of scrimmage plays",
+     "stated_value": 1.9,
+     "tool_call_id": "o12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc17",
+     "text": "JAX offense explosive pass play rate (20+ yards)",
+     "stated_value": 10.8,
+     "tool_call_id": "o13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc18",
+     "text": "JAX offense explosive run rate (10+ yards)",
+     "stated_value": 8.9,
+     "tool_call_id": "o14",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc19",
+     "text": "P.Washington share of JAX targets",
+     "stated_value": 24.9,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc20",
+     "text": "JAX team target count in the leader sample",
+     "stated_value": 221.0,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc21",
+     "text": "B.Strange share of JAX targets",
+     "stated_value": 16.7,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc22",
+     "text": "J.Meyers share of JAX targets",
+     "stated_value": 16.7,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc23",
+     "text": "JAX average depth of target (air yards per attempt)",
+     "stated_value": 8.3,
+     "tool_call_id": "o16",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc24",
+     "text": "JAX pass attempts with air yards in the aDOT sample",
+     "stated_value": 226.0,
+     "tool_call_id": "o16",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    }
+   ],
+   "unsourced": []
+  },
+  "matchup_analyst": {
+   "role": "matchup_analyst",
+   "prose": "First, JAX's blitz against TEN's protection: JAX sends five or more rushers on 31.3% of dropbacks [mc1] over 291 plays [mc2], and TEN has allowed a sack or QB hit on 13.0% of dropbacks [mc3] over 278 plays [mc4], 4th-lowest in the league [mc5]. TEN should lean on quick game and hot throws against the blitz and keep the protection simple. Second, the middle of the field: P.Washington takes 24.9% of JAX targets [mc6], so TEN's linebackers and safeties must carry the short-intermediate throws and not give up the seam. Third, the early-down run: RB Bhayshul Tuten is Questionable [mc7] and has taken 57.3% of JAX's designed rushes [mc8], with C.Rodriguez at 25.8% [mc9] ready to take most carries if he sits. TEN should prepare for Rodriguez as the primary back and keep the front ready to fit his carries. Finally, TEN's defense should be ready for pre-snap motion, which shows up on 65.6% of JAX plays [mc10], so the communication and alignment calls need to be sharp before the snap.",
+   "claims": [
+    {
+     "claim_id": "mc1",
+     "text": "JAX defense blitz rate: share of dropbacks faced with 5+ pass rushers, all downs",
+     "stated_value": 31.3,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc2",
+     "text": "Sample size (dropbacks) for JAX defense blitz rate",
+     "stated_value": 291.0,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc3",
+     "text": "TEN offense pressure proxy rate allowed (dropbacks with sack or QB hit), all downs",
+     "stated_value": 13.0,
+     "tool_call_id": "d2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc4",
+     "text": "Sample size (dropbacks) for TEN offense pressure proxy allowed",
+     "stated_value": 278.0,
+     "tool_call_id": "d2",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc5",
+     "text": "League rank of TEN offense pressure proxy allowed (1 = lowest)",
+     "stated_value": 4.0,
+     "tool_call_id": "d5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc6",
+     "text": "P.Washington share of JAX targets (offense, pass plays)",
+     "stated_value": 24.9,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc7",
+     "text": "JAX RB Bhayshul Tuten game status on latest (week 9) report",
+     "stated_value": "Questionable",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc8",
+     "text": "JAX RB Bhayshul Tuten share of team designed rushes",
+     "stated_value": 57.3,
+     "tool_call_id": "i4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc9",
+     "text": "JAX RB C.Rodriguez share of team designed rushes",
+     "stated_value": 25.8,
+     "tool_call_id": "i6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc10",
+     "text": "JAX offense pre-snap motion share of scrimmage plays",
+     "stated_value": 65.6,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  }
+ },
+ "checks": [
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc16",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc16",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc17",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc17",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc18",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc18",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc19",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc19",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc20",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc20",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic1",
+   "check": "value",
+   "ok": false,
+   "detail": "names no player in the 2-player result"
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic9",
+   "check": "value",
+   "ok": false,
+   "detail": "names no player in the 7-player result"
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic16",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic16",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic17",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic17",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic18",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic18",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic19",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic19",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc16",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc16",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc17",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc17",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc18",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc18",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc19",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc19",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc20",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc20",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc21",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc21",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc22",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc22",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc23",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc23",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc24",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc24",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  }
+ ],
+ "check_log": [
+  {
+   "round": 1,
+   "role": "defense_analyst",
+   "claim_id": "dc6",
+   "check": "value",
+   "detail": "d5 league_rank gives 4; stated '4th'",
+   "text": "League rank of TEN offense pressure proxy allowed (1 = lowest)",
+   "stated_value": "4th"
+  },
+  {
+   "round": 1,
+   "role": "defense_analyst",
+   "claim_id": "dc8",
+   "check": "value",
+   "detail": "d4 league_rank gives 8; stated '8th'",
+   "text": "League rank of TEN offense sack rate allowed (1 = lowest)",
+   "stated_value": "8th"
+  },
+  {
+   "round": 1,
+   "role": "defense_analyst",
+   "claim_id": "dc22",
+   "check": "value",
+   "detail": "d19 league_rank gives 9; stated '9th'",
+   "text": "League rank of JAX defense run-direction share to the left (1 = highest)",
+   "stated_value": "9th"
+  },
+  {
+   "round": 1,
+   "role": "defense_analyst",
+   "claim_id": "dc22",
+   "check": "wording",
+   "detail": "the text says defense, but the call measures the offense",
+   "text": "League rank of JAX defense run-direction share to the left (1 = highest)",
+   "stated_value": "9th"
+  },
+  {
+   "round": 1,
+   "role": "defense_analyst",
+   "claim_id": "dc23",
+   "check": "value",
+   "detail": "d20 league_rank gives 27; stated '27th'",
+   "text": "League rank of JAX defense run-direction share up the middle (1 = highest)",
+   "stated_value": "27th"
+  },
+  {
+   "round": 1,
+   "role": "defense_analyst",
+   "claim_id": "dc23",
+   "check": "wording",
+   "detail": "the text says defense, but the call measures the offense",
+   "text": "League rank of JAX defense run-direction share up the middle (1 = highest)",
+   "stated_value": "27th"
+  },
+  {
+   "round": 1,
+   "role": "defense_analyst",
+   "claim_id": "dc24",
+   "check": "value",
+   "detail": "d21 league_rank gives 10; stated '10th'",
+   "text": "League rank of JAX defense run-direction share to the right (1 = highest)",
+   "stated_value": "10th"
+  },
+  {
+   "round": 1,
+   "role": "defense_analyst",
+   "claim_id": "dc24",
+   "check": "wording",
+   "detail": "the text says defense, but the call measures the offense",
+   "text": "League rank of JAX defense run-direction share to the right (1 = highest)",
+   "stated_value": "10th"
+  },
+  {
+   "round": 1,
+   "role": "defense_analyst",
+   "claim_id": "dc27",
+   "check": "value",
+   "detail": "d17 league_rank gives 8; stated '8th'",
+   "text": "League rank of average depth of target faced by JAX defense (1 = highest)",
+   "stated_value": "8th"
+  },
+  {
+   "round": 1,
+   "role": "defense_analyst",
+   "claim_id": "dc27",
+   "check": "wording",
+   "detail": "the text says defense, but the call measures the offense",
+   "text": "League rank of average depth of target faced by JAX defense (1 = highest)",
+   "stated_value": "8th"
+  },
+  {
+   "round": 1,
+   "role": "defense_analyst",
+   "claim_id": "dc28",
+   "check": "wording",
+   "detail": "the text says defense, but the call measures the offense",
+   "text": "Sample size for JAX defense depth-of-target rank (plays)",
+   "stated_value": 226.0
+  },
+  {
+   "round": 1,
+   "role": "defense_analyst",
+   "claim_id": "dc29",
+   "check": "value",
+   "detail": "d18 league_rank gives 13; stated '13th'",
+   "text": "League rank of play-action share of plays faced by JAX defense (1 = highest)",
+   "stated_value": "13th"
+  },
+  {
+   "round": 1,
+   "role": "defense_analyst",
+   "claim_id": "dc29",
+   "check": "wording",
+   "detail": "the text says defense, but the call measures the offense",
+   "text": "League rank of play-action share of plays faced by JAX defense (1 = highest)",
+   "stated_value": "13th"
+  },
+  {
+   "round": 1,
+   "role": "defense_analyst",
+   "claim_id": "dc30",
+   "check": "wording",
+   "detail": "the text says defense, but the call measures the offense",
+   "text": "Sample size for JAX defense play-action rank (plays)",
+   "stated_value": 248.0
+  },
+  {
+   "round": 1,
+   "role": "defense_analyst",
+   "claim_id": "dc6",
+   "check": "prose",
+   "detail": "'4th' in the prose: value mismatch",
+   "text": "League rank of TEN offense pressure proxy allowed (1 = lowest)",
+   "stated_value": "4th"
+  },
+  {
+   "round": 1,
+   "role": "defense_analyst",
+   "claim_id": "dc8",
+   "check": "prose",
+   "detail": "'8th' in the prose: value mismatch",
+   "text": "League rank of TEN offense sack rate allowed (1 = lowest)",
+   "stated_value": "8th"
+  },
+  {
+   "round": 1,
+   "role": "defense_analyst",
+   "claim_id": "dc22",
+   "check": "prose",
+   "detail": "'9th' in the prose: value mismatch",
+   "text": "League rank of JAX defense run-direction share to the left (1 = highest)",
+   "stated_value": "9th"
+  },
+  {
+   "round": 1,
+   "role": "defense_analyst",
+   "claim_id": "dc23",
+   "check": "prose",
+   "detail": "'27th' in the prose: value mismatch",
+   "text": "League rank of JAX defense run-direction share up the middle (1 = highest)",
+   "stated_value": "27th"
+  },
+  {
+   "round": 1,
+   "role": "defense_analyst",
+   "claim_id": "dc24",
+   "check": "prose",
+   "detail": "'10th' in the prose: value mismatch",
+   "text": "League rank of JAX defense run-direction share to the right (1 = highest)",
+   "stated_value": "10th"
+  },
+  {
+   "round": 1,
+   "role": "defense_analyst",
+   "claim_id": "dc27",
+   "check": "prose",
+   "detail": "'8th' in the prose: value mismatch",
+   "text": "League rank of average depth of target faced by JAX defense (1 = highest)",
+   "stated_value": "8th"
+  },
+  {
+   "round": 1,
+   "role": "defense_analyst",
+   "claim_id": "dc29",
+   "check": "prose",
+   "detail": "'13th' in the prose: value mismatch",
+   "text": "League rank of play-action share of plays faced by JAX defense (1 = highest)",
+   "stated_value": "13th"
+  },
+  {
+   "round": 1,
+   "role": "injury_analyst",
+   "claim_id": "ic1",
+   "check": "value",
+   "detail": "names no player in the 2-player result",
+   "text": "JAX injury report is from week 9 (report_week)",
+   "stated_value": 9.0
+  },
+  {
+   "round": 1,
+   "role": "injury_analyst",
+   "claim_id": "ic9",
+   "check": "value",
+   "detail": "names no player in the 7-player result",
+   "text": "TEN injury report is from week 8 (report_week)",
+   "stated_value": 8.0
+  },
+  {
+   "round": 1,
+   "role": "matchup_analyst",
+   "claim_id": "mc7",
+   "check": "wording",
+   "detail": "the text says defense, but the call measures the offense",
+   "text": "League rank of play-action share of plays faced by JAX defense (1 = highest)",
+   "stated_value": 13.0
+  },
+  {
+   "round": 1,
+   "role": "matchup_analyst",
+   "claim_id": "mc8",
+   "check": "wording",
+   "detail": "the text says defense, but the call measures the offense",
+   "text": "League rank of average depth of target faced by JAX defense (1 = highest)",
+   "stated_value": 8.0
+  },
+  {
+   "round": 2,
+   "role": "defense_analyst",
+   "claim_id": "dc3",
+   "check": "value",
+   "detail": "d36 league_rank gives 15; stated '15th'",
+   "text": "League rank of JAX defense blitz rate (1 = highest)",
+   "stated_value": "15th"
+  },
+  {
+   "round": 2,
+   "role": "defense_analyst",
+   "claim_id": "dc7",
+   "check": "value",
+   "detail": "d28 league_rank gives 4; stated '4th'",
+   "text": "League rank of TEN offense pressure proxy allowed (1 = lowest)",
+   "stated_value": "4th"
+  },
+  {
+   "round": 2,
+   "role": "defense_analyst",
+   "claim_id": "dc9",
+   "check": "value",
+   "detail": "d29 league_rank gives 8; stated '8th'",
+   "text": "League rank of TEN offense sack rate allowed (1 = lowest)",
+   "stated_value": "8th"
+  },
+  {
+   "round": 2,
+   "role": "defense_analyst",
+   "claim_id": "dc3",
+   "check": "prose",
+   "detail": "'15th' in the prose: value mismatch",
+   "text": "League rank of JAX defense blitz rate (1 = highest)",
+   "stated_value": "15th"
+  },
+  {
+   "round": 2,
+   "role": "defense_analyst",
+   "claim_id": "dc7",
+   "check": "prose",
+   "detail": "'4th' in the prose: value mismatch",
+   "text": "League rank of TEN offense pressure proxy allowed (1 = lowest)",
+   "stated_value": "4th"
+  },
+  {
+   "round": 2,
+   "role": "defense_analyst",
+   "claim_id": "dc9",
+   "check": "prose",
+   "detail": "'8th' in the prose: value mismatch",
+   "text": "League rank of TEN offense sack rate allowed (1 = lowest)",
+   "stated_value": "8th"
+  },
+  {
+   "round": 2,
+   "role": "injury_analyst",
+   "claim_id": "ic1",
+   "check": "value",
+   "detail": "names no player in the 2-player result",
+   "text": "JAX injury report is from week 9 (report_week)",
+   "stated_value": 9.0
+  },
+  {
+   "round": 2,
+   "role": "injury_analyst",
+   "claim_id": "ic10",
+   "check": "value",
+   "detail": "names no player in the 7-player result",
+   "text": "TEN injury report is from week 8 (report_week)",
+   "stated_value": 8.0
+  },
+  {
+   "round": 3,
+   "role": "injury_analyst",
+   "claim_id": "ic1",
+   "check": "value",
+   "detail": "names no player in the 2-player result",
+   "text": "JAX injury report is from week 9 (report_week)",
+   "stated_value": 9.0
+  },
+  {
+   "round": 3,
+   "role": "injury_analyst",
+   "claim_id": "ic9",
+   "check": "value",
+   "detail": "names no player in the 7-player result",
+   "text": "TEN injury report is from week 8 (report_week)",
+   "stated_value": 8.0
+  }
+ ],
+ "checks_run": 3,
+ "dropped": [
+  {
+   "round": 3,
+   "role": "injury_analyst",
+   "claim_id": "ic1",
+   "check": "value",
+   "detail": "names no player in the 2-player result",
+   "text": "JAX injury report is from week 9 (report_week)",
+   "stated_value": 9.0
+  },
+  {
+   "round": 3,
+   "role": "injury_analyst",
+   "claim_id": "ic9",
+   "check": "value",
+   "detail": "names no player in the 7-player result",
+   "text": "TEN injury report is from week 8 (report_week)",
+   "stated_value": 8.0
+  }
+ ],
+ "report": {
+  "title": "TEN vs JAX Scouting Report: Week Ten",
+  "summary": "Jacksonville is an efficient passing team that runs more than the situation predicts, with Washington as its central target. Its defense blitzes often, so TEN's quick game and hot throws will matter. The status of Tuten and Walker will shape the run game and edge rotation. TEN must also be ready for heavy pre-snap motion.",
+  "sections": [
+   {
+    "heading": "Opponent offense",
+    "body": "Jacksonville throws on 50.4% of early-down plays [oc1] over 361 early-down plays [oc2], and passes 5.2 points below expectation [oc5], 25th in the league [oc6]. Its pass efficiency is strong, with EPA of 0.27 per dropback [oc7], 2nd in the league [oc8]. Designed runs split 39.4% left [oc9], 38.0% right [oc10] and 22.5% middle [oc11]. Play action appears on 23.8% of dropbacks [oc13] and motion on 65.6% of plays [oc14]. Targets concentrate on P.Washington at 24.9% [oc19] of 221 team targets [oc20], with B.Strange and J.Meyers each at 16.7% [oc21][oc22]. The average depth of target is 8.3 yards [oc23], so the offense works short and intermediate. Expect early-down passes and motion-heavy looks."
+   },
+   {
+    "heading": "Opponent defense",
+    "body": "Jacksonville sends five or more rushers on 31.3% of dropbacks [dc1] over 291 plays [dc2], the 15th-highest rate in the league [dc3], averaging 4.4 rushers per dropback [dc4]. Expect a steady blitz diet, so quick game and hot throws matter. Its pass defense allows explosive plays on 7.2% of pass plays [dc10], so the deep shot is available but not frequent. Overall EPA allowed is -0.13 per play [dc12], with a 41.0% success rate [dc13]. Third downs convert at 34.4% [dc15] over 93 plays [dc16]. The box averages 6.8 defenders on run plays [dc19] over 175 plays [dc20], so the run game faces a crowded box."
+   },
+   {
+    "heading": "Injuries and availability",
+    "body": "On the latest report, RB Bhayshul Tuten is Questionable with an ankle injury. He averages 52.4% of snaps [ic3] over 8 games [ic4] and takes 57.3% of team rushes [ic5], so his absence shifts carries to C.Rodriguez. DE Travon Walker is also Questionable [ic6] with a rib injury, and at 74.0% of snaps [ic7] over 8 games [ic8] his absence would thin the edge rotation. TEN WR Carnell Tate is Out [ic10] with a shoulder injury; he has a 21.8% target share [ic11], so targets shift to the rest of the receivers, including Calvin Ridley, listed Questionable [ic16]. RB Tyjae Spears is Out [ic14], and DE John Franklin-Myers is Questionable [ic18] at 52.3% of snaps [ic19]."
+   },
+   {
+    "heading": "Key matchups",
+    "body": "Against the blitz, JAX sends five or more rushers on 31.3% of dropbacks [mc1] over 291 plays [mc2], while TEN has allowed a sack or QB hit on 13.0% of dropbacks [mc3] over 278 plays [mc4], 4th-lowest in the league [mc5]. TEN should lean on quick game and hot throws and keep protection simple. Second, P.Washington takes 24.9% of JAX targets [mc6], so the linebackers and safeties must carry the middle of the field. Third, Tuten is Questionable and has taken 57.3% of JAX designed rushes [mc8], with C.Rodriguez at 25.8% [mc9] ready to take most carries. Finally, pre-snap motion shows up on 65.6% of JAX plays [mc10], so alignment calls must be sharp."
+   }
+  ]
+ },
+ "number_checks": [
+  {
+   "mention": {
+    "text": "50.4%",
+    "value": 50.4,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 348,
+    "claim_id": "oc1",
+    "group": 5,
+    "group_ids": [
+     "oc1"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "361",
+    "value": 361.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 385,
+    "claim_id": "oc2",
+    "group": 7,
+    "group_ids": [
+     "oc2"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "5.2",
+    "value": 5.2,
+    "kind": "number",
+    "decimals": 1,
+    "start": 424,
+    "claim_id": "oc5",
+    "group": 9,
+    "group_ids": [
+     "oc5"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "25th",
+    "value": 25.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 460,
+    "claim_id": "oc6",
+    "group": 11,
+    "group_ids": [
+     "oc6"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "0.27",
+    "value": 0.27,
+    "kind": "number",
+    "decimals": 2,
+    "start": 529,
+    "claim_id": "oc7",
+    "group": 14,
+    "group_ids": [
+     "oc7"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "2nd",
+    "value": 2.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 554,
+    "claim_id": "oc8",
+    "group": 16,
+    "group_ids": [
+     "oc8"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "39.4%",
+    "value": 39.4,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 599,
+    "claim_id": "oc9",
+    "group": 19,
+    "group_ids": [
+     "oc9"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "38.0%",
+    "value": 38.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 617,
+    "claim_id": "oc10",
+    "group": 21,
+    "group_ids": [
+     "oc10"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "22.5%",
+    "value": 22.5,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 640,
+    "claim_id": "oc11",
+    "group": 23,
+    "group_ids": [
+     "oc11"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "23.8%",
+    "value": 23.8,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 684,
+    "claim_id": "oc13",
+    "group": 26,
+    "group_ids": [
+     "oc13"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "65.6%",
+    "value": 65.6,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 724,
+    "claim_id": "oc14",
+    "group": 28,
+    "group_ids": [
+     "oc14"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "24.9%",
+    "value": 24.9,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 786,
+    "claim_id": "oc19",
+    "group": 31,
+    "group_ids": [
+     "oc19"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "221",
+    "value": 221.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 802,
+    "claim_id": "oc20",
+    "group": 33,
+    "group_ids": [
+     "oc20"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "16.7%",
+    "value": 16.7,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 863,
+    "claim_id": "oc21",
+    "group": 35,
+    "group_ids": [
+     "oc21",
+     "oc22"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "8.3",
+    "value": 8.3,
+    "kind": "number",
+    "decimals": 1,
+    "start": 914,
+    "claim_id": "oc23",
+    "group": 38,
+    "group_ids": [
+     "oc23"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "31.3%",
+    "value": 31.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1070,
+    "claim_id": "dc1",
+    "group": 42,
+    "group_ids": [
+     "dc1"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "291",
+    "value": 291.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1100,
+    "claim_id": "dc2",
+    "group": 44,
+    "group_ids": [
+     "dc2"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "15th",
+    "value": 15.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 1121,
+    "claim_id": "dc3",
+    "group": 46,
+    "group_ids": [
+     "dc3"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "4.4",
+    "value": 4.4,
+    "kind": "number",
+    "decimals": 1,
+    "start": 1170,
+    "claim_id": "dc4",
+    "group": 48,
+    "group_ids": [
+     "dc4"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "7.2%",
+    "value": 7.2,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1310,
+    "claim_id": "dc10",
+    "group": 52,
+    "group_ids": [
+     "dc10"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "-0.13",
+    "value": -0.13,
+    "kind": "number",
+    "decimals": 2,
+    "start": 1408,
+    "claim_id": "dc12",
+    "group": 55,
+    "group_ids": [
+     "dc12"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "41.0%",
+    "value": 41.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1438,
+    "claim_id": "dc13",
+    "group": 57,
+    "group_ids": [
+     "dc13"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "34.4%",
+    "value": 34.4,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1488,
+    "claim_id": "dc15",
+    "group": 60,
+    "group_ids": [
+     "dc15"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "93",
+    "value": 93.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1506,
+    "claim_id": "dc16",
+    "group": 62,
+    "group_ids": [
+     "dc16"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "6.8",
+    "value": 6.8,
+    "kind": "number",
+    "decimals": 1,
+    "start": 1540,
+    "claim_id": "dc19",
+    "group": 65,
+    "group_ids": [
+     "dc19"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "175",
+    "value": 175.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1579,
+    "claim_id": "dc20",
+    "group": 67,
+    "group_ids": [
+     "dc20"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "52.4%",
+    "value": 52.4,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1725,
+    "claim_id": "ic3",
+    "group": 71,
+    "group_ids": [
+     "ic3"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "8",
+    "value": 8.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1751,
+    "claim_id": "ic4",
+    "group": 73,
+    "group_ids": [
+     "ic4"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "57.3%",
+    "value": 57.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1775,
+    "claim_id": "ic5",
+    "group": 75,
+    "group_ids": [
+     "ic5"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "74.0%",
+    "value": 74.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1919,
+    "claim_id": "ic7",
+    "group": 79,
+    "group_ids": [
+     "ic7"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "8",
+    "value": 8.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1945,
+    "claim_id": "ic8",
+    "group": 81,
+    "group_ids": [
+     "ic8"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "21.8%",
+    "value": 21.8,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2068,
+    "claim_id": "ic11",
+    "group": 85,
+    "group_ids": [
+     "ic11"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "52.3%",
+    "value": 52.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2279,
+    "claim_id": "ic19",
+    "group": 91,
+    "group_ids": [
+     "ic19"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "31.3%",
+    "value": 31.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2356,
+    "claim_id": "mc1",
+    "group": 94,
+    "group_ids": [
+     "mc1"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "291",
+    "value": 291.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2386,
+    "claim_id": "mc2",
+    "group": 96,
+    "group_ids": [
+     "mc2"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "13.0%",
+    "value": 13.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2445,
+    "claim_id": "mc3",
+    "group": 98,
+    "group_ids": [
+     "mc3"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "278",
+    "value": 278.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2475,
+    "claim_id": "mc4",
+    "group": 100,
+    "group_ids": [
+     "mc4"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "4th",
+    "value": 4.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 2492,
+    "claim_id": "mc5",
+    "group": 102,
+    "group_ids": [
+     "mc5"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "24.9%",
+    "value": 24.9,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2624,
+    "claim_id": "mc6",
+    "group": 106,
+    "group_ids": [
+     "mc6"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "57.3%",
+    "value": 57.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2763,
+    "claim_id": "mc8",
+    "group": 109,
+    "group_ids": [
+     "mc8"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "25.8%",
+    "value": 25.8,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2819,
+    "claim_id": "mc9",
+    "group": 111,
+    "group_ids": [
+     "mc9"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "65.6%",
+    "value": 65.6,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2896,
+    "claim_id": "mc10",
+    "group": 114,
+    "group_ids": [
+     "mc10"
+    ]
+   },
+   "status": "ok"
+  }
+ ],
+ "tool_calls": [
+  {
+   "call_id": "d1",
+   "node": "defense_analyst",
+   "tool": "blitz_rate",
+   "args": {
+    "team": "JAX",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 31.27147766323024,
+    "n_plays": 291,
+    "query_meta": {
+     "tool": "blitz_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks faced with 5+ pass rushers (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d2",
+   "node": "defense_analyst",
+   "tool": "pressure_proxy_rate",
+   "args": {
+    "team": "TEN",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 12.949640287769784,
+    "n_plays": 278,
+    "query_meta": {
+     "tool": "pressure_proxy_rate",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Pressure proxy: percent of dropbacks with a sack or QB hit (offense). Not true pressure rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d3",
+   "node": "defense_analyst",
+   "tool": "sack_rate",
+   "args": {
+    "team": "TEN",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 4.676258992805756,
+    "n_plays": 278,
+    "query_meta": {
+     "tool": "sack_rate",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks ending in a sack (offense).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d4",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "sack_rate",
+    "team": "TEN",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 8,
+    "n_plays": 278,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "sack_rate",
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "rank",
+     "metric": "sack_rate",
+     "metric_args": {
+      "side": "offense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (lowest)",
+     "team_value": 4.676258992805756,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d5",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "pressure_proxy_rate",
+    "team": "TEN",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 4,
+    "n_plays": 278,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "pressure_proxy_rate",
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "rank",
+     "metric": "pressure_proxy_rate",
+     "metric_args": {
+      "side": "offense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (lowest)",
+     "team_value": 12.949640287769784,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d6",
+   "node": "defense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "JAX",
+    "side": "defense",
+    "play_kind": "all",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 7.081545064377683,
+    "n_plays": 466,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "all"
+     },
+     "unit": "percent",
+     "definition": "Percent of all plays gaining 20+ yds (pass) or 10+ yds (run), allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d7",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "JAX",
+    "side": "defense",
+    "play_kind": "all",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -0.12765984676847478,
+    "n_plays": 466,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "all"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per all play allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d8",
+   "node": "defense_analyst",
+   "tool": "success_rate",
+   "args": {
+    "team": "JAX",
+    "side": "defense",
+    "play_kind": "all",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 40.987124463519315,
+    "n_plays": 466,
+    "query_meta": {
+     "tool": "success_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "all"
+     },
+     "unit": "percent",
+     "definition": "Percent of all plays with EPA > 0, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d9",
+   "node": "defense_analyst",
+   "tool": "third_down_conversion_rate",
+   "args": {
+    "team": "JAX",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 34.40860215053764,
+    "n_plays": 93,
+    "query_meta": {
+     "tool": "third_down_conversion_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of third-down plays converted, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d10",
+   "node": "defense_analyst",
+   "tool": "red_zone_td_rate",
+   "args": {
+    "team": "JAX",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 40.909090909090914,
+    "n_plays": 22,
+    "query_meta": {
+     "tool": "red_zone_td_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of red-zone drives ending in a TD, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8
+     ],
+     "n_games": 7
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d11",
+   "node": "defense_analyst",
+   "tool": "average_pass_rushers",
+   "args": {
+    "team": "JAX",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 4.364261168384879,
+    "n_plays": 291,
+    "query_meta": {
+     "tool": "average_pass_rushers",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "rushers",
+     "definition": "Mean pass rushers per dropback faced (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d12",
+   "node": "defense_analyst",
+   "tool": "average_box_defenders",
+   "args": {
+    "team": "JAX",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 6.845714285714286,
+    "n_plays": 175,
+    "query_meta": {
+     "tool": "average_box_defenders",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "play_kind": "run"
+     },
+     "unit": "defenders",
+     "definition": "Mean defenders in the box on run plays (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d13",
+   "node": "defense_analyst",
+   "tool": "average_pass_rushers",
+   "args": {
+    "team": "TEN",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 4.266447368421052,
+    "n_plays": 304,
+    "query_meta": {
+     "tool": "average_pass_rushers",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "rushers",
+     "definition": "Mean pass rushers per dropback faced (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d14",
+   "node": "defense_analyst",
+   "tool": "pressure_proxy_rate",
+   "args": {
+    "team": "JAX",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 16.83848797250859,
+    "n_plays": 291,
+    "query_meta": {
+     "tool": "pressure_proxy_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Pressure proxy: percent of dropbacks with a sack or QB hit (defense). Not true pressure rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d15",
+   "node": "defense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "JAX",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 7.216494845360824,
+    "n_plays": 291,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d16",
+   "node": "defense_analyst",
+   "tool": "success_rate",
+   "args": {
+    "team": "JAX",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 43.986254295532646,
+    "n_plays": 291,
+    "query_meta": {
+     "tool": "success_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays with EPA > 0, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d17",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "average_depth_of_target",
+    "team": "JAX",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 8,
+    "n_plays": 226,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "average_depth_of_target",
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "rank",
+     "metric": "average_depth_of_target",
+     "metric_args": {},
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "highest",
+     "team_value": 8.287610619469026,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d18",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "ftn_play_rate",
+    "team": "JAX",
+    "feature": "play_action",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 13,
+    "n_plays": 248,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "ftn_play_rate",
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "feature": "play_action"
+     },
+     "unit": "rank",
+     "metric": "ftn_play_rate",
+     "metric_args": {
+      "feature": "play_action"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "highest",
+     "team_value": 23.790322580645164,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d19",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "run_direction_rate",
+    "team": "JAX",
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 9,
+    "n_plays": 213,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "run_direction_rate",
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "run_direction_rate",
+     "metric_args": {
+      "direction": "left"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "highest",
+     "team_value": 39.436619718309856,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d20",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "run_direction_rate",
+    "team": "JAX",
+    "direction": "middle",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 27,
+    "n_plays": 213,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "run_direction_rate",
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "direction": "middle"
+     },
+     "unit": "rank",
+     "metric": "run_direction_rate",
+     "metric_args": {
+      "direction": "middle"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "highest",
+     "team_value": 22.535211267605636,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d21",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "run_direction_rate",
+    "team": "JAX",
+    "direction": "right",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 10,
+    "n_plays": 213,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "run_direction_rate",
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "direction": "right"
+     },
+     "unit": "rank",
+     "metric": "run_direction_rate",
+     "metric_args": {
+      "direction": "right"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "highest",
+     "team_value": 38.028169014084504,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i1",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "JAX",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Bhayshul Tuten",
+      "player_id": "00-0040719",
+      "position": "RB",
+      "status": "Questionable",
+      "injury": "Ankle",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Travon Walker",
+      "player_id": "00-0037235",
+      "position": "DE",
+      "status": "Questionable",
+      "injury": "Rib",
+      "practice_status": "Limited Participation in Practice"
+     }
+    ],
+    "n_plays": 2,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 9,
+     "weeks": [
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i2",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "TEN",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Carnell Tate",
+      "player_id": "00-0041438",
+      "position": "WR",
+      "status": "Out",
+      "injury": "Shoulder",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Tommy Townsend",
+      "player_id": "00-0035889",
+      "position": "P",
+      "status": "Out",
+      "injury": "Knee",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Tyjae Spears",
+      "player_id": "00-0039032",
+      "position": "RB",
+      "status": "Out",
+      "injury": "Knee",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Calvin Ridley",
+      "player_id": "00-0034837",
+      "position": "WR",
+      "status": "Questionable",
+      "injury": "Hip",
+      "practice_status": "Full Participation in Practice"
+     },
+     {
+      "player": "Dorian Mausi",
+      "player_id": "00-0040503",
+      "position": "LB",
+      "status": "Questionable",
+      "injury": "Foot",
+      "practice_status": "Full Participation in Practice"
+     },
+     {
+      "player": "Jaylon Jones",
+      "player_id": "00-0038407",
+      "position": "CB",
+      "status": "Questionable",
+      "injury": "Knee",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "John Franklin-Myers",
+      "player_id": "00-0034805",
+      "position": "DE",
+      "status": "Questionable",
+      "injury": "Groin",
+      "practice_status": "Limited Participation in Practice"
+     }
+    ],
+    "n_plays": 7,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 8,
+     "weeks": [
+      8
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i3",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "JAX",
+    "player": "Bhayshul Tuten",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 52.37500000000001,
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Bhayshul Tuten",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Bhayshul Tuten's mean snap share per game, weeks 1-9.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i4",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "JAX",
+    "player": "Bhayshul Tuten",
+    "kind": "rush",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 57.27699530516433,
+    "n_plays": 213,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Bhayshul Tuten",
+      "kind": "rush"
+     },
+     "unit": "percent",
+     "definition": "B.Tuten's percent of team rushs.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8,
+     "player": {
+      "id": "00-0040719",
+      "name": "B.Tuten",
+      "count": 122
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i5",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "JAX",
+    "player": "Travon Walker",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 74.0,
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Travon Walker",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Travon Walker's mean snap share per game, weeks 1-9.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i6",
+   "node": "injury_analyst",
+   "tool": "usage_leaders",
+   "args": {
+    "team": "JAX",
+    "kind": "rush",
+    "top_n": 4,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "B.Tuten",
+      "player_id": "00-0040719",
+      "count": 122,
+      "share": 57.27699530516432
+     },
+     {
+      "player": "C.Rodriguez",
+      "player_id": "00-0038611",
+      "count": 55,
+      "share": 25.821596244131456
+     },
+     {
+      "player": "A.Abdullah",
+      "player_id": "00-0032104",
+      "count": 23,
+      "share": 10.7981220657277
+     },
+     {
+      "player": "T.Lawrence",
+      "player_id": "00-0036971",
+      "count": 7,
+      "share": 3.2863849765258215
+     }
+    ],
+    "n_plays": 213,
+    "query_meta": {
+     "tool": "usage_leaders",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "kind": "rush",
+      "top_n": 4
+     },
+     "unit": "players",
+     "definition": "Top 4 players by team rushs.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i7",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "TEN",
+    "player": "Carnell Tate",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 82.0,
+    "n_plays": 7,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Carnell Tate",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Carnell Tate's mean snap share per game, weeks 1-9.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "n_games": 7
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i8",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "TEN",
+    "player": "Carnell Tate",
+    "kind": "target",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 21.794871794871796,
+    "n_plays": 234,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Carnell Tate",
+      "kind": "target"
+     },
+     "unit": "percent",
+     "definition": "C.Tate's percent of team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8,
+     "player": {
+      "id": "00-0041438",
+      "name": "C.Tate",
+      "count": 51
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i9",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "TEN",
+    "player": "Tyjae Spears",
+    "kind": "rush",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 10.526315789473683,
+    "n_plays": 171,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Tyjae Spears",
+      "kind": "rush"
+     },
+     "unit": "percent",
+     "definition": "T.Spears's percent of team rushs.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8,
+     "player": {
+      "id": "00-0039032",
+      "name": "T.Spears",
+      "count": 18
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i10",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "TEN",
+    "player": "Calvin Ridley",
+    "kind": "target",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 5.555555555555555,
+    "n_plays": 234,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Calvin Ridley",
+      "kind": "target"
+     },
+     "unit": "percent",
+     "definition": "C.Ridley's percent of team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8,
+     "player": {
+      "id": "00-0034837",
+      "name": "C.Ridley",
+      "count": 13
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i11",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "TEN",
+    "player": "Jaylon Jones",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 0.0,
+    "n_plays": 2,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Jaylon Jones",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Jaylon Jones's mean snap share per game, weeks 1-9.",
+     "weeks": [
+      2,
+      6
+     ],
+     "n_games": 2
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i12",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "TEN",
+    "player": "John Franklin-Myers",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 52.25,
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "player": "John Franklin-Myers",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "John Franklin-Myers's mean snap share per game, weeks 1-9.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i13",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "TEN",
+    "player": "Dorian Mausi",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": null,
+   "error": "no snaps recorded for 'Dorian Mausi' with TEN in weeks 1-9 (the player may not have played)"
+  },
+  {
+   "call_id": "o1",
+   "node": "offense_analyst",
+   "tool": "pass_rate",
+   "args": {
+    "team": "JAX",
+    "early_downs_only": true,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 50.41551246537396,
+    "n_plays": 361,
+    "query_meta": {
+     "tool": "pass_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "down": null,
+      "distance": null,
+      "early_downs_only": true
+     },
+     "unit": "percent",
+     "definition": "Percent of plays that are dropbacks (early downs).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o2",
+   "node": "offense_analyst",
+   "tool": "pass_rate",
+   "args": {
+    "team": "JAX",
+    "down": 3,
+    "distance": "long",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 86.48648648648648,
+    "n_plays": 37,
+    "query_meta": {
+     "tool": "pass_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "down": 3,
+      "distance": "long",
+      "early_downs_only": false
+     },
+     "unit": "percent",
+     "definition": "Percent of plays that are dropbacks (down 3, long distance).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o3",
+   "node": "offense_analyst",
+   "tool": "pass_rate_over_expected",
+   "args": {
+    "team": "JAX",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -5.152004439528886,
+    "n_plays": 462,
+    "query_meta": {
+     "tool": "pass_rate_over_expected",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "early_downs_only": false
+     },
+     "unit": "percentage_points",
+     "definition": "Mean pass_oe (all downs).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o4",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "JAX",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 0.27019932346205205,
+    "n_plays": 249,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o5",
+   "node": "offense_analyst",
+   "tool": "run_direction_rate",
+   "args": {
+    "team": "JAX",
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 39.436619718309856,
+    "n_plays": 213,
+    "query_meta": {
+     "tool": "run_direction_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "direction": "left"
+     },
+     "unit": "percent",
+     "definition": "Percent of designed runs to the left.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o6",
+   "node": "offense_analyst",
+   "tool": "run_direction_rate",
+   "args": {
+    "team": "JAX",
+    "direction": "middle",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 22.535211267605636,
+    "n_plays": 213,
+    "query_meta": {
+     "tool": "run_direction_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "direction": "middle"
+     },
+     "unit": "percent",
+     "definition": "Percent of designed runs to the middle.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o7",
+   "node": "offense_analyst",
+   "tool": "run_direction_rate",
+   "args": {
+    "team": "JAX",
+    "direction": "right",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 38.028169014084504,
+    "n_plays": 213,
+    "query_meta": {
+     "tool": "run_direction_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "direction": "right"
+     },
+     "unit": "percent",
+     "definition": "Percent of designed runs to the right.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o8",
+   "node": "offense_analyst",
+   "tool": "success_rate",
+   "args": {
+    "team": "JAX",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 43.1924882629108,
+    "n_plays": 213,
+    "query_meta": {
+     "tool": "success_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "run"
+     },
+     "unit": "percent",
+     "definition": "Percent of run plays with EPA > 0, by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o9",
+   "node": "offense_analyst",
+   "tool": "ftn_play_rate",
+   "args": {
+    "team": "JAX",
+    "feature": "play_action",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 23.790322580645164,
+    "n_plays": 248,
+    "query_meta": {
+     "tool": "ftn_play_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "feature": "play_action"
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks with play action (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o10",
+   "node": "offense_analyst",
+   "tool": "ftn_play_rate",
+   "args": {
+    "team": "JAX",
+    "feature": "motion",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 65.5844155844156,
+    "n_plays": 462,
+    "query_meta": {
+     "tool": "ftn_play_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "feature": "motion"
+     },
+     "unit": "percent",
+     "definition": "Percent of scrimmage plays with motion (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o11",
+   "node": "offense_analyst",
+   "tool": "ftn_play_rate",
+   "args": {
+    "team": "JAX",
+    "feature": "screen",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 9.274193548387096,
+    "n_plays": 248,
+    "query_meta": {
+     "tool": "ftn_play_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "feature": "screen"
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks with screen (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o12",
+   "node": "offense_analyst",
+   "tool": "ftn_play_rate",
+   "args": {
+    "team": "JAX",
+    "feature": "rpo",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 1.948051948051948,
+    "n_plays": 462,
+    "query_meta": {
+     "tool": "ftn_play_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "feature": "rpo"
+     },
+     "unit": "percent",
+     "definition": "Percent of scrimmage plays with rpo (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o13",
+   "node": "offense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "JAX",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 10.843373493975903,
+    "n_plays": 249,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o14",
+   "node": "offense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "JAX",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 8.92018779342723,
+    "n_plays": 213,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "run"
+     },
+     "unit": "percent",
+     "definition": "Percent of run plays gaining 20+ yds (pass) or 10+ yds (run), by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o15",
+   "node": "offense_analyst",
+   "tool": "usage_leaders",
+   "args": {
+    "team": "JAX",
+    "kind": "target",
+    "top_n": 3,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "P.Washington",
+      "player_id": "00-0038606",
+      "count": 55,
+      "share": 24.8868778280543
+     },
+     {
+      "player": "B.Strange",
+      "player_id": "00-0038935",
+      "count": 37,
+      "share": 16.742081447963802
+     },
+     {
+      "player": "J.Meyers",
+      "player_id": "00-0034960",
+      "count": 37,
+      "share": 16.742081447963802
+     }
+    ],
+    "n_plays": 221,
+    "query_meta": {
+     "tool": "usage_leaders",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "kind": "target",
+      "top_n": 3
+     },
+     "unit": "players",
+     "definition": "Top 3 players by team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o16",
+   "node": "offense_analyst",
+   "tool": "average_depth_of_target",
+   "args": {
+    "team": "JAX",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 8.287610619469026,
+    "n_plays": 226,
+    "query_meta": {
+     "tool": "average_depth_of_target",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "yards",
+     "definition": "Mean air yards per pass attempt.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o17",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "TEN",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -0.10385876283844665,
+    "n_plays": 278,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o18",
+   "node": "offense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "TEN",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 6.115107913669065,
+    "n_plays": 278,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o19",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "JAX",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 0.27019932346205205,
+    "n_plays": 249,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o20",
+   "node": "offense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "pass_rate_over_expected",
+    "team": "JAX",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 25,
+    "n_plays": 462,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "pass_rate_over_expected",
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "rank",
+     "metric": "pass_rate_over_expected",
+     "metric_args": {},
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "highest",
+     "team_value": -5.152004439528886,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o21",
+   "node": "offense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "JAX",
+    "play_kind": "pass",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 2,
+    "n_plays": 249,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "play_kind": "pass",
+      "side": "offense"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "play_kind": "pass",
+      "side": "offense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (highest)",
+     "team_value": 0.27019932346205205,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o22",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "TEN",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -0.10385876283844665,
+    "n_plays": 278,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o23",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "TEN",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -0.10385876283844665,
+    "n_plays": 278,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o24",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "TEN",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -0.10385876283844665,
+    "n_plays": 278,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o25",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "TEN",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -0.10385876283844665,
+    "n_plays": 278,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o26",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "TEN",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -0.10385876283844665,
+    "n_plays": 278,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o27",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "TEN",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -0.10385876283844665,
+    "n_plays": 278,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o28",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "TEN",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -0.10385876283844665,
+    "n_plays": 278,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o29",
+   "node": "offense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "TEN",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 6.115107913669065,
+    "n_plays": 278,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o30",
+   "node": "offense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "TEN",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 6.115107913669065,
+    "n_plays": 278,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d22",
+   "node": "defense_analyst",
+   "tool": "average_box_defenders",
+   "args": {
+    "team": "JAX",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 6.845714285714286,
+    "n_plays": 175,
+    "query_meta": {
+     "tool": "average_box_defenders",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "play_kind": "run"
+     },
+     "unit": "defenders",
+     "definition": "Mean defenders in the box on run plays (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d23",
+   "node": "defense_analyst",
+   "tool": "blitz_rate",
+   "args": {
+    "team": "JAX",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 31.27147766323024,
+    "n_plays": 291,
+    "query_meta": {
+     "tool": "blitz_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks faced with 5+ pass rushers (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d24",
+   "node": "defense_analyst",
+   "tool": "average_pass_rushers",
+   "args": {
+    "team": "JAX",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 4.364261168384879,
+    "n_plays": 291,
+    "query_meta": {
+     "tool": "average_pass_rushers",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "rushers",
+     "definition": "Mean pass rushers per dropback faced (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d25",
+   "node": "defense_analyst",
+   "tool": "pressure_proxy_rate",
+   "args": {
+    "team": "JAX",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 16.83848797250859,
+    "n_plays": 291,
+    "query_meta": {
+     "tool": "pressure_proxy_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Pressure proxy: percent of dropbacks with a sack or QB hit (defense). Not true pressure rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d26",
+   "node": "defense_analyst",
+   "tool": "pressure_proxy_rate",
+   "args": {
+    "team": "TEN",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 12.949640287769784,
+    "n_plays": 278,
+    "query_meta": {
+     "tool": "pressure_proxy_rate",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Pressure proxy: percent of dropbacks with a sack or QB hit (offense). Not true pressure rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d27",
+   "node": "defense_analyst",
+   "tool": "sack_rate",
+   "args": {
+    "team": "TEN",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 4.676258992805756,
+    "n_plays": 278,
+    "query_meta": {
+     "tool": "sack_rate",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks ending in a sack (offense).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d28",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "pressure_proxy_rate",
+    "team": "TEN",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 4,
+    "n_plays": 278,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "pressure_proxy_rate",
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "rank",
+     "metric": "pressure_proxy_rate",
+     "metric_args": {
+      "side": "offense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (lowest)",
+     "team_value": 12.949640287769784,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d29",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "sack_rate",
+    "team": "TEN",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 8,
+    "n_plays": 278,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "sack_rate",
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "rank",
+     "metric": "sack_rate",
+     "metric_args": {
+      "side": "offense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (lowest)",
+     "team_value": 4.676258992805756,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d30",
+   "node": "defense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "JAX",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 7.216494845360824,
+    "n_plays": 291,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d31",
+   "node": "defense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "JAX",
+    "side": "defense",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 6.857142857142858,
+    "n_plays": 175,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "run"
+     },
+     "unit": "percent",
+     "definition": "Percent of run plays gaining 20+ yds (pass) or 10+ yds (run), allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d32",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "JAX",
+    "side": "defense",
+    "play_kind": "all",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -0.12765984676847478,
+    "n_plays": 466,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "all"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per all play allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d33",
+   "node": "defense_analyst",
+   "tool": "success_rate",
+   "args": {
+    "team": "JAX",
+    "side": "defense",
+    "play_kind": "all",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 40.987124463519315,
+    "n_plays": 466,
+    "query_meta": {
+     "tool": "success_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "all"
+     },
+     "unit": "percent",
+     "definition": "Percent of all plays with EPA > 0, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d34",
+   "node": "defense_analyst",
+   "tool": "third_down_conversion_rate",
+   "args": {
+    "team": "JAX",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 34.40860215053764,
+    "n_plays": 93,
+    "query_meta": {
+     "tool": "third_down_conversion_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of third-down plays converted, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d35",
+   "node": "defense_analyst",
+   "tool": "red_zone_td_rate",
+   "args": {
+    "team": "JAX",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 40.909090909090914,
+    "n_plays": 22,
+    "query_meta": {
+     "tool": "red_zone_td_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of red-zone drives ending in a TD, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8
+     ],
+     "n_games": 7
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d36",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "blitz_rate",
+    "team": "JAX",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 15,
+    "n_plays": 291,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "blitz_rate",
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "rank",
+     "metric": "blitz_rate",
+     "metric_args": {},
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "highest",
+     "team_value": 31.27147766323024,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d37",
+   "node": "defense_analyst",
+   "tool": "average_box_defenders",
+   "args": {
+    "team": "JAX",
+    "play_kind": "all",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 6.427038626609442,
+    "n_plays": 466,
+    "query_meta": {
+     "tool": "average_box_defenders",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "play_kind": "all"
+     },
+     "unit": "defenders",
+     "definition": "Mean defenders in the box on all plays (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i14",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "JAX",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Bhayshul Tuten",
+      "player_id": "00-0040719",
+      "position": "RB",
+      "status": "Questionable",
+      "injury": "Ankle",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Travon Walker",
+      "player_id": "00-0037235",
+      "position": "DE",
+      "status": "Questionable",
+      "injury": "Rib",
+      "practice_status": "Limited Participation in Practice"
+     }
+    ],
+    "n_plays": 2,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 9,
+     "weeks": [
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i15",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "TEN",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Carnell Tate",
+      "player_id": "00-0041438",
+      "position": "WR",
+      "status": "Out",
+      "injury": "Shoulder",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Tommy Townsend",
+      "player_id": "00-0035889",
+      "position": "P",
+      "status": "Out",
+      "injury": "Knee",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Tyjae Spears",
+      "player_id": "00-0039032",
+      "position": "RB",
+      "status": "Out",
+      "injury": "Knee",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Calvin Ridley",
+      "player_id": "00-0034837",
+      "position": "WR",
+      "status": "Questionable",
+      "injury": "Hip",
+      "practice_status": "Full Participation in Practice"
+     },
+     {
+      "player": "Dorian Mausi",
+      "player_id": "00-0040503",
+      "position": "LB",
+      "status": "Questionable",
+      "injury": "Foot",
+      "practice_status": "Full Participation in Practice"
+     },
+     {
+      "player": "Jaylon Jones",
+      "player_id": "00-0038407",
+      "position": "CB",
+      "status": "Questionable",
+      "injury": "Knee",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "John Franklin-Myers",
+      "player_id": "00-0034805",
+      "position": "DE",
+      "status": "Questionable",
+      "injury": "Groin",
+      "practice_status": "Limited Participation in Practice"
+     }
+    ],
+    "n_plays": 7,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 8,
+     "weeks": [
+      8
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i16",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "JAX",
+    "player": "Bhayshul Tuten",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 52.37500000000001,
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Bhayshul Tuten",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Bhayshul Tuten's mean snap share per game, weeks 1-9.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i17",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "JAX",
+    "player": "Bhayshul Tuten",
+    "kind": "rush",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 57.27699530516433,
+    "n_plays": 213,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Bhayshul Tuten",
+      "kind": "rush"
+     },
+     "unit": "percent",
+     "definition": "B.Tuten's percent of team rushs.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8,
+     "player": {
+      "id": "00-0040719",
+      "name": "B.Tuten",
+      "count": 122
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i18",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "JAX",
+    "player": "Travon Walker",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 74.0,
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Travon Walker",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Travon Walker's mean snap share per game, weeks 1-9.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i19",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "TEN",
+    "player": "Carnell Tate",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 82.0,
+    "n_plays": 7,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Carnell Tate",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Carnell Tate's mean snap share per game, weeks 1-9.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "n_games": 7
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i20",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "TEN",
+    "player": "Carnell Tate",
+    "kind": "target",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 21.794871794871796,
+    "n_plays": 234,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Carnell Tate",
+      "kind": "target"
+     },
+     "unit": "percent",
+     "definition": "C.Tate's percent of team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8,
+     "player": {
+      "id": "00-0041438",
+      "name": "C.Tate",
+      "count": 51
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i21",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "TEN",
+    "player": "Tyjae Spears",
+    "kind": "rush",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 10.526315789473683,
+    "n_plays": 171,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Tyjae Spears",
+      "kind": "rush"
+     },
+     "unit": "percent",
+     "definition": "T.Spears's percent of team rushs.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8,
+     "player": {
+      "id": "00-0039032",
+      "name": "T.Spears",
+      "count": 18
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i22",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "TEN",
+    "player": "John Franklin-Myers",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 52.25,
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "player": "John Franklin-Myers",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "John Franklin-Myers's mean snap share per game, weeks 1-9.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i23",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "TEN",
+    "player": "Calvin Ridley",
+    "kind": "target",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 5.555555555555555,
+    "n_plays": 234,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Calvin Ridley",
+      "kind": "target"
+     },
+     "unit": "percent",
+     "definition": "C.Ridley's percent of team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8,
+     "player": {
+      "id": "00-0034837",
+      "name": "C.Ridley",
+      "count": 13
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i24",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "JAX",
+    "player": "C.Rodriguez",
+    "kind": "rush",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 25.821596244131456,
+    "n_plays": 213,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "player": "C.Rodriguez",
+      "kind": "rush"
+     },
+     "unit": "percent",
+     "definition": "C.Rodriguez's percent of team rushs.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8,
+     "player": {
+      "id": "00-0038611",
+      "name": "C.Rodriguez",
+      "count": 55
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d38",
+   "node": "defense_analyst",
+   "tool": "blitz_rate",
+   "args": {
+    "team": "JAX",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 31.27147766323024,
+    "n_plays": 291,
+    "query_meta": {
+     "tool": "blitz_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks faced with 5+ pass rushers (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d39",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "blitz_rate",
+    "team": "JAX",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 15,
+    "n_plays": 291,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "blitz_rate",
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "rank",
+     "metric": "blitz_rate",
+     "metric_args": {},
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "highest",
+     "team_value": 31.27147766323024,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d40",
+   "node": "defense_analyst",
+   "tool": "average_pass_rushers",
+   "args": {
+    "team": "JAX",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 4.364261168384879,
+    "n_plays": 291,
+    "query_meta": {
+     "tool": "average_pass_rushers",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "rushers",
+     "definition": "Mean pass rushers per dropback faced (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d41",
+   "node": "defense_analyst",
+   "tool": "pressure_proxy_rate",
+   "args": {
+    "team": "TEN",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 12.949640287769784,
+    "n_plays": 278,
+    "query_meta": {
+     "tool": "pressure_proxy_rate",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Pressure proxy: percent of dropbacks with a sack or QB hit (offense). Not true pressure rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d42",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "pressure_proxy_rate",
+    "team": "TEN",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 4,
+    "n_plays": 278,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "pressure_proxy_rate",
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "rank",
+     "metric": "pressure_proxy_rate",
+     "metric_args": {
+      "side": "offense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (lowest)",
+     "team_value": 12.949640287769784,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d43",
+   "node": "defense_analyst",
+   "tool": "sack_rate",
+   "args": {
+    "team": "TEN",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 4.676258992805756,
+    "n_plays": 278,
+    "query_meta": {
+     "tool": "sack_rate",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks ending in a sack (offense).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d44",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "sack_rate",
+    "team": "TEN",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 8,
+    "n_plays": 278,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "sack_rate",
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "rank",
+     "metric": "sack_rate",
+     "metric_args": {
+      "side": "offense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (lowest)",
+     "team_value": 4.676258992805756,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d45",
+   "node": "defense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "JAX",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 10.843373493975903,
+    "n_plays": 249,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d46",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "JAX",
+    "side": "defense",
+    "play_kind": "all",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -0.12765984676847478,
+    "n_plays": 466,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "all"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per all play allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d47",
+   "node": "defense_analyst",
+   "tool": "success_rate",
+   "args": {
+    "team": "JAX",
+    "side": "defense",
+    "play_kind": "all",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 40.987124463519315,
+    "n_plays": 466,
+    "query_meta": {
+     "tool": "success_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "all"
+     },
+     "unit": "percent",
+     "definition": "Percent of all plays with EPA > 0, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d48",
+   "node": "defense_analyst",
+   "tool": "third_down_conversion_rate",
+   "args": {
+    "team": "JAX",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 34.40860215053764,
+    "n_plays": 93,
+    "query_meta": {
+     "tool": "third_down_conversion_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of third-down plays converted, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d49",
+   "node": "defense_analyst",
+   "tool": "red_zone_td_rate",
+   "args": {
+    "team": "JAX",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 40.909090909090914,
+    "n_plays": 22,
+    "query_meta": {
+     "tool": "red_zone_td_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of red-zone drives ending in a TD, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8
+     ],
+     "n_games": 7
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d50",
+   "node": "defense_analyst",
+   "tool": "average_box_defenders",
+   "args": {
+    "team": "JAX",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 6.845714285714286,
+    "n_plays": 175,
+    "query_meta": {
+     "tool": "average_box_defenders",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "play_kind": "run"
+     },
+     "unit": "defenders",
+     "definition": "Mean defenders in the box on run plays (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d51",
+   "node": "defense_analyst",
+   "tool": "average_box_defenders",
+   "args": {
+    "team": "TEN",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 6.504587155963303,
+    "n_plays": 218,
+    "query_meta": {
+     "tool": "average_box_defenders",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "play_kind": "run"
+     },
+     "unit": "defenders",
+     "definition": "Mean defenders in the box on run plays (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d52",
+   "node": "defense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "JAX",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 10.843373493975903,
+    "n_plays": 249,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d53",
+   "node": "defense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "JAX",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 10.843373493975903,
+    "n_plays": 249,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d54",
+   "node": "defense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "JAX",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 10.843373493975903,
+    "n_plays": 249,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d55",
+   "node": "defense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "JAX",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 10.843373493975903,
+    "n_plays": 249,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d56",
+   "node": "defense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "JAX",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 7.216494845360824,
+    "n_plays": 291,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i25",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "JAX",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Bhayshul Tuten",
+      "player_id": "00-0040719",
+      "position": "RB",
+      "status": "Questionable",
+      "injury": "Ankle",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Travon Walker",
+      "player_id": "00-0037235",
+      "position": "DE",
+      "status": "Questionable",
+      "injury": "Rib",
+      "practice_status": "Limited Participation in Practice"
+     }
+    ],
+    "n_plays": 2,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 9,
+     "weeks": [
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i26",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "TEN",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Carnell Tate",
+      "player_id": "00-0041438",
+      "position": "WR",
+      "status": "Out",
+      "injury": "Shoulder",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Tommy Townsend",
+      "player_id": "00-0035889",
+      "position": "P",
+      "status": "Out",
+      "injury": "Knee",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Tyjae Spears",
+      "player_id": "00-0039032",
+      "position": "RB",
+      "status": "Out",
+      "injury": "Knee",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Calvin Ridley",
+      "player_id": "00-0034837",
+      "position": "WR",
+      "status": "Questionable",
+      "injury": "Hip",
+      "practice_status": "Full Participation in Practice"
+     },
+     {
+      "player": "Dorian Mausi",
+      "player_id": "00-0040503",
+      "position": "LB",
+      "status": "Questionable",
+      "injury": "Foot",
+      "practice_status": "Full Participation in Practice"
+     },
+     {
+      "player": "Jaylon Jones",
+      "player_id": "00-0038407",
+      "position": "CB",
+      "status": "Questionable",
+      "injury": "Knee",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "John Franklin-Myers",
+      "player_id": "00-0034805",
+      "position": "DE",
+      "status": "Questionable",
+      "injury": "Groin",
+      "practice_status": "Limited Participation in Practice"
+     }
+    ],
+    "n_plays": 7,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 8,
+     "weeks": [
+      8
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i27",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "JAX",
+    "player": "Bhayshul Tuten",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 52.37500000000001,
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Bhayshul Tuten",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Bhayshul Tuten's mean snap share per game, weeks 1-9.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i28",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "JAX",
+    "player": "Bhayshul Tuten",
+    "kind": "rush",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 57.27699530516433,
+    "n_plays": 213,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Bhayshul Tuten",
+      "kind": "rush"
+     },
+     "unit": "percent",
+     "definition": "B.Tuten's percent of team rushs.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8,
+     "player": {
+      "id": "00-0040719",
+      "name": "B.Tuten",
+      "count": 122
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i29",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "JAX",
+    "player": "Travon Walker",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 74.0,
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "JAX",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Travon Walker",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Travon Walker's mean snap share per game, weeks 1-9.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i30",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "TEN",
+    "player": "Carnell Tate",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 82.0,
+    "n_plays": 7,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Carnell Tate",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Carnell Tate's mean snap share per game, weeks 1-9.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "n_games": 7
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i31",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "TEN",
+    "player": "Carnell Tate",
+    "kind": "target",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 21.794871794871796,
+    "n_plays": 234,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Carnell Tate",
+      "kind": "target"
+     },
+     "unit": "percent",
+     "definition": "C.Tate's percent of team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8,
+     "player": {
+      "id": "00-0041438",
+      "name": "C.Tate",
+      "count": 51
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i32",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "TEN",
+    "player": "Tyjae Spears",
+    "kind": "rush",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 10.526315789473683,
+    "n_plays": 171,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Tyjae Spears",
+      "kind": "rush"
+     },
+     "unit": "percent",
+     "definition": "T.Spears's percent of team rushs.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8,
+     "player": {
+      "id": "00-0039032",
+      "name": "T.Spears",
+      "count": 18
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i33",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "TEN",
+    "player": "John Franklin-Myers",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 52.25,
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "player": "John Franklin-Myers",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "John Franklin-Myers's mean snap share per game, weeks 1-9.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i34",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "TEN",
+    "player": "Calvin Ridley",
+    "kind": "target",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 5.555555555555555,
+    "n_plays": 234,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "TEN",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Calvin Ridley",
+      "kind": "target"
+     },
+     "unit": "percent",
+     "definition": "C.Ridley's percent of team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8,
+     "player": {
+      "id": "00-0034837",
+      "name": "C.Ridley",
+      "count": 13
+     }
+    }
+   },
+   "error": null
+  }
+ ],
+ "usage": [
+  {
+   "node": "planner",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 635,
+   "cache_read_input_tokens": 540,
+   "cache_creation_input_tokens": 142,
+   "latency_s": 4.636126606957987
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 2457,
+   "cache_read_input_tokens": 5976,
+   "cache_creation_input_tokens": 393,
+   "latency_s": 8.363228939007968
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 5461,
+   "cache_read_input_tokens": 6369,
+   "cache_creation_input_tokens": 5376,
+   "latency_s": 20.64087969600223
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 118,
+   "cache_read_input_tokens": 2987,
+   "cache_creation_input_tokens": 454,
+   "latency_s": 1.0393156209029257
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 1136,
+   "cache_read_input_tokens": 3441,
+   "cache_creation_input_tokens": 957,
+   "latency_s": 3.7279890859499574
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 4836,
+   "cache_read_input_tokens": 4398,
+   "cache_creation_input_tokens": 2708,
+   "latency_s": 19.30703160795383
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 1934,
+   "cache_read_input_tokens": 7496,
+   "cache_creation_input_tokens": 384,
+   "latency_s": 6.810004635946825
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 601,
+   "cache_read_input_tokens": 7880,
+   "cache_creation_input_tokens": 4450,
+   "latency_s": 2.8983984908554703
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 180,
+   "cache_read_input_tokens": 12330,
+   "cache_creation_input_tokens": 1027,
+   "latency_s": 1.4188000559806824
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 114,
+   "cache_read_input_tokens": 13357,
+   "cache_creation_input_tokens": 280,
+   "latency_s": 1.558418702101335
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 101,
+   "cache_read_input_tokens": 13637,
+   "cache_creation_input_tokens": 214,
+   "latency_s": 1.025793079053983
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 104,
+   "cache_read_input_tokens": 13851,
+   "cache_creation_input_tokens": 201,
+   "latency_s": 1.0255222141277045
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 187,
+   "cache_read_input_tokens": 14052,
+   "cache_creation_input_tokens": 204,
+   "latency_s": 1.432732037967071
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 111,
+   "cache_read_input_tokens": 14256,
+   "cache_creation_input_tokens": 287,
+   "latency_s": 1.071139442967251
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 174,
+   "cache_read_input_tokens": 14543,
+   "cache_creation_input_tokens": 211,
+   "latency_s": 1.424357334151864
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 119,
+   "cache_read_input_tokens": 14754,
+   "cache_creation_input_tokens": 291,
+   "latency_s": 1.1978134911041707
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 3559,
+   "cache_read_input_tokens": 15045,
+   "cache_creation_input_tokens": 236,
+   "latency_s": 13.6708538250532
+  },
+  {
+   "node": "matchup_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 5161,
+   "cache_read_input_tokens": 6451,
+   "cache_creation_input_tokens": 4299,
+   "latency_s": 21.856154394103214
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 2283,
+   "cache_read_input_tokens": 5976,
+   "cache_creation_input_tokens": 2786,
+   "latency_s": 8.35513608600013
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 3884,
+   "cache_read_input_tokens": 8762,
+   "cache_creation_input_tokens": 4485,
+   "latency_s": 12.93148862500675
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 146,
+   "cache_read_input_tokens": 2987,
+   "cache_creation_input_tokens": 1629,
+   "latency_s": 1.1817387549672276
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 821,
+   "cache_read_input_tokens": 4616,
+   "cache_creation_input_tokens": 985,
+   "latency_s": 3.0764504598919302
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 355,
+   "cache_read_input_tokens": 5601,
+   "cache_creation_input_tokens": 1934,
+   "latency_s": 2.3677975018508732
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 4014,
+   "cache_read_input_tokens": 7535,
+   "cache_creation_input_tokens": 489,
+   "latency_s": 14.535469318041578
+  },
+  {
+   "node": "matchup_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 3208,
+   "cache_read_input_tokens": 6451,
+   "cache_creation_input_tokens": 5385,
+   "latency_s": 13.199360670987517
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 1488,
+   "cache_read_input_tokens": 5976,
+   "cache_creation_input_tokens": 2107,
+   "latency_s": 5.436192204942927
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 267,
+   "cache_read_input_tokens": 8083,
+   "cache_creation_input_tokens": 3391,
+   "latency_s": 1.9484220398589969
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 112,
+   "cache_read_input_tokens": 11474,
+   "cache_creation_input_tokens": 384,
+   "latency_s": 1.0365890220273286
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 105,
+   "cache_read_input_tokens": 11858,
+   "cache_creation_input_tokens": 230,
+   "latency_s": 1.036439383868128
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 147,
+   "cache_read_input_tokens": 12088,
+   "cache_creation_input_tokens": 222,
+   "latency_s": 1.0704014780931175
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 146,
+   "cache_read_input_tokens": 12310,
+   "cache_creation_input_tokens": 264,
+   "latency_s": 1.112296893959865
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 3433,
+   "cache_read_input_tokens": 12574,
+   "cache_creation_input_tokens": 268,
+   "latency_s": 10.982779379934072
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 147,
+   "cache_read_input_tokens": 2987,
+   "cache_creation_input_tokens": 1778,
+   "latency_s": 1.1926547652110457
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 896,
+   "cache_read_input_tokens": 4765,
+   "cache_creation_input_tokens": 986,
+   "latency_s": 3.3259289511479437
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 4251,
+   "cache_read_input_tokens": 5751,
+   "cache_creation_input_tokens": 2009,
+   "latency_s": 15.232056410051882
+  },
+  {
+   "node": "editor",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 6908,
+   "cache_read_input_tokens": 747,
+   "cache_creation_input_tokens": 4509,
+   "latency_s": 25.353673069970682
+  }
+ ],
+ "cost_usd": {
+  "total": 0.039822315,
+  "by_node": {
+   "planner": 0.00034104999999999997,
+   "defense_analyst": 0.013397009999999999,
+   "injury_analyst": 0.010554405,
+   "offense_analyst": 0.005979535000000001,
+   "matchup_analyst": 0.00552482,
+   "editor": 0.004025495
+  }
+ }
+}

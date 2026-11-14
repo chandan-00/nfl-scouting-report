@@ -1,0 +1,7653 @@
+{
+ "config": "full",
+ "repeat": 1,
+ "created_at": "2026-11-12T01:28:37+00:00",
+ "models": {
+  "planner": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "offense_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "defense_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "injury_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "matchup_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "medium"
+  },
+  "fact_checker": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "editor": {
+   "model": "claude-haiku-5-5",
+   "effort": "medium"
+  },
+  "single_agent": {
+   "model": "claude-haiku-5-5",
+   "effort": "medium"
+  }
+ },
+ "max_revision_loops": 2,
+ "request": {
+  "team": "ATL",
+  "opponent": "KC",
+  "season": 2026,
+  "week": 10,
+  "through_week": 9
+ },
+ "plan": {
+  "offense_focus": [
+   "Does KC's pass rate over expected and early-down run/pass split change on 1st and 2nd down versus 3rd and long, and how should ATL's defense adjust its called coverage by down and distance?",
+   "Where is KC's EPA and success rate strongest by target depth and run direction, and which of those areas can ATL's defense realistically limit?",
+   "Does KC use play action, motion, screens, or RPOs at high enough rates to create explosive plays, and how often do those plays produce explosives for them?",
+   "Which KC receivers hold the largest target share and how deep are their targets, and does that concentration make a single ATL defender the key matchup?",
+   "How does KC perform in the red zone and on third down compared with league ranks, and where would ATL's defense most want to force a field goal?"
+  ],
+  "defense_focus": [
+   "Does KC's defense rank well in EPA and success rate allowed against the run and pass, and where does ATL's offense have the clearest edge by down and distance?",
+   "How often does KC blitz and what are its sack and QB hit (pressure proxy) totals, and does ATL's offense protect well enough to handle that pressure?",
+   "Which KC pass rushers are producing sacks and QB hits, and does their rush share suggest they can be neutralized by ATL's tackle and back blocking?",
+   "Does KC allow explosive plays on deep targets or on run direction, and can ATL's offense generate those plays against the specific weaknesses?",
+   "How does KC's third-down and red zone defense rank, and which ATL formations or down-and-distance spots have produced the best results against similar defenses?"
+  ],
+  "injury_focus": [
+   "Which KC starters on offense or defense are on the injury report or limited this week, and how do their snap shares and target or rush shares change the expected usage of their replacements?",
+   "Which ATL players are hurt or limited, and what does losing or limiting them do to ATL's passing targets, rush share, and pressure-proxy numbers?",
+   "If KC's top target or rush-share player is out, does the next-highest share on the depth chart move toward the deep or short areas where KC has been most efficient?",
+   "Do any KC pass rushers or ATL offensive linemen carry injury designations that would change the sack and QB hit trends the scouting report relies on?"
+  ]
+ },
+ "draft": {
+  "defense_analyst": {
+   "role": "defense_analyst",
+   "prose": "KC's defense ranks 9th in EPA allowed per play [dc1] over 500 plays [dc2] across eight games. The run defense is the stronger half: opponents average -0.16 EPA per run play [dc3] on 197 runs [dc4] with a 36.0% success rate [dc5], and KC ranks 5th in success rate allowed overall [dc6]. The pass defense is closer to average, with 42.6% success allowed on 303 dropbacks [dc7] and -0.02 EPA per dropback [dc8]. ATL's passing game is the concern to address: -0.15 EPA per dropback [dc9] over 283 plays [dc10], with a pressure proxy of 9.2% [dc11] and a 5.7% sack rate [dc12]. KC blitzes on 27.4% of dropbacks [dc13] and averages 4.3 rushers [dc14], producing a pressure proxy of 13.5% [dc15] and a 4.6% sack rate [dc16]. ATL has to protect and get the ball out quickly on early downs, and KC's blitz volume is the reason. KC allows explosive plays on 6.6% of pass plays [dc17] and 7.6% of runs [dc18], so neither is a clear soft spot. On third down KC allows conversions on 36.7% of plays [dc19] over 109 plays [dc20], 10th in the league [dc21]. In the red zone 38.1% of drives reaching the 20 end in a touchdown [dc22] on 21 drives [dc23], 3rd best in the league [dc24]; that is a small sample and should be treated with caution.",
+   "claims": [
+    {
+     "claim_id": "dc1",
+     "text": "KC defense EPA per play allowed, all plays, league rank",
+     "stated_value": 9.0,
+     "tool_call_id": "d22",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc2",
+     "text": "KC defense sample size, all plays allowed",
+     "stated_value": 500.0,
+     "tool_call_id": "d22",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc3",
+     "text": "KC defense EPA per run play allowed",
+     "stated_value": -0.16,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc4",
+     "text": "KC defense sample size, run plays allowed",
+     "stated_value": 197.0,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc5",
+     "text": "KC defense success rate allowed on run plays (percent)",
+     "stated_value": 36.0,
+     "tool_call_id": "d3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc6",
+     "text": "KC defense success rate allowed, all plays, league rank",
+     "stated_value": 5.0,
+     "tool_call_id": "d23",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc7",
+     "text": "KC defense success rate allowed on pass plays (percent)",
+     "stated_value": 42.6,
+     "tool_call_id": "d4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc8",
+     "text": "KC defense EPA per pass play allowed",
+     "stated_value": -0.02,
+     "tool_call_id": "d2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc9",
+     "text": "ATL offense EPA per pass play",
+     "stated_value": -0.15,
+     "tool_call_id": "d13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc10",
+     "text": "ATL offense sample size, pass plays",
+     "stated_value": 283.0,
+     "tool_call_id": "d13",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc11",
+     "text": "ATL offense pressure proxy rate (sacks plus QB hits per dropback, percent)",
+     "stated_value": 9.2,
+     "tool_call_id": "d15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc12",
+     "text": "ATL offense sack rate allowed per dropback (percent)",
+     "stated_value": 5.7,
+     "tool_call_id": "d16",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc13",
+     "text": "KC defense blitz rate, share of dropbacks with 5+ rushers (percent)",
+     "stated_value": 27.4,
+     "tool_call_id": "d5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc14",
+     "text": "KC defense average pass rushers per dropback faced",
+     "stated_value": 4.3,
+     "tool_call_id": "d12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc15",
+     "text": "KC defense pressure proxy rate (sacks plus QB hits per dropback, percent)",
+     "stated_value": 13.5,
+     "tool_call_id": "d7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc16",
+     "text": "KC defense sack rate per dropback (percent)",
+     "stated_value": 4.6,
+     "tool_call_id": "d6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc17",
+     "text": "KC defense explosive pass play rate allowed (20+ yards, percent)",
+     "stated_value": 6.6,
+     "tool_call_id": "d8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc18",
+     "text": "KC defense explosive run play rate allowed (10+ yards, percent)",
+     "stated_value": 7.6,
+     "tool_call_id": "d9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc19",
+     "text": "KC defense third-down conversion rate allowed (percent)",
+     "stated_value": 36.7,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc20",
+     "text": "KC defense sample size, third-down plays allowed",
+     "stated_value": 109.0,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc21",
+     "text": "KC defense third-down conversion rate allowed, league rank (lower is better)",
+     "stated_value": 10.0,
+     "tool_call_id": "d24",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc22",
+     "text": "KC defense red zone drive touchdown rate allowed (percent)",
+     "stated_value": 38.1,
+     "tool_call_id": "d11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc23",
+     "text": "KC defense sample size, red zone drives allowed",
+     "stated_value": 21.0,
+     "tool_call_id": "d11",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc24",
+     "text": "KC defense red zone TD rate allowed, league rank (lower is better)",
+     "stated_value": 3.0,
+     "tool_call_id": "d25",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "injury_analyst": {
+   "role": "injury_analyst",
+   "prose": "KC's week 9 report lists CB Mansoor Delane as Out [ic1] with a shoulder injury, DTs Omarr Norman-Lott [ic2] and Peter Woods [ic3] as Out, and WR Nikko Remigio as Questionable [ic4]. Remigio is a rotational piece, averaging 37.5% of snaps [ic5] over 8 games [ic6]. None of the listed KC players is a target or rush leader, so offensive usage should stay with Kelce at 19.5% of targets [ic7], Worthy at 19.1% [ic8] and Walker on 81.5% of rushes [ic9]. ATL's week 9 report has RB Brian Robinson Out [ic10], who carries 22.2% of rushes [ic11] over 239 team rushes [ic12]; Bijan Robinson takes 70.7% [ic13], so expect more of his volume. WR Zachariah Branch is Out [ic14], averaging 23.5% of snaps [ic15] and a 5.0% target share [ic16] on 242 team targets [ic17]. WR Beaux Collins is Questionable [ic18]. DE James Pearce Jr. is Questionable [ic19] and played 26.0% of snaps [ic20] in a single game [ic21], so that sample is small.",
+   "claims": [
+    {
+     "claim_id": "ic1",
+     "text": "KC CB Mansoor Delane injury status on the week 9 report",
+     "stated_value": "Out",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic2",
+     "text": "KC DT Omarr Norman-Lott injury status on the week 9 report",
+     "stated_value": "Out",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic3",
+     "text": "KC DT Peter Woods injury status on the week 9 report",
+     "stated_value": "Out",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic4",
+     "text": "KC WR Nikko Remigio injury status on the week 9 report",
+     "stated_value": "Questionable",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic5",
+     "text": "KC WR Nikko Remigio average snap share per game, weeks 1-9",
+     "stated_value": 37.5,
+     "tool_call_id": "i7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic6",
+     "text": "Games in Remigio's snap share sample",
+     "stated_value": 8.0,
+     "tool_call_id": "i7",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic7",
+     "text": "KC T.Kelce share of team targets, weeks 1-9",
+     "stated_value": 19.5,
+     "tool_call_id": "i3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic8",
+     "text": "KC X.Worthy share of team targets, weeks 1-9",
+     "stated_value": 19.1,
+     "tool_call_id": "i3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic9",
+     "text": "KC K.Walker share of team rushes, weeks 1-9",
+     "stated_value": 81.5,
+     "tool_call_id": "i4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic10",
+     "text": "ATL RB Brian Robinson injury status on the week 9 report",
+     "stated_value": "Out",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic11",
+     "text": "ATL Br.Robinson share of team rushes, weeks 1-9",
+     "stated_value": 22.2,
+     "tool_call_id": "i6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic12",
+     "text": "ATL team rushes in weeks 1-9",
+     "stated_value": 239.0,
+     "tool_call_id": "i6",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic13",
+     "text": "ATL Bi.Robinson share of team rushes, weeks 1-9",
+     "stated_value": 70.7,
+     "tool_call_id": "i6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic14",
+     "text": "ATL WR Zachariah Branch injury status on the week 9 report",
+     "stated_value": "Out",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic15",
+     "text": "ATL WR Zachariah Branch average snap share per game, weeks 1-8",
+     "stated_value": 23.5,
+     "tool_call_id": "i9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic16",
+     "text": "ATL WR Zachariah Branch share of team targets, weeks 1-9",
+     "stated_value": 5.0,
+     "tool_call_id": "i11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic17",
+     "text": "ATL team targets in weeks 1-9",
+     "stated_value": 242.0,
+     "tool_call_id": "i11",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic18",
+     "text": "ATL WR Beaux Collins injury status on the week 9 report",
+     "stated_value": "Questionable",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic19",
+     "text": "ATL DE James Pearce Jr. injury status on the week 9 report",
+     "stated_value": "Questionable",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic20",
+     "text": "ATL DE James Pearce Jr. snap share in week 9",
+     "stated_value": 26.0,
+     "tool_call_id": "i10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic21",
+     "text": "Games in Pearce's snap share sample",
+     "stated_value": 1.0,
+     "tool_call_id": "i10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    }
+   ],
+   "unsourced": []
+  },
+  "offense_analyst": {
+   "role": "offense_analyst",
+   "prose": "KC throws on 55.6% of early-down plays [oc1] over 376 plays [oc2] and sits 4.9 points above expected there [oc3], so ATL should not expect many early-down run tells. On 3rd-and-long it drops back on 96.7% of snaps [oc4] over 30 plays [oc5], so ATL can pin its rush and play the pass. Pass EPA is 0.16 per play [oc6] over 289 dropbacks [oc7], well ahead of run EPA of 0.09 [oc8] over 195 designed runs [oc9]. Play action is used on 31.1% of dropbacks [oc10], motion on 56.6% of plays [oc11], and RPOs on 10.5% [oc12]; explosive pass plays come on 7.6% of attempts [oc13]. Targets concentrate on T.Kelce at 19.5% [oc14] and X.Worthy at 19.1% [oc15] of 246 team targets [oc16], and the aDOT is 5.6 yards [oc17], so the plan is short-to-intermediate: limit yards after catch from those two rather than a single deep threat. Designed runs go left 32.5% of the time [oc18] and right 27.8% [oc19]. KC converts 42.1% of third downs [oc20], 9th in the league [oc21], and scores touchdowns on 63.3% of red-zone drives [oc22], 13th [oc23]. ATL allows touchdowns on 66.7% of red-zone drives [oc24] over 33 drives [oc25] and allows conversions on 43.3% of third downs [oc26] over 120 plays [oc27], so ATL's realistic goal is forcing field goals once KC crosses the 20.",
+   "claims": [
+    {
+     "claim_id": "oc1",
+     "text": "KC offense early-down pass rate (dropback share of 1st and 2nd down plays)",
+     "stated_value": 55.6,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc2",
+     "text": "KC early-down plays sample size",
+     "stated_value": 376.0,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc3",
+     "text": "KC early-down pass rate over expected, percentage points",
+     "stated_value": 4.9,
+     "tool_call_id": "o3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc4",
+     "text": "KC pass rate on 3rd down with long distance (8+ yards)",
+     "stated_value": 96.7,
+     "tool_call_id": "o2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc5",
+     "text": "KC 3rd-and-long plays sample size",
+     "stated_value": 30.0,
+     "tool_call_id": "o2",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc6",
+     "text": "KC offense pass EPA per play",
+     "stated_value": 0.16,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc7",
+     "text": "KC offense pass plays sample size",
+     "stated_value": 289.0,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc8",
+     "text": "KC offense run EPA per play",
+     "stated_value": 0.09,
+     "tool_call_id": "o5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc9",
+     "text": "KC offense run plays sample size",
+     "stated_value": 195.0,
+     "tool_call_id": "o5",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc10",
+     "text": "KC play action share of dropbacks",
+     "stated_value": 31.1,
+     "tool_call_id": "o6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc11",
+     "text": "KC pre-snap motion share of scrimmage plays",
+     "stated_value": 56.6,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc12",
+     "text": "KC RPO share of scrimmage plays",
+     "stated_value": 10.5,
+     "tool_call_id": "o8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc13",
+     "text": "KC offense explosive pass play rate (20+ yards)",
+     "stated_value": 7.6,
+     "tool_call_id": "o9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc14",
+     "text": "T.Kelce share of KC team targets",
+     "stated_value": 19.5,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc15",
+     "text": "X.Worthy share of KC team targets",
+     "stated_value": 19.1,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc16",
+     "text": "KC team targets sample size",
+     "stated_value": 246.0,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc17",
+     "text": "KC average depth of target (air yards per attempt)",
+     "stated_value": 5.6,
+     "tool_call_id": "o11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc18",
+     "text": "KC designed runs to the left share",
+     "stated_value": 32.5,
+     "tool_call_id": "o16",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc19",
+     "text": "KC designed runs to the right share",
+     "stated_value": 27.8,
+     "tool_call_id": "o17",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc20",
+     "text": "KC offense third-down conversion rate",
+     "stated_value": 42.1,
+     "tool_call_id": "o13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc21",
+     "text": "KC offense third-down conversion rate league rank",
+     "stated_value": 9.0,
+     "tool_call_id": "o18",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc22",
+     "text": "KC offense red-zone touchdown rate on red-zone drives",
+     "stated_value": 63.3,
+     "tool_call_id": "o12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc23",
+     "text": "KC offense red-zone touchdown rate league rank",
+     "stated_value": 13.0,
+     "tool_call_id": "o19",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc24",
+     "text": "ATL defense red-zone touchdown rate allowed on red-zone drives",
+     "stated_value": 66.7,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc25",
+     "text": "ATL red-zone drives allowed sample size",
+     "stated_value": 33.0,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc26",
+     "text": "ATL defense third-down conversion rate allowed",
+     "stated_value": 43.3,
+     "tool_call_id": "o21",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc27",
+     "text": "ATL defense third-down plays sample size",
+     "stated_value": 120.0,
+     "tool_call_id": "o21",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    }
+   ],
+   "unsourced": []
+  },
+  "matchup_analyst": {
+   "role": "matchup_analyst",
+   "prose": "Matchup one: KC's early-down pass game against ATL's protection. KC throws on 55.6% of early downs [mc1] over 376 plays [mc2] and blitzes on 27.4% of dropbacks [mc3], producing a 13.5% pressure proxy [mc4]. ATL's passing offense is at -0.15 EPA per dropback [mc5] over 283 plays [mc6] with a 9.2% pressure proxy [mc7]. ATL should rely on quick throws, hot reads against the blitz and running back chips rather than extra blockers. Matchup two: Kelce and Worthy on third down. KC converts 42.1% of third downs [mc8], and ATL allows 43.3% [mc9] over 120 plays [mc10]. Kelce (19.5% of targets [mc11]) and Worthy (19.1% [mc12] of 246 targets [mc13]) take most of the throws, and KC's aDOT is 5.6 yards [mc14]. Take away yards after catch from those two and force KC to drive on short sticks. Matchup three: Bijan Robinson against KC's run defense. KC allows -0.16 EPA per run play [mc15] over 197 runs [mc16] with a 36.0% success rate [mc17], and its DTs Omarr Norman-Lott and Peter Woods are listed Out. Bijan takes 70.7% of ATL's rushes [mc18] with Brian Robinson out, so expect a heavy early dose to set up play action. Matchup four: the red zone. KC scores on 63.3% of red-zone drives [mc19], and ATL allows touchdowns on 66.7% [mc20] over 33 drives [mc21]. The plan is to keep KC in front and force field goals once it crosses the 20.",
+   "claims": [
+    {
+     "claim_id": "mc1",
+     "text": "KC offense early-down pass rate (dropback share of 1st and 2nd down plays), percent",
+     "stated_value": 55.6,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc2",
+     "text": "KC offense early-down plays sample size",
+     "stated_value": 376.0,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc3",
+     "text": "KC defense blitz rate, share of dropbacks with 5+ rushers, percent",
+     "stated_value": 27.4,
+     "tool_call_id": "d5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc4",
+     "text": "KC defense pressure proxy rate (sacks plus QB hits per dropback), percent",
+     "stated_value": 13.5,
+     "tool_call_id": "d7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc5",
+     "text": "ATL offense EPA per pass play",
+     "stated_value": -0.15,
+     "tool_call_id": "d13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc6",
+     "text": "ATL offense pass plays sample size",
+     "stated_value": 283.0,
+     "tool_call_id": "d13",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc7",
+     "text": "ATL offense pressure proxy rate (sacks plus QB hits per dropback), percent",
+     "stated_value": 9.2,
+     "tool_call_id": "d15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc8",
+     "text": "KC offense third-down conversion rate, percent",
+     "stated_value": 42.1,
+     "tool_call_id": "o13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc9",
+     "text": "ATL defense third-down conversion rate allowed, percent",
+     "stated_value": 43.3,
+     "tool_call_id": "o21",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc10",
+     "text": "ATL defense third-down plays sample size",
+     "stated_value": 120.0,
+     "tool_call_id": "o21",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc11",
+     "text": "KC T.Kelce share of team targets, percent",
+     "stated_value": 19.5,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc12",
+     "text": "KC X.Worthy share of team targets, percent",
+     "stated_value": 19.1,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc13",
+     "text": "KC team targets sample size",
+     "stated_value": 246.0,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc14",
+     "text": "KC average depth of target (air yards per attempt), yards",
+     "stated_value": 5.6,
+     "tool_call_id": "o11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc15",
+     "text": "KC defense EPA per run play allowed",
+     "stated_value": -0.16,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc16",
+     "text": "KC defense run plays allowed sample size",
+     "stated_value": 197.0,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc17",
+     "text": "KC defense success rate allowed on run plays, percent",
+     "stated_value": 36.0,
+     "tool_call_id": "d3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc18",
+     "text": "ATL Bi.Robinson share of team rushes, percent",
+     "stated_value": 70.7,
+     "tool_call_id": "i6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc19",
+     "text": "KC offense red-zone touchdown rate on red-zone drives, percent",
+     "stated_value": 63.3,
+     "tool_call_id": "o12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc20",
+     "text": "ATL defense red-zone touchdown rate allowed on red-zone drives, percent",
+     "stated_value": 66.7,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc21",
+     "text": "ATL red-zone drives allowed sample size",
+     "stated_value": 33.0,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    }
+   ],
+   "unsourced": []
+  }
+ },
+ "sections": {
+  "defense_analyst": {
+   "role": "defense_analyst",
+   "prose": "KC's defense ranks 9th in EPA allowed per play [dc1] over 500 plays [dc2]. The run defense is the strength: opponents average -0.16 EPA per run [dc3] on 197 runs [dc4] with a 36.0% success rate [dc5]. The pass defense is closer to average, allowing 42.6% success [dc6] on 303 dropbacks [dc7] and -0.02 EPA per dropback [dc8]. ATL's passing offense, at -0.15 EPA per dropback [dc9] over 283 plays [dc10], is the unit that has to adjust. KC blitzes on 27.4% of dropbacks [dc13], averaging 4.3 rushers [dc14], which produces a pressure proxy of 13.5% [dc15] and a 4.6% sack rate [dc16]. ATL's own pressure proxy is 9.2% [dc11] with a 5.7% sack rate [dc12], so the line has to hold on early downs and the quarterback has to get the ball out quickly against those blitz looks. KC allows explosive plays on 6.6% of passes [dc17] and 7.6% of runs [dc18], so neither is a clear soft spot. On third down KC allows conversions on 36.7% of plays [dc19] over 109 plays [dc20], 10th in the league [dc21]. In the red zone, 38.1% of drives that reach the red zone end in a touchdown [dc22] on 21 drives [dc23], 3rd best in the league [dc24]; that sample is small, so treat it with caution.",
+   "claims": [
+    {
+     "claim_id": "dc1",
+     "text": "KC defense EPA per play allowed, all plays, league rank (lower is better)",
+     "stated_value": 9.0,
+     "tool_call_id": "d45",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc2",
+     "text": "KC defense sample size, all plays allowed",
+     "stated_value": 500.0,
+     "tool_call_id": "d45",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc3",
+     "text": "KC defense EPA per run play allowed",
+     "stated_value": -0.16,
+     "tool_call_id": "d27",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc4",
+     "text": "KC defense sample size, run plays allowed",
+     "stated_value": 197.0,
+     "tool_call_id": "d27",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc5",
+     "text": "KC defense success rate allowed on run plays (percent)",
+     "stated_value": 36.0,
+     "tool_call_id": "d30",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc6",
+     "text": "KC defense success rate allowed on pass plays (percent)",
+     "stated_value": 42.6,
+     "tool_call_id": "d31",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc7",
+     "text": "KC defense sample size, pass plays (dropbacks) allowed",
+     "stated_value": 303.0,
+     "tool_call_id": "d31",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc8",
+     "text": "KC defense EPA per pass play allowed",
+     "stated_value": -0.02,
+     "tool_call_id": "d28",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc9",
+     "text": "ATL offense EPA per pass play",
+     "stated_value": -0.15,
+     "tool_call_id": "d40",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc10",
+     "text": "ATL offense sample size, pass plays",
+     "stated_value": 283.0,
+     "tool_call_id": "d40",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc11",
+     "text": "ATL offense pressure proxy rate (sacks plus QB hits per dropback, percent)",
+     "stated_value": 9.2,
+     "tool_call_id": "d41",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc12",
+     "text": "ATL offense sack rate allowed per dropback (percent)",
+     "stated_value": 5.7,
+     "tool_call_id": "d42",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc13",
+     "text": "KC defense blitz rate, share of dropbacks with 5+ rushers (percent)",
+     "stated_value": 27.4,
+     "tool_call_id": "d32",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc14",
+     "text": "KC defense average pass rushers per dropback faced",
+     "stated_value": 4.3,
+     "tool_call_id": "d35",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc15",
+     "text": "KC defense pressure proxy rate (sacks plus QB hits per dropback, percent)",
+     "stated_value": 13.5,
+     "tool_call_id": "d33",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc16",
+     "text": "KC defense sack rate per dropback (percent)",
+     "stated_value": 4.6,
+     "tool_call_id": "d34",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc17",
+     "text": "KC defense explosive pass play rate allowed (20+ yards, percent)",
+     "stated_value": 6.6,
+     "tool_call_id": "d38",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc18",
+     "text": "KC defense explosive run play rate allowed (10+ yards, percent)",
+     "stated_value": 7.6,
+     "tool_call_id": "d39",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc19",
+     "text": "KC defense third-down conversion rate allowed (percent)",
+     "stated_value": 36.7,
+     "tool_call_id": "d36",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc20",
+     "text": "KC defense sample size, third-down plays allowed",
+     "stated_value": 109.0,
+     "tool_call_id": "d36",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc21",
+     "text": "KC defense third-down conversion rate allowed, league rank (lower is better)",
+     "stated_value": 10.0,
+     "tool_call_id": "d43",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc22",
+     "text": "KC defense red zone drive touchdown rate allowed (percent)",
+     "stated_value": 38.1,
+     "tool_call_id": "d37",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc23",
+     "text": "KC defense sample size, red zone drives allowed",
+     "stated_value": 21.0,
+     "tool_call_id": "d37",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc24",
+     "text": "KC defense red zone TD rate allowed, league rank (lower is better)",
+     "stated_value": 3.0,
+     "tool_call_id": "d44",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "injury_analyst": {
+   "role": "injury_analyst",
+   "prose": "KC's latest report is from week 9: CB Mansoor Delane is listed Out [ic1], DTs Omarr Norman-Lott [ic2] and Peter Woods [ic3] are Out, and WR Nikko Remigio is Questionable [ic4]. None of them is a target or rush leader, so KC's offensive usage should stay with Kelce at 19.5% of targets [ic5] over 246 team targets [ic6] and Worthy at 19.1% [ic7]. ATL's week 9 report lists RB Brian Robinson Out [ic8], WR Zachariah Branch Out [ic9] and T Cameron Williams Out [ic10]. WR Beaux Collins [ic11] and DE James Pearce Jr. [ic12] are Questionable. With Robinson out, Bijan Robinson's 70.7% rush share [ic13] over 239 team rushes [ic14] is the volume to plan around, and Branch's absence shifts targets to the remaining receivers.",
+   "claims": [
+    {
+     "claim_id": "ic1",
+     "text": "KC CB Mansoor Delane injury status on the week 9 report (shoulder)",
+     "stated_value": "Out",
+     "tool_call_id": "i12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic2",
+     "text": "KC DT Omarr Norman-Lott injury status on the week 9 report (knee)",
+     "stated_value": "Out",
+     "tool_call_id": "i12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic3",
+     "text": "KC DT Peter Woods injury status on the week 9 report (neck)",
+     "stated_value": "Out",
+     "tool_call_id": "i12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic4",
+     "text": "KC WR Nikko Remigio injury status on the week 9 report (hip)",
+     "stated_value": "Questionable",
+     "tool_call_id": "i12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic5",
+     "text": "KC T.Kelce share of team targets, weeks 1-9",
+     "stated_value": 19.5,
+     "tool_call_id": "i15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic6",
+     "text": "KC team targets, weeks 1-9 (sample for target shares)",
+     "stated_value": 246.0,
+     "tool_call_id": "i15",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic7",
+     "text": "KC X.Worthy share of team targets, weeks 1-9",
+     "stated_value": 19.1,
+     "tool_call_id": "i15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic8",
+     "text": "ATL RB Brian Robinson injury status on the week 9 report (hamstring)",
+     "stated_value": "Out",
+     "tool_call_id": "i13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic9",
+     "text": "ATL WR Zachariah Branch injury status on the week 9 report (hamstring)",
+     "stated_value": "Out",
+     "tool_call_id": "i13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic10",
+     "text": "ATL T Cameron Williams injury status on the week 9 report (ankle)",
+     "stated_value": "Out",
+     "tool_call_id": "i13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic11",
+     "text": "ATL WR Beaux Collins injury status on the week 9 report (hip)",
+     "stated_value": "Questionable",
+     "tool_call_id": "i13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic12",
+     "text": "ATL DE James Pearce Jr. injury status on the week 9 report (back)",
+     "stated_value": "Questionable",
+     "tool_call_id": "i13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic13",
+     "text": "ATL Bi.Robinson share of team rushes, weeks 1-9",
+     "stated_value": 70.7,
+     "tool_call_id": "i16",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic14",
+     "text": "ATL team rushes, weeks 1-9 (sample for rush shares)",
+     "stated_value": 239.0,
+     "tool_call_id": "i16",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    }
+   ],
+   "unsourced": []
+  },
+  "offense_analyst": {
+   "role": "offense_analyst",
+   "prose": "KC throws on 55.6% of early-down plays [oc1] over 376 plays [oc2] and sits 4.9 percentage points above expected there [oc3], so ATL should not expect many early-down run tells. On 3rd-and-long it drops back on 96.7% of snaps [oc4] over 30 plays [oc5], so ATL can pin its rush and play the pass. Pass EPA is 0.16 per play [oc6] over 289 dropbacks [oc7], well ahead of run EPA of 0.09 [oc8] over 195 designed runs [oc9]. Play action is used on 31.1% of dropbacks [oc10], motion on 56.6% of plays [oc11], and RPOs on 10.5% [oc12]; explosive pass plays come on 7.6% of attempts [oc13]. Targets concentrate on T.Kelce at 19.5% [oc14] and X.Worthy at 19.1% [oc15] of 246 team targets [oc16], and the aDOT is 5.6 yards [oc17], so the plan is short-to-intermediate: limit yards after catch from those two rather than a single deep threat. Designed runs go left 32.5% of the time [oc18] and right 27.8% [oc19]. KC converts 42.1% of third downs [oc20], 9th in the league [oc21], and scores touchdowns on 63.3% of red-zone drives [oc22], 13th [oc23]. ATL allows touchdowns on 66.7% of red-zone drives [oc24] over 33 drives [oc25] and allows conversions on 43.3% of third downs [oc26] over 120 plays [oc27], so ATL's realistic goal is forcing field goals once KC reaches the red zone.",
+   "claims": [
+    {
+     "claim_id": "oc1",
+     "text": "KC offense early-down pass rate (dropback share of 1st and 2nd down plays)",
+     "stated_value": 55.6,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc2",
+     "text": "KC early-down plays sample size",
+     "stated_value": 376.0,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc3",
+     "text": "KC early-down pass rate over expected, percentage points",
+     "stated_value": 4.9,
+     "tool_call_id": "o3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc4",
+     "text": "KC pass rate on 3rd down with long distance (8+ yards)",
+     "stated_value": 96.7,
+     "tool_call_id": "o2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc5",
+     "text": "KC 3rd-and-long plays sample size",
+     "stated_value": 30.0,
+     "tool_call_id": "o2",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc6",
+     "text": "KC offense pass EPA per play",
+     "stated_value": 0.16,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc7",
+     "text": "KC offense pass plays sample size",
+     "stated_value": 289.0,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc8",
+     "text": "KC offense run EPA per play",
+     "stated_value": 0.09,
+     "tool_call_id": "o5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc9",
+     "text": "KC offense run plays sample size",
+     "stated_value": 195.0,
+     "tool_call_id": "o5",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc10",
+     "text": "KC play action share of dropbacks",
+     "stated_value": 31.1,
+     "tool_call_id": "o6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc11",
+     "text": "KC pre-snap motion share of scrimmage plays",
+     "stated_value": 56.6,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc12",
+     "text": "KC RPO share of scrimmage plays",
+     "stated_value": 10.5,
+     "tool_call_id": "o8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc13",
+     "text": "KC offense explosive pass play rate (20+ yards)",
+     "stated_value": 7.6,
+     "tool_call_id": "o9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc14",
+     "text": "T.Kelce share of KC team targets",
+     "stated_value": 19.5,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc15",
+     "text": "X.Worthy share of KC team targets",
+     "stated_value": 19.1,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc16",
+     "text": "KC team targets sample size",
+     "stated_value": 246.0,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc17",
+     "text": "KC average depth of target (air yards per attempt)",
+     "stated_value": 5.6,
+     "tool_call_id": "o11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc18",
+     "text": "KC designed runs to the left share",
+     "stated_value": 32.5,
+     "tool_call_id": "o16",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc19",
+     "text": "KC designed runs to the right share",
+     "stated_value": 27.8,
+     "tool_call_id": "o17",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc20",
+     "text": "KC offense third-down conversion rate",
+     "stated_value": 42.1,
+     "tool_call_id": "o13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc21",
+     "text": "KC offense third-down conversion rate league rank",
+     "stated_value": 9.0,
+     "tool_call_id": "o18",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc22",
+     "text": "KC offense red-zone touchdown rate on red-zone drives",
+     "stated_value": 63.3,
+     "tool_call_id": "o12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc23",
+     "text": "KC offense red-zone touchdown rate league rank",
+     "stated_value": 13.0,
+     "tool_call_id": "o19",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc24",
+     "text": "ATL defense red-zone touchdown rate allowed on red-zone drives",
+     "stated_value": 66.7,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc25",
+     "text": "ATL red-zone drives allowed sample size",
+     "stated_value": 33.0,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc26",
+     "text": "ATL defense third-down conversion rate allowed",
+     "stated_value": 43.3,
+     "tool_call_id": "o21",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc27",
+     "text": "ATL defense third-down plays sample size",
+     "stated_value": 120.0,
+     "tool_call_id": "o21",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    }
+   ],
+   "unsourced": []
+  },
+  "matchup_analyst": {
+   "role": "matchup_analyst",
+   "prose": "KC's early-down pass game against ATL's protection. KC throws on 55.6% of early downs [mc1] over 376 plays [mc2] and blitzes on 27.4% of dropbacks [mc3], producing a 13.5% pressure proxy [mc4]. ATL's passing offense is at -0.15 EPA per dropback [mc5] over 283 plays [mc6] with a 9.2% pressure proxy [mc7]. ATL should rely on quick throws, hot reads against the blitz and running back chips rather than extra blockers. Kelce and Worthy on third down. KC converts 42.1% of third downs [mc8], and ATL allows 43.3% [mc9] over 120 plays [mc10]. Kelce (19.5% of targets [mc11]) and Worthy (19.1% [mc12] of 246 targets [mc13]) take most of the throws, and KC's aDOT is 5.6 yards [mc14]. Take away yards after catch from those two and force KC to drive on short sticks. Bijan Robinson against KC's run defense. KC allows -0.16 EPA per run play [mc15] over 197 runs [mc16] with a 36.0% success rate [mc17], and its DTs Omarr Norman-Lott and Peter Woods are listed Out. Bijan takes 70.7% of ATL's rushes [mc18] with Brian Robinson out, so expect a heavy early dose to set up play action. The red zone. KC scores on 63.3% of red-zone drives [mc19], and ATL allows touchdowns on 66.7% [mc20] over 33 drives [mc21]. The plan is to keep KC in front and force field goals once it gets into the red zone.",
+   "claims": [
+    {
+     "claim_id": "mc1",
+     "text": "KC offense early-down pass rate (dropback share of 1st and 2nd down plays), percent",
+     "stated_value": 55.6,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc2",
+     "text": "KC offense early-down plays sample size",
+     "stated_value": 376.0,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc3",
+     "text": "KC defense blitz rate, share of dropbacks with 5+ rushers, percent",
+     "stated_value": 27.4,
+     "tool_call_id": "d5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc4",
+     "text": "KC defense pressure proxy rate (sacks plus QB hits per dropback), percent",
+     "stated_value": 13.5,
+     "tool_call_id": "d7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc5",
+     "text": "ATL offense EPA per pass play",
+     "stated_value": -0.15,
+     "tool_call_id": "d13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc6",
+     "text": "ATL offense pass plays sample size",
+     "stated_value": 283.0,
+     "tool_call_id": "d13",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc7",
+     "text": "ATL offense pressure proxy rate (sacks plus QB hits per dropback), percent",
+     "stated_value": 9.2,
+     "tool_call_id": "d15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc8",
+     "text": "KC offense third-down conversion rate, percent",
+     "stated_value": 42.1,
+     "tool_call_id": "o13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc9",
+     "text": "ATL defense third-down conversion rate allowed, percent",
+     "stated_value": 43.3,
+     "tool_call_id": "o21",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc10",
+     "text": "ATL defense third-down plays sample size",
+     "stated_value": 120.0,
+     "tool_call_id": "o21",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc11",
+     "text": "KC T.Kelce share of team targets, percent",
+     "stated_value": 19.5,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc12",
+     "text": "KC X.Worthy share of team targets, percent",
+     "stated_value": 19.1,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc13",
+     "text": "KC team targets sample size",
+     "stated_value": 246.0,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc14",
+     "text": "KC average depth of target (air yards per attempt), yards",
+     "stated_value": 5.6,
+     "tool_call_id": "o11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc15",
+     "text": "KC defense EPA per run play allowed",
+     "stated_value": -0.16,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc16",
+     "text": "KC defense run plays allowed sample size",
+     "stated_value": 197.0,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc17",
+     "text": "KC defense success rate allowed on run plays, percent",
+     "stated_value": 36.0,
+     "tool_call_id": "d3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc18",
+     "text": "ATL Bi.Robinson share of team rushes, percent",
+     "stated_value": 70.7,
+     "tool_call_id": "i6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc19",
+     "text": "KC offense red-zone touchdown rate on red-zone drives, percent",
+     "stated_value": 63.3,
+     "tool_call_id": "o12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc20",
+     "text": "ATL defense red-zone touchdown rate allowed on red-zone drives, percent",
+     "stated_value": 66.7,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc21",
+     "text": "ATL red-zone drives allowed sample size",
+     "stated_value": 33.0,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    }
+   ],
+   "unsourced": []
+  }
+ },
+ "checks": [
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc16",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc16",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc17",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc17",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc18",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc18",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc19",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc19",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc20",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc20",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc21",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc21",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc22",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc22",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc23",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc23",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc24",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc24",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc16",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc16",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc17",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc17",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc18",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc18",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc19",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc19",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc20",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc20",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc21",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc21",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc22",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc22",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc23",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc23",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc24",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc24",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc25",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc25",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc26",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc26",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc27",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc27",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc16",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc16",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc17",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc17",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc18",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc18",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc19",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc19",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc20",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc20",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc21",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc21",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  }
+ ],
+ "check_log": [
+  {
+   "round": 1,
+   "role": "defense_analyst",
+   "claim_id": null,
+   "check": "prose",
+   "detail": "'303' in the prose: unlinked",
+   "text": null,
+   "stated_value": null
+  },
+  {
+   "round": 1,
+   "role": "defense_analyst",
+   "claim_id": null,
+   "check": "prose",
+   "detail": "'20' in the prose: unlinked",
+   "text": null,
+   "stated_value": null
+  },
+  {
+   "round": 1,
+   "role": "injury_analyst",
+   "claim_id": "ic5",
+   "check": "value",
+   "detail": "i7 snap_share gives 0.375 (n_plays 8); stated 37.5",
+   "text": "KC WR Nikko Remigio average snap share per game, weeks 1-9",
+   "stated_value": 37.5
+  },
+  {
+   "round": 1,
+   "role": "offense_analyst",
+   "claim_id": null,
+   "check": "prose",
+   "detail": "'20' in the prose: unlinked",
+   "text": null,
+   "stated_value": null
+  },
+  {
+   "round": 1,
+   "role": "matchup_analyst",
+   "claim_id": null,
+   "check": "prose",
+   "detail": "'20' in the prose: unlinked",
+   "text": null,
+   "stated_value": null
+  }
+ ],
+ "checks_run": 2,
+ "dropped": [],
+ "report": {
+  "title": "ATL at KC Week Ten Scouting Report",
+  "summary": "KC leans on its passing game, especially on early downs and long third downs, with Kelce and Worthy absorbing most targets. ATL's best path is to limit yards after catch from those two, feed Bijan Robinson early, and keep KC out of the end zone once it reaches the red zone. KC's run defense is its clear strength, while its pass defense is closer to average and ATL's offense has to adjust to blitz looks.",
+  "sections": [
+   {
+    "heading": "Opponent offense",
+    "body": "KC throws on 55.6% of early-down plays [oc1] over 376 plays [oc2], so ATL should not expect many early-down run tells, and it drops back on 96.7% of third-and-long snaps [oc4] over 30 plays [oc5]. Pass EPA is 0.16 per play [oc6] over 289 dropbacks [oc7], well ahead of run EPA of 0.09 [oc8] over 195 designed runs [oc9]. Targets concentrate on T.Kelce at 19.5% [oc14] and X.Worthy at 19.1% [oc15] of 246 team targets [oc16], with an aDOT of 5.6 yards [oc17], so the plan is limiting yards after catch from those two. KC converts 42.1% of third downs [oc20] and scores touchdowns on 63.3% of red-zone drives [oc22]. ATL allows touchdowns on 66.7% of red-zone drives [oc24] over 33 drives [oc25], so the realistic goal is forcing field goals once KC reaches the red zone."
+   },
+   {
+    "heading": "Opponent defense",
+    "body": "KC's run defense is the strength, allowing -0.16 EPA per run [dc3] on 197 runs [dc4] with a 36.0% success rate [dc5]. The pass defense is closer to average, allowing 42.6% success [dc6] on 303 dropbacks [dc7]. ATL's passing offense, at -0.15 EPA per dropback [dc9] over 283 plays [dc10], is the unit that has to adjust. KC blitzes on 27.4% of dropbacks [dc13], producing a pressure proxy of 13.5% [dc15] and a 4.6% sack rate [dc16], against ATL's own 9.2% pressure proxy [dc11] and 5.7% sack rate [dc12], so the line has to hold on early downs and the quarterback has to get the ball out quickly. On third down KC allows conversions on 36.7% of plays [dc19] over 109 plays [dc20]. In the red zone, 38.1% of drives end in a touchdown [dc22] on 21 drives [dc23], a small sample to treat with caution."
+   },
+   {
+    "heading": "Injuries and availability",
+    "body": "KC's latest report lists CB Mansoor Delane as Out [ic1], DTs Omarr Norman-Lott [ic2] and Peter Woods [ic3] as Out, and WR Nikko Remigio as Questionable [ic4]. None is a target or rush leader, so Kelce at 19.5% of targets [ic5] over 246 team targets [ic6] and Worthy at 19.1% [ic7] should still get the throws. ATL's latest report lists RB Brian Robinson Out [ic8], WR Zachariah Branch Out [ic9] and T Cameron Williams Out [ic10], with WR Beaux Collins [ic11] and DE James Pearce Jr. [ic12] Questionable. With Robinson out, Bijan Robinson's 70.7% rush share [ic13] over 239 team rushes [ic14] is the volume to plan around."
+   },
+   {
+    "heading": "Key matchups",
+    "body": "KC's early-down pass game faces ATL's protection, with KC blitzing on 27.4% of dropbacks [mc3] and ATL's passing offense at -0.15 EPA per dropback [mc5]. ATL should rely on quick throws, hot reads against the blitz and running back chips. On third down, KC converts 42.1% of third downs [mc8] and ATL allows 43.3% [mc9] over 120 plays [mc10], so Kelce and Worthy, who take most throws, must be contained on short sticks. Bijan Robinson faces a run defense allowing -0.16 EPA per run play [mc15] over 197 runs [mc16]; with KC's DTs listed Out, expect a heavy early dose to set up play action. In the red zone, KC scores on 63.3% of drives [mc19] and ATL allows touchdowns on 66.7% [mc20] over 33 drives [mc21], so keep KC in front and force field goals."
+   }
+  ]
+ },
+ "number_checks": [
+  {
+   "mention": {
+    "text": "55.6%",
+    "value": 55.6,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 421,
+    "claim_id": "oc1",
+    "group": 4,
+    "group_ids": [
+     "oc1"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "376",
+    "value": 376.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 458,
+    "claim_id": "oc2",
+    "group": 6,
+    "group_ids": [
+     "oc2"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "96.7%",
+    "value": 96.7,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 548,
+    "claim_id": "oc4",
+    "group": 8,
+    "group_ids": [
+     "oc4"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "30",
+    "value": 30.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 589,
+    "claim_id": "oc5",
+    "group": 10,
+    "group_ids": [
+     "oc5"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "0.16",
+    "value": 0.16,
+    "kind": "number",
+    "decimals": 2,
+    "start": 617,
+    "claim_id": "oc6",
+    "group": 13,
+    "group_ids": [
+     "oc6"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "289",
+    "value": 289.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 642,
+    "claim_id": "oc7",
+    "group": 15,
+    "group_ids": [
+     "oc7"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "0.09",
+    "value": 0.09,
+    "kind": "number",
+    "decimals": 2,
+    "start": 688,
+    "claim_id": "oc8",
+    "group": 17,
+    "group_ids": [
+     "oc8"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "195",
+    "value": 195.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 704,
+    "claim_id": "oc9",
+    "group": 19,
+    "group_ids": [
+     "oc9"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "19.5%",
+    "value": 19.5,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 763,
+    "claim_id": "oc14",
+    "group": 22,
+    "group_ids": [
+     "oc14"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "19.1%",
+    "value": 19.1,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 792,
+    "claim_id": "oc15",
+    "group": 24,
+    "group_ids": [
+     "oc15"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "246",
+    "value": 246.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 808,
+    "claim_id": "oc16",
+    "group": 26,
+    "group_ids": [
+     "oc16"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "5.6",
+    "value": 5.6,
+    "kind": "number",
+    "decimals": 1,
+    "start": 849,
+    "claim_id": "oc17",
+    "group": 28,
+    "group_ids": [
+     "oc17"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "42.1%",
+    "value": 42.1,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 937,
+    "claim_id": "oc20",
+    "group": 31,
+    "group_ids": [
+     "oc20"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "63.3%",
+    "value": 63.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 990,
+    "claim_id": "oc22",
+    "group": 33,
+    "group_ids": [
+     "oc22"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "66.7%",
+    "value": 66.7,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1048,
+    "claim_id": "oc24",
+    "group": 36,
+    "group_ids": [
+     "oc24"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "33",
+    "value": 33.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1085,
+    "claim_id": "oc25",
+    "group": 38,
+    "group_ids": [
+     "oc25"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "-0.16",
+    "value": -0.16,
+    "kind": "number",
+    "decimals": 2,
+    "start": 1222,
+    "claim_id": "dc3",
+    "group": 41,
+    "group_ids": [
+     "dc3"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "197",
+    "value": 197.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1249,
+    "claim_id": "dc4",
+    "group": 43,
+    "group_ids": [
+     "dc4"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "36.0%",
+    "value": 36.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1271,
+    "claim_id": "dc5",
+    "group": 45,
+    "group_ids": [
+     "dc5"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "42.6%",
+    "value": 42.6,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1345,
+    "claim_id": "dc6",
+    "group": 48,
+    "group_ids": [
+     "dc6"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "303",
+    "value": 303.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1368,
+    "claim_id": "dc7",
+    "group": 50,
+    "group_ids": [
+     "dc7"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "-0.15",
+    "value": -0.15,
+    "kind": "number",
+    "decimals": 2,
+    "start": 1415,
+    "claim_id": "dc9",
+    "group": 53,
+    "group_ids": [
+     "dc9"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "283",
+    "value": 283.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1449,
+    "claim_id": "dc10",
+    "group": 55,
+    "group_ids": [
+     "dc10"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "27.4%",
+    "value": 27.4,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1513,
+    "claim_id": "dc13",
+    "group": 58,
+    "group_ids": [
+     "dc13"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "13.5%",
+    "value": 13.5,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1570,
+    "claim_id": "dc15",
+    "group": 60,
+    "group_ids": [
+     "dc15"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "4.6%",
+    "value": 4.6,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1589,
+    "claim_id": "dc16",
+    "group": 62,
+    "group_ids": [
+     "dc16"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "9.2%",
+    "value": 9.2,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1630,
+    "claim_id": "dc11",
+    "group": 64,
+    "group_ids": [
+     "dc11"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "5.7%",
+    "value": 5.7,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1661,
+    "claim_id": "dc12",
+    "group": 66,
+    "group_ids": [
+     "dc12"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "36.7%",
+    "value": 36.7,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1815,
+    "claim_id": "dc19",
+    "group": 69,
+    "group_ids": [
+     "dc19"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "109",
+    "value": 109.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1842,
+    "claim_id": "dc20",
+    "group": 71,
+    "group_ids": [
+     "dc20"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "38.1%",
+    "value": 38.1,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1877,
+    "claim_id": "dc22",
+    "group": 74,
+    "group_ids": [
+     "dc22"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "21",
+    "value": 21.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1922,
+    "claim_id": "dc23",
+    "group": 76,
+    "group_ids": [
+     "dc23"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "19.5%",
+    "value": 19.5,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2183,
+    "claim_id": "ic5",
+    "group": 84,
+    "group_ids": [
+     "ic5"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "246",
+    "value": 246.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2211,
+    "claim_id": "ic6",
+    "group": 86,
+    "group_ids": [
+     "ic6"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "19.1%",
+    "value": 19.1,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2248,
+    "claim_id": "ic7",
+    "group": 88,
+    "group_ids": [
+     "ic7"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "70.7%",
+    "value": 70.7,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2519,
+    "claim_id": "ic13",
+    "group": 98,
+    "group_ids": [
+     "ic13"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "239",
+    "value": 239.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2548,
+    "claim_id": "ic14",
+    "group": 100,
+    "group_ids": [
+     "ic14"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "27.4%",
+    "value": 27.4,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2672,
+    "claim_id": "mc3",
+    "group": 103,
+    "group_ids": [
+     "mc3"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "-0.15",
+    "value": -0.15,
+    "kind": "number",
+    "decimals": 2,
+    "start": 2726,
+    "claim_id": "mc5",
+    "group": 105,
+    "group_ids": [
+     "mc5"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "42.1%",
+    "value": 42.1,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2868,
+    "claim_id": "mc8",
+    "group": 109,
+    "group_ids": [
+     "mc8"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "43.3%",
+    "value": 43.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2910,
+    "claim_id": "mc9",
+    "group": 111,
+    "group_ids": [
+     "mc9"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "120",
+    "value": 120.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2927,
+    "claim_id": "mc10",
+    "group": 113,
+    "group_ids": [
+     "mc10"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "-0.16",
+    "value": -0.16,
+    "kind": "number",
+    "decimals": 2,
+    "start": 3067,
+    "claim_id": "mc15",
+    "group": 116,
+    "group_ids": [
+     "mc15"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "197",
+    "value": 197.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 3102,
+    "claim_id": "mc16",
+    "group": 118,
+    "group_ids": [
+     "mc16"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "63.3%",
+    "value": 63.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3224,
+    "claim_id": "mc19",
+    "group": 121,
+    "group_ids": [
+     "mc19"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "66.7%",
+    "value": 66.7,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3276,
+    "claim_id": "mc20",
+    "group": 123,
+    "group_ids": [
+     "mc20"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "33",
+    "value": 33.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 3294,
+    "claim_id": "mc21",
+    "group": 125,
+    "group_ids": [
+     "mc21"
+    ]
+   },
+   "status": "ok"
+  }
+ ],
+ "tool_calls": [
+  {
+   "call_id": "d1",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "KC",
+    "side": "defense",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -0.156078340660634,
+    "n_plays": 197,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "run"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per run play allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d2",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "KC",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -0.017132463479997403,
+    "n_plays": 303,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d3",
+   "node": "defense_analyst",
+   "tool": "success_rate",
+   "args": {
+    "team": "KC",
+    "side": "defense",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 36.04060913705584,
+    "n_plays": 197,
+    "query_meta": {
+     "tool": "success_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "run"
+     },
+     "unit": "percent",
+     "definition": "Percent of run plays with EPA > 0, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d4",
+   "node": "defense_analyst",
+   "tool": "success_rate",
+   "args": {
+    "team": "KC",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 42.57425742574257,
+    "n_plays": 303,
+    "query_meta": {
+     "tool": "success_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays with EPA > 0, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d5",
+   "node": "defense_analyst",
+   "tool": "blitz_rate",
+   "args": {
+    "team": "KC",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 27.39273927392739,
+    "n_plays": 303,
+    "query_meta": {
+     "tool": "blitz_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks faced with 5+ pass rushers (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d6",
+   "node": "defense_analyst",
+   "tool": "sack_rate",
+   "args": {
+    "team": "KC",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 4.62046204620462,
+    "n_plays": 303,
+    "query_meta": {
+     "tool": "sack_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks ending in a sack (defense).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d7",
+   "node": "defense_analyst",
+   "tool": "pressure_proxy_rate",
+   "args": {
+    "team": "KC",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 13.531353135313532,
+    "n_plays": 303,
+    "query_meta": {
+     "tool": "pressure_proxy_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Pressure proxy: percent of dropbacks with a sack or QB hit (defense). Not true pressure rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d8",
+   "node": "defense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "KC",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 6.6006600660066,
+    "n_plays": 303,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d9",
+   "node": "defense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "KC",
+    "side": "defense",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 7.614213197969544,
+    "n_plays": 197,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "run"
+     },
+     "unit": "percent",
+     "definition": "Percent of run plays gaining 20+ yds (pass) or 10+ yds (run), allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d10",
+   "node": "defense_analyst",
+   "tool": "third_down_conversion_rate",
+   "args": {
+    "team": "KC",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 36.69724770642202,
+    "n_plays": 109,
+    "query_meta": {
+     "tool": "third_down_conversion_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of third-down plays converted, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d11",
+   "node": "defense_analyst",
+   "tool": "red_zone_td_rate",
+   "args": {
+    "team": "KC",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 38.095238095238095,
+    "n_plays": 21,
+    "query_meta": {
+     "tool": "red_zone_td_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of red-zone drives ending in a TD, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d12",
+   "node": "defense_analyst",
+   "tool": "average_pass_rushers",
+   "args": {
+    "team": "KC",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 4.336633663366337,
+    "n_plays": 303,
+    "query_meta": {
+     "tool": "average_pass_rushers",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "rushers",
+     "definition": "Mean pass rushers per dropback faced (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d13",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "ATL",
+    "side": "offense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -0.14644398645999376,
+    "n_plays": 283,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "ATL",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d14",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "ATL",
+    "side": "offense",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -0.000359468036935148,
+    "n_plays": 239,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "ATL",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "run"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per run play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d15",
+   "node": "defense_analyst",
+   "tool": "pressure_proxy_rate",
+   "args": {
+    "team": "ATL",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 9.187279151943462,
+    "n_plays": 283,
+    "query_meta": {
+     "tool": "pressure_proxy_rate",
+     "args": {
+      "team": "ATL",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Pressure proxy: percent of dropbacks with a sack or QB hit (offense). Not true pressure rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d16",
+   "node": "defense_analyst",
+   "tool": "sack_rate",
+   "args": {
+    "team": "ATL",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 5.6537102473498235,
+    "n_plays": 283,
+    "query_meta": {
+     "tool": "sack_rate",
+     "args": {
+      "team": "ATL",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks ending in a sack (offense).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d17",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "KC",
+    "side": "defense",
+    "early_downs_only": false,
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 9,
+    "n_plays": 500,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "early_downs_only": false,
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction",
+      "early_downs_only"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": -0.07187713908916823,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d18",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "KC",
+    "side": "defense",
+    "early_downs_only": false,
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 9,
+    "n_plays": 500,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "early_downs_only": false,
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction",
+      "early_downs_only"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": -0.07187713908916823,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d19",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "KC",
+    "side": "defense",
+    "early_downs_only": false,
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 9,
+    "n_plays": 500,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "early_downs_only": false,
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction",
+      "early_downs_only"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": -0.07187713908916823,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d20",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "KC",
+    "side": "defense",
+    "early_downs_only": false,
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 9,
+    "n_plays": 500,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "early_downs_only": false,
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction",
+      "early_downs_only"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": -0.07187713908916823,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d21",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "KC",
+    "side": "defense",
+    "early_downs_only": false,
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 9,
+    "n_plays": 500,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "early_downs_only": false,
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction",
+      "early_downs_only"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": -0.07187713908916823,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d22",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "KC",
+    "side": "defense",
+    "early_downs_only": false,
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 9,
+    "n_plays": 500,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "early_downs_only": false,
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction",
+      "early_downs_only"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": -0.07187713908916823,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d23",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "success_rate",
+    "team": "KC",
+    "side": "defense",
+    "early_downs_only": false,
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 5,
+    "n_plays": 500,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "success_rate",
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "early_downs_only": false,
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "success_rate",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction",
+      "early_downs_only"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": 40.0,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d24",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "third_down_conversion_rate",
+    "team": "KC",
+    "side": "defense",
+    "early_downs_only": false,
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 10,
+    "n_plays": 109,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "third_down_conversion_rate",
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "early_downs_only": false,
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "third_down_conversion_rate",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction",
+      "early_downs_only"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": 36.69724770642202,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d25",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "red_zone_td_rate",
+    "team": "KC",
+    "side": "defense",
+    "early_downs_only": false,
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 3,
+    "n_plays": 21,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "red_zone_td_rate",
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "early_downs_only": false,
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "red_zone_td_rate",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction",
+      "early_downs_only"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": 38.095238095238095,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d26",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "KC",
+    "side": "defense",
+    "early_downs_only": false,
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 9,
+    "n_plays": 500,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "early_downs_only": false,
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction",
+      "early_downs_only"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": -0.07187713908916823,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i1",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "KC",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Mansoor Delane",
+      "player_id": "00-0041543",
+      "position": "CB",
+      "status": "Out",
+      "injury": "Shoulder",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Omarr Norman-Lott",
+      "player_id": "00-0040748",
+      "position": "DT",
+      "status": "Out",
+      "injury": "Knee",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Peter Woods",
+      "player_id": "00-0041545",
+      "position": "DT",
+      "status": "Out",
+      "injury": "Neck",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Nikko Remigio",
+      "player_id": "00-0038519",
+      "position": "WR",
+      "status": "Questionable",
+      "injury": "Hip",
+      "practice_status": "Full Participation in Practice"
+     }
+    ],
+    "n_plays": 4,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 9,
+     "weeks": [
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i2",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "ATL",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Brian Robinson",
+      "player_id": "00-0037746",
+      "position": "RB",
+      "status": "Out",
+      "injury": "Hamstring",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Cameron Williams",
+      "player_id": "00-0040687",
+      "position": "T",
+      "status": "Out",
+      "injury": "Ankle",
+      "practice_status": "Full Participation in Practice"
+     },
+     {
+      "player": "Zachariah Branch",
+      "player_id": "00-0041044",
+      "position": "WR",
+      "status": "Out",
+      "injury": "Hamstring",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Beaux Collins",
+      "player_id": "00-0040432",
+      "position": "WR",
+      "status": "Questionable",
+      "injury": "Hip",
+      "practice_status": "Full Participation in Practice"
+     },
+     {
+      "player": "Divine Deablo",
+      "player_id": "00-0036990",
+      "position": "LB",
+      "status": "Questionable",
+      "injury": "Forearm",
+      "practice_status": "Full Participation in Practice"
+     },
+     {
+      "player": "James Pearce Jr.",
+      "player_id": "00-0040578",
+      "position": "DE",
+      "status": "Questionable",
+      "injury": "Back",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Yasir Abdullah",
+      "player_id": "00-0038580",
+      "position": "DE",
+      "status": "Questionable",
+      "injury": "Hamstring",
+      "practice_status": "Full Participation in Practice"
+     }
+    ],
+    "n_plays": 7,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "ATL",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 9,
+     "weeks": [
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i3",
+   "node": "injury_analyst",
+   "tool": "usage_leaders",
+   "args": {
+    "team": "KC",
+    "kind": "target",
+    "top_n": 5,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "T.Kelce",
+      "player_id": "00-0030506",
+      "count": 48,
+      "share": 19.51219512195122
+     },
+     {
+      "player": "X.Worthy",
+      "player_id": "00-0039894",
+      "count": 47,
+      "share": 19.10569105691057
+     },
+     {
+      "player": "K.Walker",
+      "player_id": "00-0038134",
+      "count": 36,
+      "share": 14.634146341463415
+     },
+     {
+      "player": "R.Rice",
+      "player_id": "00-0039067",
+      "count": 32,
+      "share": 13.008130081300813
+     },
+     {
+      "player": "N.Gray",
+      "player_id": "00-0036637",
+      "count": 17,
+      "share": 6.9105691056910565
+     }
+    ],
+    "n_plays": 246,
+    "query_meta": {
+     "tool": "usage_leaders",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "kind": "target",
+      "top_n": 5
+     },
+     "unit": "players",
+     "definition": "Top 5 players by team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i4",
+   "node": "injury_analyst",
+   "tool": "usage_leaders",
+   "args": {
+    "team": "KC",
+    "kind": "rush",
+    "top_n": 5,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "K.Walker",
+      "player_id": "00-0038134",
+      "count": 159,
+      "share": 81.53846153846153
+     },
+     {
+      "player": "E.Johnson",
+      "player_id": "00-0041013",
+      "count": 26,
+      "share": 13.333333333333334
+     },
+     {
+      "player": "J.Ott",
+      "player_id": "00-0040959",
+      "count": 3,
+      "share": 1.5384615384615385
+     },
+     {
+      "player": "K.Tonga",
+      "player_id": "00-0036909",
+      "count": 2,
+      "share": 1.0256410256410255
+     },
+     {
+      "player": "P.Mahomes",
+      "player_id": "00-0033873",
+      "count": 2,
+      "share": 1.0256410256410255
+     }
+    ],
+    "n_plays": 195,
+    "query_meta": {
+     "tool": "usage_leaders",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "kind": "rush",
+      "top_n": 5
+     },
+     "unit": "players",
+     "definition": "Top 5 players by team rushs.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i5",
+   "node": "injury_analyst",
+   "tool": "usage_leaders",
+   "args": {
+    "team": "ATL",
+    "kind": "target",
+    "top_n": 5,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "D.London",
+      "player_id": "00-0037238",
+      "count": 67,
+      "share": 27.68595041322314
+     },
+     {
+      "player": "Bi.Robinson",
+      "player_id": "00-0038542",
+      "count": 40,
+      "share": 16.52892561983471
+     },
+     {
+      "player": "K.Pitts",
+      "player_id": "00-0036970",
+      "count": 37,
+      "share": 15.289256198347108
+     },
+     {
+      "player": "J.Dotson",
+      "player_id": "00-0037741",
+      "count": 32,
+      "share": 13.223140495867769
+     },
+     {
+      "player": "O.Zaccheaus",
+      "player_id": "00-0035208",
+      "count": 16,
+      "share": 6.6115702479338845
+     }
+    ],
+    "n_plays": 242,
+    "query_meta": {
+     "tool": "usage_leaders",
+     "args": {
+      "team": "ATL",
+      "season": 2026,
+      "through_week": 9,
+      "kind": "target",
+      "top_n": 5
+     },
+     "unit": "players",
+     "definition": "Top 5 players by team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i6",
+   "node": "injury_analyst",
+   "tool": "usage_leaders",
+   "args": {
+    "team": "ATL",
+    "kind": "rush",
+    "top_n": 5,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Bi.Robinson",
+      "player_id": "00-0038542",
+      "count": 169,
+      "share": 70.7112970711297
+     },
+     {
+      "player": "Br.Robinson",
+      "player_id": "00-0037746",
+      "count": 53,
+      "share": 22.175732217573223
+     },
+     {
+      "player": "K.Herbert",
+      "player_id": "00-0036906",
+      "count": 7,
+      "share": 2.928870292887029
+     },
+     {
+      "player": "M.Penix",
+      "player_id": "00-0039917",
+      "count": 5,
+      "share": 2.092050209205021
+     },
+     {
+      "player": "C.Woerner",
+      "player_id": "00-0036429",
+      "count": 2,
+      "share": 0.8368200836820083
+     }
+    ],
+    "n_plays": 239,
+    "query_meta": {
+     "tool": "usage_leaders",
+     "args": {
+      "team": "ATL",
+      "season": 2026,
+      "through_week": 9,
+      "kind": "rush",
+      "top_n": 5
+     },
+     "unit": "players",
+     "definition": "Top 5 players by team rushs.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i7",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "KC",
+    "player": "Nikko Remigio",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 0.375,
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Nikko Remigio",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Nikko Remigio's mean snap share per game, weeks 1-9.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i8",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "ATL",
+    "player": "Brian Robinson",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": null,
+   "error": "player 'Brian Robinson' is ambiguous: Bijan Robinson (RobiBi01), Brian Robinson Jr. (RobiBr01), Jammie Robinson (RobiJa03); pass the full name"
+  },
+  {
+   "call_id": "i9",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "ATL",
+    "player": "Zachariah Branch",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 23.5,
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "ATL",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Zachariah Branch",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Zachariah Branch's mean snap share per game, weeks 1-9.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i10",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "ATL",
+    "player": "James Pearce Jr.",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 26.0,
+    "n_plays": 1,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "ATL",
+      "season": 2026,
+      "through_week": 9,
+      "player": "James Pearce Jr.",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "James Pearce's mean snap share per game, weeks 1-9.",
+     "weeks": [
+      9
+     ],
+     "n_games": 1
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i11",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "ATL",
+    "player": "Zachariah Branch",
+    "kind": "target",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 4.958677685950414,
+    "n_plays": 242,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "ATL",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Zachariah Branch",
+      "kind": "target"
+     },
+     "unit": "percent",
+     "definition": "Z.Branch's percent of team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9,
+     "player": {
+      "id": "00-0041044",
+      "name": "Z.Branch",
+      "count": 12
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o1",
+   "node": "offense_analyst",
+   "tool": "pass_rate",
+   "args": {
+    "team": "KC",
+    "early_downs_only": true,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 55.58510638297872,
+    "n_plays": 376,
+    "query_meta": {
+     "tool": "pass_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "down": null,
+      "distance": null,
+      "early_downs_only": true
+     },
+     "unit": "percent",
+     "definition": "Percent of plays that are dropbacks (early downs).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o2",
+   "node": "offense_analyst",
+   "tool": "pass_rate",
+   "args": {
+    "team": "KC",
+    "down": 3,
+    "distance": "long",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 96.66666666666667,
+    "n_plays": 30,
+    "query_meta": {
+     "tool": "pass_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "down": 3,
+      "distance": "long",
+      "early_downs_only": false
+     },
+     "unit": "percent",
+     "definition": "Percent of plays that are dropbacks (down 3, long distance).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o3",
+   "node": "offense_analyst",
+   "tool": "pass_rate_over_expected",
+   "args": {
+    "team": "KC",
+    "early_downs_only": true,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 4.8875374451993,
+    "n_plays": 376,
+    "query_meta": {
+     "tool": "pass_rate_over_expected",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "early_downs_only": true
+     },
+     "unit": "percentage_points",
+     "definition": "Mean pass_oe (early downs).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o4",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "KC",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 0.1605324628359485,
+    "n_plays": 289,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o5",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "KC",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 0.09254216511010589,
+    "n_plays": 195,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "run"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per run play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o6",
+   "node": "offense_analyst",
+   "tool": "ftn_play_rate",
+   "args": {
+    "team": "KC",
+    "feature": "play_action",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 31.141868512110726,
+    "n_plays": 289,
+    "query_meta": {
+     "tool": "ftn_play_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "feature": "play_action"
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks with play action (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o7",
+   "node": "offense_analyst",
+   "tool": "ftn_play_rate",
+   "args": {
+    "team": "KC",
+    "feature": "motion",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 56.611570247933884,
+    "n_plays": 484,
+    "query_meta": {
+     "tool": "ftn_play_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "feature": "motion"
+     },
+     "unit": "percent",
+     "definition": "Percent of scrimmage plays with motion (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o8",
+   "node": "offense_analyst",
+   "tool": "ftn_play_rate",
+   "args": {
+    "team": "KC",
+    "feature": "rpo",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 10.537190082644628,
+    "n_plays": 484,
+    "query_meta": {
+     "tool": "ftn_play_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "feature": "rpo"
+     },
+     "unit": "percent",
+     "definition": "Percent of scrimmage plays with rpo (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o9",
+   "node": "offense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "KC",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 7.612456747404845,
+    "n_plays": 289,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o10",
+   "node": "offense_analyst",
+   "tool": "usage_leaders",
+   "args": {
+    "team": "KC",
+    "kind": "target",
+    "top_n": 3,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "T.Kelce",
+      "player_id": "00-0030506",
+      "count": 48,
+      "share": 19.51219512195122
+     },
+     {
+      "player": "X.Worthy",
+      "player_id": "00-0039894",
+      "count": 47,
+      "share": 19.10569105691057
+     },
+     {
+      "player": "K.Walker",
+      "player_id": "00-0038134",
+      "count": 36,
+      "share": 14.634146341463415
+     }
+    ],
+    "n_plays": 246,
+    "query_meta": {
+     "tool": "usage_leaders",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "kind": "target",
+      "top_n": 3
+     },
+     "unit": "players",
+     "definition": "Top 3 players by team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o11",
+   "node": "offense_analyst",
+   "tool": "average_depth_of_target",
+   "args": {
+    "team": "KC",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 5.55893536121673,
+    "n_plays": 263,
+    "query_meta": {
+     "tool": "average_depth_of_target",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "yards",
+     "definition": "Mean air yards per pass attempt.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o12",
+   "node": "offense_analyst",
+   "tool": "red_zone_td_rate",
+   "args": {
+    "team": "KC",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 63.33333333333333,
+    "n_plays": 30,
+    "query_meta": {
+     "tool": "red_zone_td_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Percent of red-zone drives ending in a TD, by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      8,
+      9
+     ],
+     "n_games": 7
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o13",
+   "node": "offense_analyst",
+   "tool": "third_down_conversion_rate",
+   "args": {
+    "team": "KC",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 42.10526315789473,
+    "n_plays": 95,
+    "query_meta": {
+     "tool": "third_down_conversion_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Percent of third-down plays converted, by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o14",
+   "node": "offense_analyst",
+   "tool": "success_rate",
+   "args": {
+    "team": "KC",
+    "play_kind": "all",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 48.96694214876033,
+    "n_plays": 484,
+    "query_meta": {
+     "tool": "success_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "all"
+     },
+     "unit": "percent",
+     "definition": "Percent of all plays with EPA > 0, by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o15",
+   "node": "offense_analyst",
+   "tool": "red_zone_td_rate",
+   "args": {
+    "team": "ATL",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 66.66666666666666,
+    "n_plays": 33,
+    "query_meta": {
+     "tool": "red_zone_td_rate",
+     "args": {
+      "team": "ATL",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of red-zone drives ending in a TD, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o16",
+   "node": "offense_analyst",
+   "tool": "run_direction_rate",
+   "args": {
+    "team": "KC",
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 32.47422680412371,
+    "n_plays": 194,
+    "query_meta": {
+     "tool": "run_direction_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "direction": "left"
+     },
+     "unit": "percent",
+     "definition": "Percent of designed runs to the left.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o17",
+   "node": "offense_analyst",
+   "tool": "run_direction_rate",
+   "args": {
+    "team": "KC",
+    "direction": "right",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 27.835051546391753,
+    "n_plays": 194,
+    "query_meta": {
+     "tool": "run_direction_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "direction": "right"
+     },
+     "unit": "percent",
+     "definition": "Percent of designed runs to the right.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o18",
+   "node": "offense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "third_down_conversion_rate",
+    "team": "KC",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 9,
+    "n_plays": 95,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "third_down_conversion_rate",
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "rank",
+     "metric": "third_down_conversion_rate",
+     "metric_args": {
+      "side": "offense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (highest)",
+     "team_value": 42.10526315789473,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o19",
+   "node": "offense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "red_zone_td_rate",
+    "team": "KC",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 13,
+    "n_plays": 30,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "red_zone_td_rate",
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "rank",
+     "metric": "red_zone_td_rate",
+     "metric_args": {
+      "side": "offense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (highest)",
+     "team_value": 63.33333333333333,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      8,
+      9
+     ],
+     "n_games": 7
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o20",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "ATL",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -0.14644398645999376,
+    "n_plays": 283,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "ATL",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o21",
+   "node": "offense_analyst",
+   "tool": "third_down_conversion_rate",
+   "args": {
+    "team": "ATL",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 43.333333333333336,
+    "n_plays": 120,
+    "query_meta": {
+     "tool": "third_down_conversion_rate",
+     "args": {
+      "team": "ATL",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of third-down plays converted, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d27",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "KC",
+    "side": "defense",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -0.156078340660634,
+    "n_plays": 197,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "run"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per run play allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d28",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "KC",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -0.017132463479997403,
+    "n_plays": 303,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d29",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "KC",
+    "side": "defense",
+    "play_kind": "all",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -0.07187713908916823,
+    "n_plays": 500,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "all"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per all play allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d30",
+   "node": "defense_analyst",
+   "tool": "success_rate",
+   "args": {
+    "team": "KC",
+    "side": "defense",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 36.04060913705584,
+    "n_plays": 197,
+    "query_meta": {
+     "tool": "success_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "run"
+     },
+     "unit": "percent",
+     "definition": "Percent of run plays with EPA > 0, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d31",
+   "node": "defense_analyst",
+   "tool": "success_rate",
+   "args": {
+    "team": "KC",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 42.57425742574257,
+    "n_plays": 303,
+    "query_meta": {
+     "tool": "success_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays with EPA > 0, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d32",
+   "node": "defense_analyst",
+   "tool": "blitz_rate",
+   "args": {
+    "team": "KC",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 27.39273927392739,
+    "n_plays": 303,
+    "query_meta": {
+     "tool": "blitz_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks faced with 5+ pass rushers (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d33",
+   "node": "defense_analyst",
+   "tool": "pressure_proxy_rate",
+   "args": {
+    "team": "KC",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 13.531353135313532,
+    "n_plays": 303,
+    "query_meta": {
+     "tool": "pressure_proxy_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Pressure proxy: percent of dropbacks with a sack or QB hit (defense). Not true pressure rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d34",
+   "node": "defense_analyst",
+   "tool": "sack_rate",
+   "args": {
+    "team": "KC",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 4.62046204620462,
+    "n_plays": 303,
+    "query_meta": {
+     "tool": "sack_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks ending in a sack (defense).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d35",
+   "node": "defense_analyst",
+   "tool": "average_pass_rushers",
+   "args": {
+    "team": "KC",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 4.336633663366337,
+    "n_plays": 303,
+    "query_meta": {
+     "tool": "average_pass_rushers",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "rushers",
+     "definition": "Mean pass rushers per dropback faced (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d36",
+   "node": "defense_analyst",
+   "tool": "third_down_conversion_rate",
+   "args": {
+    "team": "KC",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 36.69724770642202,
+    "n_plays": 109,
+    "query_meta": {
+     "tool": "third_down_conversion_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of third-down plays converted, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d37",
+   "node": "defense_analyst",
+   "tool": "red_zone_td_rate",
+   "args": {
+    "team": "KC",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 38.095238095238095,
+    "n_plays": 21,
+    "query_meta": {
+     "tool": "red_zone_td_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of red-zone drives ending in a TD, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d38",
+   "node": "defense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "KC",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 6.6006600660066,
+    "n_plays": 303,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d39",
+   "node": "defense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "KC",
+    "side": "defense",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 7.614213197969544,
+    "n_plays": 197,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "play_kind": "run"
+     },
+     "unit": "percent",
+     "definition": "Percent of run plays gaining 20+ yds (pass) or 10+ yds (run), allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d40",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "ATL",
+    "side": "offense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": -0.14644398645999376,
+    "n_plays": 283,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "ATL",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d41",
+   "node": "defense_analyst",
+   "tool": "pressure_proxy_rate",
+   "args": {
+    "team": "ATL",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 9.187279151943462,
+    "n_plays": 283,
+    "query_meta": {
+     "tool": "pressure_proxy_rate",
+     "args": {
+      "team": "ATL",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Pressure proxy: percent of dropbacks with a sack or QB hit (offense). Not true pressure rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d42",
+   "node": "defense_analyst",
+   "tool": "sack_rate",
+   "args": {
+    "team": "ATL",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 5.6537102473498235,
+    "n_plays": 283,
+    "query_meta": {
+     "tool": "sack_rate",
+     "args": {
+      "team": "ATL",
+      "season": 2026,
+      "through_week": 9,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks ending in a sack (offense).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d43",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "third_down_conversion_rate",
+    "team": "KC",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 10,
+    "n_plays": 109,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "third_down_conversion_rate",
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "rank",
+     "metric": "third_down_conversion_rate",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (lowest)",
+     "team_value": 36.69724770642202,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d44",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "red_zone_td_rate",
+    "team": "KC",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 3,
+    "n_plays": 21,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "red_zone_td_rate",
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense"
+     },
+     "unit": "rank",
+     "metric": "red_zone_td_rate",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (lowest)",
+     "team_value": 38.095238095238095,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d45",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "KC",
+    "side": "defense",
+    "early_downs_only": false,
+    "direction": "left",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 9,
+    "n_plays": 500,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "side": "defense",
+      "early_downs_only": false,
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction",
+      "early_downs_only"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": -0.07187713908916823,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i12",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "KC",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Mansoor Delane",
+      "player_id": "00-0041543",
+      "position": "CB",
+      "status": "Out",
+      "injury": "Shoulder",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Omarr Norman-Lott",
+      "player_id": "00-0040748",
+      "position": "DT",
+      "status": "Out",
+      "injury": "Knee",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Peter Woods",
+      "player_id": "00-0041545",
+      "position": "DT",
+      "status": "Out",
+      "injury": "Neck",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Nikko Remigio",
+      "player_id": "00-0038519",
+      "position": "WR",
+      "status": "Questionable",
+      "injury": "Hip",
+      "practice_status": "Full Participation in Practice"
+     }
+    ],
+    "n_plays": 4,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 9,
+     "weeks": [
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i13",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "ATL",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Brian Robinson",
+      "player_id": "00-0037746",
+      "position": "RB",
+      "status": "Out",
+      "injury": "Hamstring",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Cameron Williams",
+      "player_id": "00-0040687",
+      "position": "T",
+      "status": "Out",
+      "injury": "Ankle",
+      "practice_status": "Full Participation in Practice"
+     },
+     {
+      "player": "Zachariah Branch",
+      "player_id": "00-0041044",
+      "position": "WR",
+      "status": "Out",
+      "injury": "Hamstring",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Beaux Collins",
+      "player_id": "00-0040432",
+      "position": "WR",
+      "status": "Questionable",
+      "injury": "Hip",
+      "practice_status": "Full Participation in Practice"
+     },
+     {
+      "player": "Divine Deablo",
+      "player_id": "00-0036990",
+      "position": "LB",
+      "status": "Questionable",
+      "injury": "Forearm",
+      "practice_status": "Full Participation in Practice"
+     },
+     {
+      "player": "James Pearce Jr.",
+      "player_id": "00-0040578",
+      "position": "DE",
+      "status": "Questionable",
+      "injury": "Back",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Yasir Abdullah",
+      "player_id": "00-0038580",
+      "position": "DE",
+      "status": "Questionable",
+      "injury": "Hamstring",
+      "practice_status": "Full Participation in Practice"
+     }
+    ],
+    "n_plays": 7,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "ATL",
+      "season": 2026,
+      "through_week": 9
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 9,
+     "weeks": [
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i14",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "KC",
+    "player": "Nikko Remigio",
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": 0.375,
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "player": "Nikko Remigio",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Nikko Remigio's mean snap share per game, weeks 1-9.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i15",
+   "node": "injury_analyst",
+   "tool": "usage_leaders",
+   "args": {
+    "team": "KC",
+    "kind": "target",
+    "top_n": 3,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "T.Kelce",
+      "player_id": "00-0030506",
+      "count": 48,
+      "share": 19.51219512195122
+     },
+     {
+      "player": "X.Worthy",
+      "player_id": "00-0039894",
+      "count": 47,
+      "share": 19.10569105691057
+     },
+     {
+      "player": "K.Walker",
+      "player_id": "00-0038134",
+      "count": 36,
+      "share": 14.634146341463415
+     }
+    ],
+    "n_plays": 246,
+    "query_meta": {
+     "tool": "usage_leaders",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 9,
+      "kind": "target",
+      "top_n": 3
+     },
+     "unit": "players",
+     "definition": "Top 3 players by team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i16",
+   "node": "injury_analyst",
+   "tool": "usage_leaders",
+   "args": {
+    "team": "ATL",
+    "kind": "rush",
+    "top_n": 3,
+    "season": 2026,
+    "through_week": 9
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Bi.Robinson",
+      "player_id": "00-0038542",
+      "count": 169,
+      "share": 70.7112970711297
+     },
+     {
+      "player": "Br.Robinson",
+      "player_id": "00-0037746",
+      "count": 53,
+      "share": 22.175732217573223
+     },
+     {
+      "player": "K.Herbert",
+      "player_id": "00-0036906",
+      "count": 7,
+      "share": 2.928870292887029
+     }
+    ],
+    "n_plays": 239,
+    "query_meta": {
+     "tool": "usage_leaders",
+     "args": {
+      "team": "ATL",
+      "season": 2026,
+      "through_week": 9,
+      "kind": "rush",
+      "top_n": 3
+     },
+     "unit": "players",
+     "definition": "Top 3 players by team rushs.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ]
+    }
+   },
+   "error": null
+  }
+ ],
+ "usage": [
+  {
+   "node": "planner",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 726,
+   "cache_read_input_tokens": 0,
+   "cache_creation_input_tokens": 678,
+   "latency_s": 6.110923062078655
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 1679,
+   "cache_read_input_tokens": 0,
+   "cache_creation_input_tokens": 6403,
+   "latency_s": 6.823643682058901
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 370,
+   "cache_read_input_tokens": 6403,
+   "cache_creation_input_tokens": 3982,
+   "latency_s": 2.4381425890605897
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 231,
+   "cache_read_input_tokens": 10385,
+   "cache_creation_input_tokens": 508,
+   "latency_s": 1.5295365329366177
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 186,
+   "cache_read_input_tokens": 10893,
+   "cache_creation_input_tokens": 369,
+   "latency_s": 1.3962680108379573
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 185,
+   "cache_read_input_tokens": 11262,
+   "cache_creation_input_tokens": 324,
+   "latency_s": 1.859560594893992
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 614,
+   "cache_read_input_tokens": 11586,
+   "cache_creation_input_tokens": 323,
+   "latency_s": 2.414293077075854
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 263,
+   "cache_read_input_tokens": 11909,
+   "cache_creation_input_tokens": 1269,
+   "latency_s": 1.7359852259978652
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 4796,
+   "cache_read_input_tokens": 13178,
+   "cache_creation_input_tokens": 401,
+   "latency_s": 18.018539261072874
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 122,
+   "cache_read_input_tokens": 0,
+   "cache_creation_input_tokens": 3450,
+   "latency_s": 3.687473440077156
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 1129,
+   "cache_read_input_tokens": 3450,
+   "cache_creation_input_tokens": 1097,
+   "latency_s": 4.485186017118394
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 300,
+   "cache_read_input_tokens": 4547,
+   "cache_creation_input_tokens": 2822,
+   "latency_s": 2.0095341820269823
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 3912,
+   "cache_read_input_tokens": 7369,
+   "cache_creation_input_tokens": 432,
+   "latency_s": 13.668380074901506
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 1519,
+   "cache_read_input_tokens": 0,
+   "cache_creation_input_tokens": 7921,
+   "latency_s": 7.748029932845384
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 563,
+   "cache_read_input_tokens": 7921,
+   "cache_creation_input_tokens": 3772,
+   "latency_s": 2.7992627350613475
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 4603,
+   "cache_read_input_tokens": 11693,
+   "cache_creation_input_tokens": 1128,
+   "latency_s": 16.5766002421733
+  },
+  {
+   "node": "matchup_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 5988,
+   "cache_read_input_tokens": 6451,
+   "cache_creation_input_tokens": 4258,
+   "latency_s": 24.567352099111304
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 2017,
+   "cache_read_input_tokens": 5976,
+   "cache_creation_input_tokens": 1986,
+   "latency_s": 6.8048158921301365
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 4225,
+   "cache_read_input_tokens": 7962,
+   "cache_creation_input_tokens": 4625,
+   "latency_s": 15.122287567937747
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 651,
+   "cache_read_input_tokens": 2987,
+   "cache_creation_input_tokens": 1832,
+   "latency_s": 2.9729140179697424
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 3333,
+   "cache_read_input_tokens": 4819,
+   "cache_creation_input_tokens": 2205,
+   "latency_s": 12.530938810901716
+  },
+  {
+   "node": "matchup_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 3849,
+   "cache_read_input_tokens": 6451,
+   "cache_creation_input_tokens": 5724,
+   "latency_s": 13.209815052105114
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 3687,
+   "cache_read_input_tokens": 7496,
+   "cache_creation_input_tokens": 1981,
+   "latency_s": 11.972099468111992
+  },
+  {
+   "node": "editor",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 7485,
+   "cache_read_input_tokens": 0,
+   "cache_creation_input_tokens": 5837,
+   "latency_s": 27.610419497126713
+  }
+ ],
+ "cost_usd": {
+  "total": 0.035666555,
+  "by_node": {
+   "planner": 0.00044814999999999997,
+   "defense_analyst": 0.01070469,
+   "injury_analyst": 0.00643657,
+   "offense_analyst": 0.00730855,
+   "matchup_analyst": 0.006296070000000001,
+   "editor": 0.004472525
+  }
+ }
+}
