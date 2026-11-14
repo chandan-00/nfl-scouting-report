@@ -323,7 +323,7 @@ def test_editor_report_keeps_markers_and_numbers_are_checked(con):
     out = _run(con, FakeClient(_scripts()))
 
     report = out["report"]
-    assert report.title == "KC scouting report"
+    assert report.title == "KC scouting report (Week 2)"  # the week is added when missing
     assert "## Key matchups" in report.markdown()
     statuses = [(c.mention.text, c.mention.claim_id, c.status) for c in out["number_checks"]]
     assert statuses == [
@@ -454,7 +454,7 @@ def test_run_is_saved_with_draft_final_and_cost(con, tmp_path):
     run = load_run(path)
     assert run["config"] == "full"
     assert run["draft"]["offense_analyst"]["claims"][0]["claim_id"] == "oc1"
-    assert run["report"]["title"] == "KC scouting report"
+    assert run["report"]["title"] == "KC scouting report (Week 2)"
     assert run["tool_calls"][0]["call_id"] in {"o1", "i1"}
     assert run["cost_usd"]["total"] > 0
     assert run["number_checks"][0]["status"] == "ok"
@@ -514,7 +514,7 @@ def test_no_checker_config_goes_straight_from_draft_to_editor(con):
     ).invoke({"request": Request(team="DEN", opponent="KC", season=2026, week=2)})
     assert "checks_run" not in out or out["checks_run"] == 0
     assert out["draft"]["offense_analyst"].claims[0].claim_id == "oc1"
-    assert out["report"].title == "KC scouting report"
+    assert out["report"].title == "KC scouting report (Week 2)"
 
 
 def test_a_claim_without_a_source_is_set_aside_not_fatal():
@@ -583,3 +583,47 @@ def test_single_agent_that_never_calls_a_tool_fails_instead_of_saving_a_placehol
     client = FakeClient({"single_agent": [_ready() for _ in range(5)]})
     with pytest.raises(RuntimeError, match="no tool calls"):
         _single(con, client)
+
+
+def _long_report(words: int, title: str = "DEN vs KC, Week 2") -> dict:
+    body = " ".join(["word"] * words)
+    return {
+        "title": title,
+        "summary": "KC drops back on 50.0% of plays [oc1].",
+        "sections": [{"heading": "Opponent offense", "body": body}],
+    }
+
+
+def test_editor_asks_once_to_shorten_a_report_over_the_limit(con):
+    build_db(con, [{}, {**RUN}])
+    scripts = _scripts()
+    scripts["editor"] = [text_response(_long_report(900)), text_response(_long_report(500))]
+    client = FakeClient(scripts)
+    out = _run(con, client)
+
+    editor_calls = [
+        r for r in client.requests if "<role>editor</role>" in r["messages"][0]["content"]
+    ]
+    assert len(editor_calls) == 2
+    assert "Cut it to" in editor_calls[1]["messages"][-1]["content"]
+    assert len(out["report"].text().split()) < 600
+    assert sum(u.node == "editor" for u in out["usage"]) == 2
+
+
+def test_editor_keeps_a_report_under_the_limit_without_a_second_call(con):
+    build_db(con, [{}, {**RUN}])
+    scripts = _scripts()
+    scripts["editor"] = [text_response(_long_report(400))]
+    client = FakeClient(scripts)
+    out = _run(con, client)
+
+    assert sum(u.node == "editor" for u in out["usage"]) == 1
+    assert out["report"].title == "DEN vs KC, Week 2"
+
+
+def test_editor_keeps_the_first_draft_if_the_retry_is_no_shorter(con):
+    build_db(con, [{}, {**RUN}])
+    scripts = _scripts()
+    scripts["editor"] = [text_response(_long_report(700)), text_response(_long_report(800))]
+    out = _run(con, FakeClient(scripts))
+    assert 700 <= len(out["report"].text().split()) < 800

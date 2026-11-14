@@ -216,11 +216,26 @@ def revision_block(section, failures: list) -> str:
     )
 
 
+WEEK_WORDS = {
+    1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight",
+    9: "nine", 10: "ten", 11: "eleven", 12: "twelve", 13: "thirteen", 14: "fourteen",
+    15: "fifteen", 16: "sixteen", 17: "seventeen", 18: "eighteen",
+}  # fmt: skip
+
+
 def editor_message(team: str, opponent: str, season: int, week: int, sections: dict) -> str:
     return (
         "<role>editor</role>\n"
-        f"Report for {team} on {opponent}, week {week} of the {season} season.\n\n"
-        + sections_context(sections, with_claims=True)
+        f"Report for {team} on {opponent}, week {week} of the {season} season. "
+        f'The title must include "Week {week}".\n\n' + sections_context(sections, with_claims=True)
+    )
+
+
+def editor_shorten(words: int) -> str:
+    return (
+        f"That report is {words} words. Cut it to 450-600 words: drop the weaker points and the "
+        "repetition. Keep every number you keep exactly as written with its own marker, and "
+        "change no numbers. Return the whole report again."
     )
 
 

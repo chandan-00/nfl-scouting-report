@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import copy
+import re
 from typing import Any
 
 import duckdb
@@ -247,16 +248,47 @@ def reviser(
     )
 
 
+# The editor is asked for 400-600 words but ran long (median 658 in the eval's full graph), so a
+# report over this limit gets one request to shorten it.
+EDITOR_MAX_WORDS = 650
+
+
+def report_words(report: Report) -> int:
+    """Words in the summary and bodies, not counting claim markers."""
+    return len(re.sub(r"\[[^\]]*\]", "", report.text()).split())
+
+
+def with_week(title: str, week: int) -> str:
+    """The title, with the week added if the editor left it out."""
+    if re.search(rf"\b(week|wk)\.?\s*({week}|{prompts.WEEK_WORDS.get(week, week)})\b", title, re.I):
+        return title
+    return f"{title} (Week {week})"
+
+
 def editor(state: ScoutState, llm: LLM) -> dict[str, Any]:
     r = state["request"]
     msg = prompts.editor_message(r.team, r.opponent, r.season, r.week, state["sections"])
+    messages = [{"role": "user", "content": msg}]
     response, usage = llm.call(
-        "editor",
-        system=prompts.EDITOR_SYSTEM,
-        messages=[{"role": "user", "content": msg}],
-        output_schema=REPORT_SCHEMA,
+        "editor", system=prompts.EDITOR_SYSTEM, messages=messages, output_schema=REPORT_SCHEMA
     )
-    return {"report": Report(**final_json(response)), "usage": [usage]}
+    report, usages = Report(**final_json(response)), [usage]
+    words = report_words(report)
+    if words > EDITOR_MAX_WORDS:
+        retry = [
+            *messages,
+            {"role": "assistant", "content": response.content},
+            {"role": "user", "content": prompts.editor_shorten(words)},
+        ]
+        response, usage = llm.call(
+            "editor", system=prompts.EDITOR_SYSTEM, messages=retry, output_schema=REPORT_SCHEMA
+        )
+        usages.append(usage)
+        shorter = Report(**final_json(response))
+        if report_words(shorter) < words:
+            report = shorter
+    report = report.model_copy(update={"title": with_week(report.title, r.week)})
+    return {"report": report, "usage": usages}
 
 
 def number_check(state: ScoutState) -> dict[str, Any]:
