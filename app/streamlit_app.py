@@ -42,8 +42,8 @@ def load_runs() -> dict[str, dict[str, Path]]:
                 continue
             r = run["request"]
             week = f"{r['season']} week {r['week']}"
-            config = run.get("config", "")
-            label = f"{r['team']} vs {r['opponent']}" + (" (special teams)" * (config == "full_st"))
+            special = "special_teams_analyst" in run.get("sections", {})
+            label = f"{r['team']} vs {r['opponent']}" + (" (with special teams)" * special)
             weeks.setdefault(week, {})[label] = path
     return dict(sorted(weeks.items(), key=lambda kv: int(kv[0].split()[-1]), reverse=True))
 
