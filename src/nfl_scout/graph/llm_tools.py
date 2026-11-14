@@ -52,8 +52,20 @@ def _params(name: str, teams: list[str]) -> tuple[dict[str, dict], list[str]]:
     return props, required
 
 
-def _league_rank_params(teams: list[str]) -> tuple[dict[str, dict], list[str]]:
-    rankable = sorted(n for n, s in TOOLS.items() if s.rankable)
+def _special_teams(name: str) -> bool:
+    return TOOLS[name].fn.__module__.endswith(".special_teams")
+
+
+def rank_metrics(names: list[str]) -> list[str]:
+    """The metrics league_rank may rank for a role with these tools: special-teams metrics for a
+    special-teams role, otherwise the scrimmage metrics. One schema listing every rankable metric
+    compiled to a grammar the API rejects as too large."""
+    others = [n for n in names if n != "league_rank"]
+    special = bool(others) and all(_special_teams(n) for n in others)
+    return sorted(n for n, s in TOOLS.items() if s.rankable and _special_teams(n) == special)
+
+
+def _league_rank_params(teams: list[str], rankable: list[str]) -> tuple[dict[str, dict], list[str]]:
     props: dict[str, dict] = {
         "metric": {"type": "string", "enum": rankable, "description": "Tool to rank on."},
         "team": {"type": "string", "enum": teams, "description": "Team abbreviation."},
@@ -70,10 +82,10 @@ def _league_rank_params(teams: list[str]) -> tuple[dict[str, dict], list[str]]:
     return props, ["metric", "team"]
 
 
-def _league_rank_note(teams: list[str]) -> str:
+def _league_rank_note(teams: list[str], rankable: list[str]) -> str:
     """Which splits each rankable metric takes, for the league_rank description."""
     lines = []
-    for name in sorted(n for n, s in TOOLS.items() if s.rankable):
+    for name in rankable:
         splits = sorted(k for k in _params(name, teams)[0] if k != "team")
         lines.append(f"- {name}: {', '.join(splits) or 'none'}")
     return "\nSplits each metric takes (pass no others):\n" + "\n".join(lines)
@@ -83,14 +95,16 @@ def tool_schemas(teams: list[str], names: list[str] | None = None) -> list[dict[
     """Strict tool definitions for `names` (default: every registered tool), in a fixed order
     (cache-stable). The API allows at most 20 strict tools per request."""
     schemas = []
-    for name in sorted(names or TOOLS):
+    names = sorted(names or TOOLS)
+    rankable = rank_metrics(names)
+    for name in names:
         spec = TOOLS[name]
         props, required = (
-            _league_rank_params(teams) if name == "league_rank" else _params(name, teams)
+            _league_rank_params(teams, rankable) if name == "league_rank" else _params(name, teams)
         )
         description = f"{spec.description}\nUnit of value: {spec.unit}."
         if name == "league_rank":
-            description += _league_rank_note(teams)
+            description += _league_rank_note(teams, rankable)
         schemas.append(
             {
                 "name": name,

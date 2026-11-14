@@ -216,6 +216,7 @@ ROLE_PREFIX = {
     "defense_analyst": "d",
     "injury_analyst": "i",
     "matchup_analyst": "m",
+    "special_teams_analyst": "k",
 }
 
 

@@ -251,6 +251,7 @@ def reviser(
 # The editor is asked for 400-600 words but ran long (median 658 in the eval's full graph), so a
 # report over this limit gets one request to shorten it.
 EDITOR_MAX_WORDS = 650
+EDITOR_MAX_WORDS_ST = 750  # with a special-teams section
 
 
 def report_words(report: Report) -> int:
@@ -274,11 +275,13 @@ def editor(state: ScoutState, llm: LLM) -> dict[str, Any]:
     )
     report, usages = Report(**final_json(response)), [usage]
     words = report_words(report)
-    if words > EDITOR_MAX_WORDS:
+    special_teams = "special_teams_analyst" in state["sections"]
+    if words > (EDITOR_MAX_WORDS_ST if special_teams else EDITOR_MAX_WORDS):
+        low, high = prompts.REPORT_WORDS_ST if special_teams else (450, prompts.REPORT_WORDS[1])
         retry = [
             *messages,
             {"role": "assistant", "content": response.content},
-            {"role": "user", "content": prompts.editor_shorten(words)},
+            {"role": "user", "content": prompts.editor_shorten(words, low, high)},
         ]
         response, usage = llm.call(
             "editor", system=prompts.EDITOR_SYSTEM, messages=retry, output_schema=REPORT_SCHEMA

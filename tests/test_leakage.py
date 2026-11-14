@@ -4,7 +4,7 @@ Every registered tool must appear in EXAMPLE_ARGS, so a new tool can't skip this
 """
 
 import pytest
-from conftest import FTN, INJURY, PASS, RUN, SNAP, build_db
+from conftest import FTN, INJURY, KICK, PASS, RUN, SNAP, build_db
 
 from nfl_scout.tools import TOOLS
 
@@ -31,6 +31,12 @@ EXAMPLE_ARGS = {
     "league_rank": {"metric": "epa_per_play"},
     "injury_report": {},
     "snap_share": {"player": "Wide One"},
+    "field_goal_rate": {"distance": "50_plus"},
+    "kicker_summary": {},
+    "punting": {"stat": "net_average"},
+    "kickoff_touchback_rate": {},
+    "return_average": {"kind": "punt", "side": "defense"},
+    "special_teams_epa": {},
 }
 
 
@@ -60,6 +66,25 @@ def _week_rows(week: int, epa: float, flag: bool) -> dict:
                 **({"rusher_player_id": "00-RB9", "rusher_player_name": "R.Nine"} if flag else {}),
             }
         )
+    # Kicking plays (KC field goal, extra point, punt, kickoff, and a DEN kickoff KC returns),
+    # with values that change every special-teams metric.
+    kick = {**KICK, "week": week, "game_id": game, "epa": epa}
+    plays += [
+        {**kick, "play_type": "field_goal", "field_goal_attempt": 1.0,
+         "kick_distance": 55.0, "field_goal_result": "missed" if flag else "made",
+         "kicker_player_name": "K.Late" if flag else "K.One"},
+        {**kick, "play_type": "extra_point", "extra_point_attempt": 1.0,
+         "extra_point_result": "failed" if flag else "good", "kicker_player_name": "K.One"},
+        {**kick, "play_type": "punt", "kick_distance": 70.0 if flag else 40.0,
+         "return_yards": 50.0 if flag else 5.0, "punt_returner_player_name": "R.Den",
+         "punt_inside_twenty": float(flag), "touchback": 0.0},
+        {**kick, "play_type": "kickoff", "posteam": "DEN", "defteam": "KC",
+         "touchback": float(flag), "kick_distance": 65.0},
+        {**kick, "play_type": "kickoff", "posteam": "KC", "defteam": "DEN",
+         "return_yards": 90.0 if flag else 20.0, "kickoff_returner_player_name": "R.Kc"},
+    ]  # fmt: skip
+    for i, p in enumerate(plays):
+        p["play_id"] = float(i + 1)
     ftn = [
         {
             **FTN,

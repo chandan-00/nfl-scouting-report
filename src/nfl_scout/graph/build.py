@@ -5,6 +5,8 @@ planner -> (offense || defense || injury analysts) -> matchup analyst -> draft s
   -> editor -> number check
 
 Baselines: "no_checker" skips the fact-checker; "single" is one agent with every tool.
+"full_st" is "full" plus a special-teams analyst. It is used for live reports only and is not
+part of the measured eval.
 """
 
 from __future__ import annotations
@@ -50,13 +52,25 @@ ROLE_TOOLS = {
     "injury_analyst": ["injury_report", "snap_share", "player_share", "usage_leaders"],
     "matchup_analyst": EFFICIENCY
     + ["pass_rate", "pass_rate_over_expected", "blitz_rate", "average_box_defenders"],
+    "special_teams_analyst": [
+        "field_goal_rate",
+        "kicker_summary",
+        "punting",
+        "kickoff_touchback_rate",
+        "return_average",
+        "special_teams_epa",
+        "league_rank",
+    ],
 }
-# The single-agent baseline gets every tool the analysts have (exactly the 20-tool API limit).
-SINGLE_TOOLS = sorted({name for names in ROLE_TOOLS.values() for name in names})
-# Graph configurations compared in the eval.
-CONFIGS = ("full", "no_checker", "single")
 # Run in parallel after the planner; the matchup analyst reads all of their sections.
 ANALYSTS = ("offense_analyst", "defense_analyst", "injury_analyst")
+# The roles in the measured eval (no special teams).
+EVAL_ROLES = (*ANALYSTS, "matchup_analyst")
+# The single-agent baseline gets every tool the eval's analysts have (exactly the 20-tool API
+# limit).
+SINGLE_TOOLS = sorted({name for role in EVAL_ROLES for name in ROLE_TOOLS[role]})
+# Graph configurations: the first three are compared in the eval; "full_st" is for live reports.
+CONFIGS = ("full", "no_checker", "single", "full_st")
 
 
 def season_teams(con: duckdb.DuckDBPyConnection, season: int) -> list[str]:
@@ -75,7 +89,8 @@ def build_graph(
     config: str = "full",
 ):
     """`config`: "full" (fact-checker + revise loop), "no_checker" (drafts go straight to the
-    editor) or "single" (one agent with every tool, no checker)."""
+    editor), "single" (one agent with every tool, no checker) or "full_st" (full, plus a
+    special-teams analyst)."""
     if config not in CONFIGS:
         raise ValueError(f"config must be one of {CONFIGS}, not {config!r}")
     settings = settings or load_settings()
@@ -99,14 +114,15 @@ def build_graph(
         g.add_edge("snapshot", "number_check")
         return g.compile()
 
+    analysts = (*ANALYSTS, "special_teams_analyst") if config == "full_st" else ANALYSTS
     g.add_node("planner", partial(nodes.planner, llm=llm))
-    for role in ANALYSTS:
+    for role in analysts:
         g.add_node(role, analyst_node(role))
         g.add_edge("planner", role)
     g.add_node("matchup_analyst", analyst_node("matchup_analyst", reads_sections=True))
     g.add_node("editor", partial(nodes.editor, llm=llm))
     g.add_edge(START, "planner")
-    g.add_edge(list(ANALYSTS), "matchup_analyst")  # waits for all three
+    g.add_edge(list(analysts), "matchup_analyst")  # waits for all of them
     g.add_edge("matchup_analyst", "snapshot")
     g.add_edge("editor", "number_check")
 

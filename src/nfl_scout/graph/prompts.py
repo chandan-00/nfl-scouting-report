@@ -100,6 +100,15 @@ ROLE_TASK = {
         'from ("listed Out for week 5"). A status is a claim too: stated_value is the status '
         'text, e.g. "Out". If nobody notable is listed, say so briefly. 80-150 words.'
     ),
+    "special_teams_analyst": (
+        "Scout the {opponent} special teams for {team}: field goal accuracy by distance and any "
+        "kicker change (kicker_summary), punting (net average, inside-the-20 rate), kickoff "
+        "touchbacks, returns for and allowed, and special-teams EPA. Compare with {team} where "
+        "it matters, and say what it means for field position and late-game decisions (when to "
+        "trust a long field goal, whether to kick away from a returner). Special-teams samples "
+        "are always small: give the number of attempts instead of calling each one small. Mark "
+        'every number, e.g. "made 9 [c1] of 13 [c2] tries". 100-180 words.'
+    ),
     "matchup_analyst": (
         "Using the analyst sections below, name the 3-4 matchups that will decide the game and "
         "what {team} should do about each. To reuse a number from a section, cite the same "
@@ -140,6 +149,7 @@ Writing
 SECTION_TITLES = {
     "offense_analyst": "Opponent offense",
     "defense_analyst": "Opponent defense",
+    "special_teams_analyst": "Special teams",
     "injury_analyst": "Injuries and availability",
     "matchup_analyst": "Key matchups",
 }
@@ -223,18 +233,32 @@ WEEK_WORDS = {
 }  # fmt: skip
 
 
+# Report length the editor aims for: (low, high) words, without and with special teams.
+REPORT_WORDS = (400, 600)
+REPORT_WORDS_ST = (450, 700)
+SPECIAL_TEAMS_EDITOR = (
+    'This report also has a "Special teams" section: keep it as its own section right after '
+    '"Opponent defense", and aim for {low}-{high} words in all.'
+)
+
+
 def editor_message(team: str, opponent: str, season: int, week: int, sections: dict) -> str:
+    extra = ""
+    if "special_teams_analyst" in sections:
+        low, high = REPORT_WORDS_ST
+        extra = " " + SPECIAL_TEAMS_EDITOR.format(low=low, high=high)
     return (
         "<role>editor</role>\n"
         f"Report for {team} on {opponent}, week {week} of the {season} season. "
-        f'The title must include "Week {week}".\n\n' + sections_context(sections, with_claims=True)
+        f'The title must include "Week {week}".{extra}\n\n'
+        + sections_context(sections, with_claims=True)
     )
 
 
-def editor_shorten(words: int) -> str:
+def editor_shorten(words: int, low: int = 450, high: int = 600) -> str:
     return (
-        f"That report is {words} words. Cut it to 450-600 words: drop the weaker points and the "
-        "repetition. Keep every number you keep exactly as written with its own marker, and "
+        f"That report is {words} words. Cut it to {low}-{high} words: drop the weaker points and "
+        "the repetition. Keep every number you keep exactly as written with its own marker, and "
         "change no numbers. Return the whole report again."
     )
 

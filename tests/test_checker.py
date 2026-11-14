@@ -121,6 +121,13 @@ def test_list_results_are_matched_on_the_named_player(db):
         ("pass_rate", {"team": "KC", "down": 3}, "KC pass rate on 3rd down", None),
         ("epa_per_play", {"team": "KC"}, "KC EPA per play, weeks 1-5", "weeks"),
         ("epa_per_play", {"team": "KC"}, "KC EPA per play, 2025 season", "2025"),
+        # Special teams: the kind of kick, punting stat and field goal distance must match.
+        ("return_average", {"team": "KC", "kind": "punt"}, "KC kickoff return average", "punt"),
+        ("return_average", {"team": "KC", "kind": "punt"}, "KC punt return average", None),
+        ("punting", {"team": "KC", "stat": "net_average"}, "KC gross punting average", "net"),
+        ("punting", {"team": "KC", "stat": "net_average"}, "KC net punting average", None),
+        ("field_goal_rate", {"team": "KC", "distance": "50_plus"}, "KC FG rate", "50 plus"),
+        ("field_goal_rate", {"team": "KC", "distance": "50_plus"}, "KC FG% from 50+ yards", None),
         (
             "ftn_play_rate",
             {"team": "KC", "feature": "play_action"},

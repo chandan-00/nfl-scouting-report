@@ -3,8 +3,10 @@
     uv run python -m nfl_scout.live --week 9            # check data, estimate cost
     uv run python -m nfl_scout.live --week 9 --yes      # run
 
-Each report is from the home team's view, except that games involving --focus (default BUF)
-are always from the focus team's view. It refuses to run until the previous week is complete:
+Reports use the "full_st" graph (the eval's full graph plus a special-teams analyst) unless
+--config full is given. Each report is from the home team's view, except that games involving
+--focus (default BUF) are always from the focus team's view. It refuses to run until the
+previous week is complete:
 every scheduled game has play-by-play and FTN charting covers at least 95% of its plays.
 """
 
@@ -76,6 +78,12 @@ def main() -> None:
     ap.add_argument("--focus", default="BUF", help="always report from this team's view")
     ap.add_argument("--yes", action="store_true", help="actually run (default: check only)")
     ap.add_argument("--force", action="store_true", help="run even if the data isn't complete")
+    ap.add_argument(
+        "--config",
+        choices=("full_st", "full"),
+        default="full_st",
+        help="full_st adds a special-teams section (default); full is the eval's graph",
+    )
     a = ap.parse_args()
 
     con = default_connection()
@@ -85,12 +93,12 @@ def main() -> None:
     matchups = week_matchups(con, a.season, a.week, a.focus)
     runs_dir = settings.resolve(settings.paths.runs_dir)
     live_dir = runs_dir / "live" / f"{a.season}_w{a.week:02d}"
-    cost = estimate_cost("full", len(matchups), runs_dir)
+    cost = estimate_cost(a.config, len(matchups), live_dir if a.config == "full_st" else runs_dir)
     print(f"week {a.week}: {len(matchups)} games, estimated ${cost:.2f}")
     if not a.yes or (not ok and not a.force):
         print("check only; pass --yes to run" + ("" if ok else " (and --force: data incomplete)"))
         return
-    summary = run_eval(matchups, "full", [1], settings, runs_dir=live_dir)
+    summary = run_eval(matchups, a.config, [1], settings, runs_dir=live_dir)
     print(f"done {summary['done']}, skipped {summary['skipped']}, failed {len(summary['failed'])}")
 
 

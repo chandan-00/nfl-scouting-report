@@ -38,7 +38,27 @@ PASS = {
     "fixed_drive": 1.0,
     "fixed_drive_result": "Punt",
     "third_down_converted": 0.0,
+    # Kicking-play columns, neutral on scrimmage plays.
+    "kick_distance": None,
+    "return_yards": 0.0,
+    "touchback": 0.0,
+    "punt_inside_twenty": 0.0,
+    "punt_fair_catch": 0.0,
+    "kickoff_fair_catch": 0.0,
+    "field_goal_attempt": 0.0,
+    "field_goal_result": None,
+    "extra_point_attempt": 0.0,
+    "extra_point_result": None,
+    "kicker_player_name": None,
+    "punter_player_name": None,
+    "kickoff_returner_player_name": None,
+    "punt_returner_player_name": None,
 }
+
+# Kicking plays: field goal and punt rows have the kicking team as posteam; kickoff rows have the
+# receiving team as posteam (the nflverse convention).
+KICK = {"pass": 0.0, "rush": 0.0, "qb_dropback": 0.0, "pass_attempt": 0.0, "air_yards": None,
+        "receiver_player_id": None, "receiver_player_name": None, "down": None}  # fmt: skip
 
 RUN = {
     **PASS,
@@ -110,10 +130,18 @@ TEAM_NAMES = {
 KC_DEF_ROW = {"posteam": "DEN", "defteam": "KC"}
 
 
+NUMERIC_NULLABLE = {"kick_distance", "air_yards", "down"}
+
+
 def _create(con: duckdb.DuckDBPyConnection, name: str, rows: list[dict], template: dict) -> None:
     df = pl.DataFrame([{**template, **r} for r in rows] or [template], infer_schema_length=None)
-    # All-null columns (e.g. rusher ids when every play is a pass) are strings in the real data.
-    df = df.with_columns(pl.col(c).cast(pl.Utf8) for c, t in df.schema.items() if t == pl.Null)
+    # All-null columns (e.g. rusher ids when every play is a pass) are strings in the real data,
+    # except the numeric ones below.
+    df = df.with_columns(
+        pl.col(c).cast(pl.Float64 if c in NUMERIC_NULLABLE else pl.Utf8)
+        for c, t in df.schema.items()
+        if t == pl.Null
+    )
     con.register(f"_{name}", df.to_arrow())
     con.execute(f"CREATE OR REPLACE TABLE {name} AS SELECT * FROM _{name}")
     if not rows:

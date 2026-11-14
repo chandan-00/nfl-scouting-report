@@ -56,6 +56,21 @@ SPLIT_WORDS = {
     "short": r"short",
     "medium": r"medium",
     "long": r"long",
+    # Special teams: kind of kick, punting stat, field goal distance.
+    "kickoff": r"kick[- ]?off|kick return",
+    "punt": r"punt",
+    "gross_average": r"gross",
+    "net_average": r"\bnet\b",
+    "inside_20_rate": r"inside[- ](?:the[- ])?20",
+    "touchback_rate": r"touchback",
+    "under_40": (
+        r"under 40|inside 40|less than 40|shorter than 40|below 40|<\s*40|\b[1-3]\d[- ]yard"
+    ),
+    "40_to_49": r"40[- ]?(?:to|-)[- ]?49|\b40s\b|\b4\d[- ]yard",
+    "50_plus": (
+        r"50\s*\+|50[- ]plus|50 (?:yards )?(?:or|and) (?:more|longer|beyond)|beyond 50"
+        r"|\b[5-6]\d[- ]yard"
+    ),
 }
 ORDINALS = {1: ("1st", "first"), 2: ("2nd", "second"), 3: ("3rd", "third"), 4: ("4th", "fourth")}
 SUFFIXES = {"jr", "sr", "ii", "iii", "iv", "v"}
@@ -236,7 +251,7 @@ class Checker:
             problems.append(self._play_kind(text, args.get("play_kind", "all")))
         if "down" in params:
             problems.append(self._down(text, args.get("down"), args.get("early_downs_only")))
-        for key in ("feature", "direction", "kind", "distance"):
+        for key in ("feature", "direction", "kind", "distance", "stat"):
             if key in args and args[key] in SPLIT_WORDS:
                 if not re.search(SPLIT_WORDS[args[key]], text, re.I):
                     label = str(args[key]).replace("_", " ")

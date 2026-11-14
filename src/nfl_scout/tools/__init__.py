@@ -22,6 +22,14 @@ from nfl_scout.tools.offense import (
     usage_leaders,
 )
 from nfl_scout.tools.roster import injury_report, snap_share
+from nfl_scout.tools.special_teams import (
+    field_goal_rate,
+    kicker_summary,
+    kickoff_touchback_rate,
+    punting,
+    return_average,
+    special_teams_epa,
+)
 
 __all__ = [
     "TOOLS",
@@ -33,17 +41,23 @@ __all__ = [
     "blitz_rate",
     "epa_per_play",
     "explosive_play_rate",
+    "field_goal_rate",
     "ftn_play_rate",
     "injury_report",
+    "kicker_summary",
+    "kickoff_touchback_rate",
     "league_rank",
     "pass_rate",
     "pass_rate_over_expected",
     "player_share",
     "pressure_proxy_rate",
+    "punting",
     "red_zone_td_rate",
+    "return_average",
     "run_direction_rate",
     "sack_rate",
     "snap_share",
+    "special_teams_epa",
     "success_rate",
     "third_down_conversion_rate",
     "usage_leaders",

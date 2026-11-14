@@ -627,3 +627,71 @@ def test_editor_keeps_the_first_draft_if_the_retry_is_no_shorter(con):
     scripts["editor"] = [text_response(_long_report(700)), text_response(_long_report(800))]
     out = _run(con, FakeClient(scripts))
     assert 700 <= len(out["report"].text().split()) < 800
+
+
+# --- Special teams (live reports only) ----------------------------------------------------------
+
+
+def test_single_agent_tools_stay_within_the_api_limit_without_special_teams():
+    from nfl_scout.graph.build import SINGLE_TOOLS
+
+    assert len(SINGLE_TOOLS) <= 20
+    assert not set(SINGLE_TOOLS) & (set(ROLE_TOOLS["special_teams_analyst"]) - {"league_rank"})
+
+
+def test_full_st_config_adds_a_special_teams_section(con):
+    build_db(con, [{}, {**RUN}])
+    scripts = _scripts()
+    scripts["special_teams_analyst"] = [
+        tool_response(("field_goal_rate", {"team": "KC"})),
+        text_response({"prose": "KC's kicking has had little work.", "claims": []}),
+    ]
+    client = FakeClient(scripts)
+    out = build_graph(client=client, con=con, teams=TEAMS, config="full_st").invoke(
+        {"request": Request(team="DEN", opponent="KC", season=2026, week=2)}
+    )
+
+    assert "special_teams_analyst" in out["sections"]
+    calls = {c.call_id: c for c in out["tool_calls"]}
+    assert calls["k1"].tool == "field_goal_rate"
+    st_request = next(
+        r
+        for r in client.requests
+        if "<role>special_teams_analyst</role>" in r["messages"][0]["content"]
+    )
+    assert {t["name"] for t in st_request["tools"]} == set(ROLE_TOOLS["special_teams_analyst"])
+    (editor,) = [
+        r["messages"][0]["content"]
+        for r in client.requests
+        if "<role>editor</role>" in r["messages"][0]["content"]
+    ]
+    assert '<section name="Special teams">' in editor and '"Special teams"' in editor
+
+
+def test_eval_configs_have_no_special_teams_section(con):
+    build_db(con, [{}, {**RUN}])
+    client = FakeClient(_scripts())
+    _run(con, client)
+    editor = next(
+        r["messages"][0]["content"]
+        for r in client.requests
+        if "<role>editor</role>" in r["messages"][0]["content"]
+    )
+    assert "Special teams" not in editor
+
+
+def test_league_rank_schema_lists_only_the_metrics_for_the_role():
+    """Every rankable metric in one league_rank schema made the grammar too large for the API
+    once special-teams tools existed: eval roles keep exactly the scrimmage metrics."""
+
+    def rank_metrics(role):
+        (schema,) = [s for s in tool_schemas(TEAMS, ROLE_TOOLS[role]) if s["name"] == "league_rank"]
+        return set(schema["input_schema"]["properties"]["metric"]["enum"])
+
+    special = {"field_goal_rate", "return_average", "special_teams_epa", "punting",
+               "kickoff_touchback_rate"}  # fmt: skip
+    offense = rank_metrics("offense_analyst")
+    assert "epa_per_play" in offense and not offense & special
+    assert rank_metrics("defense_analyst") == offense
+    assert rank_metrics("special_teams_analyst") <= special
+    assert "field_goal_rate" in rank_metrics("special_teams_analyst")

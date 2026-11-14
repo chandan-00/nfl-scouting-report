@@ -25,7 +25,9 @@ from nfl_scout.graph.state import Request
 from nfl_scout.runs import matchup_name, run_path, save_run
 
 # Measured per-report cost on Haiku (one live run each), used until real eval runs exist.
-FALLBACK_COST = {"full": 0.034, "no_checker": 0.025, "single": 0.011}
+# Per-report cost when a config has no saved runs yet. "full_st" is an estimate: the week-10 live
+# "full" reports cost $0.036, plus about $0.008 for the special-teams analyst.
+FALLBACK_COST = {"full": 0.034, "no_checker": 0.025, "single": 0.011, "full_st": 0.045}
 
 
 def _request(m: dict, season: int) -> Request:
