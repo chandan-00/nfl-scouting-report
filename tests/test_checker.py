@@ -113,6 +113,9 @@ def test_list_results_are_matched_on_the_named_player(db):
         ("epa_per_play", {"team": "KC"}, "KC EPA per pass play", "pass"),
         ("epa_per_play", {"team": "KC", "play_kind": "run"}, "KC EPA per play", "run"),
         ("epa_per_play", {"team": "KC", "play_kind": "run"}, "KC EPA per rush", None),
+        # Naming the right kind doesn't excuse naming the wrong one too.
+        ("epa_per_play", {"team": "KC", "play_kind": "pass"}, "KC run EPA on pass plays", "run"),
+        ("success_rate", {"team": "KC", "play_kind": "run"}, "KC pass success on runs", "pass"),
         ("pass_rate", {"team": "KC", "down": 3}, "KC pass rate", "3rd down"),
         ("pass_rate", {"team": "KC"}, "KC pass rate on third down", "3rd down"),
         ("pass_rate", {"team": "KC", "down": 3}, "KC pass rate on 3rd down", None),

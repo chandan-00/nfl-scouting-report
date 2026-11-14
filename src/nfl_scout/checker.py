@@ -284,6 +284,9 @@ class Checker:
             return f"the text says {says.pop()} plays, but the call covers all plays"
         if kind in PLAY_WORDS and kind not in says:
             return f"the call is for {kind} plays, the text doesn't say so"
+        if kind in PLAY_WORDS and len(says) > 1:
+            other = (says - {kind}).pop()
+            return f"the call is for {kind} plays only, but the text also says {other} plays"
         return None
 
     @staticmethod

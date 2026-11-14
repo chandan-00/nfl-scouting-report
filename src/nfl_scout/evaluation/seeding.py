@@ -96,15 +96,22 @@ def seed_errors(
     rng: random.Random,
     kinds: list[str] | tuple[str, ...] = KINDS,
     con: duckdb.DuckDBPyConnection | None = None,
+    skip: set[str] | frozenset[str] = frozenset(),
 ) -> tuple[dict[str, Section], list[dict[str, Any]]]:
     """Copies of `sections` with one error of each kind (where a claim allows it), and a
     manifest describing each injected error. With `con`, team names, cities and nicknames can
-    be swapped too, not just abbreviations."""
+    be swapped too, not just abbreviations. Claims in `skip` (those already failing the clean
+    check) are never seeded: they can't show a catch, and seeding could even make them right."""
     calls = _calls(tool_calls)
     forms = team_forms(con)
     seeded = {role: s.model_copy(deep=True) for role, s in sections.items()}
     teams = sorted({c.args["team"] for c in calls.values() if "team" in c.args})
-    pool = [(role, c) for role, s in seeded.items() for c in s.claims if c.tool_call_id]
+    pool = [
+        (role, c)
+        for role, s in seeded.items()
+        for c in s.claims
+        if c.tool_call_id and c.claim_id not in skip
+    ]
     rng.shuffle(pool)
     used: set[str] = set()
     manifest: list[dict[str, Any]] = []

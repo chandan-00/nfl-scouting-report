@@ -125,7 +125,7 @@ def score_run(
     plays = plays if plays is not None else load_plays(con, run["request"]["season"])
     seeded: dict[str, Any] = {"by_kind": {}, "false_positives": 0}
     for i in range(seeds):
-        sections, manifest = seed_errors(draft, calls, _rng(run, f"seed{i}"), con=con)
+        sections, manifest = seed_errors(draft, calls, _rng(run, f"seed{i}"), con=con, skip=failing)
         sc = score_seeded(draft, sections, manifest, calls, con, checker)
         for kind, v in sc["by_kind"].items():
             agg = seeded["by_kind"].setdefault(kind, {"seeded": 0, "caught": 0})

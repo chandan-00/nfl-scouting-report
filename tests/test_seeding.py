@@ -117,3 +117,12 @@ def test_wrong_value_is_wrong_at_the_precision_the_checker_reads():
     for seed in range(200):
         new = perturb(-0.025, decimals=3, rng=random.Random(seed))
         assert not _close(new, -0.02519)
+
+
+def test_claims_listed_in_skip_are_never_seeded(clean):
+    """A claim that already fails the clean check can't measure a catch: seeding it could even
+    turn a wrong claim into a right one."""
+    sections, calls, _ = clean
+    for seed in range(20):
+        _, manifest = seed_errors(sections, calls, random.Random(seed), skip={"oc1", "oc2"})
+        assert not {m["claim_id"] for m in manifest} & {"oc1", "oc2"}
