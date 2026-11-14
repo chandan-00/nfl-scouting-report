@@ -1,6 +1,6 @@
 # Evaluation results
 
-- **Generated:** 2026-11-05
+- **Generated:** 2026-11-14
 - **Model:** claude-haiku-5-5 on every node
 - **Matchups:** eval/matchups_v1.json (40 games, 2026 weeks 4–7, after every model's training cutoff)
 - **Data snapshot:** data/snapshots/nfl_2026-11-02.duckdb (sha256 75d205650945)
@@ -23,12 +23,12 @@ Percentages show a 95% bootstrap interval over reports.
 | Report numbers per report | 65.9 | 69.0 | 47.2 |
 | Report numbers unsupported | 0.1% | 0.3% | 1.5% |
 | Report numbers mismatched | 0.0% | 0.1% | 0.3% |
-| Claims corrected by revision | 244 | 0 | 0 |
+| Claims corrected by revision | 247 | 0 | 0 |
 | Claims dropped | 120 | 0 | 0 |
 | Independent sample: tool agrees | 100.0% | 100.0% | 100.0% |
 | Independent sample: stated value agrees | 99.5% | 99.8% | 99.1% |
-| Seeded errors caught | 99.7% | 99.2% | 99.6% |
-| Checker false positives (seeded) | 1 | 2 | 1 |
+| Seeded errors caught | 99.9% | 100.0% | 99.9% |
+| Checker false positives (seeded) | 1 | 1 | 1 |
 | Tool error rate | 1.7% | 2.3% | 5.7% |
 | Output tokens per report | 48,797 | 33,243 | 22,803 |
 | Cost per report | $0.031 | $0.021 | $0.014 |
@@ -38,8 +38,8 @@ Percentages show a 95% bootstrap interval over reports.
 | Kind | Full graph | No fact-checker | Single agent |
 |---|---|---|---|
 | unlinked_number | 100.0% | 100.0% | 100.0% |
-| wrong_split | 98.6% | 96.9% | 98.9% |
-| wrong_team | 100.0% | 100.0% | 99.4% |
+| wrong_split | 99.7% | 100.0% | 99.7% |
+| wrong_team | 100.0% | 100.0% | 100.0% |
 | wrong_value | 100.0% | 100.0% | 100.0% |
 
 ## Draft claim accuracy by repeat
@@ -78,6 +78,7 @@ By metric (Full graph):
 ## Notes
 
 - **Single-agent harness bug, fixed.** The first results (commit c817ace) were wrong for this config. About 10% of single-agent runs replied "ready" on turn 1, as the baseline prompt invites, and the forced final call then had no data. That produced 12 empty placeholder reports and very likely the 8 "no source" crashes (their traces weren't saved). This was a bug in the harness, not a weakness of the single agent, so those failures don't count against it. The agent is now sent back if it stops before calling a tool, and the prompt is unchanged. The 20 affected runs were regenerated, and all 120 now made at least 18 tool calls. The empty runs are kept in `runs/_invalid/`.
+- **Checker tightened after the first scoring (2026-11-13).** The missed `wrong_split` errors all had claim texts that named both splits ("explosive run rate ... of pass plays"): the check only required the right word somewhere. It now also fails a claim that names the other play kind. In 28,133 real claims only 5 name both kinds, all of them mis-worded, so this adds almost no false positives. Seeding also now skips claims that already fail the clean check: some "misses" were seeded swaps that turned a wrong claim into a right one. Rescoring with the stricter check moved seeded catch to 99.9–100% and the full graph's final wording from 100% to 99.97% (one final claim fails). **Still not caught:** a claim that names the right team or side and also a wrong one ("Jeanty (KC) rush share of LV runs"). Many correct claims name both teams ("vs. Tennessee offense"), so a stricter rule there would raise false positives.
 - **Seeded-error rows describe the checker, not the config.** Each config's drafts were seeded and run through the same deterministic checker. In the pipeline, the checker only runs in the full graph.
 - **How accuracy is judged.** The project's checker re-runs each cited tool call. As an independent check, about 2,840 claims were re-derived with separate code. The tools agreed 100%, and the stated values agreed 99.3–99.8%.
 - **Forward check is about the data, not the configs.** Season-to-date numbers through weeks 3–6 are no closer to the next game than the league average (46–48% "closer" in every config). The one exception is run direction. With 3–6 games of data, team splits regress toward the mean.
