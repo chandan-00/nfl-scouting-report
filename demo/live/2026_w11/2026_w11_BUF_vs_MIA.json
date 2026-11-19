@@ -1,0 +1,8782 @@
+{
+ "config": "full_st",
+ "repeat": 1,
+ "created_at": "2026-11-19T19:51:03+00:00",
+ "models": {
+  "planner": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "offense_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "defense_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "injury_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "matchup_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "medium"
+  },
+  "fact_checker": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "editor": {
+   "model": "claude-haiku-5-5",
+   "effort": "medium"
+  },
+  "single_agent": {
+   "model": "claude-haiku-5-5",
+   "effort": "medium"
+  }
+ },
+ "max_revision_loops": 2,
+ "request": {
+  "team": "BUF",
+  "opponent": "MIA",
+  "season": 2026,
+  "week": 11,
+  "home": "BUF",
+  "through_week": 10
+ },
+ "plan": {
+  "offense_focus": [
+   "How does MIA's pass rate over expected and early-down pass/run mix differ on 1st and 2nd down versus 3rd and long, and where does BUF's defense get the most leverage?",
+   "Which MIA pass-game shot concepts (depth of target, play action, motion, screen, and RPO rates) generate the best EPA and success rate, and how often does BUF's pressure proxy (sacks plus QB hits) rise against them?",
+   "Which MIA skill players lead target and rush share, and does their explosive play rate change when they are the primary target versus a secondary option?",
+   "How does MIA perform in the red zone and on third down compared with league ranks, and does BUF's blitz rate or sack rate shift those numbers?",
+   "Which run directions and box-count situations give MIA its best success rate, and do they run more against light boxes or heavy ones?"
+  ],
+  "defense_focus": [
+   "How often does MIA's defense blitz, and what do its sacks and QB hits look like against BUF-style pass concentrations on early downs?",
+   "Which MIA pass rushers generate the most pressure proxy production, and where does BUF's offense need to protect to avoid sacks?",
+   "How does MIA's defense hold up on explosive pass plays by depth of target, and which BUF receivers or concepts are most likely to exploit it?",
+   "Which run directions does MIA's defense allow the most success on, and how does its box count change against BUF's run game?",
+   "How do MIA's EPA allowed and success rate allowed on passing downs rank in the league, and does BUF's play action or RPO rate exploit those weaknesses?"
+  ],
+  "injury_focus": [
+   "Which MIA starters are on the latest injury report or limited in practice, and what share of snaps and targets or rushes do they account for?",
+   "Who among MIA's pass rushers and secondary players is hurt or limited, and how would their absence change MIA's blitz rate and pressure proxy?",
+   "Which BUF players are hurt or limited, and how much of BUF's target or rush share would shift to backups?",
+   "Do MIA's injured or limited players affect its run game or red-zone usage in a way that changes which BUF defensive looks it should expect?"
+  ]
+ },
+ "draft": {
+  "defense_analyst": {
+   "role": "defense_analyst",
+   "prose": "Miami rushes five or more on 22.1% of dropbacks [dc1] across 271 plays [dc2], averaging 4.2 pass rushers per dropback [dc3]. That volume produces a pressure proxy of 15.5% [dc4] and a sack rate of 4.8% [dc5]. BUF's offense has allowed a pressure proxy of 14.9% [dc6] on 295 plays [dc7], so the protection plan has to account for extra rushers on early-down pass concentrations rather than assume a four-man rush. Miami's pass defense allows explosive plays on 8.9% of attempts [dc8], while BUF's offense produces them on 12.9% of pass plays [dc9]. That gap favors BUF attacking vertically when Miami brings pressure, since a blitz leaves one-on-one matchups outside. Miami allows 0.16 EPA per pass play [dc10] and a 50.6% pass success rate [dc11], so efficiency through the air is its soft spot. Against the run, Miami allows 43.0% success [dc12] on 237 run plays [dc13] with 6.7 defenders in the box on average [dc14]. That light box count means BUF's run game can work at the line of scrimmage without needing to force numbers.",
+   "claims": [
+    {
+     "claim_id": "dc1",
+     "text": "Share of MIA defensive dropbacks with 5+ pass rushers (blitz rate), all pass plays faced",
+     "stated_value": 22.1,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc2",
+     "text": "Sample size (dropbacks) behind MIA blitz rate",
+     "stated_value": 271.0,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc3",
+     "text": "Average pass rushers per dropback faced by MIA defense",
+     "stated_value": 4.2,
+     "tool_call_id": "d2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc4",
+     "text": "MIA defense pressure proxy rate (dropbacks with sack or QB hit)",
+     "stated_value": 15.5,
+     "tool_call_id": "d3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc5",
+     "text": "MIA defense sack rate (sacks per dropback)",
+     "stated_value": 4.8,
+     "tool_call_id": "d4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc6",
+     "text": "BUF offense pressure proxy rate allowed (dropbacks with sack or QB hit)",
+     "stated_value": 14.9,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc7",
+     "text": "Sample size (plays) behind BUF offense pressure proxy rate",
+     "stated_value": 295.0,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc8",
+     "text": "Share of pass plays allowed by MIA defense gaining 20+ yards (explosive pass rate allowed)",
+     "stated_value": 8.9,
+     "tool_call_id": "d5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc9",
+     "text": "Share of BUF offense pass plays gaining 20+ yards (explosive pass rate)",
+     "stated_value": 12.9,
+     "tool_call_id": "d11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc10",
+     "text": "MIA defense EPA per pass play allowed",
+     "stated_value": 0.16,
+     "tool_call_id": "d6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc11",
+     "text": "Share of pass plays with positive EPA allowed by MIA defense (pass success rate allowed)",
+     "stated_value": 50.6,
+     "tool_call_id": "d7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc12",
+     "text": "Share of run plays with positive EPA allowed by MIA defense (run success rate allowed)",
+     "stated_value": 43.0,
+     "tool_call_id": "d9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc13",
+     "text": "Sample size (run plays) behind MIA run success rate allowed",
+     "stated_value": 237.0,
+     "tool_call_id": "d9",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc14",
+     "text": "Average defenders in the box on run plays for MIA defense",
+     "stated_value": 6.7,
+     "tool_call_id": "d8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "injury_analyst": {
+   "role": "injury_analyst",
+   "prose": "Both latest reports are from week 10 [ic1]. MIA: Aaron Brewer (C) is listed Out [ic2] and has played 100.0% of snaps per game over 8 games [ic6][ic7], so his backup is a real change at center. Chris Bell (WR) is Doubtful [ic3] and takes 10.8% of team targets over 232 plays [ic8][ic9], so expect those looks to shift to Washington, Douglas and Dulcich. Jared Wayne (WR) is Out [ic4]. Darrell Baker Jr. (CB) is Questionable [ic5] but has no recorded snaps this season. BUF: Spencer Brown (T) is Doubtful [ic10] and has played 89.5% of snaps per game over 8 games [ic11][ic12], so his backup will be the key pass-protection question. Christian Benford (CB) is Questionable [ic13] and has played 85.6% of snaps per game over 8 games [ic14][ic15]. Hancock and Shavers are also Questionable without measurable usage.",
+   "claims": [
+    {
+     "claim_id": "ic1",
+     "text": "Latest injury reports for MIA and BUF are from week 10",
+     "stated_value": 10.0,
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic2",
+     "text": "MIA C Aaron Brewer status on week 10 report",
+     "stated_value": "Out",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic3",
+     "text": "MIA WR Chris Bell status on week 10 report",
+     "stated_value": "Doubtful",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic4",
+     "text": "MIA WR Jared Wayne status on week 10 report",
+     "stated_value": "Out",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic5",
+     "text": "MIA CB Darrell Baker Jr. status on week 10 report",
+     "stated_value": "Questionable",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic6",
+     "text": "MIA C Aaron Brewer mean snap share per game, weeks 1-10",
+     "stated_value": 100.0,
+     "tool_call_id": "i3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic7",
+     "text": "Games in Aaron Brewer snap share sample",
+     "stated_value": 8.0,
+     "tool_call_id": "i3",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic8",
+     "text": "MIA WR Chris Bell share of team targets, weeks 1-10",
+     "stated_value": 10.8,
+     "tool_call_id": "i5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic9",
+     "text": "MIA team targets in Chris Bell target share sample",
+     "stated_value": 232.0,
+     "tool_call_id": "i5",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic10",
+     "text": "BUF T Spencer Brown status on week 10 report",
+     "stated_value": "Doubtful",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic11",
+     "text": "BUF T Spencer Brown mean snap share per game, weeks 1-10",
+     "stated_value": 89.5,
+     "tool_call_id": "i7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic12",
+     "text": "Games in Spencer Brown snap share sample",
+     "stated_value": 8.0,
+     "tool_call_id": "i7",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic13",
+     "text": "BUF CB Christian Benford status on week 10 report",
+     "stated_value": "Questionable",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic14",
+     "text": "BUF CB Christian Benford mean snap share per game, weeks 1-10",
+     "stated_value": 85.6,
+     "tool_call_id": "i8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic15",
+     "text": "Games in Christian Benford snap share sample",
+     "stated_value": 8.0,
+     "tool_call_id": "i8",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    }
+   ],
+   "unsourced": []
+  },
+  "offense_analyst": {
+   "role": "offense_analyst",
+   "prose": "Miami is pass-averse early: its pass rate over expected on early downs is -10.0 points [oc1] across 380 plays [oc2], and it throws on just 45.5% of first downs [oc3] over 211 plays [oc4]. Third-and-long is the exception, with dropbacks on 86.2% of snaps [oc5], but that is a small sample of 58 plays [oc6]. The run game is the weakness: run EPA is -0.11 [oc7] on 214 designed runs [oc8], Gordon takes 59.3% of carries [oc9], and 40.1% of runs go up the middle [oc10]. Expect BUF to load the box on early downs and to be aggressive on passing downs. The pass game is only slightly better at -0.02 EPA per play [oc11] over 292 dropbacks [oc12]. Play action appears on 22.9% of dropbacks [oc13], and the average target depth is 9.5 yards [oc14] on 240 attempts [oc15]. Targets concentrate on Washington at 22.0% [oc16], Douglas at 15.1% [oc17] and Dulcich at 14.7% [oc18]. Third-down conversion is 40.2% [oc19] over 112 plays [oc20], 13th in the league [oc21]. Red-zone drives end in touchdowns 52.4% of the time [oc22] on 21 drives [oc23]. Overall success rate is 38.1% [oc24] over 506 plays [oc25]. BUF's pressure proxy is 20.3% [oc26] over 374 dropbacks [oc27], with sacks on 5.6% of dropbacks [oc28], so the pass game must hold up against that rush.",
+   "claims": [
+    {
+     "claim_id": "oc1",
+     "text": "MIA offense pass rate over expected, early downs (pass_oe, percentage points)",
+     "stated_value": -10.0,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc2",
+     "text": "MIA early-down plays in the pass rate over expected sample",
+     "stated_value": 380.0,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc3",
+     "text": "MIA offense pass rate on 1st down (dropbacks share of plays)",
+     "stated_value": 45.5,
+     "tool_call_id": "o2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc4",
+     "text": "MIA 1st-down plays sample",
+     "stated_value": 211.0,
+     "tool_call_id": "o2",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc5",
+     "text": "MIA offense pass rate on 3rd down with long distance (8+ yards)",
+     "stated_value": 86.2,
+     "tool_call_id": "o3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc6",
+     "text": "MIA 3rd-and-long plays sample",
+     "stated_value": 58.0,
+     "tool_call_id": "o3",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc7",
+     "text": "MIA offense EPA per run play",
+     "stated_value": -0.11,
+     "tool_call_id": "o5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc8",
+     "text": "MIA run plays sample",
+     "stated_value": 214.0,
+     "tool_call_id": "o5",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc9",
+     "text": "O.Gordon share of MIA team rushes",
+     "stated_value": 59.3,
+     "tool_call_id": "o8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc10",
+     "text": "MIA designed runs going up the middle",
+     "stated_value": 40.1,
+     "tool_call_id": "o11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc11",
+     "text": "MIA offense EPA per pass play",
+     "stated_value": -0.02,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc12",
+     "text": "MIA pass plays sample",
+     "stated_value": 292.0,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc13",
+     "text": "MIA play action share of dropbacks",
+     "stated_value": 22.9,
+     "tool_call_id": "o12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc14",
+     "text": "MIA average depth of target (air yards per attempt)",
+     "stated_value": 9.5,
+     "tool_call_id": "o6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc15",
+     "text": "MIA pass attempts with air yards sample for average depth of target",
+     "stated_value": 240.0,
+     "tool_call_id": "o6",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc16",
+     "text": "M.Washington share of MIA targets",
+     "stated_value": 22.0,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc17",
+     "text": "C.Douglas share of MIA targets",
+     "stated_value": 15.1,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc18",
+     "text": "G.Dulcich share of MIA targets",
+     "stated_value": 14.7,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc19",
+     "text": "MIA offense third-down conversion rate",
+     "stated_value": 40.2,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc20",
+     "text": "MIA third-down plays sample",
+     "stated_value": 112.0,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc21",
+     "text": "MIA offense third-down conversion rank among 32 teams",
+     "stated_value": 13.0,
+     "tool_call_id": "o16",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc22",
+     "text": "MIA offense red-zone drives ending in a touchdown",
+     "stated_value": 52.4,
+     "tool_call_id": "o9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc23",
+     "text": "MIA red-zone drives sample",
+     "stated_value": 21.0,
+     "tool_call_id": "o9",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc24",
+     "text": "MIA offense overall success rate (all plays)",
+     "stated_value": 38.1,
+     "tool_call_id": "o14",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc25",
+     "text": "MIA scrimmage plays sample for success rate",
+     "stated_value": 506.0,
+     "tool_call_id": "o14",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc26",
+     "text": "BUF defense pressure proxy (sacks plus QB hits on dropbacks)",
+     "stated_value": 20.3,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc27",
+     "text": "BUF defense dropbacks faced sample for pressure proxy",
+     "stated_value": 374.0,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc28",
+     "text": "BUF defense sack rate (sacks per dropback)",
+     "stated_value": 5.6,
+     "tool_call_id": "o13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "special_teams_analyst": {
+   "role": "special_teams_analyst",
+   "prose": "MIA's field goals have been shaky: 68.4% [kc1] on 19 [kc2] attempts, and 60.0% [kc3] from 50-plus on 5 [kc4] tries. The kicker changed in week 7. Patterson kicked through week 5 and made 7 [kc5] of 9 [kc6]; Gonzalez has made 6 [kc7] of 10 [kc8] since. BUF's Bass is perfect on 20 [kc9] attempts, with 20 [kc10] makes, so BUF can trust its kicker on the long field while MIA's long kick is a real risk. Start with the field position: MIA's net punt average is 39.9 [kc11] on 30 [kc12] punts, with 30.0% [kc13] inside the 20. MIA's kickoffs go for touchbacks 36.1% [kc14] of the time on 36 [kc15] kicks, and its returns average 26.0 [kc16] yards on 43 [kc17] runbacks. BUF's coverage allows 26.6 [kc18] yards on 54 [kc19] returns. Overall, MIA's special teams EPA is -0.13 [kc20] on 215 [kc21] plays against BUF's 0.08 [kc22] on 250 [kc23]. Plan for MIA to flip field position with its punting, and for BUF to kick away from MIA's returner only if a long return would hurt more than a touchback.",
+   "claims": [
+    {
+     "claim_id": "kc1",
+     "text": "MIA field goal make rate, all distances, on 19 attempts",
+     "stated_value": 68.4,
+     "tool_call_id": "k1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc2",
+     "text": "MIA field goal attempts, all distances",
+     "stated_value": 19.0,
+     "tool_call_id": "k1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc3",
+     "text": "MIA field goal make rate, 50-plus yards",
+     "stated_value": 60.0,
+     "tool_call_id": "k2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc4",
+     "text": "MIA 50-plus field goal attempts",
+     "stated_value": 5.0,
+     "tool_call_id": "k2",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc5",
+     "text": "Patterson (MIA) field goals made through week 5",
+     "stated_value": 7.0,
+     "tool_call_id": "k3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc6",
+     "text": "Patterson (MIA) field goal attempts through week 5",
+     "stated_value": 9.0,
+     "tool_call_id": "k3",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc7",
+     "text": "Gonzalez (MIA) field goals made since week 7",
+     "stated_value": 6.0,
+     "tool_call_id": "k3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc8",
+     "text": "Gonzalez (MIA) field goal attempts since week 7",
+     "stated_value": 10.0,
+     "tool_call_id": "k3",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc9",
+     "text": "BUF kicker Bass field goal attempts",
+     "stated_value": 20.0,
+     "tool_call_id": "k11",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc10",
+     "text": "BUF kicker Bass field goals made",
+     "stated_value": 20.0,
+     "tool_call_id": "k11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc11",
+     "text": "MIA punting net average, yards",
+     "stated_value": 39.9,
+     "tool_call_id": "k4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc12",
+     "text": "MIA punts",
+     "stated_value": 30.0,
+     "tool_call_id": "k4",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc13",
+     "text": "MIA punting inside-the-20 rate",
+     "stated_value": 30.0,
+     "tool_call_id": "k5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc14",
+     "text": "MIA kickoff touchback rate",
+     "stated_value": 36.1,
+     "tool_call_id": "k6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc15",
+     "text": "MIA kickoffs",
+     "stated_value": 36.0,
+     "tool_call_id": "k6",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc16",
+     "text": "MIA kickoff return average by its returners, yards",
+     "stated_value": 26.0,
+     "tool_call_id": "k7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc17",
+     "text": "MIA kickoff returns",
+     "stated_value": 43.0,
+     "tool_call_id": "k7",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc18",
+     "text": "BUF kickoff return average allowed by coverage, yards",
+     "stated_value": 26.6,
+     "tool_call_id": "k8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc19",
+     "text": "BUF kickoff returns allowed",
+     "stated_value": 54.0,
+     "tool_call_id": "k8",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc20",
+     "text": "MIA special teams EPA per play",
+     "stated_value": -0.13,
+     "tool_call_id": "k9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc21",
+     "text": "MIA special teams plays",
+     "stated_value": 215.0,
+     "tool_call_id": "k9",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc22",
+     "text": "BUF special teams EPA per play",
+     "stated_value": 0.08,
+     "tool_call_id": "k10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc23",
+     "text": "BUF special teams plays",
+     "stated_value": 250.0,
+     "tool_call_id": "k10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    }
+   ],
+   "unsourced": []
+  },
+  "matchup_analyst": {
+   "role": "matchup_analyst",
+   "prose": "Matchup 1: Gordon up the middle against BUF's run fits. Miami's run EPA is -0.11 [mc1] on 214 designed runs [mc2], but Gordon takes 59.3% of carries [mc3] and 40.1% of runs go up the middle [mc4]. Brewer is listed Out at center after playing 100.0% of snaps [mc5], so the interior is the soft point. BUF should load the box on early downs and keep linebackers square to the A-gaps. Matchup 2: Miami's blitz against BUF's protection. Miami rushes five or more on 22.1% of dropbacks [mc6] over 271 plays [mc7], and BUF's offense has allowed pressure on 14.9% [mc8] of 295 plays [mc9]. Spencer Brown is Doubtful after playing 89.5% of snaps [mc10]. Use chip help on the edge and quick throws to Washington, who draws 22.0% of targets [mc11]. Matchup 3: BUF's vertical shots against Miami's extra rushers. BUF produces explosives on 12.9% of pass plays [mc12] while Miami allows them on 8.9% [mc13]. When Miami sends the extra rusher, the outside one-on-ones are where BUF should attack deep. Matchup 4: Miami's pass game against BUF's rush. Miami's pass EPA is -0.02 [mc14] on 292 dropbacks [mc15], and BUF's defense pressures on 20.3% [mc16] of 374 dropbacks [mc17]. With Bell Doubtful after taking 10.8% of targets [mc18], expect Douglas at 15.1% [mc19] and Dulcich at 14.7% [mc20] to absorb more work. BUF should rush four on early downs and keep a spy on the quarterback's first read.",
+   "claims": [
+    {
+     "claim_id": "mc1",
+     "text": "MIA offense EPA per run play (designed runs), season to date",
+     "stated_value": -0.11,
+     "tool_call_id": "o5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc2",
+     "text": "MIA run plays sample behind run EPA",
+     "stated_value": 214.0,
+     "tool_call_id": "o5",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc3",
+     "text": "O.Gordon share of MIA team rushes",
+     "stated_value": 59.3,
+     "tool_call_id": "o8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc4",
+     "text": "MIA designed runs going up the middle",
+     "stated_value": 40.1,
+     "tool_call_id": "o11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc5",
+     "text": "MIA C Aaron Brewer mean snap share per game, weeks 1-10",
+     "stated_value": 100.0,
+     "tool_call_id": "i3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc6",
+     "text": "Share of MIA defensive dropbacks with 5+ pass rushers (blitz rate), all pass plays faced",
+     "stated_value": 22.1,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc7",
+     "text": "Sample size (dropbacks) behind MIA blitz rate",
+     "stated_value": 271.0,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc8",
+     "text": "BUF offense pressure proxy rate allowed (dropbacks with sack or QB hit)",
+     "stated_value": 14.9,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc9",
+     "text": "Sample size (plays) behind BUF offense pressure proxy rate allowed",
+     "stated_value": 295.0,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc10",
+     "text": "BUF T Spencer Brown mean snap share per game, weeks 1-10",
+     "stated_value": 89.5,
+     "tool_call_id": "i7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc11",
+     "text": "M.Washington share of MIA targets",
+     "stated_value": 22.0,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc12",
+     "text": "Share of BUF offense pass plays gaining 20+ yards (explosive pass rate)",
+     "stated_value": 12.9,
+     "tool_call_id": "d11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc13",
+     "text": "Share of pass plays allowed by MIA defense gaining 20+ yards (explosive pass rate allowed)",
+     "stated_value": 8.9,
+     "tool_call_id": "d5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc14",
+     "text": "MIA offense EPA per pass play (dropbacks incl. sacks and scrambles)",
+     "stated_value": -0.02,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc15",
+     "text": "MIA pass plays sample behind pass EPA",
+     "stated_value": 292.0,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc16",
+     "text": "BUF defense pressure proxy rate (dropbacks with sack or QB hit)",
+     "stated_value": 20.3,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc17",
+     "text": "BUF defense dropbacks faced sample for pressure proxy",
+     "stated_value": 374.0,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc18",
+     "text": "MIA WR Chris Bell share of team targets, weeks 1-10",
+     "stated_value": 10.8,
+     "tool_call_id": "i5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc19",
+     "text": "C.Douglas share of MIA targets",
+     "stated_value": 15.1,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc20",
+     "text": "G.Dulcich share of MIA targets",
+     "stated_value": 14.7,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  }
+ },
+ "sections": {
+  "defense_analyst": {
+   "role": "defense_analyst",
+   "prose": "Miami rushes five or more on 22.1% of dropbacks [dc1] across 271 plays [dc2], averaging 4.2 pass rushers per dropback [dc3]. That volume produces a pressure proxy of 15.5% [dc4] and a sack rate of 4.8% [dc5]. BUF's offense has allowed a pressure proxy of 14.9% [dc6] on 295 plays [dc7], so the protection plan has to account for extra rushers on early-down pass concentrations rather than assume a four-man rush. Miami's pass defense allows explosive plays on 8.9% of attempts [dc8], while BUF's offense produces them on 12.9% of pass plays [dc9]. That gap favors BUF attacking vertically when Miami brings pressure, since a blitz leaves one-on-one matchups outside. Miami allows 0.16 EPA per pass play [dc10] and a 50.6% pass success rate [dc11], so efficiency through the air is its soft spot. Against the run, Miami allows 43.0% success [dc12] on 237 run plays [dc13] with 6.7 defenders in the box on average [dc14]. That light box count means BUF's run game can work at the line of scrimmage without needing to force numbers.",
+   "claims": [
+    {
+     "claim_id": "dc1",
+     "text": "Share of MIA defensive dropbacks with 5+ pass rushers (blitz rate), all pass plays faced",
+     "stated_value": 22.1,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc2",
+     "text": "Sample size (dropbacks) behind MIA blitz rate",
+     "stated_value": 271.0,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc3",
+     "text": "Average pass rushers per dropback faced by MIA defense",
+     "stated_value": 4.2,
+     "tool_call_id": "d2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc4",
+     "text": "MIA defense pressure proxy rate (dropbacks with sack or QB hit)",
+     "stated_value": 15.5,
+     "tool_call_id": "d3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc5",
+     "text": "MIA defense sack rate (sacks per dropback)",
+     "stated_value": 4.8,
+     "tool_call_id": "d4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc6",
+     "text": "BUF offense pressure proxy rate allowed (dropbacks with sack or QB hit)",
+     "stated_value": 14.9,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc7",
+     "text": "Sample size (plays) behind BUF offense pressure proxy rate",
+     "stated_value": 295.0,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc8",
+     "text": "Share of pass plays allowed by MIA defense gaining 20+ yards (explosive pass rate allowed)",
+     "stated_value": 8.9,
+     "tool_call_id": "d5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc9",
+     "text": "Share of BUF offense pass plays gaining 20+ yards (explosive pass rate)",
+     "stated_value": 12.9,
+     "tool_call_id": "d11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc10",
+     "text": "MIA defense EPA per pass play allowed",
+     "stated_value": 0.16,
+     "tool_call_id": "d6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc11",
+     "text": "Share of pass plays with positive EPA allowed by MIA defense (pass success rate allowed)",
+     "stated_value": 50.6,
+     "tool_call_id": "d7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc12",
+     "text": "Share of run plays with positive EPA allowed by MIA defense (run success rate allowed)",
+     "stated_value": 43.0,
+     "tool_call_id": "d9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc13",
+     "text": "Sample size (run plays) behind MIA run success rate allowed",
+     "stated_value": 237.0,
+     "tool_call_id": "d9",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc14",
+     "text": "Average defenders in the box on run plays for MIA defense",
+     "stated_value": 6.7,
+     "tool_call_id": "d8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "injury_analyst": {
+   "role": "injury_analyst",
+   "prose": "Both teams' latest injury reports are from week 10 [ic1]. For MIA, C Aaron Brewer is Out [ic2] and has averaged 100.0% of snaps per game over 8 games [ic3][ic4], so the center backup is the most direct change. WR Chris Bell is Doubtful [ic5] and takes 10.8% of team targets over 232 team targets [ic6][ic7], so those looks shift to the remaining receivers. WR Jared Wayne is Out [ic8] and CB Darrell Baker Jr. is Questionable [ic9]. For BUF, T Spencer Brown is Doubtful [ic10] and has averaged 89.5% of snaps per game over 8 games [ic11][ic12], which makes his backup the key pass-protection question. CB Christian Benford is Questionable [ic13] at 85.6% of snaps per game over 8 games [ic14][ic15]. CB Jordan Hancock [ic16], S Sam Franklin Jr. [ic17] and WR Tyrell Shavers [ic18] are also Questionable.",
+   "claims": [
+    {
+     "claim_id": "ic2",
+     "text": "MIA C Aaron Brewer status on week 10 injury report (concussion)",
+     "stated_value": "Out",
+     "tool_call_id": "i19",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic3",
+     "text": "MIA C Aaron Brewer mean snap share per game over the season sample",
+     "stated_value": 100.0,
+     "tool_call_id": "i21",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic4",
+     "text": "Games in MIA C Aaron Brewer snap share sample",
+     "stated_value": 8.0,
+     "tool_call_id": "i21",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic5",
+     "text": "MIA WR Chris Bell status on week 10 injury report (knee)",
+     "stated_value": "Doubtful",
+     "tool_call_id": "i19",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic6",
+     "text": "MIA WR Chris Bell share of team targets this season",
+     "stated_value": 10.8,
+     "tool_call_id": "i22",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic7",
+     "text": "MIA team targets in Chris Bell target share sample",
+     "stated_value": 232.0,
+     "tool_call_id": "i22",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic8",
+     "text": "MIA WR Jared Wayne status on week 10 injury report (quadricep)",
+     "stated_value": "Out",
+     "tool_call_id": "i19",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic9",
+     "text": "MIA CB Darrell Baker Jr. status on week 10 injury report (knee)",
+     "stated_value": "Questionable",
+     "tool_call_id": "i19",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic10",
+     "text": "BUF T Spencer Brown status on week 10 injury report (ankle)",
+     "stated_value": "Doubtful",
+     "tool_call_id": "i20",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic11",
+     "text": "BUF T Spencer Brown mean snap share per game over the season sample",
+     "stated_value": 89.5,
+     "tool_call_id": "i23",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic12",
+     "text": "Games in BUF T Spencer Brown snap share sample",
+     "stated_value": 8.0,
+     "tool_call_id": "i23",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic13",
+     "text": "BUF CB Christian Benford status on week 10 injury report (wrist)",
+     "stated_value": "Questionable",
+     "tool_call_id": "i20",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic14",
+     "text": "BUF CB Christian Benford mean snap share per game over the season sample",
+     "stated_value": 85.6,
+     "tool_call_id": "i24",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic15",
+     "text": "Games in BUF CB Christian Benford snap share sample",
+     "stated_value": 8.0,
+     "tool_call_id": "i24",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic16",
+     "text": "BUF CB Jordan Hancock status on week 10 injury report (hamstring)",
+     "stated_value": "Questionable",
+     "tool_call_id": "i20",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic17",
+     "text": "BUF S Sam Franklin Jr. status on week 10 injury report (shoulder)",
+     "stated_value": "Questionable",
+     "tool_call_id": "i20",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic18",
+     "text": "BUF WR Tyrell Shavers status on week 10 injury report (knee)",
+     "stated_value": "Questionable",
+     "tool_call_id": "i20",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "offense_analyst": {
+   "role": "offense_analyst",
+   "prose": "Miami is pass-averse early: its pass rate over expected on early downs is -10.0 points [oc1] across 380 plays [oc2], and it throws on just 45.5% of first downs [oc3] over 211 plays [oc4]. Third-and-long is the exception, with dropbacks on 86.2% of snaps [oc5], but that is a small sample of 58 plays [oc6]. The run game is the weakness: run EPA is -0.11 [oc7] on 214 designed runs [oc8], Gordon takes 59.3% of carries [oc9], and 40.1% of runs go up the middle [oc10]. Expect BUF to load the box on early downs and to be aggressive on passing downs. The pass game is only slightly better at -0.02 EPA per play [oc11] over 292 dropbacks [oc12]. Play action appears on 22.9% of dropbacks [oc13], and the average target depth is 9.5 yards [oc14] on 240 attempts [oc15]. Targets concentrate on Washington at 22.0% [oc16], Douglas at 15.1% [oc17] and Dulcich at 14.7% [oc18]. Third-down conversion is 40.2% [oc19] over 112 plays [oc20], 13th in the league [oc21]. Red-zone drives end in touchdowns 52.4% of the time [oc22] on 21 drives [oc23]. Overall success rate is 38.1% [oc24] over 506 plays [oc25]. BUF's pressure proxy is 20.3% [oc26] over 374 dropbacks [oc27], with sacks on 5.6% of dropbacks [oc28], so the pass game must hold up against that rush.",
+   "claims": [
+    {
+     "claim_id": "oc1",
+     "text": "MIA offense pass rate over expected, early downs (pass_oe, percentage points)",
+     "stated_value": -10.0,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc2",
+     "text": "MIA early-down plays in the pass rate over expected sample",
+     "stated_value": 380.0,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc3",
+     "text": "MIA offense pass rate on 1st down (dropbacks share of plays)",
+     "stated_value": 45.5,
+     "tool_call_id": "o2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc4",
+     "text": "MIA 1st-down plays sample",
+     "stated_value": 211.0,
+     "tool_call_id": "o2",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc5",
+     "text": "MIA offense pass rate on 3rd down with long distance (8+ yards)",
+     "stated_value": 86.2,
+     "tool_call_id": "o3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc6",
+     "text": "MIA 3rd-and-long plays sample",
+     "stated_value": 58.0,
+     "tool_call_id": "o3",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc7",
+     "text": "MIA offense EPA per run play",
+     "stated_value": -0.11,
+     "tool_call_id": "o5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc8",
+     "text": "MIA run plays sample",
+     "stated_value": 214.0,
+     "tool_call_id": "o5",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc9",
+     "text": "O.Gordon share of MIA team rushes",
+     "stated_value": 59.3,
+     "tool_call_id": "o8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc10",
+     "text": "MIA designed runs going up the middle",
+     "stated_value": 40.1,
+     "tool_call_id": "o11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc11",
+     "text": "MIA offense EPA per pass play",
+     "stated_value": -0.02,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc12",
+     "text": "MIA pass plays sample",
+     "stated_value": 292.0,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc13",
+     "text": "MIA play action share of dropbacks",
+     "stated_value": 22.9,
+     "tool_call_id": "o12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc14",
+     "text": "MIA average depth of target (air yards per attempt)",
+     "stated_value": 9.5,
+     "tool_call_id": "o6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc15",
+     "text": "MIA pass attempts with air yards sample for average depth of target",
+     "stated_value": 240.0,
+     "tool_call_id": "o6",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc16",
+     "text": "M.Washington share of MIA targets",
+     "stated_value": 22.0,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc17",
+     "text": "C.Douglas share of MIA targets",
+     "stated_value": 15.1,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc18",
+     "text": "G.Dulcich share of MIA targets",
+     "stated_value": 14.7,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc19",
+     "text": "MIA offense third-down conversion rate",
+     "stated_value": 40.2,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc20",
+     "text": "MIA third-down plays sample",
+     "stated_value": 112.0,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc21",
+     "text": "MIA offense third-down conversion rank among 32 teams",
+     "stated_value": 13.0,
+     "tool_call_id": "o16",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc22",
+     "text": "MIA offense red-zone drives ending in a touchdown",
+     "stated_value": 52.4,
+     "tool_call_id": "o9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc23",
+     "text": "MIA red-zone drives sample",
+     "stated_value": 21.0,
+     "tool_call_id": "o9",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc24",
+     "text": "MIA offense overall success rate (all plays)",
+     "stated_value": 38.1,
+     "tool_call_id": "o14",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc25",
+     "text": "MIA scrimmage plays sample for success rate",
+     "stated_value": 506.0,
+     "tool_call_id": "o14",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc26",
+     "text": "BUF defense pressure proxy (sacks plus QB hits on dropbacks)",
+     "stated_value": 20.3,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc27",
+     "text": "BUF defense dropbacks faced sample for pressure proxy",
+     "stated_value": 374.0,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc28",
+     "text": "BUF defense sack rate (sacks per dropback)",
+     "stated_value": 5.6,
+     "tool_call_id": "o13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "special_teams_analyst": {
+   "role": "special_teams_analyst",
+   "prose": "MIA's kicking is the soft spot. Patterson made 7 [kc1] of 9 [kc2] before the change, and Gonzalez has made 6 [kc3] of 10 [kc4] since. Overall MIA is 68.4% [kc5] on 19 [kc6] attempts and 60.0% [kc7] from 50-plus on 5 [kc8] tries, so treat a long MIA kick as a real risk. BUF's Bass is 20 [kc9] of 20 [kc10] on field goals, so BUF can trust its kicker on the long field. MIA's net punt average is 39.9 [kc11] yards on 30 [kc12] punts, with 30.0% [kc13] landing inside the opponent's twenty, so expect MIA to flip field position with its punting. MIA kickoffs go for touchbacks 36.1% [kc14] of the time on 36 [kc15] kicks, and its returns average 26.0 [kc16] yards on 43 [kc17] runbacks, while BUF's coverage allows 26.6 [kc18] yards on 54 [kc19] returns. Special-teams EPA per play is -0.13 [kc20] over 215 [kc21] plays for MIA against 0.08 [kc22] over 250 [kc23] for BUF. Kick away from MIA's returner only when a long return would cost more than a touchback.",
+   "claims": [
+    {
+     "claim_id": "kc1",
+     "text": "Patterson (MIA) field goals made before the kicker change, all distances",
+     "stated_value": 7.0,
+     "tool_call_id": "k25",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc2",
+     "text": "Patterson (MIA) field goal attempts before the kicker change",
+     "stated_value": 9.0,
+     "tool_call_id": "k25",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc3",
+     "text": "Gonzalez (MIA) field goals made since taking over the kicking job",
+     "stated_value": 6.0,
+     "tool_call_id": "k25",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc4",
+     "text": "Gonzalez (MIA) field goal attempts since taking over the kicking job",
+     "stated_value": 10.0,
+     "tool_call_id": "k25",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc5",
+     "text": "MIA field goal make rate, all distances, offense",
+     "stated_value": 68.4,
+     "tool_call_id": "k23",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc6",
+     "text": "MIA field goal attempts, all distances",
+     "stated_value": 19.0,
+     "tool_call_id": "k23",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc7",
+     "text": "MIA field goal make rate, 50-plus yards, offense",
+     "stated_value": 60.0,
+     "tool_call_id": "k24",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc8",
+     "text": "MIA 50-plus field goal attempts",
+     "stated_value": 5.0,
+     "tool_call_id": "k24",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc9",
+     "text": "BUF kicker Bass field goals made, all distances",
+     "stated_value": 20.0,
+     "tool_call_id": "k26",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc10",
+     "text": "BUF kicker Bass field goal attempts, all distances",
+     "stated_value": 20.0,
+     "tool_call_id": "k26",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc11",
+     "text": "MIA punting net average, yards, defense-neutral team punting",
+     "stated_value": 39.9,
+     "tool_call_id": "k27",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc12",
+     "text": "MIA punts counted for net average",
+     "stated_value": 30.0,
+     "tool_call_id": "k27",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc13",
+     "text": "MIA punting inside-the-20 rate, percent of punts",
+     "stated_value": 30.0,
+     "tool_call_id": "k28",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc14",
+     "text": "MIA kickoff touchback rate, percent of kickoffs",
+     "stated_value": 36.1,
+     "tool_call_id": "k29",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc15",
+     "text": "MIA kickoffs counted for touchback rate",
+     "stated_value": 36.0,
+     "tool_call_id": "k29",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc16",
+     "text": "MIA kickoff return average by its returners, yards, offense",
+     "stated_value": 26.0,
+     "tool_call_id": "k30",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc17",
+     "text": "MIA kickoff returns by its returners",
+     "stated_value": 43.0,
+     "tool_call_id": "k30",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc18",
+     "text": "BUF kickoff return average allowed by coverage, yards, defense",
+     "stated_value": 26.6,
+     "tool_call_id": "k31",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc19",
+     "text": "BUF kickoff returns allowed by coverage",
+     "stated_value": 54.0,
+     "tool_call_id": "k31",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc20",
+     "text": "MIA special teams EPA per play",
+     "stated_value": -0.13,
+     "tool_call_id": "k32",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc21",
+     "text": "MIA special teams plays",
+     "stated_value": 215.0,
+     "tool_call_id": "k32",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc22",
+     "text": "BUF special teams EPA per play",
+     "stated_value": 0.08,
+     "tool_call_id": "k33",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc23",
+     "text": "BUF special teams plays",
+     "stated_value": 250.0,
+     "tool_call_id": "k33",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    }
+   ],
+   "unsourced": []
+  },
+  "matchup_analyst": {
+   "role": "matchup_analyst",
+   "prose": "The first matchup is Gordon up the middle against BUF's interior. Miami's run EPA is -0.11 [mc1] on 214 designed runs [mc2], Gordon takes 59.3% of carries [mc3], and 40.1% of designed runs go up the middle [mc4]. Center Aaron Brewer is Out after averaging 100.0% of snaps per game [mc5] over 8 games [mc6], so the backup center is the interior question. BUF should keep linebackers square to the A-gaps and load the box on early downs. The second matchup is Miami's pressure against BUF's protection. Miami sends extra rushers on 22.1% of dropbacks [mc7] over 271 plays [mc8], and BUF has allowed a pressure proxy of 14.9% [mc9] on 295 plays [mc10]. Spencer Brown is Doubtful after averaging 89.5% of snaps per game [mc11] over 8 games [mc12], so the backup tackle needs chip help on the edge. Get Washington on quick throws, since he draws 22.0% of targets [mc13]. The third matchup is BUF's vertical passing against Miami's extra rushers. BUF produces explosive pass plays on 12.9% of attempts [mc14], and Miami allows them on 8.9% [mc15]. When Miami sends the extra rusher, attack the one-on-one outside. The fourth matchup is Miami's passing game against BUF's rush. Miami's pass EPA is -0.02 [mc16] on 292 dropbacks [mc17], and BUF's defense produces a pressure proxy of 20.3% [mc18] over 374 dropbacks [mc19]. With Bell Doubtful after taking 10.8% of targets [mc20], Douglas at 15.1% [mc21] and Dulcich at 14.7% [mc22] will absorb more work. BUF should rush a standard front on early downs and keep a spy on the quarterback's first read.",
+   "claims": [
+    {
+     "claim_id": "mc1",
+     "text": "MIA offense EPA per designed run play, season to date",
+     "stated_value": -0.11,
+     "tool_call_id": "o5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc2",
+     "text": "MIA designed run plays sample behind run EPA",
+     "stated_value": 214.0,
+     "tool_call_id": "o5",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc3",
+     "text": "O.Gordon share of MIA team rushes",
+     "stated_value": 59.3,
+     "tool_call_id": "o8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc4",
+     "text": "MIA designed runs going up the middle",
+     "stated_value": 40.1,
+     "tool_call_id": "o11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc5",
+     "text": "MIA C Aaron Brewer mean snap share per game over the season sample",
+     "stated_value": 100.0,
+     "tool_call_id": "i3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc6",
+     "text": "Games in the MIA C Aaron Brewer snap share sample",
+     "stated_value": 8.0,
+     "tool_call_id": "i3",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc7",
+     "text": "Share of MIA defensive dropbacks with 5+ pass rushers (blitz rate), all pass plays faced",
+     "stated_value": 22.1,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc8",
+     "text": "Sample size (dropbacks) behind MIA blitz rate",
+     "stated_value": 271.0,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc9",
+     "text": "BUF offense pressure proxy rate allowed (dropbacks with sack or QB hit)",
+     "stated_value": 14.9,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc10",
+     "text": "Sample size (plays) behind BUF offense pressure proxy rate allowed",
+     "stated_value": 295.0,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc11",
+     "text": "BUF T Spencer Brown mean snap share per game over the season sample",
+     "stated_value": 89.5,
+     "tool_call_id": "i7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc12",
+     "text": "Games in the BUF T Spencer Brown snap share sample",
+     "stated_value": 8.0,
+     "tool_call_id": "i7",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc13",
+     "text": "M.Washington share of MIA targets",
+     "stated_value": 22.0,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc14",
+     "text": "Share of BUF offense pass plays gaining 20+ yards (explosive pass rate)",
+     "stated_value": 12.9,
+     "tool_call_id": "d11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc15",
+     "text": "Share of pass plays allowed by MIA defense gaining 20+ yards (explosive pass rate allowed)",
+     "stated_value": 8.9,
+     "tool_call_id": "d5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc16",
+     "text": "MIA offense EPA per pass play (dropbacks incl. sacks and scrambles)",
+     "stated_value": -0.02,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc17",
+     "text": "MIA pass plays sample behind pass EPA",
+     "stated_value": 292.0,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc18",
+     "text": "BUF defense pressure proxy rate (dropbacks with sack or QB hit)",
+     "stated_value": 20.3,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc19",
+     "text": "BUF defense dropbacks faced sample for pressure proxy",
+     "stated_value": 374.0,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc20",
+     "text": "MIA WR Chris Bell share of team targets",
+     "stated_value": 10.8,
+     "tool_call_id": "i5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc21",
+     "text": "C.Douglas share of MIA targets",
+     "stated_value": 15.1,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc22",
+     "text": "G.Dulcich share of MIA targets",
+     "stated_value": 14.7,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  }
+ },
+ "checks": [
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic1",
+   "check": "value",
+   "ok": false,
+   "detail": "names no player in the 4-player result"
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic16",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic16",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic17",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic17",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic18",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic18",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc16",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc16",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc17",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc17",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc18",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc18",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc19",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc19",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc20",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc20",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc21",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc21",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc22",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc22",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc23",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc23",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc24",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc24",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc25",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc25",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc26",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc26",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc27",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc27",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc28",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc28",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc16",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc16",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc17",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc17",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc18",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc18",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc19",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc19",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc20",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc20",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc21",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc21",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc22",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc22",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc23",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc23",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc16",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc16",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc17",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc17",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc18",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc18",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc19",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc19",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc20",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc20",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc21",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc21",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc22",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc22",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  }
+ ],
+ "check_log": [
+  {
+   "round": 1,
+   "role": "injury_analyst",
+   "claim_id": "ic1",
+   "check": "value",
+   "detail": "names no player in the 4-player result",
+   "text": "Latest injury reports for MIA and BUF are from week 10",
+   "stated_value": 10.0
+  },
+  {
+   "round": 1,
+   "role": "injury_analyst",
+   "claim_id": "ic6",
+   "check": "wording",
+   "detail": "the text says weeks through 10, the data runs through week 9",
+   "text": "MIA C Aaron Brewer mean snap share per game, weeks 1-10",
+   "stated_value": 100.0
+  },
+  {
+   "round": 1,
+   "role": "special_teams_analyst",
+   "claim_id": "kc6",
+   "check": "value",
+   "detail": "k3 kicker_summary gives 19.0 (n_plays 19); stated 9.0",
+   "text": "Patterson (MIA) field goal attempts through week 5",
+   "stated_value": 9.0
+  },
+  {
+   "round": 1,
+   "role": "special_teams_analyst",
+   "claim_id": "kc8",
+   "check": "value",
+   "detail": "k3 kicker_summary gives 19.0 (n_plays 19); stated 10.0",
+   "text": "Gonzalez (MIA) field goal attempts since week 7",
+   "stated_value": 10.0
+  },
+  {
+   "round": 1,
+   "role": "special_teams_analyst",
+   "claim_id": "kc12",
+   "check": "wording",
+   "detail": "the call is for net average, the text doesn't say so",
+   "text": "MIA punts",
+   "stated_value": 30.0
+  },
+  {
+   "round": 1,
+   "role": "special_teams_analyst",
+   "claim_id": null,
+   "check": "prose",
+   "detail": "'20' in the prose: unlinked",
+   "text": null,
+   "stated_value": null
+  },
+  {
+   "round": 1,
+   "role": "matchup_analyst",
+   "claim_id": "mc5",
+   "check": "wording",
+   "detail": "the text says weeks through 10, the data runs through week 9",
+   "text": "MIA C Aaron Brewer mean snap share per game, weeks 1-10",
+   "stated_value": 100.0
+  },
+  {
+   "round": 1,
+   "role": "matchup_analyst",
+   "claim_id": null,
+   "check": "prose",
+   "detail": "'1' in the prose: unlinked",
+   "text": null,
+   "stated_value": null
+  },
+  {
+   "round": 1,
+   "role": "matchup_analyst",
+   "claim_id": null,
+   "check": "prose",
+   "detail": "'2' in the prose: unlinked",
+   "text": null,
+   "stated_value": null
+  },
+  {
+   "round": 1,
+   "role": "matchup_analyst",
+   "claim_id": null,
+   "check": "prose",
+   "detail": "'3' in the prose: unlinked",
+   "text": null,
+   "stated_value": null
+  },
+  {
+   "round": 1,
+   "role": "matchup_analyst",
+   "claim_id": null,
+   "check": "prose",
+   "detail": "'4' in the prose: unlinked",
+   "text": null,
+   "stated_value": null
+  },
+  {
+   "round": 2,
+   "role": "injury_analyst",
+   "claim_id": "ic1",
+   "check": "value",
+   "detail": "names no player in the 4-player result",
+   "text": "Latest injury reports for MIA and BUF are from week 10",
+   "stated_value": 10.0
+  },
+  {
+   "round": 2,
+   "role": "special_teams_analyst",
+   "claim_id": null,
+   "check": "prose",
+   "detail": "'20' in the prose: unlinked",
+   "text": null,
+   "stated_value": null
+  },
+  {
+   "round": 2,
+   "role": "matchup_analyst",
+   "claim_id": "mc6",
+   "check": "value",
+   "detail": "i3 snap_share gives 100.0 (n_plays 8); stated 8.0",
+   "text": "Games in the Aaron Brewer snap share sample",
+   "stated_value": 8.0
+  },
+  {
+   "round": 2,
+   "role": "matchup_analyst",
+   "claim_id": "mc12",
+   "check": "value",
+   "detail": "i7 snap_share gives 89.5 (n_plays 8); stated 8.0",
+   "text": "Games in the Spencer Brown snap share sample",
+   "stated_value": 8.0
+  },
+  {
+   "round": 3,
+   "role": "injury_analyst",
+   "claim_id": "ic1",
+   "check": "value",
+   "detail": "names no player in the 4-player result",
+   "text": "Latest injury reports for MIA and BUF are from week 10",
+   "stated_value": 10.0
+  }
+ ],
+ "checks_run": 3,
+ "dropped": [
+  {
+   "round": 3,
+   "role": "injury_analyst",
+   "claim_id": "ic1",
+   "check": "value",
+   "detail": "names no player in the 4-player result",
+   "text": "Latest injury reports for MIA and BUF are from week 10",
+   "stated_value": 10.0
+  }
+ ],
+ "report": {
+  "title": "MIA at BUF Week 11 Scouting Report",
+  "summary": "Miami is pass-averse on early downs with a weak run game, so Buffalo should load the box early and pressure on passing downs. Miami's extra rushers and its own pass defense create a vertical opportunity for BUF when Miami blitzes. Miami's kicking is the main special-teams weakness, and it makes long field goals a real risk. Injuries to Miami's center and Buffalo's tackle change the protection and interior run plan.",
+  "sections": [
+   {
+    "heading": "Opponent offense",
+    "body": "Miami is pass-averse early, with a pass rate over expected of -10.0 points [oc1] across 380 plays [oc2] and a first-down pass rate of 45.5% [oc3] over 211 plays [oc4]. The run game is the weakness: run EPA is -0.11 [oc7] on 214 designed runs [oc8], with Gordon taking 59.3% of carries [oc9] and 40.1% of runs going up the middle [oc10]. The pass game is only slightly better at -0.02 EPA per play [oc11] over 292 dropbacks [oc12], with targets concentrated on Washington at 22.0% [oc16]. Third-down conversion is 40.2% [oc19] over 112 plays [oc20], 13th in the league [oc21]. Expect BUF to load the box on early downs, but BUF's pressure proxy of 20.3% [oc26] over 374 dropbacks [oc27] means Miami's passing game must hold up against that rush."
+   },
+   {
+    "heading": "Opponent defense",
+    "body": "Miami sends extra rushers on 22.1% of dropbacks [dc1] across 271 plays [dc2], producing a pressure proxy of 15.5% [dc4] and a sack rate of 4.8% [dc5]. BUF's offense has allowed a pressure proxy of 14.9% [dc6] on 295 plays [dc7], so the protection plan must account for those extra rushers rather than assume a standard rush. Miami allows explosive plays on 8.9% of attempts [dc8], while BUF produces them on 12.9% of pass plays [dc9], which favors attacking vertically when Miami blitzes. Against the run, Miami allows 43.0% success [dc12] with 6.7 defenders in the box on average [dc14], so BUF's run game can work at the line without forcing numbers."
+   },
+   {
+    "heading": "Special teams",
+    "body": "MIA's kicking is the soft spot: Patterson made 7 [kc1] of 9 [kc2] before the change, and Gonzalez has made 6 [kc3] of 10 [kc4] since. Overall MIA is 68.4% [kc5] on 19 [kc6] attempts and 60.0% [kc7] from long range on 5 [kc8] tries, so treat a long kick as a risk. BUF's Bass is 20 [kc9] of 20 [kc10] on field goals, so BUF can trust its kicker on the long field. MIA's net punt average is 39.9 [kc11] yards on 30 [kc12] punts, and its kickoff touchback rate is 36.1% [kc14] on 36 [kc15] kicks. Special-teams EPA per play is -0.13 [kc20] over 215 [kc21] plays for MIA against 0.08 [kc22] over 250 [kc23] for BUF, so field position will matter."
+   },
+   {
+    "heading": "Injuries and availability",
+    "body": "Both teams' latest injury reports are from week 10 [ic1]. For MIA, C Aaron Brewer is Out [ic2] after averaging 100.0% of snaps per game [ic3] over 8 games [ic4], so the backup center is the most direct change. WR Chris Bell is Doubtful [ic5] and takes 10.8% of team targets [ic6], so those looks shift to the remaining receivers. For BUF, T Spencer Brown is Doubtful [ic10] and has averaged 89.5% of snaps per game [ic11] over 8 games [ic12], making his backup the key pass-protection question. CB Christian Benford is Questionable [ic13]."
+   },
+   {
+    "heading": "Key matchups",
+    "body": "Gordon up the middle against BUF's interior is the first matchup, with Miami's run EPA at -0.11 [mc1] and 40.1% of designed runs going up the middle [mc4]. With Brewer Out after 100.0% of snaps per game [mc5], the backup center is the interior question, so keep linebackers square to the A-gaps. The second matchup is Miami's extra rushers against BUF's protection: Miami sends them on 22.1% of dropbacks [mc7], and BUF has allowed a pressure proxy of 14.9% [mc9], so the backup tackle needs chip help on the edge. Get Washington on quick throws, since he draws 22.0% of targets [mc13]. The third matchup is BUF's vertical passing: BUF produces explosive pass plays on 12.9% of attempts [mc14], and Miami allows them on 8.9% [mc15], so attack the one-on-one matchup outside when Miami sends extra rushers. For the fourth, with Bell Doubtful after taking 10.8% of targets [mc20], Douglas at 15.1% [mc21] and Dulcich at 14.7% [mc22] will absorb more work, so BUF should rush a standard front on early downs and spy the quarterback's first read."
+   }
+  ]
+ },
+ "number_checks": [
+  {
+   "mention": {
+    "text": "-10.0",
+    "value": -10.0,
+    "kind": "number",
+    "decimals": 1,
+    "start": 482,
+    "claim_id": "oc1",
+    "group": 5,
+    "group_ids": [
+     "oc1"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "380",
+    "value": 380.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 508,
+    "claim_id": "oc2",
+    "group": 7,
+    "group_ids": [
+     "oc2"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "45.5%",
+    "value": 45.5,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 554,
+    "claim_id": "oc3",
+    "group": 9,
+    "group_ids": [
+     "oc3"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "211",
+    "value": 211.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 571,
+    "claim_id": "oc4",
+    "group": 11,
+    "group_ids": [
+     "oc4"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "-0.11",
+    "value": -0.11,
+    "kind": "number",
+    "decimals": 2,
+    "start": 629,
+    "claim_id": "oc7",
+    "group": 14,
+    "group_ids": [
+     "oc7"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "214",
+    "value": 214.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 644,
+    "claim_id": "oc8",
+    "group": 16,
+    "group_ids": [
+     "oc8"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "59.3%",
+    "value": 59.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 688,
+    "claim_id": "oc9",
+    "group": 18,
+    "group_ids": [
+     "oc9"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "40.1%",
+    "value": 40.1,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 715,
+    "claim_id": "oc10",
+    "group": 20,
+    "group_ids": [
+     "oc10"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "-0.02",
+    "value": -0.02,
+    "kind": "number",
+    "decimals": 2,
+    "start": 798,
+    "claim_id": "oc11",
+    "group": 23,
+    "group_ids": [
+     "oc11"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "292",
+    "value": 292.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 829,
+    "claim_id": "oc12",
+    "group": 25,
+    "group_ids": [
+     "oc12"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "22.0%",
+    "value": 22.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 894,
+    "claim_id": "oc16",
+    "group": 27,
+    "group_ids": [
+     "oc16"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "40.2%",
+    "value": 40.2,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 933,
+    "claim_id": "oc19",
+    "group": 30,
+    "group_ids": [
+     "oc19"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "112",
+    "value": 112.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 951,
+    "claim_id": "oc20",
+    "group": 32,
+    "group_ids": [
+     "oc20"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "13th",
+    "value": 13.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 969,
+    "claim_id": "oc21",
+    "group": 34,
+    "group_ids": [
+     "oc21"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "20.3%",
+    "value": 20.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1067,
+    "claim_id": "oc26",
+    "group": 37,
+    "group_ids": [
+     "oc26"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "374",
+    "value": 374.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1085,
+    "claim_id": "oc27",
+    "group": 39,
+    "group_ids": [
+     "oc27"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "22.1%",
+    "value": 22.1,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1195,
+    "claim_id": "dc1",
+    "group": 42,
+    "group_ids": [
+     "dc1"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "271",
+    "value": 271.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1227,
+    "claim_id": "dc2",
+    "group": 44,
+    "group_ids": [
+     "dc2"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "15.5%",
+    "value": 15.5,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1274,
+    "claim_id": "dc4",
+    "group": 46,
+    "group_ids": [
+     "dc4"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "4.8%",
+    "value": 4.8,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1305,
+    "claim_id": "dc5",
+    "group": 48,
+    "group_ids": [
+     "dc5"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "14.9%",
+    "value": 14.9,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1363,
+    "claim_id": "dc6",
+    "group": 51,
+    "group_ids": [
+     "dc6"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "295",
+    "value": 295.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1378,
+    "claim_id": "dc7",
+    "group": 53,
+    "group_ids": [
+     "dc7"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "8.9%",
+    "value": 8.9,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1523,
+    "claim_id": "dc8",
+    "group": 56,
+    "group_ids": [
+     "dc8"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "12.9%",
+    "value": 12.9,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1574,
+    "claim_id": "dc9",
+    "group": 58,
+    "group_ids": [
+     "dc9"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "43.0%",
+    "value": 43.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1685,
+    "claim_id": "dc12",
+    "group": 61,
+    "group_ids": [
+     "dc12"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "6.7",
+    "value": 6.7,
+    "kind": "number",
+    "decimals": 1,
+    "start": 1711,
+    "claim_id": "dc14",
+    "group": 63,
+    "group_ids": [
+     "dc14"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "7",
+    "value": 7.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1867,
+    "claim_id": "kc1",
+    "group": 66,
+    "group_ids": [
+     "kc1"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "9",
+    "value": 9.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1878,
+    "claim_id": "kc2",
+    "group": 68,
+    "group_ids": [
+     "kc2"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "6",
+    "value": 6.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1927,
+    "claim_id": "kc3",
+    "group": 70,
+    "group_ids": [
+     "kc3"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "10",
+    "value": 10.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1938,
+    "claim_id": "kc4",
+    "group": 72,
+    "group_ids": [
+     "kc4"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "68.4%",
+    "value": 68.4,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1969,
+    "claim_id": "kc5",
+    "group": 75,
+    "group_ids": [
+     "kc5"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "19",
+    "value": 19.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1984,
+    "claim_id": "kc6",
+    "group": 77,
+    "group_ids": [
+     "kc6"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "60.0%",
+    "value": 60.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2006,
+    "claim_id": "kc7",
+    "group": 79,
+    "group_ids": [
+     "kc7"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "5",
+    "value": 5.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2037,
+    "claim_id": "kc8",
+    "group": 81,
+    "group_ids": [
+     "kc8"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "20",
+    "value": 20.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2098,
+    "claim_id": "kc9",
+    "group": 84,
+    "group_ids": [
+     "kc9"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "20",
+    "value": 20.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2110,
+    "claim_id": "kc10",
+    "group": 86,
+    "group_ids": [
+     "kc10"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "39.9",
+    "value": 39.9,
+    "kind": "number",
+    "decimals": 1,
+    "start": 2209,
+    "claim_id": "kc11",
+    "group": 89,
+    "group_ids": [
+     "kc11"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "30",
+    "value": 30.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2230,
+    "claim_id": "kc12",
+    "group": 91,
+    "group_ids": [
+     "kc12"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "36.1%",
+    "value": 36.1,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2281,
+    "claim_id": "kc14",
+    "group": 93,
+    "group_ids": [
+     "kc14"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "36",
+    "value": 36.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2297,
+    "claim_id": "kc15",
+    "group": 95,
+    "group_ids": [
+     "kc15"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "-0.13",
+    "value": -0.13,
+    "kind": "number",
+    "decimals": 2,
+    "start": 2344,
+    "claim_id": "kc20",
+    "group": 98,
+    "group_ids": [
+     "kc20"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "215",
+    "value": 215.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2362,
+    "claim_id": "kc21",
+    "group": 100,
+    "group_ids": [
+     "kc21"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "0.08",
+    "value": 0.08,
+    "kind": "number",
+    "decimals": 2,
+    "start": 2395,
+    "claim_id": "kc22",
+    "group": 102,
+    "group_ids": [
+     "kc22"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "250",
+    "value": 250.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2412,
+    "claim_id": "kc23",
+    "group": 104,
+    "group_ids": [
+     "kc23"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "100.0%",
+    "value": 100.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2575,
+    "claim_id": "ic3",
+    "group": 110,
+    "group_ids": [
+     "ic3"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "8",
+    "value": 8.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2611,
+    "claim_id": "ic4",
+    "group": 112,
+    "group_ids": [
+     "ic4"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "10.8%",
+    "value": 10.8,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2716,
+    "claim_id": "ic6",
+    "group": 116,
+    "group_ids": [
+     "ic6"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "89.5%",
+    "value": 89.5,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2855,
+    "claim_id": "ic11",
+    "group": 120,
+    "group_ids": [
+     "ic11"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "8",
+    "value": 8.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2891,
+    "claim_id": "ic12",
+    "group": 122,
+    "group_ids": [
+     "ic12"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "-0.11",
+    "value": -0.11,
+    "kind": "number",
+    "decimals": 2,
+    "start": 3095,
+    "claim_id": "mc1",
+    "group": 127,
+    "group_ids": [
+     "mc1"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "40.1%",
+    "value": 40.1,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3111,
+    "claim_id": "mc4",
+    "group": 129,
+    "group_ids": [
+     "mc4"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "100.0%",
+    "value": 100.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3183,
+    "claim_id": "mc5",
+    "group": 132,
+    "group_ids": [
+     "mc5"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "22.1%",
+    "value": 22.1,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3391,
+    "claim_id": "mc7",
+    "group": 135,
+    "group_ids": [
+     "mc7"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "14.9%",
+    "value": 14.9,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3457,
+    "claim_id": "mc9",
+    "group": 137,
+    "group_ids": [
+     "mc9"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "22.0%",
+    "value": 22.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3567,
+    "claim_id": "mc13",
+    "group": 140,
+    "group_ids": [
+     "mc13"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "12.9%",
+    "value": 12.9,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3674,
+    "claim_id": "mc14",
+    "group": 143,
+    "group_ids": [
+     "mc14"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "8.9%",
+    "value": 8.9,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3725,
+    "claim_id": "mc15",
+    "group": 145,
+    "group_ids": [
+     "mc15"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "10.8%",
+    "value": 10.8,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3859,
+    "claim_id": "mc20",
+    "group": 148,
+    "group_ids": [
+     "mc20"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "15.1%",
+    "value": 15.1,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3895,
+    "claim_id": "mc21",
+    "group": 150,
+    "group_ids": [
+     "mc21"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "14.7%",
+    "value": 14.7,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3923,
+    "claim_id": "mc22",
+    "group": 152,
+    "group_ids": [
+     "mc22"
+    ]
+   },
+   "status": "ok"
+  }
+ ],
+ "tool_calls": [
+  {
+   "call_id": "d1",
+   "node": "defense_analyst",
+   "tool": "blitz_rate",
+   "args": {
+    "team": "MIA",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 22.14022140221402,
+    "n_plays": 271,
+    "query_meta": {
+     "tool": "blitz_rate",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks faced with 5+ pass rushers (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d2",
+   "node": "defense_analyst",
+   "tool": "average_pass_rushers",
+   "args": {
+    "team": "MIA",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 4.210332103321033,
+    "n_plays": 271,
+    "query_meta": {
+     "tool": "average_pass_rushers",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "rushers",
+     "definition": "Mean pass rushers per dropback faced (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d3",
+   "node": "defense_analyst",
+   "tool": "pressure_proxy_rate",
+   "args": {
+    "team": "MIA",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 15.498154981549817,
+    "n_plays": 271,
+    "query_meta": {
+     "tool": "pressure_proxy_rate",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Pressure proxy: percent of dropbacks with a sack or QB hit (defense). Not true pressure rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d4",
+   "node": "defense_analyst",
+   "tool": "sack_rate",
+   "args": {
+    "team": "MIA",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 4.797047970479705,
+    "n_plays": 271,
+    "query_meta": {
+     "tool": "sack_rate",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks ending in a sack (defense).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d5",
+   "node": "defense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "MIA",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 8.856088560885608,
+    "n_plays": 271,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d6",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "MIA",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 0.15811516062650346,
+    "n_plays": 271,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d7",
+   "node": "defense_analyst",
+   "tool": "success_rate",
+   "args": {
+    "team": "MIA",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 50.55350553505535,
+    "n_plays": 271,
+    "query_meta": {
+     "tool": "success_rate",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays with EPA > 0, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d8",
+   "node": "defense_analyst",
+   "tool": "average_box_defenders",
+   "args": {
+    "team": "MIA",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 6.654008438818566,
+    "n_plays": 237,
+    "query_meta": {
+     "tool": "average_box_defenders",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "play_kind": "run"
+     },
+     "unit": "defenders",
+     "definition": "Mean defenders in the box on run plays (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d9",
+   "node": "defense_analyst",
+   "tool": "success_rate",
+   "args": {
+    "team": "MIA",
+    "side": "defense",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 43.037974683544306,
+    "n_plays": 237,
+    "query_meta": {
+     "tool": "success_rate",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense",
+      "play_kind": "run"
+     },
+     "unit": "percent",
+     "definition": "Percent of run plays with EPA > 0, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d10",
+   "node": "defense_analyst",
+   "tool": "pressure_proxy_rate",
+   "args": {
+    "team": "BUF",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 14.915254237288137,
+    "n_plays": 295,
+    "query_meta": {
+     "tool": "pressure_proxy_rate",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Pressure proxy: percent of dropbacks with a sack or QB hit (offense). Not true pressure rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d11",
+   "node": "defense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "BUF",
+    "side": "offense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 12.88135593220339,
+    "n_plays": 295,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d12",
+   "node": "defense_analyst",
+   "tool": "average_box_defenders",
+   "args": {
+    "team": "BUF",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 6.769230769230769,
+    "n_plays": 195,
+    "query_meta": {
+     "tool": "average_box_defenders",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10,
+      "play_kind": "run"
+     },
+     "unit": "defenders",
+     "definition": "Mean defenders in the box on run plays (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d13",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "MIA",
+    "side": "defense",
+    "early_downs_only": false,
+    "direction": "left",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 26,
+    "n_plays": 508,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense",
+      "early_downs_only": false,
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction",
+      "early_downs_only"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": 0.06514817045903999,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d14",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "MIA",
+    "side": "defense",
+    "early_downs_only": false,
+    "direction": "left",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 26,
+    "n_plays": 508,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense",
+      "early_downs_only": false,
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction",
+      "early_downs_only"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": 0.06514817045903999,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d15",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "success_rate",
+    "team": "MIA",
+    "side": "defense",
+    "early_downs_only": false,
+    "direction": "left",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 30,
+    "n_plays": 508,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "success_rate",
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense",
+      "early_downs_only": false,
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "success_rate",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction",
+      "early_downs_only"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": 47.047244094488185,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d16",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "MIA",
+    "side": "defense",
+    "early_downs_only": true,
+    "direction": "left",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 26,
+    "n_plays": 508,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense",
+      "early_downs_only": true,
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction",
+      "early_downs_only"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": 0.06514817045903999,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i1",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "MIA",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Aaron Brewer",
+      "player_id": "00-0036171",
+      "position": "C",
+      "status": "Out",
+      "injury": "Concussion",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Jared Wayne",
+      "player_id": "00-0038728",
+      "position": "WR",
+      "status": "Out",
+      "injury": "Quadricep",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Chris Bell",
+      "player_id": "00-0041525",
+      "position": "WR",
+      "status": "Doubtful",
+      "injury": "Knee",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Darrell Baker Jr.",
+      "player_id": "00-0037549",
+      "position": "CB",
+      "status": "Questionable",
+      "injury": "Knee",
+      "practice_status": "Full Participation in Practice"
+     }
+    ],
+    "n_plays": 4,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 10,
+     "weeks": [
+      10
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i2",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "BUF",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Spencer Brown",
+      "player_id": "00-0036976",
+      "position": "T",
+      "status": "Doubtful",
+      "injury": "Ankle",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Christian Benford",
+      "player_id": "00-0037288",
+      "position": "CB",
+      "status": "Questionable",
+      "injury": "Wrist",
+      "practice_status": "Full Participation in Practice"
+     },
+     {
+      "player": "Jordan Hancock",
+      "player_id": "00-0040192",
+      "position": "CB",
+      "status": "Questionable",
+      "injury": "Hamstring",
+      "practice_status": "Full Participation in Practice"
+     },
+     {
+      "player": "Sam Franklin Jr.",
+      "player_id": "00-0036037",
+      "position": "S",
+      "status": "Questionable",
+      "injury": "Shoulder",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Tyrell Shavers",
+      "player_id": "00-0038679",
+      "position": "WR",
+      "status": "Questionable",
+      "injury": "Knee",
+      "practice_status": "Full Participation in Practice"
+     }
+    ],
+    "n_plays": 5,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 10,
+     "weeks": [
+      10
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i3",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "MIA",
+    "player": "Aaron Brewer",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 100.0,
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "player": "Aaron Brewer",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Aaron Brewer's mean snap share per game, weeks 1-10.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i4",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "MIA",
+    "player": "Jared Wayne",
+    "kind": "target",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": null,
+   "error": "player 'Jared Wayne' not found for MIA; use usage_leaders to list players"
+  },
+  {
+   "call_id": "i5",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "MIA",
+    "player": "Chris Bell",
+    "kind": "target",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 10.775862068965516,
+    "n_plays": 232,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "player": "Chris Bell",
+      "kind": "target"
+     },
+     "unit": "percent",
+     "definition": "C.Bell's percent of team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9,
+     "player": {
+      "id": "00-0041525",
+      "name": "C.Bell",
+      "count": 25
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i6",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "MIA",
+    "player": "Darrell Baker Jr.",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": null,
+   "error": "no snaps recorded for 'Darrell Baker Jr.' with MIA in weeks 1-10 (the player may not have played)"
+  },
+  {
+   "call_id": "i7",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "BUF",
+    "player": "Spencer Brown",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 89.5,
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10,
+      "player": "Spencer Brown",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Spencer Brown's mean snap share per game, weeks 1-10.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      9,
+      10
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i8",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "BUF",
+    "player": "Christian Benford",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 85.625,
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10,
+      "player": "Christian Benford",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Christian Benford's mean snap share per game, weeks 1-10.",
+     "weeks": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      8,
+      9,
+      10
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i9",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "BUF",
+    "player": "Sam Franklin Jr.",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 0.2222222222222222,
+    "n_plays": 9,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10,
+      "player": "Sam Franklin Jr.",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Sam Franklin's mean snap share per game, weeks 1-10.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i10",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "BUF",
+    "player": "Tyrell Shavers",
+    "kind": "target",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": null,
+   "error": "player 'Tyrell Shavers' not found for BUF; use usage_leaders to list players"
+  },
+  {
+   "call_id": "i11",
+   "node": "injury_analyst",
+   "tool": "usage_leaders",
+   "args": {
+    "team": "MIA",
+    "kind": "target",
+    "top_n": 8,
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": [
+     {
+      "player": "M.Washington",
+      "player_id": "00-0039880",
+      "count": 51,
+      "share": 21.982758620689655
+     },
+     {
+      "player": "C.Douglas",
+      "player_id": "00-0041523",
+      "count": 35,
+      "share": 15.086206896551724
+     },
+     {
+      "player": "G.Dulcich",
+      "player_id": "00-0037252",
+      "count": 34,
+      "share": 14.655172413793103
+     },
+     {
+      "player": "K.Coleman",
+      "player_id": "00-0041529",
+      "count": 27,
+      "share": 11.637931034482758
+     },
+     {
+      "player": "C.Bell",
+      "player_id": "00-0041525",
+      "count": 25,
+      "share": 10.775862068965518
+     },
+     {
+      "player": "O.Gordon",
+      "player_id": "00-0040198",
+      "count": 15,
+      "share": 6.4655172413793105
+     },
+     {
+      "player": "D.Achane",
+      "player_id": "00-0039040",
+      "count": 12,
+      "share": 5.172413793103448
+     },
+     {
+      "player": "W.Kacmarek",
+      "player_id": "00-0041524",
+      "count": 10,
+      "share": 4.310344827586207
+     }
+    ],
+    "n_plays": 232,
+    "query_meta": {
+     "tool": "usage_leaders",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "kind": "target",
+      "top_n": 8
+     },
+     "unit": "players",
+     "definition": "Top 8 players by team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i12",
+   "node": "injury_analyst",
+   "tool": "usage_leaders",
+   "args": {
+    "team": "BUF",
+    "kind": "target",
+    "top_n": 8,
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": [
+     {
+      "player": "K.Shakir",
+      "player_id": "00-0037261",
+      "count": 45,
+      "share": 18.51851851851852
+     },
+     {
+      "player": "D.Kincaid",
+      "player_id": "00-0038933",
+      "count": 41,
+      "share": 16.872427983539094
+     },
+     {
+      "player": "D.Moore",
+      "player_id": "00-0034827",
+      "count": 38,
+      "share": 15.637860082304528
+     },
+     {
+      "player": "K.Coleman",
+      "player_id": "00-0039901",
+      "count": 36,
+      "share": 14.814814814814815
+     },
+     {
+      "player": "D.Knox",
+      "player_id": "00-0035689",
+      "count": 20,
+      "share": 8.23045267489712
+     },
+     {
+      "player": "J.Cook",
+      "player_id": "00-0037248",
+      "count": 19,
+      "share": 7.818930041152264
+     },
+     {
+      "player": "T.Johnson",
+      "player_id": "00-0035537",
+      "count": 18,
+      "share": 7.407407407407407
+     },
+     {
+      "player": "J.Palmer",
+      "player_id": "00-0036988",
+      "count": 12,
+      "share": 4.938271604938271
+     }
+    ],
+    "n_plays": 243,
+    "query_meta": {
+     "tool": "usage_leaders",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10,
+      "kind": "target",
+      "top_n": 8
+     },
+     "unit": "players",
+     "definition": "Top 8 players by team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o1",
+   "node": "offense_analyst",
+   "tool": "pass_rate_over_expected",
+   "args": {
+    "team": "MIA",
+    "early_downs_only": true,
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": -10.003901198506355,
+    "n_plays": 380,
+    "query_meta": {
+     "tool": "pass_rate_over_expected",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "early_downs_only": true
+     },
+     "unit": "percentage_points",
+     "definition": "Mean pass_oe (early downs).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o2",
+   "node": "offense_analyst",
+   "tool": "pass_rate",
+   "args": {
+    "team": "MIA",
+    "down": 1,
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 45.497630331753555,
+    "n_plays": 211,
+    "query_meta": {
+     "tool": "pass_rate",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "down": 1,
+      "distance": null,
+      "early_downs_only": false
+     },
+     "unit": "percent",
+     "definition": "Percent of plays that are dropbacks (down 1).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o3",
+   "node": "offense_analyst",
+   "tool": "pass_rate",
+   "args": {
+    "team": "MIA",
+    "down": 3,
+    "distance": "long",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 86.20689655172413,
+    "n_plays": 58,
+    "query_meta": {
+     "tool": "pass_rate",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "down": 3,
+      "distance": "long",
+      "early_downs_only": false
+     },
+     "unit": "percent",
+     "definition": "Percent of plays that are dropbacks (down 3, long distance).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o4",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "MIA",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": -0.023974057009467073,
+    "n_plays": 292,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o5",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "MIA",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": -0.11044357264154847,
+    "n_plays": 214,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "side": "offense",
+      "play_kind": "run"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per run play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o6",
+   "node": "offense_analyst",
+   "tool": "average_depth_of_target",
+   "args": {
+    "team": "MIA",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 9.508333333333333,
+    "n_plays": 240,
+    "query_meta": {
+     "tool": "average_depth_of_target",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "yards",
+     "definition": "Mean air yards per pass attempt.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o7",
+   "node": "offense_analyst",
+   "tool": "usage_leaders",
+   "args": {
+    "team": "MIA",
+    "kind": "target",
+    "top_n": 4,
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": [
+     {
+      "player": "M.Washington",
+      "player_id": "00-0039880",
+      "count": 51,
+      "share": 21.982758620689655
+     },
+     {
+      "player": "C.Douglas",
+      "player_id": "00-0041523",
+      "count": 35,
+      "share": 15.086206896551724
+     },
+     {
+      "player": "G.Dulcich",
+      "player_id": "00-0037252",
+      "count": 34,
+      "share": 14.655172413793103
+     },
+     {
+      "player": "K.Coleman",
+      "player_id": "00-0041529",
+      "count": 27,
+      "share": 11.637931034482758
+     }
+    ],
+    "n_plays": 232,
+    "query_meta": {
+     "tool": "usage_leaders",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "kind": "target",
+      "top_n": 4
+     },
+     "unit": "players",
+     "definition": "Top 4 players by team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o8",
+   "node": "offense_analyst",
+   "tool": "usage_leaders",
+   "args": {
+    "team": "MIA",
+    "kind": "rush",
+    "top_n": 3,
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": [
+     {
+      "player": "O.Gordon",
+      "player_id": "00-0040198",
+      "count": 127,
+      "share": 59.345794392523366
+     },
+     {
+      "player": "D.Achane",
+      "player_id": "00-0039040",
+      "count": 34,
+      "share": 15.88785046728972
+     },
+     {
+      "player": "J.Wright",
+      "player_id": "00-0039874",
+      "count": 25,
+      "share": 11.682242990654206
+     }
+    ],
+    "n_plays": 214,
+    "query_meta": {
+     "tool": "usage_leaders",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "kind": "rush",
+      "top_n": 3
+     },
+     "unit": "players",
+     "definition": "Top 3 players by team rushs.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o9",
+   "node": "offense_analyst",
+   "tool": "red_zone_td_rate",
+   "args": {
+    "team": "MIA",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 52.38095238095239,
+    "n_plays": 21,
+    "query_meta": {
+     "tool": "red_zone_td_rate",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Percent of red-zone drives ending in a TD, by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o10",
+   "node": "offense_analyst",
+   "tool": "third_down_conversion_rate",
+   "args": {
+    "team": "MIA",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 40.17857142857143,
+    "n_plays": 112,
+    "query_meta": {
+     "tool": "third_down_conversion_rate",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Percent of third-down plays converted, by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o11",
+   "node": "offense_analyst",
+   "tool": "run_direction_rate",
+   "args": {
+    "team": "MIA",
+    "direction": "middle",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 40.09433962264151,
+    "n_plays": 212,
+    "query_meta": {
+     "tool": "run_direction_rate",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "direction": "middle"
+     },
+     "unit": "percent",
+     "definition": "Percent of designed runs to the middle.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o12",
+   "node": "offense_analyst",
+   "tool": "ftn_play_rate",
+   "args": {
+    "team": "MIA",
+    "feature": "play_action",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 22.945205479452056,
+    "n_plays": 292,
+    "query_meta": {
+     "tool": "ftn_play_rate",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "feature": "play_action"
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks with play action (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o13",
+   "node": "offense_analyst",
+   "tool": "sack_rate",
+   "args": {
+    "team": "BUF",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 5.614973262032086,
+    "n_plays": 374,
+    "query_meta": {
+     "tool": "sack_rate",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks ending in a sack (defense).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o14",
+   "node": "offense_analyst",
+   "tool": "success_rate",
+   "args": {
+    "team": "MIA",
+    "play_kind": "all",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 38.14229249011858,
+    "n_plays": 506,
+    "query_meta": {
+     "tool": "success_rate",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "side": "offense",
+      "play_kind": "all"
+     },
+     "unit": "percent",
+     "definition": "Percent of all plays with EPA > 0, by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o15",
+   "node": "offense_analyst",
+   "tool": "pressure_proxy_rate",
+   "args": {
+    "team": "BUF",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 20.32085561497326,
+    "n_plays": 374,
+    "query_meta": {
+     "tool": "pressure_proxy_rate",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Pressure proxy: percent of dropbacks with a sack or QB hit (defense). Not true pressure rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o16",
+   "node": "offense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "third_down_conversion_rate",
+    "team": "MIA",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 13,
+    "n_plays": 112,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "third_down_conversion_rate",
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "side": "offense"
+     },
+     "unit": "rank",
+     "metric": "third_down_conversion_rate",
+     "metric_args": {
+      "side": "offense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (highest)",
+     "team_value": 40.17857142857143,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o17",
+   "node": "offense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "MIA",
+    "side": "offense",
+    "feature": "play_action",
+    "direction": "left",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 25,
+    "n_plays": 506,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "side": "offense",
+      "feature": "play_action",
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "side": "offense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction",
+      "feature"
+     ],
+     "rank_1_is": "best (highest)",
+     "team_value": -0.06054416836374653,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k1",
+   "node": "special_teams_analyst",
+   "tool": "field_goal_rate",
+   "args": {
+    "team": "MIA",
+    "distance": "all",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 68.42105263157895,
+    "n_plays": 19,
+    "query_meta": {
+     "tool": "field_goal_rate",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "distance": "all"
+     },
+     "unit": "percent",
+     "definition": "Percent of field goal attempts made (all yards).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      8,
+      9,
+      10
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k2",
+   "node": "special_teams_analyst",
+   "tool": "field_goal_rate",
+   "args": {
+    "team": "MIA",
+    "distance": "50_plus",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 60.0,
+    "n_plays": 5,
+    "query_meta": {
+     "tool": "field_goal_rate",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "distance": "50_plus"
+     },
+     "unit": "percent",
+     "definition": "Percent of field goal attempts made (50 plus yards).",
+     "weeks": [
+      2,
+      8,
+      9,
+      10
+     ],
+     "n_games": 4
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k3",
+   "node": "special_teams_analyst",
+   "tool": "kicker_summary",
+   "args": {
+    "team": "MIA",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": [
+     {
+      "player": "R.Patterson",
+      "fg_attempts": 9,
+      "fg_made": 7,
+      "longest_made": 41.0,
+      "xp_attempts": 6,
+      "xp_made": 5,
+      "first_week": 1,
+      "last_week": 5
+     },
+     {
+      "player": "Z.Gonzalez",
+      "fg_attempts": 10,
+      "fg_made": 6,
+      "longest_made": 53.0,
+      "xp_attempts": 7,
+      "xp_made": 6,
+      "first_week": 7,
+      "last_week": 10
+     }
+    ],
+    "n_plays": 19,
+    "query_meta": {
+     "tool": "kicker_summary",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "players",
+     "definition": "Field goals and extra points by kicker.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k4",
+   "node": "special_teams_analyst",
+   "tool": "punting",
+   "args": {
+    "team": "MIA",
+    "stat": "net_average",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 39.86666666666667,
+    "n_plays": 30,
+    "query_meta": {
+     "tool": "punting",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "stat": "net_average"
+     },
+     "unit": "yards_or_percent",
+     "definition": "Punting net average.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k5",
+   "node": "special_teams_analyst",
+   "tool": "punting",
+   "args": {
+    "team": "MIA",
+    "stat": "inside_20_rate",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 30.0,
+    "n_plays": 30,
+    "query_meta": {
+     "tool": "punting",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "stat": "inside_20_rate"
+     },
+     "unit": "yards_or_percent",
+     "definition": "Punting inside 20 rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k6",
+   "node": "special_teams_analyst",
+   "tool": "kickoff_touchback_rate",
+   "args": {
+    "team": "MIA",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 36.11111111111111,
+    "n_plays": 36,
+    "query_meta": {
+     "tool": "kickoff_touchback_rate",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "percent",
+     "definition": "Percent of kickoffs that are touchbacks.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k7",
+   "node": "special_teams_analyst",
+   "tool": "return_average",
+   "args": {
+    "team": "MIA",
+    "kind": "kickoff",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 26.0,
+    "n_plays": 43,
+    "query_meta": {
+     "tool": "return_average",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "kind": "kickoff",
+      "side": "offense"
+     },
+     "unit": "yards",
+     "definition": "Yards per kickoff return, by the return unit.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k8",
+   "node": "special_teams_analyst",
+   "tool": "return_average",
+   "args": {
+    "team": "BUF",
+    "kind": "kickoff",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 26.59259259259259,
+    "n_plays": 54,
+    "query_meta": {
+     "tool": "return_average",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10,
+      "kind": "kickoff",
+      "side": "defense"
+     },
+     "unit": "yards",
+     "definition": "Yards per kickoff return, allowed by the coverage unit.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k9",
+   "node": "special_teams_analyst",
+   "tool": "special_teams_epa",
+   "args": {
+    "team": "MIA",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": -0.13042985578184912,
+    "n_plays": 215,
+    "query_meta": {
+     "tool": "special_teams_epa",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per special-teams play, from the team's side.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k10",
+   "node": "special_teams_analyst",
+   "tool": "special_teams_epa",
+   "args": {
+    "team": "BUF",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 0.0800832918377932,
+    "n_plays": 250,
+    "query_meta": {
+     "tool": "special_teams_epa",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per special-teams play, from the team's side.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k11",
+   "node": "special_teams_analyst",
+   "tool": "kicker_summary",
+   "args": {
+    "team": "BUF",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": [
+     {
+      "player": "T.Bass",
+      "fg_attempts": 20,
+      "fg_made": 20,
+      "longest_made": 56.0,
+      "xp_attempts": 29,
+      "xp_made": 27,
+      "first_week": 1,
+      "last_week": 10
+     }
+    ],
+    "n_plays": 20,
+    "query_meta": {
+     "tool": "kicker_summary",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "players",
+     "definition": "Field goals and extra points by kicker.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i13",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "MIA",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Aaron Brewer",
+      "player_id": "00-0036171",
+      "position": "C",
+      "status": "Out",
+      "injury": "Concussion",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Jared Wayne",
+      "player_id": "00-0038728",
+      "position": "WR",
+      "status": "Out",
+      "injury": "Quadricep",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Chris Bell",
+      "player_id": "00-0041525",
+      "position": "WR",
+      "status": "Doubtful",
+      "injury": "Knee",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Darrell Baker Jr.",
+      "player_id": "00-0037549",
+      "position": "CB",
+      "status": "Questionable",
+      "injury": "Knee",
+      "practice_status": "Full Participation in Practice"
+     }
+    ],
+    "n_plays": 4,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 10,
+     "weeks": [
+      10
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i14",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "BUF",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Spencer Brown",
+      "player_id": "00-0036976",
+      "position": "T",
+      "status": "Doubtful",
+      "injury": "Ankle",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Christian Benford",
+      "player_id": "00-0037288",
+      "position": "CB",
+      "status": "Questionable",
+      "injury": "Wrist",
+      "practice_status": "Full Participation in Practice"
+     },
+     {
+      "player": "Jordan Hancock",
+      "player_id": "00-0040192",
+      "position": "CB",
+      "status": "Questionable",
+      "injury": "Hamstring",
+      "practice_status": "Full Participation in Practice"
+     },
+     {
+      "player": "Sam Franklin Jr.",
+      "player_id": "00-0036037",
+      "position": "S",
+      "status": "Questionable",
+      "injury": "Shoulder",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Tyrell Shavers",
+      "player_id": "00-0038679",
+      "position": "WR",
+      "status": "Questionable",
+      "injury": "Knee",
+      "practice_status": "Full Participation in Practice"
+     }
+    ],
+    "n_plays": 5,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 10,
+     "weeks": [
+      10
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i15",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "MIA",
+    "player": "Aaron Brewer",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 100.0,
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "player": "Aaron Brewer",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Aaron Brewer's mean snap share per game, weeks 1-10.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i16",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "MIA",
+    "player": "Chris Bell",
+    "kind": "target",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 10.775862068965516,
+    "n_plays": 232,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "player": "Chris Bell",
+      "kind": "target"
+     },
+     "unit": "percent",
+     "definition": "C.Bell's percent of team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9,
+     "player": {
+      "id": "00-0041525",
+      "name": "C.Bell",
+      "count": 25
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i17",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "BUF",
+    "player": "Spencer Brown",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 89.5,
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10,
+      "player": "Spencer Brown",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Spencer Brown's mean snap share per game, weeks 1-10.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      9,
+      10
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i18",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "BUF",
+    "player": "Christian Benford",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 85.625,
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10,
+      "player": "Christian Benford",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Christian Benford's mean snap share per game, weeks 1-10.",
+     "weeks": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      8,
+      9,
+      10
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k12",
+   "node": "special_teams_analyst",
+   "tool": "field_goal_rate",
+   "args": {
+    "team": "MIA",
+    "distance": "all",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 68.42105263157895,
+    "n_plays": 19,
+    "query_meta": {
+     "tool": "field_goal_rate",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "distance": "all"
+     },
+     "unit": "percent",
+     "definition": "Percent of field goal attempts made (all yards).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      8,
+      9,
+      10
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k13",
+   "node": "special_teams_analyst",
+   "tool": "field_goal_rate",
+   "args": {
+    "team": "MIA",
+    "distance": "50_plus",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 60.0,
+    "n_plays": 5,
+    "query_meta": {
+     "tool": "field_goal_rate",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "distance": "50_plus"
+     },
+     "unit": "percent",
+     "definition": "Percent of field goal attempts made (50 plus yards).",
+     "weeks": [
+      2,
+      8,
+      9,
+      10
+     ],
+     "n_games": 4
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k14",
+   "node": "special_teams_analyst",
+   "tool": "kicker_summary",
+   "args": {
+    "team": "MIA",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": [
+     {
+      "player": "R.Patterson",
+      "fg_attempts": 9,
+      "fg_made": 7,
+      "longest_made": 41.0,
+      "xp_attempts": 6,
+      "xp_made": 5,
+      "first_week": 1,
+      "last_week": 5
+     },
+     {
+      "player": "Z.Gonzalez",
+      "fg_attempts": 10,
+      "fg_made": 6,
+      "longest_made": 53.0,
+      "xp_attempts": 7,
+      "xp_made": 6,
+      "first_week": 7,
+      "last_week": 10
+     }
+    ],
+    "n_plays": 19,
+    "query_meta": {
+     "tool": "kicker_summary",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "players",
+     "definition": "Field goals and extra points by kicker.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k15",
+   "node": "special_teams_analyst",
+   "tool": "kicker_summary",
+   "args": {
+    "team": "BUF",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": [
+     {
+      "player": "T.Bass",
+      "fg_attempts": 20,
+      "fg_made": 20,
+      "longest_made": 56.0,
+      "xp_attempts": 29,
+      "xp_made": 27,
+      "first_week": 1,
+      "last_week": 10
+     }
+    ],
+    "n_plays": 20,
+    "query_meta": {
+     "tool": "kicker_summary",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "players",
+     "definition": "Field goals and extra points by kicker.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k16",
+   "node": "special_teams_analyst",
+   "tool": "punting",
+   "args": {
+    "team": "MIA",
+    "stat": "net_average",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 39.86666666666667,
+    "n_plays": 30,
+    "query_meta": {
+     "tool": "punting",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "stat": "net_average"
+     },
+     "unit": "yards_or_percent",
+     "definition": "Punting net average.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k17",
+   "node": "special_teams_analyst",
+   "tool": "punting",
+   "args": {
+    "team": "MIA",
+    "stat": "inside_20_rate",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 30.0,
+    "n_plays": 30,
+    "query_meta": {
+     "tool": "punting",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "stat": "inside_20_rate"
+     },
+     "unit": "yards_or_percent",
+     "definition": "Punting inside 20 rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k18",
+   "node": "special_teams_analyst",
+   "tool": "kickoff_touchback_rate",
+   "args": {
+    "team": "MIA",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 36.11111111111111,
+    "n_plays": 36,
+    "query_meta": {
+     "tool": "kickoff_touchback_rate",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "percent",
+     "definition": "Percent of kickoffs that are touchbacks.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k19",
+   "node": "special_teams_analyst",
+   "tool": "return_average",
+   "args": {
+    "team": "MIA",
+    "kind": "kickoff",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 26.0,
+    "n_plays": 43,
+    "query_meta": {
+     "tool": "return_average",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "kind": "kickoff",
+      "side": "offense"
+     },
+     "unit": "yards",
+     "definition": "Yards per kickoff return, by the return unit.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k20",
+   "node": "special_teams_analyst",
+   "tool": "return_average",
+   "args": {
+    "team": "BUF",
+    "kind": "kickoff",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 26.59259259259259,
+    "n_plays": 54,
+    "query_meta": {
+     "tool": "return_average",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10,
+      "kind": "kickoff",
+      "side": "defense"
+     },
+     "unit": "yards",
+     "definition": "Yards per kickoff return, allowed by the coverage unit.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k21",
+   "node": "special_teams_analyst",
+   "tool": "special_teams_epa",
+   "args": {
+    "team": "MIA",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": -0.13042985578184912,
+    "n_plays": 215,
+    "query_meta": {
+     "tool": "special_teams_epa",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per special-teams play, from the team's side.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k22",
+   "node": "special_teams_analyst",
+   "tool": "special_teams_epa",
+   "args": {
+    "team": "BUF",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 0.0800832918377932,
+    "n_plays": 250,
+    "query_meta": {
+     "tool": "special_teams_epa",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per special-teams play, from the team's side.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i19",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "MIA",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Aaron Brewer",
+      "player_id": "00-0036171",
+      "position": "C",
+      "status": "Out",
+      "injury": "Concussion",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Jared Wayne",
+      "player_id": "00-0038728",
+      "position": "WR",
+      "status": "Out",
+      "injury": "Quadricep",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Chris Bell",
+      "player_id": "00-0041525",
+      "position": "WR",
+      "status": "Doubtful",
+      "injury": "Knee",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Darrell Baker Jr.",
+      "player_id": "00-0037549",
+      "position": "CB",
+      "status": "Questionable",
+      "injury": "Knee",
+      "practice_status": "Full Participation in Practice"
+     }
+    ],
+    "n_plays": 4,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 10,
+     "weeks": [
+      10
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i20",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "BUF",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Spencer Brown",
+      "player_id": "00-0036976",
+      "position": "T",
+      "status": "Doubtful",
+      "injury": "Ankle",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Christian Benford",
+      "player_id": "00-0037288",
+      "position": "CB",
+      "status": "Questionable",
+      "injury": "Wrist",
+      "practice_status": "Full Participation in Practice"
+     },
+     {
+      "player": "Jordan Hancock",
+      "player_id": "00-0040192",
+      "position": "CB",
+      "status": "Questionable",
+      "injury": "Hamstring",
+      "practice_status": "Full Participation in Practice"
+     },
+     {
+      "player": "Sam Franklin Jr.",
+      "player_id": "00-0036037",
+      "position": "S",
+      "status": "Questionable",
+      "injury": "Shoulder",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Tyrell Shavers",
+      "player_id": "00-0038679",
+      "position": "WR",
+      "status": "Questionable",
+      "injury": "Knee",
+      "practice_status": "Full Participation in Practice"
+     }
+    ],
+    "n_plays": 5,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 10,
+     "weeks": [
+      10
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i21",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "MIA",
+    "player": "Aaron Brewer",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 100.0,
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "player": "Aaron Brewer",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Aaron Brewer's mean snap share per game, weeks 1-10.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i22",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "MIA",
+    "player": "Chris Bell",
+    "kind": "target",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 10.775862068965516,
+    "n_plays": 232,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "player": "Chris Bell",
+      "kind": "target"
+     },
+     "unit": "percent",
+     "definition": "C.Bell's percent of team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9,
+     "player": {
+      "id": "00-0041525",
+      "name": "C.Bell",
+      "count": 25
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i23",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "BUF",
+    "player": "Spencer Brown",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 89.5,
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10,
+      "player": "Spencer Brown",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Spencer Brown's mean snap share per game, weeks 1-10.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      9,
+      10
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i24",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "BUF",
+    "player": "Christian Benford",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 85.625,
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10,
+      "player": "Christian Benford",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Christian Benford's mean snap share per game, weeks 1-10.",
+     "weeks": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      8,
+      9,
+      10
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k23",
+   "node": "special_teams_analyst",
+   "tool": "field_goal_rate",
+   "args": {
+    "team": "MIA",
+    "distance": "all",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 68.42105263157895,
+    "n_plays": 19,
+    "query_meta": {
+     "tool": "field_goal_rate",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "distance": "all"
+     },
+     "unit": "percent",
+     "definition": "Percent of field goal attempts made (all yards).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      8,
+      9,
+      10
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k24",
+   "node": "special_teams_analyst",
+   "tool": "field_goal_rate",
+   "args": {
+    "team": "MIA",
+    "distance": "50_plus",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 60.0,
+    "n_plays": 5,
+    "query_meta": {
+     "tool": "field_goal_rate",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "distance": "50_plus"
+     },
+     "unit": "percent",
+     "definition": "Percent of field goal attempts made (50 plus yards).",
+     "weeks": [
+      2,
+      8,
+      9,
+      10
+     ],
+     "n_games": 4
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k25",
+   "node": "special_teams_analyst",
+   "tool": "kicker_summary",
+   "args": {
+    "team": "MIA",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": [
+     {
+      "player": "R.Patterson",
+      "fg_attempts": 9,
+      "fg_made": 7,
+      "longest_made": 41.0,
+      "xp_attempts": 6,
+      "xp_made": 5,
+      "first_week": 1,
+      "last_week": 5
+     },
+     {
+      "player": "Z.Gonzalez",
+      "fg_attempts": 10,
+      "fg_made": 6,
+      "longest_made": 53.0,
+      "xp_attempts": 7,
+      "xp_made": 6,
+      "first_week": 7,
+      "last_week": 10
+     }
+    ],
+    "n_plays": 19,
+    "query_meta": {
+     "tool": "kicker_summary",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "players",
+     "definition": "Field goals and extra points by kicker.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k26",
+   "node": "special_teams_analyst",
+   "tool": "kicker_summary",
+   "args": {
+    "team": "BUF",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": [
+     {
+      "player": "T.Bass",
+      "fg_attempts": 20,
+      "fg_made": 20,
+      "longest_made": 56.0,
+      "xp_attempts": 29,
+      "xp_made": 27,
+      "first_week": 1,
+      "last_week": 10
+     }
+    ],
+    "n_plays": 20,
+    "query_meta": {
+     "tool": "kicker_summary",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "players",
+     "definition": "Field goals and extra points by kicker.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k27",
+   "node": "special_teams_analyst",
+   "tool": "punting",
+   "args": {
+    "team": "MIA",
+    "stat": "net_average",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 39.86666666666667,
+    "n_plays": 30,
+    "query_meta": {
+     "tool": "punting",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "stat": "net_average"
+     },
+     "unit": "yards_or_percent",
+     "definition": "Punting net average.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k28",
+   "node": "special_teams_analyst",
+   "tool": "punting",
+   "args": {
+    "team": "MIA",
+    "stat": "inside_20_rate",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 30.0,
+    "n_plays": 30,
+    "query_meta": {
+     "tool": "punting",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "stat": "inside_20_rate"
+     },
+     "unit": "yards_or_percent",
+     "definition": "Punting inside 20 rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k29",
+   "node": "special_teams_analyst",
+   "tool": "kickoff_touchback_rate",
+   "args": {
+    "team": "MIA",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 36.11111111111111,
+    "n_plays": 36,
+    "query_meta": {
+     "tool": "kickoff_touchback_rate",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "percent",
+     "definition": "Percent of kickoffs that are touchbacks.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k30",
+   "node": "special_teams_analyst",
+   "tool": "return_average",
+   "args": {
+    "team": "MIA",
+    "kind": "kickoff",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 26.0,
+    "n_plays": 43,
+    "query_meta": {
+     "tool": "return_average",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10,
+      "kind": "kickoff",
+      "side": "offense"
+     },
+     "unit": "yards",
+     "definition": "Yards per kickoff return, by the return unit.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k31",
+   "node": "special_teams_analyst",
+   "tool": "return_average",
+   "args": {
+    "team": "BUF",
+    "kind": "kickoff",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 26.59259259259259,
+    "n_plays": 54,
+    "query_meta": {
+     "tool": "return_average",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10,
+      "kind": "kickoff",
+      "side": "defense"
+     },
+     "unit": "yards",
+     "definition": "Yards per kickoff return, allowed by the coverage unit.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k32",
+   "node": "special_teams_analyst",
+   "tool": "special_teams_epa",
+   "args": {
+    "team": "MIA",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": -0.13042985578184912,
+    "n_plays": 215,
+    "query_meta": {
+     "tool": "special_teams_epa",
+     "args": {
+      "team": "MIA",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per special-teams play, from the team's side.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k33",
+   "node": "special_teams_analyst",
+   "tool": "special_teams_epa",
+   "args": {
+    "team": "BUF",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 0.0800832918377932,
+    "n_plays": 250,
+    "query_meta": {
+     "tool": "special_teams_epa",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per special-teams play, from the team's side.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k34",
+   "node": "special_teams_analyst",
+   "tool": "field_goal_rate",
+   "args": {
+    "team": "BUF",
+    "distance": "50_plus",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 100.0,
+    "n_plays": 3,
+    "query_meta": {
+     "tool": "field_goal_rate",
+     "args": {
+      "team": "BUF",
+      "season": 2026,
+      "through_week": 10,
+      "distance": "50_plus"
+     },
+     "unit": "percent",
+     "definition": "Percent of field goal attempts made (50 plus yards).",
+     "weeks": [
+      8,
+      9
+     ],
+     "n_games": 2
+    }
+   },
+   "error": null
+  }
+ ],
+ "usage": [
+  {
+   "node": "planner",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 699,
+   "cache_read_input_tokens": 0,
+   "cache_creation_input_tokens": 693,
+   "latency_s": 6.0101989100221545
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 1220,
+   "cache_read_input_tokens": 0,
+   "cache_creation_input_tokens": 6396,
+   "latency_s": 5.724384424043819
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 361,
+   "cache_read_input_tokens": 6396,
+   "cache_creation_input_tokens": 2878,
+   "latency_s": 2.6054353998042643
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 255,
+   "cache_read_input_tokens": 9274,
+   "cache_creation_input_tokens": 502,
+   "latency_s": 2.0477684349752963
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 176,
+   "cache_read_input_tokens": 9776,
+   "cache_creation_input_tokens": 396,
+   "latency_s": 1.7405667228158563
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 199,
+   "cache_read_input_tokens": 10172,
+   "cache_creation_input_tokens": 315,
+   "latency_s": 1.9703340472187847
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 4146,
+   "cache_read_input_tokens": 10487,
+   "cache_creation_input_tokens": 340,
+   "latency_s": 17.620280913077295
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 118,
+   "cache_read_input_tokens": 0,
+   "cache_creation_input_tokens": 3433,
+   "latency_s": 4.169253173051402
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 847,
+   "cache_read_input_tokens": 3433,
+   "cache_creation_input_tokens": 964,
+   "latency_s": 3.0167506968136877
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 299,
+   "cache_read_input_tokens": 4397,
+   "cache_creation_input_tokens": 1743,
+   "latency_s": 2.2150851648766547
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 3544,
+   "cache_read_input_tokens": 6140,
+   "cache_creation_input_tokens": 1143,
+   "latency_s": 14.43304177490063
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 1277,
+   "cache_read_input_tokens": 0,
+   "cache_creation_input_tokens": 7958,
+   "latency_s": 7.546201599994674
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 475,
+   "cache_read_input_tokens": 7958,
+   "cache_creation_input_tokens": 3306,
+   "latency_s": 3.3365406980738044
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 5266,
+   "cache_read_input_tokens": 11264,
+   "cache_creation_input_tokens": 941,
+   "latency_s": 19.53839794220403
+  },
+  {
+   "node": "special_teams_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 869,
+   "cache_read_input_tokens": 0,
+   "cache_creation_input_tokens": 4757,
+   "latency_s": 4.427478450816125
+  },
+  {
+   "node": "special_teams_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 3311,
+   "cache_read_input_tokens": 4757,
+   "cache_creation_input_tokens": 2462,
+   "latency_s": 13.261621456826106
+  },
+  {
+   "node": "matchup_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 7743,
+   "cache_read_input_tokens": 6451,
+   "cache_creation_input_tokens": 4792,
+   "latency_s": 31.155814635101706
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 177,
+   "cache_read_input_tokens": 2987,
+   "cache_creation_input_tokens": 1508,
+   "latency_s": 1.6863880679011345
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 429,
+   "cache_read_input_tokens": 4495,
+   "cache_creation_input_tokens": 1023,
+   "latency_s": 1.916126229101792
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 3389,
+   "cache_read_input_tokens": 5518,
+   "cache_creation_input_tokens": 969,
+   "latency_s": 12.2578744830098
+  },
+  {
+   "node": "matchup_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 4968,
+   "cache_read_input_tokens": 6451,
+   "cache_creation_input_tokens": 6419,
+   "latency_s": 18.278235035017133
+  },
+  {
+   "node": "special_teams_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 955,
+   "cache_read_input_tokens": 4407,
+   "cache_creation_input_tokens": 1756,
+   "latency_s": 4.0723082579206675
+  },
+  {
+   "node": "special_teams_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 3789,
+   "cache_read_input_tokens": 6163,
+   "cache_creation_input_tokens": 2548,
+   "latency_s": 14.515919449971989
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 145,
+   "cache_read_input_tokens": 2987,
+   "cache_creation_input_tokens": 1650,
+   "latency_s": 1.6173741901293397
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 567,
+   "cache_read_input_tokens": 4637,
+   "cache_creation_input_tokens": 991,
+   "latency_s": 2.529155789176002
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 2624,
+   "cache_read_input_tokens": 5628,
+   "cache_creation_input_tokens": 1107,
+   "latency_s": 8.66050531505607
+  },
+  {
+   "node": "matchup_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 4910,
+   "cache_read_input_tokens": 6451,
+   "cache_creation_input_tokens": 6621,
+   "latency_s": 17.824153665918857
+  },
+  {
+   "node": "special_teams_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 1020,
+   "cache_read_input_tokens": 4407,
+   "cache_creation_input_tokens": 1640,
+   "latency_s": 4.337517698993906
+  },
+  {
+   "node": "special_teams_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 4378,
+   "cache_read_input_tokens": 6047,
+   "cache_creation_input_tokens": 2721,
+   "latency_s": 16.165768942097202
+  },
+  {
+   "node": "editor",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 10021,
+   "cache_read_input_tokens": 0,
+   "cache_creation_input_tokens": 7149,
+   "latency_s": 37.76733037107624
+  }
+ ],
+ "cost_usd": {
+  "total": 0.045494055,
+  "by_node": {
+   "planner": 0.000436525,
+   "defense_analyst": 0.004994325,
+   "injury_analyst": 0.008290695,
+   "offense_analyst": 0.0052276449999999995,
+   "special_teams_analyst": 0.009406109999999999,
+   "matchup_analyst": 0.011234230000000001,
+   "editor": 0.005904525
+  }
+ }
+}

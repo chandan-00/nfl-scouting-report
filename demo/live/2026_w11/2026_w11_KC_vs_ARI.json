@@ -1,0 +1,8841 @@
+{
+ "config": "full_st",
+ "repeat": 1,
+ "created_at": "2026-11-19T19:53:54+00:00",
+ "models": {
+  "planner": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "offense_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "defense_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "injury_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "matchup_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "medium"
+  },
+  "fact_checker": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "editor": {
+   "model": "claude-haiku-5-5",
+   "effort": "medium"
+  },
+  "single_agent": {
+   "model": "claude-haiku-5-5",
+   "effort": "medium"
+  }
+ },
+ "max_revision_loops": 2,
+ "request": {
+  "team": "KC",
+  "opponent": "ARI",
+  "season": 2026,
+  "week": 11,
+  "home": "KC",
+  "through_week": 10
+ },
+ "plan": {
+  "offense_focus": [
+   "Does ARI pass or run more on early downs and in neutral situations, and how does that shift on third and long?",
+   "What is ARI's pass rate over expected and EPA per play, and do they win through the air or on the ground against KC?",
+   "How often does ARI generate explosive plays and at what depth of target do they connect?",
+   "Which run directions does ARI favor, and how do they use play action, motion, screens, or RPOs to set up the KC defense?",
+   "How efficient is ARI in the red zone and on third down compared with the league average?"
+  ],
+  "defense_focus": [
+   "How often does ARI's defense blitz, and does that rate change on passing downs?",
+   "What is ARI's pressure proxy (sacks plus QB hits) and how does it rank in the league?",
+   "Where does ARI allow explosive plays and EPA by depth of target, and which KC receivers or routes can exploit that?",
+   "How do opponents' run direction and box count tendencies look against ARI, and does ARI stack the box against KC's run game?",
+   "How does ARI perform on third down and in the red zone defensively, and what does that suggest for KC's scoring chances?"
+  ],
+  "injury_focus": [
+   "Which ARI players are on the injury report or limited in practice, and how do their snap or target and rush shares change ARI's offensive distribution?",
+   "Which KC players are on the injury report or limited, and would their absence shift KC's target or rush share or snap distribution?",
+   "Is ARI's most-used pass rusher or key defensive starter hurt, and how would their absence change the pressure and blitz picture?",
+   "Is any KC offensive lineman or pass protector limited, and how does that affect the sack and pressure proxy against ARI's rush?"
+  ]
+ },
+ "draft": {
+  "defense_analyst": {
+   "role": "defense_analyst",
+   "prose": "ARI sends five or more rushers on 33.3% of dropbacks [dc1] over 318 plays [dc2], 12th-highest in the league [dc3], and averages 4.4 pass rushers per dropback [dc4]. Its pressure proxy (sacks plus QB hits) is 14.2% [dc5], 25th in the league [dc6], so the blitz is more a change of coverage look than a steady sack threat. Expect KC's protection to face one extra rusher often, but don't assume constant disruption. Opposing pass plays average 0.25 EPA [dc7] and 10.1% of them go for 20+ yards [dc8]. KC's offense produces 0.17 EPA per pass play [dc9] with an explosive rate of 8.9% [dc10] over 327 plays [dc11], so the matchup favors KC's efficiency but not its big-play rate. Against the run, ARI keeps 6.7 defenders in the box on average [dc12] and allows a 42.3% success rate on 286 run plays [dc13][dc14]. KC's run success rate is 45.9% over 220 plays [dc15][dc16]. ARI is not stacking the box heavily, so the run game has room to work. On third down ARI allows conversions on 42.9% of attempts [dc17] over 119 plays [dc18], a middling figure. In the red zone it has allowed touchdowns on 69.4% of drives [dc19] over only 36 drives [dc20], a small sample that still suggests KC's finishing drives are likely to score if they reach the 20.",
+   "claims": [
+    {
+     "claim_id": "dc1",
+     "text": "ARI defense: share of dropbacks faced with 5+ pass rushers (blitz rate), all pass plays",
+     "stated_value": 33.3,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc2",
+     "text": "ARI defense blitz rate sample size: dropbacks charted",
+     "stated_value": 318.0,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc3",
+     "text": "ARI blitz rate ranks 12th in the league (rank 1 = highest)",
+     "stated_value": 12.0,
+     "tool_call_id": "d18",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc4",
+     "text": "ARI defense: mean pass rushers per dropback faced",
+     "stated_value": 4.4,
+     "tool_call_id": "d9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc5",
+     "text": "ARI defense pressure proxy: share of dropbacks with a sack or QB hit",
+     "stated_value": 14.2,
+     "tool_call_id": "d2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc6",
+     "text": "ARI pressure proxy ranks 25th in the league (rank 1 = highest)",
+     "stated_value": 25.0,
+     "tool_call_id": "d3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc7",
+     "text": "ARI defense: EPA per pass play allowed",
+     "stated_value": 0.25,
+     "tool_call_id": "d5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc8",
+     "text": "ARI defense: share of pass plays allowed gaining 20+ yards",
+     "stated_value": 10.1,
+     "tool_call_id": "d4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc9",
+     "text": "KC offense: EPA per pass play",
+     "stated_value": 0.17,
+     "tool_call_id": "d15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc10",
+     "text": "KC offense: share of pass plays gaining 20+ yards",
+     "stated_value": 8.9,
+     "tool_call_id": "d16",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc11",
+     "text": "KC offense pass play sample size",
+     "stated_value": 327.0,
+     "tool_call_id": "d15",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc12",
+     "text": "ARI defense: mean defenders in the box on run plays",
+     "stated_value": 6.7,
+     "tool_call_id": "d6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc13",
+     "text": "ARI defense: share of run plays allowed with positive EPA (success rate)",
+     "stated_value": 42.3,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc14",
+     "text": "ARI defense run play sample size",
+     "stated_value": 286.0,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc15",
+     "text": "KC offense: share of run plays with positive EPA (success rate)",
+     "stated_value": 45.9,
+     "tool_call_id": "d17",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc16",
+     "text": "KC offense run play sample size",
+     "stated_value": 220.0,
+     "tool_call_id": "d17",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc17",
+     "text": "ARI defense: share of third-down plays converted by opponents",
+     "stated_value": 42.9,
+     "tool_call_id": "d7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc18",
+     "text": "ARI defense third-down sample size",
+     "stated_value": 119.0,
+     "tool_call_id": "d7",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc19",
+     "text": "ARI defense: share of red-zone drives ending in a touchdown",
+     "stated_value": 69.4,
+     "tool_call_id": "d8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc20",
+     "text": "ARI defense red-zone drive sample size",
+     "stated_value": 36.0,
+     "tool_call_id": "d8",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    }
+   ],
+   "unsourced": []
+  },
+  "injury_analyst": {
+   "role": "injury_analyst",
+   "prose": "ARI's latest report, from week 10, lists C Hjalte Froholdt (concussion) as Out [ic1], G Jon Gaines II (ankle) as Out [ic2] and DT Zachary Carter (knee) as Out [ic3]. TE Hunter Long is Questionable [ic4], but he takes only 1.1% of targets over 360 plays [ic5][ic6], so the interior line losses matter more than his absence. KC's latest report lists T Jaylon Moore (ankle) as Out [ic7]; he has averaged 87.3% of snaps per game over 7 games [ic8][ic9], so expect KC's tackle depth to be tested against ARI's rush. RB Kenneth Walker III is Questionable [ic10]. He carries 72.3% of KC's rushes over 220 plays [ic11][ic12]. If he sits, the backup Jaydn Ott has just 1.4% of rushes [ic13], so KC's ground game would drop off sharply. The sample is small for the depth picture, and the pass rusher question is unresolved because no snap data was recorded for Carter.",
+   "claims": [
+    {
+     "claim_id": "ic1",
+     "text": "ARI injury report, latest: C Hjalte Froholdt (concussion) status",
+     "stated_value": "Out",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic2",
+     "text": "ARI injury report, latest: G Jon Gaines II (ankle) status",
+     "stated_value": "Out",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic3",
+     "text": "ARI injury report, latest: DT Zachary Carter (knee) status",
+     "stated_value": "Out",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic4",
+     "text": "ARI injury report, latest: TE Hunter Long (knee) status",
+     "stated_value": "Questionable",
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic5",
+     "text": "ARI Hunter Long share of team targets, weeks 1-10",
+     "stated_value": 1.1,
+     "tool_call_id": "i5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic6",
+     "text": "ARI team targets, weeks 1-10 (sample size for Long target share)",
+     "stated_value": 360.0,
+     "tool_call_id": "i5",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic7",
+     "text": "KC injury report, latest: T Jaylon Moore (ankle) status",
+     "stated_value": "Out",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic8",
+     "text": "KC Jaylon Moore average snap share per game, weeks 1-10",
+     "stated_value": 87.3,
+     "tool_call_id": "i7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic9",
+     "text": "KC games played by Jaylon Moore in snap sample",
+     "stated_value": 7.0,
+     "tool_call_id": "i7",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic10",
+     "text": "KC injury report, latest: RB Kenneth Walker III (groin) status",
+     "stated_value": "Questionable",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic11",
+     "text": "KC Kenneth Walker III share of team rushes, weeks 1-10",
+     "stated_value": 72.3,
+     "tool_call_id": "i3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic12",
+     "text": "KC team rushes, weeks 1-10 (sample size for Walker rush share)",
+     "stated_value": 220.0,
+     "tool_call_id": "i3",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic13",
+     "text": "KC Jaydn Ott share of team rushes, weeks 1-10",
+     "stated_value": 1.4,
+     "tool_call_id": "i4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "offense_analyst": {
+   "role": "offense_analyst",
+   "prose": "ARI leans on the pass early, dropping back on 59.0% of first and second down plays [oc1] over 476 plays [oc2], and on third and long they go almost exclusively to the air at 96.1% [oc3] over 51 plays [oc4], a small but clear tell. Relative to situation they are close to neutral, with a pass rate over expected of -0.6 [oc5] over 634 plays [oc6]. Offensive EPA is -0.05 per play [oc7] against a KC defense allowing -0.09 [oc8]. Explosives are scarce: 5.1% of plays [oc9] with an average target depth of 7.3 yards [oc10]. KC allows explosive pass plays on 7.4% of attempts [oc11], so expect ARI to try to create chunk plays through motion and play action rather than deep shots. Designed runs go middle 41.5% [oc12] and left 33.9% [oc13], so KC's interior run fits matter most. Play action is used on 16.8% of dropbacks [oc14] and motion on 59.3% of plays [oc15], which is the main way they try to change the picture before the snap. Third down conversion is 36.6% [oc16], 21st in the league [oc17]. Red zone TD rate is 44.1% [oc18] over 34 drives [oc19], 31st in the league [oc20]. Game plan: make KC's early-down run fits and third-and-long pass rush the focus, and keep the defense ready for motion-based play action.",
+   "claims": [
+    {
+     "claim_id": "oc1",
+     "text": "ARI offense pass rate on early downs (1st and 2nd), percent of plays that are dropbacks",
+     "stated_value": 59.0,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc2",
+     "text": "ARI early-down plays in the pass rate sample",
+     "stated_value": 476.0,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc3",
+     "text": "ARI offense pass rate on 3rd down with long distance (8+ yards), percent of plays that are dropbacks",
+     "stated_value": 96.1,
+     "tool_call_id": "o2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc4",
+     "text": "ARI plays on 3rd and long in the pass rate sample",
+     "stated_value": 51.0,
+     "tool_call_id": "o2",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc5",
+     "text": "ARI offense pass rate over expected, all downs, percentage points",
+     "stated_value": -0.6,
+     "tool_call_id": "o3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc6",
+     "text": "ARI plays in the pass rate over expected sample",
+     "stated_value": 634.0,
+     "tool_call_id": "o3",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc7",
+     "text": "ARI offense EPA per play, all plays",
+     "stated_value": -0.05,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc8",
+     "text": "KC defense EPA per play allowed, all plays",
+     "stated_value": -0.09,
+     "tool_call_id": "o5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc9",
+     "text": "ARI offense explosive play rate on pass plays (20+ yards), percent",
+     "stated_value": 5.1,
+     "tool_call_id": "o6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc10",
+     "text": "ARI offense average depth of target, air yards per pass attempt",
+     "stated_value": 7.3,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc11",
+     "text": "KC defense explosive play rate allowed on pass plays (20+ yards), percent",
+     "stated_value": 7.4,
+     "tool_call_id": "o22",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc12",
+     "text": "ARI designed runs to the middle, percent of designed runs",
+     "stated_value": 41.5,
+     "tool_call_id": "o9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc13",
+     "text": "ARI designed runs to the left, percent of designed runs",
+     "stated_value": 33.9,
+     "tool_call_id": "o8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc14",
+     "text": "ARI play action rate, percent of dropbacks",
+     "stated_value": 16.8,
+     "tool_call_id": "o11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc15",
+     "text": "ARI pre-snap motion rate, percent of scrimmage plays",
+     "stated_value": 59.3,
+     "tool_call_id": "o12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc16",
+     "text": "ARI offense third down conversion rate, percent",
+     "stated_value": 36.6,
+     "tool_call_id": "o16",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc17",
+     "text": "ARI offense third down conversion rate league rank (1 is best)",
+     "stated_value": 21.0,
+     "tool_call_id": "o20",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc18",
+     "text": "ARI offense red zone TD rate on red zone drives, percent",
+     "stated_value": 44.1,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc19",
+     "text": "ARI red zone drives in the red zone TD rate sample",
+     "stated_value": 34.0,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc20",
+     "text": "ARI offense red zone TD rate league rank (1 is best)",
+     "stated_value": 31.0,
+     "tool_call_id": "o21",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "special_teams_analyst": {
+   "role": "special_teams_analyst",
+   "prose": "ARI has made 91.7% [kc1] of its field goals on 24 attempts [kc2], all by one kicker, C.Ryland, who has made 22 [kc3] of 24 [kc4] with a long make of 60 yards [kc5]. The long-range sample is thin: 33.3% [kc6] on 3 tries [kc7]. Plan for ARI to kick from deep in the 50s only when the game state demands it. Punting is solid but not elite, with a 39.2 [kc8] net average on 46 punts [kc9] and only 34.8% [kc10] landing inside the 20. Kickoffs produce touchbacks on 20.0% [kc11] of 45 kickoffs [kc12], so expect KC's returner to start near the 25 more often than not. Coverage has allowed 25.6 [kc15] yards per return on 34 [kc16] returns, and ARI's returners average 25.9 [kc13] on 43 [kc14]. ARI's special-teams EPA is -0.03 [kc17] per play over 272 plays [kc18], while KC sits at -0.13 [kc19] over 239 [kc20]. KC's own kicking is 63.2% [kc21] on 19 attempts [kc22]. Game plan: pin ARI deep with punts, and do not give ARI's kicker a 50-plus try unless the score forces it, since the rest of the kicking sample is strong but the long-range one is unproven.",
+   "claims": [
+    {
+     "claim_id": "kc1",
+     "text": "ARI field goal make rate, all distances, 2026 weeks 1-10",
+     "stated_value": 91.7,
+     "tool_call_id": "k1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc2",
+     "text": "ARI field goal attempts, all distances",
+     "stated_value": 24.0,
+     "tool_call_id": "k1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc3",
+     "text": "ARI field goals made by kicker C.Ryland",
+     "stated_value": 22.0,
+     "tool_call_id": "k3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc4",
+     "text": "ARI field goal attempts by kicker C.Ryland",
+     "stated_value": 24.0,
+     "tool_call_id": "k3",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc5",
+     "text": "ARI longest made field goal by C.Ryland (yards)",
+     "stated_value": 60.0,
+     "tool_call_id": "k3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc6",
+     "text": "ARI field goal make rate on 50-plus yard attempts",
+     "stated_value": 33.3,
+     "tool_call_id": "k2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc7",
+     "text": "ARI 50-plus yard field goal attempts",
+     "stated_value": 3.0,
+     "tool_call_id": "k2",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc8",
+     "text": "ARI punting net average (yards), offense punts",
+     "stated_value": 39.2,
+     "tool_call_id": "k4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc9",
+     "text": "ARI punts counted in net average",
+     "stated_value": 46.0,
+     "tool_call_id": "k4",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc10",
+     "text": "ARI punt inside-the-20 rate",
+     "stated_value": 34.8,
+     "tool_call_id": "k5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc11",
+     "text": "ARI kickoff touchback rate",
+     "stated_value": 20.0,
+     "tool_call_id": "k6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc12",
+     "text": "ARI kickoffs counted in touchback rate",
+     "stated_value": 45.0,
+     "tool_call_id": "k6",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc13",
+     "text": "ARI kick return average by its returners (yards)",
+     "stated_value": 25.9,
+     "tool_call_id": "k7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc14",
+     "text": "ARI kick returns by its returners",
+     "stated_value": 43.0,
+     "tool_call_id": "k7",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc15",
+     "text": "Kick return average allowed by ARI coverage (yards)",
+     "stated_value": 25.6,
+     "tool_call_id": "k8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc16",
+     "text": "Kick returns allowed by ARI coverage",
+     "stated_value": 34.0,
+     "tool_call_id": "k8",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc17",
+     "text": "ARI special-teams EPA per play",
+     "stated_value": -0.03,
+     "tool_call_id": "k9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc18",
+     "text": "ARI special-teams plays counted in EPA",
+     "stated_value": 272.0,
+     "tool_call_id": "k9",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc19",
+     "text": "KC special-teams EPA per play",
+     "stated_value": -0.13,
+     "tool_call_id": "k10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc20",
+     "text": "KC special-teams plays counted in EPA",
+     "stated_value": 239.0,
+     "tool_call_id": "k10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc21",
+     "text": "KC field goal make rate, all distances",
+     "stated_value": 63.2,
+     "tool_call_id": "k11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc22",
+     "text": "KC field goal attempts, all distances",
+     "stated_value": 19.0,
+     "tool_call_id": "k11",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    }
+   ],
+   "unsourced": []
+  },
+  "matchup_analyst": {
+   "role": "matchup_analyst",
+   "prose": "Interior run fits and the third-and-long tell. ARI runs the middle on 41.5% of designed carries [mc1] and drops back on 96.1% of third-and-long plays [mc2] over 51 plays [mc3]. KC should load the A-gaps on early downs and rush hard on obvious passing downs. The tell is strong, but the sample is small, so keep the base fits sound. Protection without Jaylon Moore. Moore is listed Out [mc4] after averaging 87.3% of snaps per game [mc5]. ARI sends 5+ rushers on 33.3% of dropbacks [mc6] over 318 plays [mc7], so expect the backup tackle to see the blitz. Plan slide protection, quick throws, and a back or tight end keeping the edge. Motion and play action against a leaky pass defense. ARI moves before the snap on 59.3% of plays [mc8] and uses play action on 16.8% of dropbacks [mc9]. KC allows explosive pass plays on 7.4% of attempts [mc10], so safeties and linebackers must set their rules before the snap and not bite on play fakes. Walker and the box. Kenneth Walker III is Questionable [mc11] and carries 72.3% of KC's rushes [mc12]. ARI keeps 6.7 defenders in the box on runs [mc13] and allows a 42.3% success rate [mc14] over 286 plays [mc15]. If Walker sits, the run game falls to Ott, who has 1.4% of rushes [mc16], so build the early script around a pass.",
+   "claims": [
+    {
+     "claim_id": "mc1",
+     "text": "ARI offense share of designed runs going to the middle, all runs, weeks 1-10",
+     "stated_value": 41.5,
+     "tool_call_id": "o9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc2",
+     "text": "ARI offense pass rate on 3rd down with long distance (8+ yards), percent of plays that are dropbacks",
+     "stated_value": 96.1,
+     "tool_call_id": "o2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc3",
+     "text": "ARI plays on 3rd and long in the pass rate sample",
+     "stated_value": 51.0,
+     "tool_call_id": "o2",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc4",
+     "text": "KC injury report, latest: T Jaylon Moore (ankle) status",
+     "stated_value": "Out",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc5",
+     "text": "KC Jaylon Moore average snap share per game, weeks 1-10",
+     "stated_value": 87.3,
+     "tool_call_id": "i7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc6",
+     "text": "ARI defense share of dropbacks faced with 5+ pass rushers (blitz rate)",
+     "stated_value": 33.3,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc7",
+     "text": "ARI defense blitz rate sample size: dropbacks charted",
+     "stated_value": 318.0,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc8",
+     "text": "ARI offense pre-snap motion rate, percent of scrimmage plays",
+     "stated_value": 59.3,
+     "tool_call_id": "o12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc9",
+     "text": "ARI offense play action rate, percent of dropbacks",
+     "stated_value": 16.8,
+     "tool_call_id": "o11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc10",
+     "text": "KC defense explosive play rate allowed on pass plays (20+ yards), percent",
+     "stated_value": 7.4,
+     "tool_call_id": "o22",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc11",
+     "text": "KC injury report, latest: RB Kenneth Walker III (groin) status",
+     "stated_value": "Questionable",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc12",
+     "text": "KC Kenneth Walker III share of team rushes, weeks 1-10",
+     "stated_value": 72.3,
+     "tool_call_id": "i3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc13",
+     "text": "ARI defense mean defenders in the box on run plays",
+     "stated_value": 6.7,
+     "tool_call_id": "d6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc14",
+     "text": "ARI defense share of run plays allowed with positive EPA (success rate)",
+     "stated_value": 42.3,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc15",
+     "text": "ARI defense run play sample size",
+     "stated_value": 286.0,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc16",
+     "text": "KC Jaydn Ott share of team rushes, weeks 1-10",
+     "stated_value": 1.4,
+     "tool_call_id": "i4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  }
+ },
+ "sections": {
+  "defense_analyst": {
+   "role": "defense_analyst",
+   "prose": "ARI sends five or more rushers on 33.3% of dropbacks [dc1] over 318 plays [dc2], and averages 4.4 pass rushers per dropback [dc3]. Its pressure proxy (sacks plus QB hits) is 14.2% [dc4], 25th in the league [dc5], so the blitz works more as a change of coverage look than as a steady sack threat. Expect KC's protection to face one extra rusher often, but don't plan around constant disruption. Opposing pass plays average 0.25 EPA per play [dc6], and 10.1% of them are explosive [dc7]. KC's offense produces 0.17 EPA per pass play [dc8] with an explosive rate of 8.9% [dc9] over 327 plays [dc10], so KC's efficiency should hold, but its big-play rate is not a clear edge. Against the run, ARI keeps 6.7 defenders in the box [dc11] and allows a 42.3% success rate over 286 run plays [dc12][dc13]. KC's run success rate is 45.9% over 220 plays [dc14][dc15]. ARI is not stacking the box, so the run game has room to work. On third down ARI allows conversions on 42.9% of attempts [dc16] over 119 plays [dc17], a middling figure. In the red zone it has allowed touchdowns on 69.4% of drives [dc18] over 36 drives [dc19], a small sample that still suggests KC's finishing drives are likely to score once they get inside the red zone.",
+   "claims": [
+    {
+     "claim_id": "dc1",
+     "text": "ARI defense: share of dropbacks faced with 5+ pass rushers (blitz rate), all pass plays, weeks 1-10",
+     "stated_value": 33.3,
+     "tool_call_id": "d23",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc2",
+     "text": "ARI defense blitz rate sample size: dropbacks charted",
+     "stated_value": 318.0,
+     "tool_call_id": "d23",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc3",
+     "text": "ARI defense: mean pass rushers per dropback faced",
+     "stated_value": 4.4,
+     "tool_call_id": "d24",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc4",
+     "text": "ARI defense pressure proxy: share of dropbacks with a sack or QB hit",
+     "stated_value": 14.2,
+     "tool_call_id": "d25",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc5",
+     "text": "ARI pressure proxy rank in the league (rank 1 = highest)",
+     "stated_value": 25.0,
+     "tool_call_id": "d26",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc6",
+     "text": "ARI defense: EPA per pass play allowed",
+     "stated_value": 0.25,
+     "tool_call_id": "d28",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc7",
+     "text": "ARI defense: share of pass plays allowed gaining 20+ yards (explosive rate)",
+     "stated_value": 10.1,
+     "tool_call_id": "d27",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc8",
+     "text": "KC offense: EPA per pass play",
+     "stated_value": 0.17,
+     "tool_call_id": "d33",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc9",
+     "text": "KC offense: share of pass plays gaining 20+ yards (explosive rate)",
+     "stated_value": 8.9,
+     "tool_call_id": "d34",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc10",
+     "text": "KC offense pass play sample size",
+     "stated_value": 327.0,
+     "tool_call_id": "d33",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc11",
+     "text": "ARI defense: mean defenders in the box on run plays",
+     "stated_value": 6.7,
+     "tool_call_id": "d29",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc12",
+     "text": "ARI defense: share of run plays allowed with positive EPA (success rate)",
+     "stated_value": 42.3,
+     "tool_call_id": "d30",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc13",
+     "text": "ARI defense run play sample size",
+     "stated_value": 286.0,
+     "tool_call_id": "d30",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc14",
+     "text": "KC offense: share of run plays with positive EPA (success rate)",
+     "stated_value": 45.9,
+     "tool_call_id": "d35",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc15",
+     "text": "KC offense run play sample size",
+     "stated_value": 220.0,
+     "tool_call_id": "d35",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc16",
+     "text": "ARI defense: share of third-down plays converted by opponents",
+     "stated_value": 42.9,
+     "tool_call_id": "d31",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc17",
+     "text": "ARI defense third-down sample size",
+     "stated_value": 119.0,
+     "tool_call_id": "d31",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc18",
+     "text": "ARI defense: share of red-zone drives ending in a touchdown",
+     "stated_value": 69.4,
+     "tool_call_id": "d32",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc19",
+     "text": "ARI defense red-zone drive sample size",
+     "stated_value": 36.0,
+     "tool_call_id": "d32",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    }
+   ],
+   "unsourced": []
+  },
+  "injury_analyst": {
+   "role": "injury_analyst",
+   "prose": "ARI's week 10 report lists C Hjalte Froholdt (concussion) as Out [ic1], G Jon Gaines II (ankle) as Out [ic2] and DT Zachary Carter (knee) as Out [ic3]. Several other ARI players are Questionable, including TE Hunter Long [ic4]. KC's week 10 report lists T Jaylon Moore (ankle) as Out [ic5]. He has averaged 87.3% of snaps per game over 7 games [ic6][ic7], so expect KC's tackle depth to be tested against ARI's rush. RB Kenneth Walker III (groin) is Questionable [ic8] after not participating in practice. He carries 72.3% of KC's rushes over 220 plays [ic9][ic10], and backup Jaydn Ott has just 1.4% of rushes [ic11]. If Walker sits, KC's ground game falls to a backup-led attack, so the game plan should not assume the run game stays intact.",
+   "claims": [
+    {
+     "claim_id": "ic1",
+     "text": "ARI injury report, week 10: C Hjalte Froholdt (concussion) status",
+     "stated_value": "Out",
+     "tool_call_id": "i8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic2",
+     "text": "ARI injury report, week 10: G Jon Gaines II (ankle) status",
+     "stated_value": "Out",
+     "tool_call_id": "i8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic3",
+     "text": "ARI injury report, week 10: DT Zachary Carter (knee) status",
+     "stated_value": "Out",
+     "tool_call_id": "i8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic4",
+     "text": "ARI injury report, week 10: TE Hunter Long (knee) status",
+     "stated_value": "Questionable",
+     "tool_call_id": "i8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic5",
+     "text": "KC injury report, week 10: T Jaylon Moore (ankle) status",
+     "stated_value": "Out",
+     "tool_call_id": "i9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic6",
+     "text": "KC Jaylon Moore average snap share per game over the games sampled this season",
+     "stated_value": 87.3,
+     "tool_call_id": "i10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic7",
+     "text": "KC games in Jaylon Moore's snap share sample",
+     "stated_value": 7.0,
+     "tool_call_id": "i10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic8",
+     "text": "KC injury report, week 10: RB Kenneth Walker III (groin) status",
+     "stated_value": "Questionable",
+     "tool_call_id": "i9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic9",
+     "text": "KC Kenneth Walker III share of team rushes, weeks 1-10",
+     "stated_value": 72.3,
+     "tool_call_id": "i11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic10",
+     "text": "KC team rushes, weeks 1-10 (sample for Walker rush share)",
+     "stated_value": 220.0,
+     "tool_call_id": "i11",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic11",
+     "text": "KC Jaydn Ott share of team rushes, weeks 1-10",
+     "stated_value": 1.4,
+     "tool_call_id": "i11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "offense_analyst": {
+   "role": "offense_analyst",
+   "prose": "ARI leans on the pass on early downs, dropping back on 59.0% of first and second down plays [oc1] over 476 plays [oc2], and on third and long they go almost exclusively to the air at 96.1% [oc3] over 51 plays [oc4]. Relative to situation they are close to neutral, with a pass rate over expected of -0.6 [oc5] over 634 plays [oc6], so they are not forcing the air game. Offensive EPA is -0.05 per play [oc7] overall. Explosives are scarce: 5.1% of pass plays [oc8], with an average target depth of 7.3 yards [oc9]. KC allows explosive pass plays on 7.4% of attempts [oc10], so expect ARI to try to create chunk plays through motion and play action rather than deep shots. Designed runs go middle 41.5% [oc11] and left 33.9% [oc12], so KC's interior run fits matter most. Play action is used on 16.8% of dropbacks [oc13] and pre-snap motion on 59.3% of plays [oc14], the main way they change the picture before the snap. Third down conversion is 36.6% [oc15], 21st in the league [oc16]. Red zone TD rate is 44.1% [oc17] over 34 drives [oc18], 31st in the league [oc19]. Game plan: focus on KC's early-down run fits and third-and-long pass rush, and keep the defense ready for motion-based play action.",
+   "claims": [
+    {
+     "claim_id": "oc1",
+     "text": "ARI offense pass rate on early downs (1st and 2nd), percent of plays that are dropbacks",
+     "stated_value": 59.0,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc2",
+     "text": "ARI early-down plays in the pass rate sample",
+     "stated_value": 476.0,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc3",
+     "text": "ARI offense pass rate on 3rd down with long distance (8+ yards), percent of plays that are dropbacks",
+     "stated_value": 96.1,
+     "tool_call_id": "o2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc4",
+     "text": "ARI plays on 3rd and long in the pass rate sample",
+     "stated_value": 51.0,
+     "tool_call_id": "o2",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc5",
+     "text": "ARI offense pass rate over expected, all downs, percentage points",
+     "stated_value": -0.6,
+     "tool_call_id": "o3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc6",
+     "text": "ARI plays in the pass rate over expected sample",
+     "stated_value": 634.0,
+     "tool_call_id": "o3",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc7",
+     "text": "ARI offense EPA per play, all plays",
+     "stated_value": -0.05,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc8",
+     "text": "ARI offense explosive play rate on pass plays (20+ yards), percent",
+     "stated_value": 5.1,
+     "tool_call_id": "o6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc9",
+     "text": "ARI offense average depth of target, air yards per pass attempt",
+     "stated_value": 7.3,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc10",
+     "text": "KC defense explosive play rate allowed on pass plays (20+ yards), percent",
+     "stated_value": 7.4,
+     "tool_call_id": "o22",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc11",
+     "text": "ARI designed runs to the middle, percent of designed runs",
+     "stated_value": 41.5,
+     "tool_call_id": "o9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc12",
+     "text": "ARI designed runs to the left, percent of designed runs",
+     "stated_value": 33.9,
+     "tool_call_id": "o8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc13",
+     "text": "ARI play action rate, percent of dropbacks",
+     "stated_value": 16.8,
+     "tool_call_id": "o11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc14",
+     "text": "ARI pre-snap motion rate, percent of scrimmage plays",
+     "stated_value": 59.3,
+     "tool_call_id": "o12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc15",
+     "text": "ARI offense third down conversion rate, percent",
+     "stated_value": 36.6,
+     "tool_call_id": "o16",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc16",
+     "text": "ARI offense third down conversion rate league rank (1 is best)",
+     "stated_value": 21.0,
+     "tool_call_id": "o20",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc17",
+     "text": "ARI offense red zone TD rate on red zone drives, percent",
+     "stated_value": 44.1,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc18",
+     "text": "ARI red zone drives in the red zone TD rate sample",
+     "stated_value": 34.0,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc19",
+     "text": "ARI offense red zone TD rate league rank (1 is best)",
+     "stated_value": 31.0,
+     "tool_call_id": "o21",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "special_teams_analyst": {
+   "role": "special_teams_analyst",
+   "prose": "ARI's kicker C.Ryland has made 22 [kc1] of 24 [kc2] field goals, a 91.7% [kc3] make rate, but his only 3 [kc4] tries from 50-plus yards went in at 33.3% [kc5], so force ARI into long attempts late in games rather than treating them as automatic. Punting is ordinary: a 39.2-yard net [kc6] on 46 [kc7] punts, with an inside-the-20 rate of 34.8% [kc8]. Kickoffs produce touchbacks on just 20.0% [kc9] of 45 [kc10] kicks, so expect KC to start with returners running it out. ARI's coverage allows 25.6 yards [kc11] on 34 [kc12] kick returns, while its returners average 25.9 yards [kc13] on 43 [kc14], so kickoff return is a real field-position lever for KC. ARI's special-teams EPA is -0.03 [kc15] per play over 272 [kc16] plays, 24th [kc17] in the league, against KC's -0.13 [kc18] over 239 [kc19] plays. Game plan: press the kickoff return game against ARI's coverage, and when KC kicks, keep the ball away from ARI's returners where the return is likely to hurt.",
+   "claims": [
+    {
+     "claim_id": "kc1",
+     "text": "ARI field goals made by kicker C.Ryland, weeks 1-10",
+     "stated_value": 22.0,
+     "tool_call_id": "k24",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc2",
+     "text": "ARI field goal attempts by kicker C.Ryland, all distances, weeks 1-10",
+     "stated_value": 24.0,
+     "tool_call_id": "k24",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc3",
+     "text": "ARI field goal make rate, all distances, offense, weeks 1-10",
+     "stated_value": 91.7,
+     "tool_call_id": "k25",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc4",
+     "text": "ARI 50-plus yard field goal attempts",
+     "stated_value": 3.0,
+     "tool_call_id": "k26",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc5",
+     "text": "ARI field goal make rate on 50-plus yard attempts",
+     "stated_value": 33.3,
+     "tool_call_id": "k26",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc6",
+     "text": "ARI punting net average (yards), offense punts",
+     "stated_value": 39.2,
+     "tool_call_id": "k27",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc7",
+     "text": "ARI punts counted in net average",
+     "stated_value": 46.0,
+     "tool_call_id": "k27",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc8",
+     "text": "ARI punt inside-the-20 rate, percent of punts",
+     "stated_value": 34.8,
+     "tool_call_id": "k28",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc9",
+     "text": "ARI kickoff touchback rate, percent of kickoffs",
+     "stated_value": 20.0,
+     "tool_call_id": "k29",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc10",
+     "text": "ARI kickoffs counted in touchback rate",
+     "stated_value": 45.0,
+     "tool_call_id": "k29",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc11",
+     "text": "Kick return average allowed by ARI kickoff coverage (yards)",
+     "stated_value": 25.6,
+     "tool_call_id": "k30",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc12",
+     "text": "Kick returns allowed by ARI kickoff coverage",
+     "stated_value": 34.0,
+     "tool_call_id": "k30",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc13",
+     "text": "ARI kick return average by its returners (yards)",
+     "stated_value": 25.9,
+     "tool_call_id": "k31",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc14",
+     "text": "ARI kick returns by its returners",
+     "stated_value": 43.0,
+     "tool_call_id": "k31",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc15",
+     "text": "ARI special-teams EPA per play, offense and defense",
+     "stated_value": -0.03,
+     "tool_call_id": "k32",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc16",
+     "text": "ARI special-teams plays counted in EPA",
+     "stated_value": 272.0,
+     "tool_call_id": "k32",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc17",
+     "text": "ARI rank among teams on special-teams EPA per play (1 is best)",
+     "stated_value": 24.0,
+     "tool_call_id": "k34",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc18",
+     "text": "KC special-teams EPA per play",
+     "stated_value": -0.13,
+     "tool_call_id": "k33",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc19",
+     "text": "KC special-teams plays counted in EPA",
+     "stated_value": 239.0,
+     "tool_call_id": "k33",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    }
+   ],
+   "unsourced": []
+  },
+  "matchup_analyst": {
+   "role": "matchup_analyst",
+   "prose": "Matchup one: ARI's third-and-long tell against KC's pass rush. ARI drops back on 96.1% of third-and-long plays [mc1] over 51 plays [mc2], so KC should load the A-gaps on early downs and rush hard on obvious passing downs. The sample is small, so keep base run fits sound. Matchup two: KC's interior run game against ARI's light box. ARI keeps 6.7 defenders in the box on runs [mc3] and allows a 42.3% success rate [mc4] over 286 run plays [mc5]. Kenneth Walker III is Questionable [mc6] and carries 72.3% of KC's rushes [mc7] over 220 plays [mc8]. If he sits, the script must lean on the pass. Matchup three: protection without Jaylon Moore against ARI's blitz. Moore is Out [mc9] after averaging 87.3% of snaps per game [mc10] across 7 games [mc11]. ARI sends five or more rushers on 33.3% of dropbacks [mc12] over 318 plays [mc13]. Plan slide protection, quick throws, and a back or tight end keeping the edge. Matchup four: ARI's motion and play action against KC's explosive pass defense. ARI moves before the snap on 59.3% of plays [mc14] and uses play action on 16.8% of dropbacks [mc15], while KC allows explosive pass plays on 7.4% of attempts [mc16]. Safeties and linebackers must set rules before the snap and not bite on fakes.",
+   "claims": [
+    {
+     "claim_id": "mc1",
+     "text": "ARI offense pass rate on 3rd down with long distance (8+ yards), percent of plays that are dropbacks",
+     "stated_value": 96.1,
+     "tool_call_id": "o2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc2",
+     "text": "ARI plays on 3rd and long in the pass rate sample",
+     "stated_value": 51.0,
+     "tool_call_id": "o2",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc3",
+     "text": "ARI defense mean defenders in the box on run plays",
+     "stated_value": 6.7,
+     "tool_call_id": "d29",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc4",
+     "text": "ARI defense share of run plays allowed with positive EPA (success rate)",
+     "stated_value": 42.3,
+     "tool_call_id": "d30",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc5",
+     "text": "ARI defense run play sample size",
+     "stated_value": 286.0,
+     "tool_call_id": "d30",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc6",
+     "text": "KC injury report, week 10: RB Kenneth Walker III (groin) status",
+     "stated_value": "Questionable",
+     "tool_call_id": "i9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc7",
+     "text": "KC Kenneth Walker III share of team rushes, weeks 1-10",
+     "stated_value": 72.3,
+     "tool_call_id": "i11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc8",
+     "text": "KC team rushes, weeks 1-10 (sample for Walker rush share)",
+     "stated_value": 220.0,
+     "tool_call_id": "i11",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc9",
+     "text": "KC injury report, week 10: T Jaylon Moore (ankle) status",
+     "stated_value": "Out",
+     "tool_call_id": "i9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc10",
+     "text": "KC Jaylon Moore average snap share per game over the games sampled this season",
+     "stated_value": 87.3,
+     "tool_call_id": "i10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc12",
+     "text": "ARI defense share of dropbacks faced with 5+ pass rushers (blitz rate), all pass plays",
+     "stated_value": 33.3,
+     "tool_call_id": "d23",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc13",
+     "text": "ARI defense blitz rate sample size: dropbacks charted",
+     "stated_value": 318.0,
+     "tool_call_id": "d23",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc14",
+     "text": "ARI offense pre-snap motion rate, percent of scrimmage plays",
+     "stated_value": 59.3,
+     "tool_call_id": "o12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc15",
+     "text": "ARI offense play action rate, percent of dropbacks",
+     "stated_value": 16.8,
+     "tool_call_id": "o11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc16",
+     "text": "KC defense explosive play rate allowed on pass plays (20+ yards), percent",
+     "stated_value": 7.4,
+     "tool_call_id": "o22",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  }
+ },
+ "checks": [
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc16",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc16",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc17",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc17",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc18",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc18",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc19",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc19",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc16",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc16",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc17",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc17",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc18",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc18",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc19",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc19",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc16",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc16",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc17",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc17",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc18",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc18",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc19",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc19",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": null,
+   "check": "prose",
+   "ok": false,
+   "detail": "'20' in the prose: unlinked"
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc11",
+   "check": "value",
+   "ok": false,
+   "detail": "i10 snap_share gives 87.286 (n_plays 7); stated 7.0"
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc16",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc16",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  }
+ ],
+ "check_log": [
+  {
+   "round": 1,
+   "role": "defense_analyst",
+   "claim_id": null,
+   "check": "prose",
+   "detail": "'20' in the prose: unlinked",
+   "text": null,
+   "stated_value": null
+  },
+  {
+   "round": 1,
+   "role": "injury_analyst",
+   "claim_id": "ic8",
+   "check": "wording",
+   "detail": "the text says weeks through 10, the data runs through week 9",
+   "text": "KC Jaylon Moore average snap share per game, weeks 1-10",
+   "stated_value": 87.3
+  },
+  {
+   "round": 1,
+   "role": "offense_analyst",
+   "claim_id": "oc8",
+   "check": "value",
+   "detail": "o5 epa_per_play gives -0.085 (n_plays 566); stated -0.09",
+   "text": "KC defense EPA per play allowed, all plays",
+   "stated_value": -0.09
+  },
+  {
+   "round": 1,
+   "role": "special_teams_analyst",
+   "claim_id": null,
+   "check": "prose",
+   "detail": "'50' in the prose: unlinked",
+   "text": null,
+   "stated_value": null
+  },
+  {
+   "round": 1,
+   "role": "special_teams_analyst",
+   "claim_id": null,
+   "check": "prose",
+   "detail": "'20' in the prose: unlinked",
+   "text": null,
+   "stated_value": null
+  },
+  {
+   "round": 1,
+   "role": "special_teams_analyst",
+   "claim_id": null,
+   "check": "prose",
+   "detail": "'25' in the prose: unlinked",
+   "text": null,
+   "stated_value": null
+  },
+  {
+   "round": 1,
+   "role": "matchup_analyst",
+   "claim_id": "mc5",
+   "check": "wording",
+   "detail": "the text says weeks through 10, the data runs through week 9",
+   "text": "KC Jaylon Moore average snap share per game, weeks 1-10",
+   "stated_value": 87.3
+  },
+  {
+   "round": 2,
+   "role": "special_teams_analyst",
+   "claim_id": "kc10",
+   "check": "value",
+   "detail": "k17 punting gives 34.783 (n_plays 46); stated 20.0",
+   "text": "Threshold for ARI punt inside-the-20 rate: opponent's 20-yard line",
+   "stated_value": 20.0
+  },
+  {
+   "round": 2,
+   "role": "matchup_analyst",
+   "claim_id": "mc11",
+   "check": "wording",
+   "detail": "the text says weeks through 10, the data runs through week 9",
+   "text": "KC Jaylon Moore average snap share per game, weeks 1-10",
+   "stated_value": 87.3
+  },
+  {
+   "round": 3,
+   "role": "special_teams_analyst",
+   "claim_id": null,
+   "check": "prose",
+   "detail": "'20' in the prose: unlinked",
+   "text": null,
+   "stated_value": null
+  },
+  {
+   "round": 3,
+   "role": "matchup_analyst",
+   "claim_id": "mc11",
+   "check": "value",
+   "detail": "i10 snap_share gives 87.286 (n_plays 7); stated 7.0",
+   "text": "KC games in Jaylon Moore's snap share sample",
+   "stated_value": 7.0
+  }
+ ],
+ "checks_run": 3,
+ "dropped": [
+  {
+   "round": 3,
+   "role": "special_teams_analyst",
+   "claim_id": null,
+   "check": "prose",
+   "detail": "'20' in the prose: unlinked",
+   "text": null,
+   "stated_value": null
+  },
+  {
+   "round": 3,
+   "role": "matchup_analyst",
+   "claim_id": "mc11",
+   "check": "value",
+   "detail": "i10 snap_share gives 87.286 (n_plays 7); stated 7.0",
+   "text": "KC games in Jaylon Moore's snap share sample",
+   "stated_value": 7.0
+  }
+ ],
+ "report": {
+  "title": "ARI at KC: Week 11 Scouting Report",
+  "summary": "ARI's pass-heavy early downs and motion-based play action are the main threats to KC's defense. KC's efficiency should hold against a light ARI box, while special teams and kickoff returns give KC a field-position edge. The biggest availability concern is the run game, which depends on Kenneth Walker III, and protection without Jaylon Moore against the blitz.",
+  "sections": [
+   {
+    "heading": "Opponent offense",
+    "body": "ARI leans on the pass on early downs, dropping back on 59.0% [oc1] of 476 [oc2] early-down plays, and on third-and-long it goes almost exclusively to the air at 96.1% [oc3] over 51 [oc4] plays. Relative to situation they are close to neutral, with a pass rate over expected of -0.6 [oc5] across 634 [oc6] plays, so they are not forcing the air game. Explosives are scarce at 5.1% [oc8] of pass plays, but KC allows explosive pass plays on 7.4% [oc10] of attempts, so expect chunk plays to come through motion and play action. Designed runs go middle 41.5% [oc11] and left 33.9% [oc12], so KC's interior run fits matter most. Pre-snap motion comes on 59.3% [oc14] of plays and play action on 16.8% [oc13] of dropbacks. Third-down conversion is 36.6% [oc15], 21st [oc16] in the league, and red zone TD rate is 44.1% [oc17] over 34 [oc18] drives, 31st [oc19] in the league."
+   },
+   {
+    "heading": "Opponent defense",
+    "body": "ARI sends five or more rushers on 33.3% [dc1] of 318 [dc2] dropbacks, but its pressure proxy of sacks plus QB hits is 14.2% [dc4], 25th [dc5] in the league, so the blitz works more as a change of look than a steady sack threat. Opposing pass plays average 0.25 EPA per play [dc6], while KC's offense produces 0.17 [dc8] on 327 [dc10] pass plays, so KC's efficiency should hold. Against the run, ARI keeps 6.7 [dc11] defenders in the box and allows a 42.3% [dc12] success rate over 286 [dc13] run plays, versus KC's 45.9% [dc14] over 220 [dc15]. ARI is not stacking the box. On third down it allows conversions on 42.9% [dc16] of 119 [dc17] plays, and in the red zone it has allowed touchdowns on 69.4% [dc18] of 36 [dc19] drives, a small sample that still suggests KC's finishing drives will score."
+   },
+   {
+    "heading": "Special teams",
+    "body": "ARI's kicker C.Ryland has made 22 [kc1] of 24 [kc2] field goals, a 91.7% [kc3] make rate, but his only 3 [kc4] long-range tries went in at 33.3% [kc5], so force long attempts late in games. Punting is ordinary, with a 39.2-yard net [kc6] on 46 [kc7] punts. Kickoffs produce touchbacks on just 20.0% [kc9] of 45 [kc10] kicks, so expect returners running it out. ARI's coverage allows 25.6 yards [kc11] on 34 [kc12] returns, while its own returners average 25.9 yards [kc13] on 43 [kc14], making kickoff return a real field-position lever. ARI's special-teams EPA is -0.03 per play [kc15] over 272 [kc16] plays, 24th [kc17] in the league, against KC's -0.13 [kc18] over 239 [kc19] plays. Press the kickoff return game, and when KC kicks, keep the ball away from ARI's returners."
+   },
+   {
+    "heading": "Injuries and availability",
+    "body": "ARI's latest report lists C Hjalte Froholdt (concussion) Out [ic1], G Jon Gaines II (ankle) Out [ic2] and DT Zachary Carter (knee) Out [ic3], with TE Hunter Long Questionable [ic4]. KC's report lists T Jaylon Moore (ankle) Out [ic5]. He has averaged 87.3% [ic6] of snaps per game over 7 [ic7] games, so KC's tackle depth will be tested against ARI's rush. RB Kenneth Walker III (groin) is Questionable [ic8] and carries 72.3% [ic9] of KC's 220 [ic10] team rushes, with backup Jaydn Ott at just 1.4% [ic11], so the game plan should not assume the run game stays intact."
+   },
+   {
+    "heading": "Key matchups",
+    "body": "Matchup one is ARI's third-and-long tell against KC's pass rush. ARI drops back on 96.1% [mc1] of third-and-long plays over 51 [mc2] plays, so KC can load the A-gaps on early downs and rush hard on obvious passing downs. Matchup two is KC's interior run game against ARI's light box. ARI keeps 6.7 [mc3] defenders in the box and allows a 42.3% [mc4] success rate over 286 [mc5] run plays, but Walker is Questionable [mc6] and carries 72.3% [mc7] of KC's rushes over 220 [mc8]. Matchup three is protection without Jaylon Moore, who is Out [mc9] after averaging 87.3% [mc10] of snaps, against a blitz that comes with five or more rushers on 33.3% [mc12] of 318 [mc13] dropbacks, so plan slide protection and quick throws. Matchup four is ARI's motion and play action against KC's pass defense. ARI moves before the snap on 59.3% [mc14] of plays and uses play action on 16.8% [mc15] of dropbacks, while KC allows explosive pass plays on 7.4% [mc16] of attempts, so safeties and linebackers must set rules before the snap."
+   }
+  ]
+ },
+ "number_checks": [
+  {
+   "mention": {
+    "text": "59.0%",
+    "value": 59.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 418,
+    "claim_id": "oc1",
+    "group": 4,
+    "group_ids": [
+     "oc1"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "476",
+    "value": 476.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 433,
+    "claim_id": "oc2",
+    "group": 6,
+    "group_ids": [
+     "oc2"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "96.1%",
+    "value": 96.1,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 524,
+    "claim_id": "oc3",
+    "group": 8,
+    "group_ids": [
+     "oc3"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "51",
+    "value": 51.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 541,
+    "claim_id": "oc4",
+    "group": 10,
+    "group_ids": [
+     "oc4"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "-0.6",
+    "value": -0.6,
+    "kind": "number",
+    "decimals": 1,
+    "start": 640,
+    "claim_id": "oc5",
+    "group": 13,
+    "group_ids": [
+     "oc5"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "634",
+    "value": 634.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 658,
+    "claim_id": "oc6",
+    "group": 15,
+    "group_ids": [
+     "oc6"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "5.1%",
+    "value": 5.1,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 738,
+    "claim_id": "oc8",
+    "group": 18,
+    "group_ids": [
+     "oc8"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "7.4%",
+    "value": 7.4,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 802,
+    "claim_id": "oc10",
+    "group": 20,
+    "group_ids": [
+     "oc10"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "41.5%",
+    "value": 41.5,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 913,
+    "claim_id": "oc11",
+    "group": 23,
+    "group_ids": [
+     "oc11"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "33.9%",
+    "value": 33.9,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 935,
+    "claim_id": "oc12",
+    "group": 25,
+    "group_ids": [
+     "oc12"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "59.3%",
+    "value": 59.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1013,
+    "claim_id": "oc14",
+    "group": 28,
+    "group_ids": [
+     "oc14"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "16.8%",
+    "value": 16.8,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1054,
+    "claim_id": "oc13",
+    "group": 30,
+    "group_ids": [
+     "oc13"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "36.6%",
+    "value": 36.6,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1106,
+    "claim_id": "oc15",
+    "group": 33,
+    "group_ids": [
+     "oc15"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "21st",
+    "value": 21.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 1120,
+    "claim_id": "oc16",
+    "group": 35,
+    "group_ids": [
+     "oc16"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "44.1%",
+    "value": 44.1,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1171,
+    "claim_id": "oc17",
+    "group": 37,
+    "group_ids": [
+     "oc17"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "34",
+    "value": 34.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1189,
+    "claim_id": "oc18",
+    "group": 39,
+    "group_ids": [
+     "oc18"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "31st",
+    "value": 31.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 1207,
+    "claim_id": "oc19",
+    "group": 41,
+    "group_ids": [
+     "oc19"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "33.3%",
+    "value": 33.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1269,
+    "claim_id": "dc1",
+    "group": 44,
+    "group_ids": [
+     "dc1"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "318",
+    "value": 318.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1284,
+    "claim_id": "dc2",
+    "group": 46,
+    "group_ids": [
+     "dc2"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "14.2%",
+    "value": 14.2,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1353,
+    "claim_id": "dc4",
+    "group": 48,
+    "group_ids": [
+     "dc4"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "25th",
+    "value": 25.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 1366,
+    "claim_id": "dc5",
+    "group": 50,
+    "group_ids": [
+     "dc5"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "0.25",
+    "value": 0.25,
+    "kind": "number",
+    "decimals": 2,
+    "start": 1491,
+    "claim_id": "dc6",
+    "group": 53,
+    "group_ids": [
+     "dc6"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "0.17",
+    "value": 0.17,
+    "kind": "number",
+    "decimals": 2,
+    "start": 1544,
+    "claim_id": "dc8",
+    "group": 55,
+    "group_ids": [
+     "dc8"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "327",
+    "value": 327.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1558,
+    "claim_id": "dc10",
+    "group": 57,
+    "group_ids": [
+     "dc10"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "6.7",
+    "value": 6.7,
+    "kind": "number",
+    "decimals": 1,
+    "start": 1640,
+    "claim_id": "dc11",
+    "group": 60,
+    "group_ids": [
+     "dc11"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "42.3%",
+    "value": 42.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1685,
+    "claim_id": "dc12",
+    "group": 62,
+    "group_ids": [
+     "dc12"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "286",
+    "value": 286.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1716,
+    "claim_id": "dc13",
+    "group": 64,
+    "group_ids": [
+     "dc13"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "45.9%",
+    "value": 45.9,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1750,
+    "claim_id": "dc14",
+    "group": 66,
+    "group_ids": [
+     "dc14"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "220",
+    "value": 220.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1768,
+    "claim_id": "dc15",
+    "group": 68,
+    "group_ids": [
+     "dc15"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "42.9%",
+    "value": 42.9,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1848,
+    "claim_id": "dc16",
+    "group": 72,
+    "group_ids": [
+     "dc16"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "119",
+    "value": 119.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1864,
+    "claim_id": "dc17",
+    "group": 74,
+    "group_ids": [
+     "dc17"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "69.4%",
+    "value": 69.4,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1931,
+    "claim_id": "dc18",
+    "group": 76,
+    "group_ids": [
+     "dc18"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "36",
+    "value": 36.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1947,
+    "claim_id": "dc19",
+    "group": 78,
+    "group_ids": [
+     "dc19"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "22",
+    "value": 22.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2066,
+    "claim_id": "kc1",
+    "group": 81,
+    "group_ids": [
+     "kc1"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "24",
+    "value": 24.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2078,
+    "claim_id": "kc2",
+    "group": 83,
+    "group_ids": [
+     "kc2"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "91.7%",
+    "value": 91.7,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2102,
+    "claim_id": "kc3",
+    "group": 85,
+    "group_ids": [
+     "kc3"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "3",
+    "value": 3.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2138,
+    "claim_id": "kc4",
+    "group": 87,
+    "group_ids": [
+     "kc4"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "33.3%",
+    "value": 33.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2174,
+    "claim_id": "kc5",
+    "group": 89,
+    "group_ids": [
+     "kc5"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "39.2",
+    "value": 39.2,
+    "kind": "number",
+    "decimals": 1,
+    "start": 2253,
+    "claim_id": "kc6",
+    "group": 92,
+    "group_ids": [
+     "kc6"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "46",
+    "value": 46.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2276,
+    "claim_id": "kc7",
+    "group": 94,
+    "group_ids": [
+     "kc7"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "20.0%",
+    "value": 20.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2328,
+    "claim_id": "kc9",
+    "group": 97,
+    "group_ids": [
+     "kc9"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "45",
+    "value": 45.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2343,
+    "claim_id": "kc10",
+    "group": 99,
+    "group_ids": [
+     "kc10"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "25.6",
+    "value": 25.6,
+    "kind": "number",
+    "decimals": 1,
+    "start": 2418,
+    "claim_id": "kc11",
+    "group": 102,
+    "group_ids": [
+     "kc11"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "34",
+    "value": 34.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2439,
+    "claim_id": "kc12",
+    "group": 104,
+    "group_ids": [
+     "kc12"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "25.9",
+    "value": 25.9,
+    "kind": "number",
+    "decimals": 1,
+    "start": 2490,
+    "claim_id": "kc13",
+    "group": 106,
+    "group_ids": [
+     "kc13"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "43",
+    "value": 43.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2511,
+    "claim_id": "kc14",
+    "group": 108,
+    "group_ids": [
+     "kc14"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "-0.03",
+    "value": -0.03,
+    "kind": "number",
+    "decimals": 2,
+    "start": 2600,
+    "claim_id": "kc15",
+    "group": 111,
+    "group_ids": [
+     "kc15"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "272",
+    "value": 272.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2627,
+    "claim_id": "kc16",
+    "group": 113,
+    "group_ids": [
+     "kc16"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "24th",
+    "value": 24.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 2645,
+    "claim_id": "kc17",
+    "group": 115,
+    "group_ids": [
+     "kc17"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "-0.13",
+    "value": -0.13,
+    "kind": "number",
+    "decimals": 2,
+    "start": 2685,
+    "claim_id": "kc18",
+    "group": 117,
+    "group_ids": [
+     "kc18"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "239",
+    "value": 239.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2703,
+    "claim_id": "kc19",
+    "group": 119,
+    "group_ids": [
+     "kc19"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "87.3%",
+    "value": 87.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3063,
+    "claim_id": "ic6",
+    "group": 130,
+    "group_ids": [
+     "ic6"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "7",
+    "value": 7.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 3098,
+    "claim_id": "ic7",
+    "group": 132,
+    "group_ids": [
+     "ic7"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "72.3%",
+    "value": 72.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3233,
+    "claim_id": "ic9",
+    "group": 136,
+    "group_ids": [
+     "ic9"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "220",
+    "value": 220.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 3253,
+    "claim_id": "ic10",
+    "group": 138,
+    "group_ids": [
+     "ic10"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "1.4%",
+    "value": 1.4,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3307,
+    "claim_id": "ic11",
+    "group": 140,
+    "group_ids": [
+     "ic11"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "96.1%",
+    "value": 96.1,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3466,
+    "claim_id": "mc1",
+    "group": 144,
+    "group_ids": [
+     "mc1"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "51",
+    "value": 51.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 3507,
+    "claim_id": "mc2",
+    "group": 146,
+    "group_ids": [
+     "mc2"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "6.7",
+    "value": 6.7,
+    "kind": "number",
+    "decimals": 1,
+    "start": 3677,
+    "claim_id": "mc3",
+    "group": 150,
+    "group_ids": [
+     "mc3"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "42.3%",
+    "value": 42.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3721,
+    "claim_id": "mc4",
+    "group": 152,
+    "group_ids": [
+     "mc4"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "286",
+    "value": 286.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 3751,
+    "claim_id": "mc5",
+    "group": 154,
+    "group_ids": [
+     "mc5"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "72.3%",
+    "value": 72.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3817,
+    "claim_id": "mc7",
+    "group": 157,
+    "group_ids": [
+     "mc7"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "220",
+    "value": 220.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 3849,
+    "claim_id": "mc8",
+    "group": 159,
+    "group_ids": [
+     "mc8"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "87.3%",
+    "value": 87.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3943,
+    "claim_id": "mc10",
+    "group": 163,
+    "group_ids": [
+     "mc10"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "33.3%",
+    "value": 33.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 4022,
+    "claim_id": "mc12",
+    "group": 165,
+    "group_ids": [
+     "mc12"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "318",
+    "value": 318.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 4038,
+    "claim_id": "mc13",
+    "group": 167,
+    "group_ids": [
+     "mc13"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "59.3%",
+    "value": 59.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 4204,
+    "claim_id": "mc14",
+    "group": 171,
+    "group_ids": [
+     "mc14"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "16.8%",
+    "value": 16.8,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 4250,
+    "claim_id": "mc15",
+    "group": 173,
+    "group_ids": [
+     "mc15"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "7.4%",
+    "value": 7.4,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 4317,
+    "claim_id": "mc16",
+    "group": 175,
+    "group_ids": [
+     "mc16"
+    ]
+   },
+   "status": "ok"
+  }
+ ],
+ "tool_calls": [
+  {
+   "call_id": "d1",
+   "node": "defense_analyst",
+   "tool": "blitz_rate",
+   "args": {
+    "team": "ARI",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 33.33333333333333,
+    "n_plays": 318,
+    "query_meta": {
+     "tool": "blitz_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks faced with 5+ pass rushers (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d2",
+   "node": "defense_analyst",
+   "tool": "pressure_proxy_rate",
+   "args": {
+    "team": "ARI",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 14.150943396226415,
+    "n_plays": 318,
+    "query_meta": {
+     "tool": "pressure_proxy_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Pressure proxy: percent of dropbacks with a sack or QB hit (defense). Not true pressure rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d3",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "pressure_proxy_rate",
+    "team": "ARI",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 25,
+    "n_plays": 318,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "pressure_proxy_rate",
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense"
+     },
+     "unit": "rank",
+     "metric": "pressure_proxy_rate",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (highest)",
+     "team_value": 14.150943396226415,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d4",
+   "node": "defense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "ARI",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 10.062893081761008,
+    "n_plays": 318,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d5",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "ARI",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 0.24924157857764473,
+    "n_plays": 318,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d6",
+   "node": "defense_analyst",
+   "tool": "average_box_defenders",
+   "args": {
+    "team": "ARI",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 6.695804195804196,
+    "n_plays": 286,
+    "query_meta": {
+     "tool": "average_box_defenders",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "play_kind": "run"
+     },
+     "unit": "defenders",
+     "definition": "Mean defenders in the box on run plays (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d7",
+   "node": "defense_analyst",
+   "tool": "third_down_conversion_rate",
+   "args": {
+    "team": "ARI",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 42.857142857142854,
+    "n_plays": 119,
+    "query_meta": {
+     "tool": "third_down_conversion_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of third-down plays converted, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d8",
+   "node": "defense_analyst",
+   "tool": "red_zone_td_rate",
+   "args": {
+    "team": "ARI",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 69.44444444444444,
+    "n_plays": 36,
+    "query_meta": {
+     "tool": "red_zone_td_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of red-zone drives ending in a TD, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d9",
+   "node": "defense_analyst",
+   "tool": "average_pass_rushers",
+   "args": {
+    "team": "ARI",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 4.383647798742138,
+    "n_plays": 318,
+    "query_meta": {
+     "tool": "average_pass_rushers",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "rushers",
+     "definition": "Mean pass rushers per dropback faced (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d10",
+   "node": "defense_analyst",
+   "tool": "success_rate",
+   "args": {
+    "team": "ARI",
+    "side": "defense",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 42.30769230769231,
+    "n_plays": 286,
+    "query_meta": {
+     "tool": "success_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense",
+      "play_kind": "run"
+     },
+     "unit": "percent",
+     "definition": "Percent of run plays with EPA > 0, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d11",
+   "node": "defense_analyst",
+   "tool": "average_box_defenders",
+   "args": {
+    "team": "ARI",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 6.40251572327044,
+    "n_plays": 318,
+    "query_meta": {
+     "tool": "average_box_defenders",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "play_kind": "pass"
+     },
+     "unit": "defenders",
+     "definition": "Mean defenders in the box on pass plays (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d12",
+   "node": "defense_analyst",
+   "tool": "average_box_defenders",
+   "args": {
+    "team": "KC",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 6.637209302325582,
+    "n_plays": 215,
+    "query_meta": {
+     "tool": "average_box_defenders",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 10,
+      "play_kind": "run"
+     },
+     "unit": "defenders",
+     "definition": "Mean defenders in the box on run plays (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d13",
+   "node": "defense_analyst",
+   "tool": "average_pass_rushers",
+   "args": {
+    "team": "KC",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 4.333333333333333,
+    "n_plays": 351,
+    "query_meta": {
+     "tool": "average_pass_rushers",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "rushers",
+     "definition": "Mean pass rushers per dropback faced (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d14",
+   "node": "defense_analyst",
+   "tool": "average_box_defenders",
+   "args": {
+    "team": "KC",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 6.637209302325582,
+    "n_plays": 215,
+    "query_meta": {
+     "tool": "average_box_defenders",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 10,
+      "play_kind": "run"
+     },
+     "unit": "defenders",
+     "definition": "Mean defenders in the box on run plays (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d15",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "KC",
+    "side": "offense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 0.16722605055649079,
+    "n_plays": 327,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 10,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d16",
+   "node": "defense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "KC",
+    "side": "offense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 8.868501529051988,
+    "n_plays": 327,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 10,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d17",
+   "node": "defense_analyst",
+   "tool": "success_rate",
+   "args": {
+    "team": "KC",
+    "side": "offense",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 45.909090909090914,
+    "n_plays": 220,
+    "query_meta": {
+     "tool": "success_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 10,
+      "side": "offense",
+      "play_kind": "run"
+     },
+     "unit": "percent",
+     "definition": "Percent of run plays with EPA > 0, by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d18",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "blitz_rate",
+    "team": "ARI",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 12,
+    "n_plays": 318,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "blitz_rate",
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "rank",
+     "metric": "blitz_rate",
+     "metric_args": {},
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "highest",
+     "team_value": 33.33333333333333,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d19",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "ARI",
+    "side": "defense",
+    "early_downs_only": false,
+    "direction": "left",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 31,
+    "n_plays": 604,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense",
+      "early_downs_only": false,
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction",
+      "early_downs_only"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": 0.09396545903486857,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d20",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "ARI",
+    "side": "defense",
+    "direction": "left",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 31,
+    "n_plays": 604,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense",
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": 0.09396545903486857,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d21",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "ARI",
+    "side": "defense",
+    "direction": "left",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 31,
+    "n_plays": 604,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense",
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": 0.09396545903486857,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d22",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "ARI",
+    "side": "defense",
+    "direction": "left",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 31,
+    "n_plays": 604,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense",
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": 0.09396545903486857,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i1",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "ARI",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Hjalte Froholdt",
+      "player_id": "00-0035258",
+      "position": "C",
+      "status": "Out",
+      "injury": "Concussion",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Jon Gaines II",
+      "player_id": "00-0038571",
+      "position": "G",
+      "status": "Out",
+      "injury": "Ankle",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Zachary Carter",
+      "player_id": "00-0037804",
+      "position": "DT",
+      "status": "Out",
+      "injury": "Knee",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Andrew Wingard",
+      "player_id": "00-0035378",
+      "position": "S",
+      "status": "Questionable",
+      "injury": "Groin",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Darius Robinson",
+      "player_id": "00-0039854",
+      "position": "DT",
+      "status": "Questionable",
+      "injury": "Wrist",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Hunter Long",
+      "player_id": "00-0037004",
+      "position": "TE",
+      "status": "Questionable",
+      "injury": "Knee",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Jayden Williams",
+      "player_id": "00-0041113",
+      "position": "T",
+      "status": "Questionable",
+      "injury": "Knee",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Max Melton",
+      "player_id": "00-0039807",
+      "position": "CB",
+      "status": "Questionable",
+      "injury": "Knee",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Roy Lopez",
+      "player_id": "00-0036568",
+      "position": "DT",
+      "status": "Questionable",
+      "injury": "Toe",
+      "practice_status": "Limited Participation in Practice"
+     }
+    ],
+    "n_plays": 9,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 10,
+     "weeks": [
+      10
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i2",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "KC",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Jaylon Moore",
+      "player_id": "00-0036557",
+      "position": "T",
+      "status": "Out",
+      "injury": "Ankle",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Omarr Norman-Lott",
+      "player_id": "00-0040748",
+      "position": "DT",
+      "status": "Out",
+      "injury": "Knee",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Peter Woods",
+      "player_id": "00-0041545",
+      "position": "DT",
+      "status": "Out",
+      "injury": "Neck",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Jaydn Ott",
+      "player_id": "00-0040959",
+      "position": "RB",
+      "status": "Questionable",
+      "injury": "Hamstring",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Kenneth Walker III",
+      "player_id": "00-0038134",
+      "position": "RB",
+      "status": "Questionable",
+      "injury": "Groin",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Mansoor Delane",
+      "player_id": "00-0041543",
+      "position": "CB",
+      "status": "Questionable",
+      "injury": "Shoulder",
+      "practice_status": "Full Participation in Practice"
+     }
+    ],
+    "n_plays": 6,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 10,
+     "weeks": [
+      10
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i3",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "KC",
+    "player": "Kenneth Walker III",
+    "kind": "rush",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 72.27272727272728,
+    "n_plays": 220,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 10,
+      "player": "Kenneth Walker III",
+      "kind": "rush"
+     },
+     "unit": "percent",
+     "definition": "K.Walker's percent of team rushs.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9,
+     "player": {
+      "id": "00-0038134",
+      "name": "K.Walker",
+      "count": 159
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i4",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "KC",
+    "player": "Jaydn Ott",
+    "kind": "rush",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 1.3636363636363635,
+    "n_plays": 220,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 10,
+      "player": "Jaydn Ott",
+      "kind": "rush"
+     },
+     "unit": "percent",
+     "definition": "J.Ott's percent of team rushs.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9,
+     "player": {
+      "id": "00-0040959",
+      "name": "J.Ott",
+      "count": 3
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i5",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "ARI",
+    "player": "Hunter Long",
+    "kind": "target",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 1.1111111111111112,
+    "n_plays": 360,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "player": "Hunter Long",
+      "kind": "target"
+     },
+     "unit": "percent",
+     "definition": "H.Long's percent of team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10,
+     "player": {
+      "id": "00-0037004",
+      "name": "H.Long",
+      "count": 4
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i6",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "ARI",
+    "player": "Zachary Carter",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": null,
+   "error": "no snaps recorded for 'Zachary Carter' with ARI in weeks 1-10 (the player may not have played)"
+  },
+  {
+   "call_id": "i7",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "KC",
+    "player": "Jaylon Moore",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 87.28571428571428,
+    "n_plays": 7,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 10,
+      "player": "Jaylon Moore",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Jaylon Moore's mean snap share per game, weeks 1-10.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      8,
+      9
+     ],
+     "n_games": 7
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o1",
+   "node": "offense_analyst",
+   "tool": "pass_rate",
+   "args": {
+    "team": "ARI",
+    "early_downs_only": true,
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 59.03361344537815,
+    "n_plays": 476,
+    "query_meta": {
+     "tool": "pass_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "down": null,
+      "distance": null,
+      "early_downs_only": true
+     },
+     "unit": "percent",
+     "definition": "Percent of plays that are dropbacks (early downs).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o2",
+   "node": "offense_analyst",
+   "tool": "pass_rate",
+   "args": {
+    "team": "ARI",
+    "down": 3,
+    "distance": "long",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 96.07843137254902,
+    "n_plays": 51,
+    "query_meta": {
+     "tool": "pass_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "down": 3,
+      "distance": "long",
+      "early_downs_only": false
+     },
+     "unit": "percent",
+     "definition": "Percent of plays that are dropbacks (down 3, long distance).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o3",
+   "node": "offense_analyst",
+   "tool": "pass_rate_over_expected",
+   "args": {
+    "team": "ARI",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": -0.5743723433194476,
+    "n_plays": 634,
+    "query_meta": {
+     "tool": "pass_rate_over_expected",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "early_downs_only": false
+     },
+     "unit": "percentage_points",
+     "definition": "Mean pass_oe (all downs).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o4",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "ARI",
+    "side": "offense",
+    "play_kind": "all",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": -0.053144389170746716,
+    "n_plays": 634,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "offense",
+      "play_kind": "all"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per all play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o5",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "KC",
+    "side": "defense",
+    "play_kind": "all",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": -0.08491435137324153,
+    "n_plays": 566,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense",
+      "play_kind": "all"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per all play allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o6",
+   "node": "offense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "ARI",
+    "side": "offense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 5.121951219512195,
+    "n_plays": 410,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o7",
+   "node": "offense_analyst",
+   "tool": "average_depth_of_target",
+   "args": {
+    "team": "ARI",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 7.306451612903226,
+    "n_plays": 372,
+    "query_meta": {
+     "tool": "average_depth_of_target",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "yards",
+     "definition": "Mean air yards per pass attempt.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o8",
+   "node": "offense_analyst",
+   "tool": "run_direction_rate",
+   "args": {
+    "team": "ARI",
+    "direction": "left",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 33.92857142857143,
+    "n_plays": 224,
+    "query_meta": {
+     "tool": "run_direction_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "direction": "left"
+     },
+     "unit": "percent",
+     "definition": "Percent of designed runs to the left.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o9",
+   "node": "offense_analyst",
+   "tool": "run_direction_rate",
+   "args": {
+    "team": "ARI",
+    "direction": "middle",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 41.517857142857146,
+    "n_plays": 224,
+    "query_meta": {
+     "tool": "run_direction_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "direction": "middle"
+     },
+     "unit": "percent",
+     "definition": "Percent of designed runs to the middle.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o10",
+   "node": "offense_analyst",
+   "tool": "run_direction_rate",
+   "args": {
+    "team": "ARI",
+    "direction": "right",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 24.553571428571427,
+    "n_plays": 224,
+    "query_meta": {
+     "tool": "run_direction_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "direction": "right"
+     },
+     "unit": "percent",
+     "definition": "Percent of designed runs to the right.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o11",
+   "node": "offense_analyst",
+   "tool": "ftn_play_rate",
+   "args": {
+    "team": "ARI",
+    "feature": "play_action",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 16.82926829268293,
+    "n_plays": 410,
+    "query_meta": {
+     "tool": "ftn_play_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "feature": "play_action"
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks with play action (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o12",
+   "node": "offense_analyst",
+   "tool": "ftn_play_rate",
+   "args": {
+    "team": "ARI",
+    "feature": "motion",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 59.305993690851736,
+    "n_plays": 634,
+    "query_meta": {
+     "tool": "ftn_play_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "feature": "motion"
+     },
+     "unit": "percent",
+     "definition": "Percent of scrimmage plays with motion (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o13",
+   "node": "offense_analyst",
+   "tool": "ftn_play_rate",
+   "args": {
+    "team": "ARI",
+    "feature": "screen",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 6.097560975609756,
+    "n_plays": 410,
+    "query_meta": {
+     "tool": "ftn_play_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "feature": "screen"
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks with screen (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o14",
+   "node": "offense_analyst",
+   "tool": "ftn_play_rate",
+   "args": {
+    "team": "ARI",
+    "feature": "rpo",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 1.1041009463722398,
+    "n_plays": 634,
+    "query_meta": {
+     "tool": "ftn_play_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "feature": "rpo"
+     },
+     "unit": "percent",
+     "definition": "Percent of scrimmage plays with rpo (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o15",
+   "node": "offense_analyst",
+   "tool": "red_zone_td_rate",
+   "args": {
+    "team": "ARI",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 44.11764705882353,
+    "n_plays": 34,
+    "query_meta": {
+     "tool": "red_zone_td_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Percent of red-zone drives ending in a TD, by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o16",
+   "node": "offense_analyst",
+   "tool": "third_down_conversion_rate",
+   "args": {
+    "team": "ARI",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 36.61971830985916,
+    "n_plays": 142,
+    "query_meta": {
+     "tool": "third_down_conversion_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Percent of third-down plays converted, by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o17",
+   "node": "offense_analyst",
+   "tool": "success_rate",
+   "args": {
+    "team": "ARI",
+    "side": "offense",
+    "play_kind": "all",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 43.05993690851735,
+    "n_plays": 634,
+    "query_meta": {
+     "tool": "success_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "offense",
+      "play_kind": "all"
+     },
+     "unit": "percent",
+     "definition": "Percent of all plays with EPA > 0, by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o18",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "ARI",
+    "side": "offense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": -0.05184527915934896,
+    "n_plays": 410,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o19",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "ARI",
+    "side": "offense",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": -0.055522224459465794,
+    "n_plays": 224,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "offense",
+      "play_kind": "run"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per run play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o20",
+   "node": "offense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "third_down_conversion_rate",
+    "team": "ARI",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 21,
+    "n_plays": 142,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "third_down_conversion_rate",
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "offense"
+     },
+     "unit": "rank",
+     "metric": "third_down_conversion_rate",
+     "metric_args": {
+      "side": "offense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (highest)",
+     "team_value": 36.61971830985916,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o21",
+   "node": "offense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "red_zone_td_rate",
+    "team": "ARI",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 31,
+    "n_plays": 34,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "red_zone_td_rate",
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "offense"
+     },
+     "unit": "rank",
+     "metric": "red_zone_td_rate",
+     "metric_args": {
+      "side": "offense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (highest)",
+     "team_value": 44.11764705882353,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o22",
+   "node": "offense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "KC",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 7.4074074074074066,
+    "n_plays": 351,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o23",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "ARI",
+    "side": "offense",
+    "play_kind": "all",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": -0.053144389170746716,
+    "n_plays": 634,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "offense",
+      "play_kind": "all"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per all play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k1",
+   "node": "special_teams_analyst",
+   "tool": "field_goal_rate",
+   "args": {
+    "team": "ARI",
+    "distance": "all",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 91.66666666666666,
+    "n_plays": 24,
+    "query_meta": {
+     "tool": "field_goal_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "distance": "all"
+     },
+     "unit": "percent",
+     "definition": "Percent of field goal attempts made (all yards).",
+     "weeks": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k2",
+   "node": "special_teams_analyst",
+   "tool": "field_goal_rate",
+   "args": {
+    "team": "ARI",
+    "distance": "50_plus",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 33.33333333333333,
+    "n_plays": 3,
+    "query_meta": {
+     "tool": "field_goal_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "distance": "50_plus"
+     },
+     "unit": "percent",
+     "definition": "Percent of field goal attempts made (50 plus yards).",
+     "weeks": [
+      1,
+      4,
+      5
+     ],
+     "n_games": 3
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k3",
+   "node": "special_teams_analyst",
+   "tool": "kicker_summary",
+   "args": {
+    "team": "ARI",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": [
+     {
+      "player": "C.Ryland",
+      "fg_attempts": 24,
+      "fg_made": 22,
+      "longest_made": 60.0,
+      "xp_attempts": 17,
+      "xp_made": 16,
+      "first_week": 1,
+      "last_week": 10
+     }
+    ],
+    "n_plays": 24,
+    "query_meta": {
+     "tool": "kicker_summary",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "players",
+     "definition": "Field goals and extra points by kicker.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k4",
+   "node": "special_teams_analyst",
+   "tool": "punting",
+   "args": {
+    "team": "ARI",
+    "stat": "net_average",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 39.17391304347826,
+    "n_plays": 46,
+    "query_meta": {
+     "tool": "punting",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "stat": "net_average"
+     },
+     "unit": "yards_or_percent",
+     "definition": "Punting net average.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k5",
+   "node": "special_teams_analyst",
+   "tool": "punting",
+   "args": {
+    "team": "ARI",
+    "stat": "inside_20_rate",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 34.78260869565217,
+    "n_plays": 46,
+    "query_meta": {
+     "tool": "punting",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "stat": "inside_20_rate"
+     },
+     "unit": "yards_or_percent",
+     "definition": "Punting inside 20 rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k6",
+   "node": "special_teams_analyst",
+   "tool": "kickoff_touchback_rate",
+   "args": {
+    "team": "ARI",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 20.0,
+    "n_plays": 45,
+    "query_meta": {
+     "tool": "kickoff_touchback_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "percent",
+     "definition": "Percent of kickoffs that are touchbacks.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k7",
+   "node": "special_teams_analyst",
+   "tool": "return_average",
+   "args": {
+    "team": "ARI",
+    "kind": "kickoff",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 25.906976744186046,
+    "n_plays": 43,
+    "query_meta": {
+     "tool": "return_average",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "kind": "kickoff",
+      "side": "offense"
+     },
+     "unit": "yards",
+     "definition": "Yards per kickoff return, by the return unit.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k8",
+   "node": "special_teams_analyst",
+   "tool": "return_average",
+   "args": {
+    "team": "ARI",
+    "kind": "kickoff",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 25.58823529411765,
+    "n_plays": 34,
+    "query_meta": {
+     "tool": "return_average",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "kind": "kickoff",
+      "side": "defense"
+     },
+     "unit": "yards",
+     "definition": "Yards per kickoff return, allowed by the coverage unit.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k9",
+   "node": "special_teams_analyst",
+   "tool": "special_teams_epa",
+   "args": {
+    "team": "ARI",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": -0.031225172556775052,
+    "n_plays": 272,
+    "query_meta": {
+     "tool": "special_teams_epa",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per special-teams play, from the team's side.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k10",
+   "node": "special_teams_analyst",
+   "tool": "special_teams_epa",
+   "args": {
+    "team": "KC",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": -0.12501965940654583,
+    "n_plays": 239,
+    "query_meta": {
+     "tool": "special_teams_epa",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per special-teams play, from the team's side.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k11",
+   "node": "special_teams_analyst",
+   "tool": "field_goal_rate",
+   "args": {
+    "team": "KC",
+    "distance": "all",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 63.1578947368421,
+    "n_plays": 19,
+    "query_meta": {
+     "tool": "field_goal_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 10,
+      "distance": "all"
+     },
+     "unit": "percent",
+     "definition": "Percent of field goal attempts made (all yards).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+     ],
+     "n_games": 8
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k12",
+   "node": "special_teams_analyst",
+   "tool": "return_average",
+   "args": {
+    "team": "KC",
+    "kind": "kickoff",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 26.606060606060606,
+    "n_plays": 33,
+    "query_meta": {
+     "tool": "return_average",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 10,
+      "kind": "kickoff",
+      "side": "offense"
+     },
+     "unit": "yards",
+     "definition": "Yards per kickoff return, by the return unit.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d23",
+   "node": "defense_analyst",
+   "tool": "blitz_rate",
+   "args": {
+    "team": "ARI",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 33.33333333333333,
+    "n_plays": 318,
+    "query_meta": {
+     "tool": "blitz_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks faced with 5+ pass rushers (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d24",
+   "node": "defense_analyst",
+   "tool": "average_pass_rushers",
+   "args": {
+    "team": "ARI",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 4.383647798742138,
+    "n_plays": 318,
+    "query_meta": {
+     "tool": "average_pass_rushers",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "rushers",
+     "definition": "Mean pass rushers per dropback faced (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d25",
+   "node": "defense_analyst",
+   "tool": "pressure_proxy_rate",
+   "args": {
+    "team": "ARI",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 14.150943396226415,
+    "n_plays": 318,
+    "query_meta": {
+     "tool": "pressure_proxy_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Pressure proxy: percent of dropbacks with a sack or QB hit (defense). Not true pressure rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d26",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "pressure_proxy_rate",
+    "team": "ARI",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 25,
+    "n_plays": 318,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "pressure_proxy_rate",
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense"
+     },
+     "unit": "rank",
+     "metric": "pressure_proxy_rate",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (highest)",
+     "team_value": 14.150943396226415,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d27",
+   "node": "defense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "ARI",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 10.062893081761008,
+    "n_plays": 318,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d28",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "ARI",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 0.24924157857764473,
+    "n_plays": 318,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d29",
+   "node": "defense_analyst",
+   "tool": "average_box_defenders",
+   "args": {
+    "team": "ARI",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 6.695804195804196,
+    "n_plays": 286,
+    "query_meta": {
+     "tool": "average_box_defenders",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "play_kind": "run"
+     },
+     "unit": "defenders",
+     "definition": "Mean defenders in the box on run plays (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d30",
+   "node": "defense_analyst",
+   "tool": "success_rate",
+   "args": {
+    "team": "ARI",
+    "side": "defense",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 42.30769230769231,
+    "n_plays": 286,
+    "query_meta": {
+     "tool": "success_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense",
+      "play_kind": "run"
+     },
+     "unit": "percent",
+     "definition": "Percent of run plays with EPA > 0, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d31",
+   "node": "defense_analyst",
+   "tool": "third_down_conversion_rate",
+   "args": {
+    "team": "ARI",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 42.857142857142854,
+    "n_plays": 119,
+    "query_meta": {
+     "tool": "third_down_conversion_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of third-down plays converted, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d32",
+   "node": "defense_analyst",
+   "tool": "red_zone_td_rate",
+   "args": {
+    "team": "ARI",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 69.44444444444444,
+    "n_plays": 36,
+    "query_meta": {
+     "tool": "red_zone_td_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of red-zone drives ending in a TD, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d33",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "KC",
+    "side": "offense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 0.16722605055649079,
+    "n_plays": 327,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 10,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d34",
+   "node": "defense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "KC",
+    "side": "offense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 8.868501529051988,
+    "n_plays": 327,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 10,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d35",
+   "node": "defense_analyst",
+   "tool": "success_rate",
+   "args": {
+    "team": "KC",
+    "side": "offense",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 45.909090909090914,
+    "n_plays": 220,
+    "query_meta": {
+     "tool": "success_rate",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 10,
+      "side": "offense",
+      "play_kind": "run"
+     },
+     "unit": "percent",
+     "definition": "Percent of run plays with EPA > 0, by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d36",
+   "node": "defense_analyst",
+   "tool": "average_box_defenders",
+   "args": {
+    "team": "ARI",
+    "play_kind": "all",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 6.541390728476821,
+    "n_plays": 604,
+    "query_meta": {
+     "tool": "average_box_defenders",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "play_kind": "all"
+     },
+     "unit": "defenders",
+     "definition": "Mean defenders in the box on all plays (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i8",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "ARI",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Hjalte Froholdt",
+      "player_id": "00-0035258",
+      "position": "C",
+      "status": "Out",
+      "injury": "Concussion",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Jon Gaines II",
+      "player_id": "00-0038571",
+      "position": "G",
+      "status": "Out",
+      "injury": "Ankle",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Zachary Carter",
+      "player_id": "00-0037804",
+      "position": "DT",
+      "status": "Out",
+      "injury": "Knee",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Andrew Wingard",
+      "player_id": "00-0035378",
+      "position": "S",
+      "status": "Questionable",
+      "injury": "Groin",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Darius Robinson",
+      "player_id": "00-0039854",
+      "position": "DT",
+      "status": "Questionable",
+      "injury": "Wrist",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Hunter Long",
+      "player_id": "00-0037004",
+      "position": "TE",
+      "status": "Questionable",
+      "injury": "Knee",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Jayden Williams",
+      "player_id": "00-0041113",
+      "position": "T",
+      "status": "Questionable",
+      "injury": "Knee",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Max Melton",
+      "player_id": "00-0039807",
+      "position": "CB",
+      "status": "Questionable",
+      "injury": "Knee",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Roy Lopez",
+      "player_id": "00-0036568",
+      "position": "DT",
+      "status": "Questionable",
+      "injury": "Toe",
+      "practice_status": "Limited Participation in Practice"
+     }
+    ],
+    "n_plays": 9,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 10,
+     "weeks": [
+      10
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i9",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "KC",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Jaylon Moore",
+      "player_id": "00-0036557",
+      "position": "T",
+      "status": "Out",
+      "injury": "Ankle",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Omarr Norman-Lott",
+      "player_id": "00-0040748",
+      "position": "DT",
+      "status": "Out",
+      "injury": "Knee",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Peter Woods",
+      "player_id": "00-0041545",
+      "position": "DT",
+      "status": "Out",
+      "injury": "Neck",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Jaydn Ott",
+      "player_id": "00-0040959",
+      "position": "RB",
+      "status": "Questionable",
+      "injury": "Hamstring",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Kenneth Walker III",
+      "player_id": "00-0038134",
+      "position": "RB",
+      "status": "Questionable",
+      "injury": "Groin",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Mansoor Delane",
+      "player_id": "00-0041543",
+      "position": "CB",
+      "status": "Questionable",
+      "injury": "Shoulder",
+      "practice_status": "Full Participation in Practice"
+     }
+    ],
+    "n_plays": 6,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 10,
+     "weeks": [
+      10
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i10",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "KC",
+    "player": "Jaylon Moore",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 87.28571428571428,
+    "n_plays": 7,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 10,
+      "player": "Jaylon Moore",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Jaylon Moore's mean snap share per game, weeks 1-10.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      8,
+      9
+     ],
+     "n_games": 7
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i11",
+   "node": "injury_analyst",
+   "tool": "usage_leaders",
+   "args": {
+    "team": "KC",
+    "kind": "rush",
+    "top_n": 3,
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": [
+     {
+      "player": "K.Walker",
+      "player_id": "00-0038134",
+      "count": 159,
+      "share": 72.27272727272727
+     },
+     {
+      "player": "E.Johnson",
+      "player_id": "00-0041013",
+      "count": 48,
+      "share": 21.818181818181817
+     },
+     {
+      "player": "J.Ott",
+      "player_id": "00-0040959",
+      "count": 3,
+      "share": 1.3636363636363635
+     }
+    ],
+    "n_plays": 220,
+    "query_meta": {
+     "tool": "usage_leaders",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 10,
+      "kind": "rush",
+      "top_n": 3
+     },
+     "unit": "players",
+     "definition": "Top 3 players by team rushs.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k13",
+   "node": "special_teams_analyst",
+   "tool": "field_goal_rate",
+   "args": {
+    "team": "ARI",
+    "distance": "all",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 91.66666666666666,
+    "n_plays": 24,
+    "query_meta": {
+     "tool": "field_goal_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "distance": "all"
+     },
+     "unit": "percent",
+     "definition": "Percent of field goal attempts made (all yards).",
+     "weeks": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k14",
+   "node": "special_teams_analyst",
+   "tool": "field_goal_rate",
+   "args": {
+    "team": "ARI",
+    "distance": "50_plus",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 33.33333333333333,
+    "n_plays": 3,
+    "query_meta": {
+     "tool": "field_goal_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "distance": "50_plus"
+     },
+     "unit": "percent",
+     "definition": "Percent of field goal attempts made (50 plus yards).",
+     "weeks": [
+      1,
+      4,
+      5
+     ],
+     "n_games": 3
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k15",
+   "node": "special_teams_analyst",
+   "tool": "kicker_summary",
+   "args": {
+    "team": "ARI",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": [
+     {
+      "player": "C.Ryland",
+      "fg_attempts": 24,
+      "fg_made": 22,
+      "longest_made": 60.0,
+      "xp_attempts": 17,
+      "xp_made": 16,
+      "first_week": 1,
+      "last_week": 10
+     }
+    ],
+    "n_plays": 24,
+    "query_meta": {
+     "tool": "kicker_summary",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "players",
+     "definition": "Field goals and extra points by kicker.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k16",
+   "node": "special_teams_analyst",
+   "tool": "punting",
+   "args": {
+    "team": "ARI",
+    "stat": "net_average",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 39.17391304347826,
+    "n_plays": 46,
+    "query_meta": {
+     "tool": "punting",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "stat": "net_average"
+     },
+     "unit": "yards_or_percent",
+     "definition": "Punting net average.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k17",
+   "node": "special_teams_analyst",
+   "tool": "punting",
+   "args": {
+    "team": "ARI",
+    "stat": "inside_20_rate",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 34.78260869565217,
+    "n_plays": 46,
+    "query_meta": {
+     "tool": "punting",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "stat": "inside_20_rate"
+     },
+     "unit": "yards_or_percent",
+     "definition": "Punting inside 20 rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k18",
+   "node": "special_teams_analyst",
+   "tool": "kickoff_touchback_rate",
+   "args": {
+    "team": "ARI",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 20.0,
+    "n_plays": 45,
+    "query_meta": {
+     "tool": "kickoff_touchback_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "percent",
+     "definition": "Percent of kickoffs that are touchbacks.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k19",
+   "node": "special_teams_analyst",
+   "tool": "return_average",
+   "args": {
+    "team": "ARI",
+    "kind": "kickoff",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 25.906976744186046,
+    "n_plays": 43,
+    "query_meta": {
+     "tool": "return_average",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "kind": "kickoff",
+      "side": "offense"
+     },
+     "unit": "yards",
+     "definition": "Yards per kickoff return, by the return unit.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k20",
+   "node": "special_teams_analyst",
+   "tool": "return_average",
+   "args": {
+    "team": "ARI",
+    "kind": "kickoff",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 25.58823529411765,
+    "n_plays": 34,
+    "query_meta": {
+     "tool": "return_average",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "kind": "kickoff",
+      "side": "defense"
+     },
+     "unit": "yards",
+     "definition": "Yards per kickoff return, allowed by the coverage unit.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k21",
+   "node": "special_teams_analyst",
+   "tool": "special_teams_epa",
+   "args": {
+    "team": "ARI",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": -0.031225172556775052,
+    "n_plays": 272,
+    "query_meta": {
+     "tool": "special_teams_epa",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per special-teams play, from the team's side.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k22",
+   "node": "special_teams_analyst",
+   "tool": "special_teams_epa",
+   "args": {
+    "team": "KC",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": -0.12501965940654583,
+    "n_plays": 239,
+    "query_meta": {
+     "tool": "special_teams_epa",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per special-teams play, from the team's side.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k23",
+   "node": "special_teams_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "special_teams_epa",
+    "team": "ARI",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 24,
+    "n_plays": 272,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "special_teams_epa",
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "rank",
+     "metric": "special_teams_epa",
+     "metric_args": {},
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (highest)",
+     "team_value": -0.031225172556775052,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k24",
+   "node": "special_teams_analyst",
+   "tool": "kicker_summary",
+   "args": {
+    "team": "ARI",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": [
+     {
+      "player": "C.Ryland",
+      "fg_attempts": 24,
+      "fg_made": 22,
+      "longest_made": 60.0,
+      "xp_attempts": 17,
+      "xp_made": 16,
+      "first_week": 1,
+      "last_week": 10
+     }
+    ],
+    "n_plays": 24,
+    "query_meta": {
+     "tool": "kicker_summary",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "players",
+     "definition": "Field goals and extra points by kicker.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k25",
+   "node": "special_teams_analyst",
+   "tool": "field_goal_rate",
+   "args": {
+    "team": "ARI",
+    "distance": "all",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 91.66666666666666,
+    "n_plays": 24,
+    "query_meta": {
+     "tool": "field_goal_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "distance": "all"
+     },
+     "unit": "percent",
+     "definition": "Percent of field goal attempts made (all yards).",
+     "weeks": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k26",
+   "node": "special_teams_analyst",
+   "tool": "field_goal_rate",
+   "args": {
+    "team": "ARI",
+    "distance": "50_plus",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 33.33333333333333,
+    "n_plays": 3,
+    "query_meta": {
+     "tool": "field_goal_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "distance": "50_plus"
+     },
+     "unit": "percent",
+     "definition": "Percent of field goal attempts made (50 plus yards).",
+     "weeks": [
+      1,
+      4,
+      5
+     ],
+     "n_games": 3
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k27",
+   "node": "special_teams_analyst",
+   "tool": "punting",
+   "args": {
+    "team": "ARI",
+    "stat": "net_average",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 39.17391304347826,
+    "n_plays": 46,
+    "query_meta": {
+     "tool": "punting",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "stat": "net_average"
+     },
+     "unit": "yards_or_percent",
+     "definition": "Punting net average.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k28",
+   "node": "special_teams_analyst",
+   "tool": "punting",
+   "args": {
+    "team": "ARI",
+    "stat": "inside_20_rate",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 34.78260869565217,
+    "n_plays": 46,
+    "query_meta": {
+     "tool": "punting",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "stat": "inside_20_rate"
+     },
+     "unit": "yards_or_percent",
+     "definition": "Punting inside 20 rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k29",
+   "node": "special_teams_analyst",
+   "tool": "kickoff_touchback_rate",
+   "args": {
+    "team": "ARI",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 20.0,
+    "n_plays": 45,
+    "query_meta": {
+     "tool": "kickoff_touchback_rate",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "percent",
+     "definition": "Percent of kickoffs that are touchbacks.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k30",
+   "node": "special_teams_analyst",
+   "tool": "return_average",
+   "args": {
+    "team": "ARI",
+    "kind": "kickoff",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 25.58823529411765,
+    "n_plays": 34,
+    "query_meta": {
+     "tool": "return_average",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "kind": "kickoff",
+      "side": "defense"
+     },
+     "unit": "yards",
+     "definition": "Yards per kickoff return, allowed by the coverage unit.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k31",
+   "node": "special_teams_analyst",
+   "tool": "return_average",
+   "args": {
+    "team": "ARI",
+    "kind": "kickoff",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 25.906976744186046,
+    "n_plays": 43,
+    "query_meta": {
+     "tool": "return_average",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10,
+      "kind": "kickoff",
+      "side": "offense"
+     },
+     "unit": "yards",
+     "definition": "Yards per kickoff return, by the return unit.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k32",
+   "node": "special_teams_analyst",
+   "tool": "special_teams_epa",
+   "args": {
+    "team": "ARI",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": -0.031225172556775052,
+    "n_plays": 272,
+    "query_meta": {
+     "tool": "special_teams_epa",
+     "args": {
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per special-teams play, from the team's side.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k33",
+   "node": "special_teams_analyst",
+   "tool": "special_teams_epa",
+   "args": {
+    "team": "KC",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": -0.12501965940654583,
+    "n_plays": 239,
+    "query_meta": {
+     "tool": "special_teams_epa",
+     "args": {
+      "team": "KC",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per special-teams play, from the team's side.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k34",
+   "node": "special_teams_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "special_teams_epa",
+    "team": "ARI",
+    "season": 2026,
+    "through_week": 10
+   },
+   "result": {
+    "value": 24,
+    "n_plays": 272,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "special_teams_epa",
+      "team": "ARI",
+      "season": 2026,
+      "through_week": 10
+     },
+     "unit": "rank",
+     "metric": "special_teams_epa",
+     "metric_args": {},
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (highest)",
+     "team_value": -0.031225172556775052,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  }
+ ],
+ "usage": [
+  {
+   "node": "planner",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 542,
+   "cache_read_input_tokens": 540,
+   "cache_creation_input_tokens": 148,
+   "latency_s": 3.937498281011358
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 1089,
+   "cache_read_input_tokens": 5976,
+   "cache_creation_input_tokens": 367,
+   "latency_s": 4.711966912029311
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 929,
+   "cache_read_input_tokens": 6343,
+   "cache_creation_input_tokens": 2515,
+   "latency_s": 4.020740323932841
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 491,
+   "cache_read_input_tokens": 8858,
+   "cache_creation_input_tokens": 2183,
+   "latency_s": 3.327440859982744
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 214,
+   "cache_read_input_tokens": 11041,
+   "cache_creation_input_tokens": 627,
+   "latency_s": 1.86015573493205
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 167,
+   "cache_read_input_tokens": 11668,
+   "cache_creation_input_tokens": 350,
+   "latency_s": 1.1081131568644196
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 3353,
+   "cache_read_input_tokens": 12018,
+   "cache_creation_input_tokens": 303,
+   "latency_s": 12.763656537048519
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 116,
+   "cache_read_input_tokens": 2987,
+   "cache_creation_input_tokens": 442,
+   "latency_s": 1.0090214740484953
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 581,
+   "cache_read_input_tokens": 3429,
+   "cache_creation_input_tokens": 1374,
+   "latency_s": 2.145742094842717
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 2897,
+   "cache_read_input_tokens": 4803,
+   "cache_creation_input_tokens": 1247,
+   "latency_s": 11.35166715318337
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 1568,
+   "cache_read_input_tokens": 7496,
+   "cache_creation_input_tokens": 352,
+   "latency_s": 5.582728519104421
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 693,
+   "cache_read_input_tokens": 7848,
+   "cache_creation_input_tokens": 3817,
+   "latency_s": 3.433532973052934
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 3606,
+   "cache_read_input_tokens": 11665,
+   "cache_creation_input_tokens": 1552,
+   "latency_s": 14.630715326871723
+  },
+  {
+   "node": "special_teams_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 961,
+   "cache_read_input_tokens": 4407,
+   "cache_creation_input_tokens": 346,
+   "latency_s": 3.7527535289991647
+  },
+  {
+   "node": "special_teams_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 3637,
+   "cache_read_input_tokens": 4753,
+   "cache_creation_input_tokens": 2545,
+   "latency_s": 14.734909192891791
+  },
+  {
+   "node": "matchup_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 4715,
+   "cache_read_input_tokens": 6451,
+   "cache_creation_input_tokens": 4784,
+   "latency_s": 20.306762693915516
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 1633,
+   "cache_read_input_tokens": 5976,
+   "cache_creation_input_tokens": 1743,
+   "latency_s": 6.30468471092172
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 3286,
+   "cache_read_input_tokens": 7719,
+   "cache_creation_input_tokens": 3595,
+   "latency_s": 11.668589060893282
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 416,
+   "cache_read_input_tokens": 2987,
+   "cache_creation_input_tokens": 1477,
+   "latency_s": 2.328757575014606
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 2814,
+   "cache_read_input_tokens": 4464,
+   "cache_creation_input_tokens": 2024,
+   "latency_s": 10.932214462896809
+  },
+  {
+   "node": "matchup_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 4896,
+   "cache_read_input_tokens": 6451,
+   "cache_creation_input_tokens": 6094,
+   "latency_s": 18.33226574282162
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 3311,
+   "cache_read_input_tokens": 7496,
+   "cache_creation_input_tokens": 1751,
+   "latency_s": 11.82077307999134
+  },
+  {
+   "node": "special_teams_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 977,
+   "cache_read_input_tokens": 4407,
+   "cache_creation_input_tokens": 1699,
+   "latency_s": 3.9702208479866385
+  },
+  {
+   "node": "special_teams_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 4973,
+   "cache_read_input_tokens": 6106,
+   "cache_creation_input_tokens": 2471,
+   "latency_s": 20.567738006822765
+  },
+  {
+   "node": "matchup_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 3749,
+   "cache_read_input_tokens": 6451,
+   "cache_creation_input_tokens": 5955,
+   "latency_s": 14.129445093916729
+  },
+  {
+   "node": "special_teams_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 1570,
+   "cache_read_input_tokens": 4407,
+   "cache_creation_input_tokens": 1672,
+   "latency_s": 7.12554386514239
+  },
+  {
+   "node": "special_teams_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 3270,
+   "cache_read_input_tokens": 6079,
+   "cache_creation_input_tokens": 3064,
+   "latency_s": 12.755206879926845
+  },
+  {
+   "node": "editor",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 9659,
+   "cache_read_input_tokens": 747,
+   "cache_creation_input_tokens": 5538,
+   "latency_s": 34.77182269911282
+  }
+ ],
+ "cost_usd": {
+  "total": 0.042305005,
+  "by_node": {
+   "planner": 0.00029529999999999997,
+   "defense_analyst": 0.007739365,
+   "injury_analyst": 0.0044206,
+   "offense_analyst": 0.00586925,
+   "special_teams_analyst": 0.009472014999999999,
+   "matchup_analyst": 0.008978855,
+   "editor": 0.00552962
+  }
+ }
+}
