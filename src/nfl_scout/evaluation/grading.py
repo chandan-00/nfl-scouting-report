@@ -119,6 +119,46 @@ def score_grades(out_dir: Path) -> dict[str, Any]:
     }
 
 
+def _by_matchup(out_dir: Path) -> dict[str, dict[str, dict[str, float]]]:
+    """{matchup: {config: {"score": mean of the criteria, "rank": rank}}}."""
+    key = json.loads((out_dir / "key.json").read_text())
+    with (out_dir / "grades.csv").open() as f:
+        rows = [r for r in csv.DictReader(f) if r["rank"].strip()]
+    out: dict[str, dict[str, dict[str, float]]] = {}
+    for r in rows:
+        config = key[r["matchup"]][r["label"]]
+        score = mean(float(r[c]) for c in CRITERIA)
+        out.setdefault(r["matchup"], {})[config] = {"score": score, "rank": int(r["rank"])}
+    return out
+
+
+def paired(
+    by_matchup: dict[str, dict[str, dict[str, float]]],
+    pairs: list[tuple[str, str]],
+    n_boot: int = 5000,
+    seed: int = 0,
+) -> list[dict[str, Any]]:
+    """Per pair of configs, over matchups graded for both: the mean difference in average grade
+    (a - b) with a 95% bootstrap interval over matchups, and how often a was ranked above b."""
+    out = []
+    for a, b in pairs:
+        both = [m for m in by_matchup.values() if a in m and b in m]
+        diffs = [m[a]["score"] - m[b]["score"] for m in both]
+        rng = random.Random(seed)
+        boots = sorted(mean(rng.choice(diffs) for _ in diffs) for _ in range(n_boot))
+        out.append(
+            {
+                "a": a,
+                "b": b,
+                "n": len(both),
+                "mean_diff": mean(diffs),
+                "ci": [boots[int(0.025 * n_boot)], boots[int(0.975 * n_boot) - 1]],
+                "a_ranked_higher": sum(m[a]["rank"] < m[b]["rank"] for m in both),
+            }
+        )
+    return out
+
+
 def main() -> None:
     settings = load_settings()
     ap = argparse.ArgumentParser()
@@ -133,7 +173,16 @@ def main() -> None:
         build_packet(load_matchups(), a.configs, runs_dir, out_dir, a.repeat, a.seed)
         print(f"wrote {out_dir}/packet.md and grades.csv (don't open key.json)")
     else:
-        print(json.dumps(score_grades(out_dir), indent=1))
+        configs = a.configs
+        pairs = [(x, y) for i, x in enumerate(configs) for y in configs[i + 1 :]]
+        result = {
+            "per_config": score_grades(out_dir),
+            "paired": paired(_by_matchup(out_dir), pairs),
+        }
+        scores = runs_dir / "scores" / "grades.json"
+        scores.write_text(json.dumps(result, indent=1))
+        print(json.dumps(result, indent=1))
+        print(f"wrote {scores}")
 
 
 if __name__ == "__main__":

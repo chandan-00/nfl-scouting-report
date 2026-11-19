@@ -1,6 +1,6 @@
 # Evaluation results
 
-- **Generated:** 2026-11-14
+- **Generated:** 2026-11-19
 - **Model:** claude-haiku-5-5 on every node
 - **Matchups:** eval/matchups_v1.json (40 games, 2026 weeks 4–7, after every model's training cutoff)
 - **Data snapshot:** data/snapshots/nfl_2026-11-02.duckdb (sha256 75d205650945)
@@ -75,6 +75,27 @@ By metric (Full graph):
 | third_down_conversion_rate | 126 | 45.2% | 10.977 | 10.120 |
 
 
+## Hand grading
+
+Blind grades (1-5) of 10 matchups per config, one grader (the project owner). Each matchup's three reports were shown as A/B/C in a shuffled order, and ranked 1-3.
+
+| Criterion | Full graph | No fact-checker | Single agent |
+|---|---|---|---|
+| Relevance | 4.3 | 3.8 | 3.0 |
+| Reasoning | 4.1 | 3.8 | 3.5 |
+| Actionability | 4.2 | 3.8 | 3.6 |
+| Coverage | 3.9 | 3.7 | 3.5 |
+| Mean rank | 1.4 | 1.7 | 2.8 |
+| Wins (ranked first) | 7 | 3 | 0 |
+
+Paired by matchup: difference in the average of the four grades, with a 95% bootstrap interval over matchups.
+
+| Comparison | Grade difference | Ranked higher |
+|---|---|---|
+| Full graph vs No fact-checker | +0.35 (-0.05 to +0.68) | 7/10 |
+| Full graph vs Single agent | +0.72 (+0.33 to +1.10) | 8/10 |
+| No fact-checker vs Single agent | +0.38 (+0.25 to +0.53) | 10/10 |
+
 ## Notes
 
 - **Single-agent harness bug, fixed.** The first results (commit c817ace) were wrong for this config. About 10% of single-agent runs replied "ready" on turn 1, as the baseline prompt invites, and the forced final call then had no data. That produced 12 empty placeholder reports and very likely the 8 "no source" crashes (their traces weren't saved). This was a bug in the harness, not a weakness of the single agent, so those failures don't count against it. The agent is now sent back if it stops before calling a tool, and the prompt is unchanged. The 20 affected runs were regenerated, and all 120 now made at least 18 tool calls. The empty runs are kept in `runs/_invalid/`.
@@ -82,5 +103,6 @@ By metric (Full graph):
 - **Seeded-error rows describe the checker, not the config.** Each config's drafts were seeded and run through the same deterministic checker. In the pipeline, the checker only runs in the full graph.
 - **How accuracy is judged.** The project's checker re-runs each cited tool call. As an independent check, about 2,840 claims were re-derived with separate code. The tools agreed 100%, and the stated values agreed 99.3–99.8%.
 - **Forward check is about the data, not the configs.** Season-to-date numbers through weeks 3–6 are no closer to the next game than the league average (46–48% "closer" in every config). The one exception is run direction. With 3–6 games of data, team splits regress toward the mean.
-- **Not measured yet:** usefulness. The blind hand-grading of 30 reports is pending.
+- **Hand grading (usefulness).** The full graph scored highest on every criterion and was ranked first for 7 of 10 matchups. Against the single agent the gap is clear: +0.72 on the 1–5 scale (interval +0.33 to +1.10), and the full graph was ranked higher in 8 of 10. Against the no-checker graph the gap (+0.35) has an interval that crosses zero (−0.05 to +0.68), so with 10 matchups it is suggestive, not shown. The no-checker graph beat the single agent in all 10. Caveats: one grader (the project owner), blind but not independent, and only 10 matchups. The single agent's reports are also shorter (median 559 words against 658 for the full graph), which may weigh on relevance and coverage.
+- **Grader comments found two errors the fact-checker can't see.** (1) **Venue.** "Green Bay at Dallas" was written for a game at Green Bay. The agents were never told who was at home. Of the eval titles that name a venue, 34% (full and no-checker) and 58% (single) get it wrong. Every message now states the home team (live reports from week 11). (2) **Point of view.** One single-agent report put Detroit's own defense under "Opponent defense", wrote its advice for Arizona, and added a fifth section. The numbers were all correct and correctly attributed, so only a reader could catch it. A scan of all 360 reports found this in that one report only.
 - **Scope:** one model (Claude Haiku 5.5), 40 matchups, 3 repeats per config. The MLflow store also holds an earlier 2-matchup pilot scoring.

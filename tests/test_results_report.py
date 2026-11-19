@@ -67,3 +67,19 @@ def test_render_flags_reports_made_without_any_tool_call():
     s["runs"][0]["tool_calls"] = 0
     s["runs"][1]["tool_calls"] = 30
     assert "| Reports with no tool calls | 1 |" in render({"full": s}, context={})
+
+
+def test_render_adds_hand_grades_when_given():
+    grades = {
+        "per_config": {
+            "full": {"n": 10, "mean": {"relevance": 4.3, "reasoning": 4.1,
+                     "actionability": 4.2, "coverage": 3.9}, "mean_rank": 1.4, "wins": 7},
+        },
+        "paired": [{"a": "full", "b": "single", "n": 10, "mean_diff": 0.72,
+                    "ci": [0.33, 1.1], "a_ranked_higher": 8}],
+    }  # fmt: skip
+    md = render({"full": scores(0.9)}, context={}, grades=grades)
+    assert "## Hand grading" in md
+    assert "| Relevance | 4.3 |" in md
+    assert "| Wins (ranked first) | 7 |" in md
+    assert "Full graph vs Single agent | +0.72 (+0.33 to +1.10) | 8/10" in md

@@ -77,6 +77,7 @@ def render(
     scores: dict[str, dict[str, Any]],
     context: dict[str, str],
     forward: dict[str, dict[str, Any]] | None = None,
+    grades: dict[str, Any] | None = None,
 ) -> str:
     configs = list(scores)
     names = [CONFIG_NAMES.get(c, c) for c in configs]
@@ -118,7 +119,50 @@ def render(
         lines += _table(["Config", *(f"r{k}" for k in repeats)], rows) + [""]
     if forward:
         lines += _forward_section(forward)
+    if grades:
+        lines += _grades_section(grades)
     return "\n".join(lines)
+
+
+def _grades_section(grades: dict[str, Any]) -> list[str]:
+    per = grades["per_config"]
+    configs = list(per)
+    n = max(g["n"] for g in per.values())
+    lines = [
+        "",
+        "## Hand grading",
+        "",
+        f"Blind grades (1-5) of {n} matchups per config, one grader (the project owner). Each "
+        "matchup's three reports were shown as A/B/C in a shuffled order, and ranked 1-3.",
+        "",
+        "| Criterion | " + " | ".join(CONFIG_NAMES.get(c, c) for c in configs) + " |",
+        "|---|" + "---|" * len(configs),
+    ]
+    for crit in ("relevance", "reasoning", "actionability", "coverage"):
+        row = [f"{per[c]['mean'][crit]:.1f}" for c in configs]
+        lines.append(f"| {crit.capitalize()} | " + " | ".join(row) + " |")
+    lines.append(
+        "| Mean rank | " + " | ".join(f"{per[c]['mean_rank']:.1f}" for c in configs) + " |"
+    )
+    lines.append(
+        "| Wins (ranked first) | " + " | ".join(str(per[c]["wins"]) for c in configs) + " |"
+    )
+    lines += [
+        "",
+        "Paired by matchup: difference in the average of the four grades, with a 95% bootstrap "
+        "interval over matchups.",
+        "",
+        "| Comparison | Grade difference | Ranked higher |",
+        "|---|---|---|",
+    ]
+    for p in grades.get("paired", []):
+        lo, hi = p["ci"]
+        name = f"{CONFIG_NAMES.get(p['a'], p['a'])} vs {CONFIG_NAMES.get(p['b'], p['b'])}"
+        lines.append(
+            f"| {name} | {p['mean_diff']:+.2f} ({lo:+.2f} to {hi:+.2f}) | "
+            f"{p['a_ranked_higher']}/{p['n']} |"
+        )
+    return lines
 
 
 def _forward_section(forward: dict[str, dict[str, Any]]) -> list[str]:
@@ -169,10 +213,12 @@ def main() -> None:
     forward_path = scores_dir / "forward.json"
     forward = json.loads(forward_path.read_text()) if forward_path.exists() else None
     forward = {c: f for c, f in (forward or {}).items() if c in scores} or None
+    grades_path = scores_dir / "grades.json"
+    grades = json.loads(grades_path.read_text()) if grades_path.exists() else None
     notes_path = EVAL_DIR / "results_notes.md"  # hand-written context, kept across regenerations
     notes = "\n" + notes_path.read_text() if notes_path.exists() else ""
     out = PROJECT_ROOT / "docs" / "results.md"
-    out.write_text(render(scores, context, forward) + "\n" + notes)
+    out.write_text(render(scores, context, forward, grades) + "\n" + notes)
     print(f"wrote {out}")
 
 

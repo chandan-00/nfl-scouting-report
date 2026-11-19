@@ -81,3 +81,17 @@ def test_score_grades_unblinds_into_per_config_means(tmp_path):
     assert result["full"]["mean"]["relevance"] == 5.0
     assert result["single"]["mean_rank"] == 2.0
     assert result["full"]["wins"] == 2 and result["full"]["n"] == 2
+
+
+def test_paired_comparisons_per_matchup():
+    from nfl_scout.evaluation.grading import paired
+
+    by_matchup = {
+        "m1": {"full": {"score": 5.0, "rank": 1}, "single": {"score": 3.0, "rank": 2}},
+        "m2": {"full": {"score": 4.0, "rank": 2}, "single": {"score": 4.0, "rank": 1}},
+    }
+    (p,) = paired(by_matchup, [("full", "single")])
+    assert (p["a"], p["b"], p["n"]) == ("full", "single", 2)
+    assert p["mean_diff"] == 1.0  # (2 + 0) / 2
+    assert p["a_ranked_higher"] == 1
+    assert p["ci"][0] <= p["mean_diff"] <= p["ci"][1]
