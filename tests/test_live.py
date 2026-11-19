@@ -61,3 +61,13 @@ def test_home_team_comes_from_the_schedule(db):
     (m,) = [m for m in week_matchups(db, 2026, 2) if "BUF" in (m["team"], m["opponent"])]
     assert home_team(db, 2026, 2, "BUF", "DEN") == m["home"]
     assert home_team(db, 2026, 2, "BUF", "LV") is None  # not scheduled
+
+
+def test_both_sides_gives_each_team_a_report_on_its_opponent(db):
+    one = week_matchups(db, 2026, 2, focus="BUF")
+    both = week_matchups(db, 2026, 2, focus="BUF", both_sides=True)
+    assert len(both) == 2 * len(one)
+    pairs = {(m["team"], m["opponent"]) for m in both}
+    assert all((o, t) in pairs for t, o in pairs)
+    assert both[0]["team"] == "BUF"  # the focus team still comes first
+    assert all(m["home"] in (m["team"], m["opponent"]) for m in both)

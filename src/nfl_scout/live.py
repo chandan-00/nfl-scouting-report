@@ -3,6 +3,7 @@
     uv run python -m nfl_scout.live --week 9            # check data, estimate cost
     uv run python -m nfl_scout.live --week 9 --yes      # run
 
+Every team gets a report on its opponent (--one-side: one per game, from the home team's view).
 Reports use the "full_st" graph (the eval's full graph plus a special-teams analyst) unless
 --config full is given. Each report is from the home team's view, except that games involving
 --focus (default BUF) are always from the focus team's view. It refuses to run until the
@@ -24,8 +25,14 @@ FTN_MIN_COVERAGE = 0.95
 
 
 def week_matchups(
-    con: duckdb.DuckDBPyConnection, season: int, week: int, focus: str | None = None
+    con: duckdb.DuckDBPyConnection,
+    season: int,
+    week: int,
+    focus: str | None = None,
+    both_sides: bool = False,
 ) -> list[dict]:
+    """One report per game (home team's view, or the focus team's), or with `both_sides` one per
+    team, each scouting its opponent. The focus team comes first."""
     rows = con.execute(
         """
         SELECT game_id, away_team, home_team FROM schedules
@@ -36,10 +43,12 @@ def week_matchups(
     out = []
     for game_id, away, home in rows:
         team, opponent = (away, home) if away == focus else (home, away)
-        out.append(
-            {"game_id": game_id, "week": week, "team": team, "opponent": opponent,
-             "through_week": week - 1, "home": home}
-        )  # fmt: skip
+        views = [(team, opponent), (opponent, team)] if both_sides else [(team, opponent)]
+        for t, o in views:
+            out.append(
+                {"game_id": game_id, "week": week, "team": t, "opponent": o,
+                 "through_week": week - 1, "home": home}
+            )  # fmt: skip
     return sorted(out, key=lambda m: (m["team"] != focus, m["team"]))
 
 
@@ -94,6 +103,11 @@ def main() -> None:
     ap.add_argument("--yes", action="store_true", help="actually run (default: check only)")
     ap.add_argument("--force", action="store_true", help="run even if the data isn't complete")
     ap.add_argument(
+        "--one-side",
+        action="store_true",
+        help="one report per game (home or focus team's view) instead of one per team",
+    )
+    ap.add_argument(
         "--config",
         choices=("full_st", "full"),
         default="full_st",
@@ -105,11 +119,11 @@ def main() -> None:
     ok, problems = data_ready(con, a.season, a.week - 1)
     for p in problems:
         print("not ready:", p)
-    matchups = week_matchups(con, a.season, a.week, a.focus)
+    matchups = week_matchups(con, a.season, a.week, a.focus, both_sides=not a.one_side)
     runs_dir = settings.resolve(settings.paths.runs_dir)
     live_dir = runs_dir / "live" / f"{a.season}_w{a.week:02d}"
     cost = estimate_cost(a.config, len(matchups), live_dir if a.config == "full_st" else runs_dir)
-    print(f"week {a.week}: {len(matchups)} games, estimated ${cost:.2f}")
+    print(f"week {a.week}: {len(matchups)} reports, estimated ${cost:.2f} (saved ones are skipped)")
     if not a.yes or (not ok and not a.force):
         print("check only; pass --yes to run" + ("" if ok else " (and --force: data incomplete)"))
         return
