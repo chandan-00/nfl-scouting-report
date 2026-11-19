@@ -1,5 +1,7 @@
 # nfl-scouting-report
 
+**[Live demo](https://nfl-scouting-reporter.streamlit.app/):** browse the weekly reports and hover over any number to see the tool call behind it and its check result.
+
 A multi-agent system that writes NFL opponent scouting reports from nflverse play-by-play data, with an evaluation harness that measures how accurate the reports are. Analyst agents (Claude Haiku 5.5 in LangGraph) draft each section by calling deterministic SQL tools. A fact-checker with no LLM then re-runs every cited tool call before an editor writes the final report.
 
 **Headline result** (360 reports on 40 games from 2026 weeks 4–7, after the model's training cutoff): the fact-checker raises final claim accuracy from **99.5% to 100.0%** and cuts report numbers with no supporting claim from **0.3% to 0.1%**. It costs **$0.031 per report**, against $0.021 without it. Draft accuracy is about 99% in every configuration, so the checker fixes the remaining errors rather than rescuing poor drafts. Full tables are in [docs/results.md](docs/results.md).
