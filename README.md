@@ -43,7 +43,14 @@ How the numbers are kept honest:
 - **Independent re-derivation.** About 2,840 claims were recomputed with separate polars code. The tools agreed 100%.
 - **Planted errors.** Wrong values, teams and splits, plus unlinked numbers, were injected into clean drafts. The checker catches 99.9–100% of them, with at most 1 false positive per configuration. Its known blind spots are sign errors and claims that name both the right team and a wrong one.
 - **Forward check.** Do season-to-date numbers predict the next game better than the league average? Mostly not: they're closer on only 46–48% of claims in every configuration, because 3–6 games of data regress to the mean. This is a finding about early-season data, not about the agents.
-- **Hand grading.** 30 reports (10 games × 3 configurations) are being graded blind for relevance, reasoning, actionability and coverage. Results are pending.
+- **Hand grading.** 30 reports (10 games × 3 configurations) were graded blind (1–5) for relevance, reasoning, actionability and coverage, and ranked:
+
+  | | Full graph | No fact-checker | Single agent |
+  |---|---|---|---|
+  | Average grade | 4.1 | 3.8 | 3.4 |
+  | Ranked first | 7 of 10 | 3 of 10 | 0 of 10 |
+
+  The full graph beats the single agent clearly: +0.72, interval +0.33 to +1.10. Its lead over the no-checker graph is suggestive but not conclusive with 10 games: +0.35, interval −0.05 to +0.68. The grader also caught two errors no number check can see: titles with the venue backwards (now fixed: every node is told the home team) and one single-agent report written from the wrong team's point of view.
 
 **Live reports.** Week 10 produced 14 reports (one per game) for $0.51, with 874 of 875 report numbers checked. From week 11, live reports add a special-teams section: field goals by distance and kicker changes, punting, kickoffs, returns and special-teams EPA.
 
@@ -52,7 +59,8 @@ How the numbers are kept honest:
 - **Early season only.** The test games give each report 3–6 weeks of data. Later in the season samples are larger and reports longer, so the results may differ. The live reports give a partial check on that.
 - **Special teams is not in the measured evaluation.** It was added after the evaluation ran, for live reports only. Its numbers go through the same fact-checker.
 - **One model.** Haiku 5.5 on every node. No comparison with Sonnet, Opus or a local model (a planned Ollama run was dropped).
-- **One grader.** Usefulness is graded by one person, blind to the configuration but not independent.
+- **One grader, 10 games.** Usefulness is graded by one person, blind to the configuration but not independent. The single agent's reports are also shorter, which may affect its coverage grades.
+- **The eval's reports were made before the venue fix.** About a third of the titles that name a venue have it backwards.
 - **Synthetic errors.** Planted errors may be easier to catch than natural ones.
 - **Data limits.** There is no personnel, coverage (man/zone), true pressure or route data. "Pressure proxy" means sacks plus QB hits, and it undercounts real pressure. Special-teams samples are small, and the data has no hang time or snap timing.
 
