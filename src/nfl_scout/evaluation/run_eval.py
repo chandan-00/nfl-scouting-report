@@ -31,7 +31,9 @@ FALLBACK_COST = {"full": 0.034, "no_checker": 0.025, "single": 0.011, "full_st":
 
 
 def _request(m: dict, season: int) -> Request:
-    return Request(team=m["team"], opponent=m["opponent"], season=season, week=m["week"])
+    return Request(
+        team=m["team"], opponent=m["opponent"], season=season, week=m["week"], home=m.get("home")
+    )
 
 
 def pending(

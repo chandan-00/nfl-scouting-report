@@ -155,11 +155,24 @@ SECTION_TITLES = {
 }
 
 
-def planner_message(team: str, opponent: str, season: int, week: int, through_week: int) -> str:
+def matchup_line(team: str, opponent: str, season: int, week: int, home: str | None) -> str:
+    """The "Matchup:" sentence. With the home team it also states the venue; without it the text
+    is exactly what the eval's runs used."""
+    line = f"Matchup: {team} plays {opponent} in week {week} of the {season} season"
+    if home is None:
+        return line + ". "
+    away = opponent if home == team else team
+    where = "at home" if home == team else "away"
+    return line + f", {where} ({away} at {home}). "
+
+
+def planner_message(
+    team: str, opponent: str, season: int, week: int, through_week: int, home: str | None = None
+) -> str:
     return (
         "<role>planner</role>\n"
-        f"Matchup: {team} plays {opponent} in week {week} of the {season} season. "
-        f"Scout {opponent} for {team}. Data runs through week {through_week}.\n"
+        + matchup_line(team, opponent, season, week, home)
+        + f"Scout {opponent} for {team}. Data runs through week {through_week}.\n"
         f"offense_focus: questions about the {opponent} offense (and how the {team} defense "
         f"matches up).\n"
         f"defense_focus: questions about the {opponent} defense (and how the {team} offense "
@@ -178,11 +191,12 @@ def analyst_message(
     through_week: int,
     focus: list[str],
     sections: dict | None = None,
+    home: str | None = None,
 ) -> str:
     msg = (
         f"<role>{role}</role>\n"
-        f"Matchup: {team} plays {opponent} in week {week} of the {season} season. "
-        f"Data runs through week {through_week}.\n"
+        + matchup_line(team, opponent, season, week, home)
+        + f"Data runs through week {through_week}.\n"
         f"{ROLE_TASK[role].format(team=team, opponent=opponent)}\n"
     )
     if sections is not None:
@@ -233,6 +247,15 @@ WEEK_WORDS = {
 }  # fmt: skip
 
 
+def _venue(team: str, opponent: str, home: str | None) -> str:
+    if home is None:
+        return ""
+    away = opponent if home == team else team
+    return (
+        f"{home} is the home team ({away} at {home}); keep that order if the title names a venue. "
+    )
+
+
 # Report length the editor aims for: (low, high) words, without and with special teams.
 REPORT_WORDS = (400, 600)
 REPORT_WORDS_ST = (450, 700)
@@ -242,7 +265,9 @@ SPECIAL_TEAMS_EDITOR = (
 )
 
 
-def editor_message(team: str, opponent: str, season: int, week: int, sections: dict) -> str:
+def editor_message(
+    team: str, opponent: str, season: int, week: int, sections: dict, home: str | None = None
+) -> str:
     extra = ""
     if "special_teams_analyst" in sections:
         low, high = REPORT_WORDS_ST
@@ -250,7 +275,8 @@ def editor_message(team: str, opponent: str, season: int, week: int, sections: d
     return (
         "<role>editor</role>\n"
         f"Report for {team} on {opponent}, week {week} of the {season} season. "
-        f'The title must include "Week {week}".{extra}\n\n'
+        + _venue(team, opponent, home)
+        + f'The title must include "Week {week}".{extra}\n\n'
         + sections_context(sections, with_claims=True)
     )
 
@@ -278,10 +304,12 @@ SINGLE_NO_TOOLS = "You haven't called any tools yet. Call the tools now to gathe
 SINGLE_FINAL = "Now write the final report as JSON, using only the tool results above."
 
 
-def single_message(team: str, opponent: str, season: int, week: int, through_week: int) -> str:
+def single_message(
+    team: str, opponent: str, season: int, week: int, through_week: int, home: str | None = None
+) -> str:
     return (
         "<role>single_agent</role>\n"
-        f"Matchup: {team} plays {opponent} in week {week} of the {season} season. "
-        f"Data runs through week {through_week}.\n"
+        + matchup_line(team, opponent, season, week, home)
+        + f"Data runs through week {through_week}.\n"
         + SINGLE_TASK.format(team=team, opponent=opponent)
     )

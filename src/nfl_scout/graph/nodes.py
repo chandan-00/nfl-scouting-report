@@ -37,7 +37,7 @@ SINGLE_MAX_NUDGES = 2
 
 def planner(state: ScoutState, llm: LLM) -> dict[str, Any]:
     r = state["request"]
-    msg = prompts.planner_message(r.team, r.opponent, r.season, r.week, r.through_week)
+    msg = prompts.planner_message(r.team, r.opponent, r.season, r.week, r.through_week, home=r.home)
     response, usage = llm.call(
         "planner",
         system=prompts.PLANNER_SYSTEM,
@@ -70,7 +70,7 @@ def analyst(
     done = sum(1 for c in state.get("tool_calls", []) if c.node == role)
     executor = ToolExecutor(r.season, r.through_week, prefix, node=role, con=con, start=done)
     content = prompts.analyst_message(
-        role, r.team, r.opponent, r.season, r.week, r.through_week, focus, sections
+        role, r.team, r.opponent, r.season, r.week, r.through_week, focus, sections, home=r.home
     )
     if revision:
         content += prompts.revision_block(*revision)
@@ -135,7 +135,7 @@ def single_agent(
     r = state["request"]
     node = "single_agent"
     executor = ToolExecutor(r.season, r.through_week, ROLE_PREFIX[node], node=node, con=con)
-    msg = prompts.single_message(r.team, r.opponent, r.season, r.week, r.through_week)
+    msg = prompts.single_message(r.team, r.opponent, r.season, r.week, r.through_week, home=r.home)
     messages: list[dict] = [{"role": "user", "content": msg}]
     usages = []
     nudges = 0
@@ -268,7 +268,9 @@ def with_week(title: str, week: int) -> str:
 
 def editor(state: ScoutState, llm: LLM) -> dict[str, Any]:
     r = state["request"]
-    msg = prompts.editor_message(r.team, r.opponent, r.season, r.week, state["sections"])
+    msg = prompts.editor_message(
+        r.team, r.opponent, r.season, r.week, state["sections"], home=r.home
+    )
     messages = [{"role": "user", "content": msg}]
     response, usage = llm.call(
         "editor", system=prompts.EDITOR_SYSTEM, messages=messages, output_schema=REPORT_SCHEMA

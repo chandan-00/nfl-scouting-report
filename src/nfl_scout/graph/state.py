@@ -24,6 +24,8 @@ class Request(BaseModel):
     opponent: str
     season: int
     week: int
+    # The home team, from the schedule. None in the eval's runs, which had no venue.
+    home: str | None = None
 
     @computed_field
     @property

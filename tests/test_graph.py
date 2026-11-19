@@ -695,3 +695,37 @@ def test_league_rank_schema_lists_only_the_metrics_for_the_role():
     assert rank_metrics("defense_analyst") == offense
     assert rank_metrics("special_teams_analyst") <= special
     assert "field_goal_rate" in rank_metrics("special_teams_analyst")
+
+
+# --- Venue -----------------------------------------------------------------------------------
+
+
+def test_messages_state_the_venue_when_the_home_team_is_known():
+    from nfl_scout.graph import prompts
+
+    away = prompts.planner_message("GB", "DAL", 2026, 6, 5, home="DAL")
+    home = prompts.single_message("DAL", "GB", 2026, 6, 5, home="DAL")
+    assert "GB plays DAL in week 6 of the 2026 season, away (GB at DAL)." in away
+    assert "DAL plays GB in week 6 of the 2026 season, at home (GB at DAL)." in home
+    editor = prompts.editor_message("GB", "DAL", 2026, 6, {}, home="DAL")
+    analyst = prompts.analyst_message("offense_analyst", "GB", "DAL", 2026, 6, 5, [], home="DAL")
+    assert "(GB at DAL)" in editor and "(GB at DAL)" in analyst
+
+
+def test_messages_are_unchanged_without_a_venue():
+    """The eval's runs had no venue: their prompts must stay byte-identical."""
+    from nfl_scout.graph import prompts
+
+    msg = prompts.planner_message("GB", "DAL", 2026, 6, 5)
+    assert "Matchup: GB plays DAL in week 6 of the 2026 season. Scout DAL for GB." in msg
+    assert "home" not in msg and " at " not in msg
+
+
+def test_request_venue_reaches_every_node(con):
+    build_db(con, [{}, {**RUN}])
+    client = FakeClient(_scripts())
+    build_graph(client=client, con=con, teams=TEAMS).invoke(
+        {"request": Request(team="DEN", opponent="KC", season=2026, week=2, home="KC")}
+    )
+    firsts = [r["messages"][0]["content"] for r in client.requests]
+    assert firsts and all("(DEN at KC)" in m for m in firsts)

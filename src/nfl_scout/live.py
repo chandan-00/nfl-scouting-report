@@ -38,9 +38,24 @@ def week_matchups(
         team, opponent = (away, home) if away == focus else (home, away)
         out.append(
             {"game_id": game_id, "week": week, "team": team, "opponent": opponent,
-             "through_week": week - 1}
+             "through_week": week - 1, "home": home}
         )  # fmt: skip
     return sorted(out, key=lambda m: (m["team"] != focus, m["team"]))
+
+
+def home_team(
+    con: duckdb.DuckDBPyConnection, season: int, week: int, team: str, opponent: str
+) -> str | None:
+    """The home team of the scheduled game between `team` and `opponent`, or None."""
+    row = con.execute(
+        """
+        SELECT home_team FROM schedules
+        WHERE season = ? AND week = ? AND game_type = 'REG'
+          AND ((home_team = ? AND away_team = ?) OR (home_team = ? AND away_team = ?))
+        """,
+        [season, week, team, opponent, opponent, team],
+    ).fetchone()
+    return row[0] if row else None
 
 
 def data_ready(con: duckdb.DuckDBPyConnection, season: int, week: int) -> tuple[bool, list[str]]:

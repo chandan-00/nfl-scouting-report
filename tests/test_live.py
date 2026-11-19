@@ -48,3 +48,16 @@ def test_data_ready_flags_a_game_without_play_by_play(db):
     db.execute("INSERT INTO schedules VALUES ('2026_01_NYJ_MIA', 2026, 'REG', 1, 'NYJ', 'MIA')")
     ok, problems = data_ready(db, 2026, 1)
     assert not ok and any("2 of 3 week-1 games" in p for p in problems)
+
+
+def test_matchups_carry_the_home_team(db):
+    ms = week_matchups(db, 2026, 2, focus="BUF")
+    assert all(m["home"] in (m["team"], m["opponent"]) for m in ms)
+
+
+def test_home_team_comes_from_the_schedule(db):
+    from nfl_scout.live import home_team
+
+    (m,) = [m for m in week_matchups(db, 2026, 2) if "BUF" in (m["team"], m["opponent"])]
+    assert home_team(db, 2026, 2, "BUF", "DEN") == m["home"]
+    assert home_team(db, 2026, 2, "BUF", "LV") is None  # not scheduled

@@ -13,7 +13,9 @@ from nfl_scout.config import load_settings
 from nfl_scout.costs import cost_by_node
 from nfl_scout.graph.build import CONFIGS, build_graph
 from nfl_scout.graph.state import Request
+from nfl_scout.live import home_team
 from nfl_scout.runs import save_run
+from nfl_scout.tools.base import default_connection
 
 
 def main() -> None:
@@ -28,7 +30,8 @@ def main() -> None:
     ap.add_argument("--no-save", action="store_true", help="don't write the run file")
     a = ap.parse_args()
 
-    request = Request(team=a.team, opponent=a.opponent, season=a.season, week=a.week)
+    home = home_team(default_connection(), a.season, a.week, a.team, a.opponent)
+    request = Request(team=a.team, opponent=a.opponent, season=a.season, week=a.week, home=home)
     out = build_graph(settings=settings, config=a.graph).invoke({"request": request})
 
     print("PLAN", out.get("plan"), sep="\n", end="\n\n")
