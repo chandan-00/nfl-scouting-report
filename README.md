@@ -64,6 +64,14 @@ How the numbers are kept honest:
 - **Synthetic errors.** Planted errors may be easier to catch than natural ones.
 - **Data limits.** There is no personnel, coverage (man/zone), true pressure or route data. "Pressure proxy" means sacks plus QB hits, and it undercounts real pressure. Special-teams samples are small, and the data has no hang time or snap timing.
 
+## Future work
+
+- **Bigger models:** run Sonnet 5.5 (about $6) or Opus 5.5 on the 10 graded games and blind-grade them against Haiku, to see whether a larger model writes more useful reports.
+- **Special teams in the measured evaluation,** with seeded errors and independent re-derivation for its tools.
+- **Later-season evaluation** (`matchups_v2`, weeks 8+), where samples are larger.
+- **A second grader** for inter-rater agreement, and an LLM judge calibrated against the hand grades.
+- **Checker blind spots:** sign errors, and claims that name both the right and a wrong team.
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and Python 3.12.

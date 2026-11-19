@@ -9,13 +9,17 @@ Hover a highlighted number to see its claim, the tool call it cites and the chec
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 import streamlit as st
 
-from nfl_scout.app_render import annotate_report
-
 ROOT = Path(__file__).resolve().parents[1]
+# On Streamlit Community Cloud only app/requirements.txt is installed, not the package itself.
+sys.path.insert(0, str(ROOT / "src"))
+
+from nfl_scout.app_render import annotate_report  # noqa: E402
+
 SOURCES = {"Live reports": [ROOT / "demo" / "live", ROOT / "runs" / "live"]}
 RESULTS = ROOT / "docs" / "results.md"
 
