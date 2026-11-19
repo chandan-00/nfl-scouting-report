@@ -6,6 +6,10 @@ The 2026 games come after every model's training cutoff, so this is clean. Singl
 are noisy; claims whose game sample is under `min_n` plays (or drives) are skipped.
 
     uv run python -m nfl_scout.evaluation.forward --config full no_checker single
+    uv run python -m nfl_scout.evaluation.forward --live 2026_w10 --config full
+
+With --live, it scores saved live reports (runs/live/<dir>/) against the current data file, once
+their games have been played, and writes runs/scores/forward_live_<dir>.json.
 """
 
 from __future__ import annotations
@@ -105,9 +109,16 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", nargs="+", default=["full", "no_checker", "single"])
     ap.add_argument("--min-n", type=int, default=MIN_N)
+    ap.add_argument("--live", help="score live reports in runs/live/<LIVE>/ instead of the eval")
     a = ap.parse_args()
-    runs_dir: Path = settings.resolve(settings.paths.runs_dir)
-    plays = load_plays(snapshot_connection(), settings.data.eval_season)
+    base: Path = settings.resolve(settings.paths.runs_dir)
+    if a.live:
+        from nfl_scout.tools.base import default_connection
+
+        runs_dir, con = base / "live" / a.live, default_connection()
+    else:
+        runs_dir, con = base, snapshot_connection()
+    plays = load_plays(con, settings.data.eval_season)
     out = {}
     for config in a.config:
         rows = [
@@ -124,7 +135,8 @@ def main() -> None:
                     f"  {tool:28} n={t['claims']:4} closer={t['report_closer']:.0%} "
                     f"MAE report={t['report_mae']:.3f} league={t['naive_mae']:.3f}"
                 )
-    path = runs_dir / "scores" / "forward.json"
+    name = f"forward_live_{a.live}.json" if a.live else "forward.json"
+    path = base / "scores" / name
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(out, indent=1))
 
