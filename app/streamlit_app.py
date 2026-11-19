@@ -35,7 +35,8 @@ STYLE = """
 
 @st.cache_data
 def load_runs() -> dict[str, dict[str, Path]]:
-    """{week label: {game label: path}}, newest week first. demo/ wins over runs/ on duplicates."""
+    """{week label: {"TEAM (vs OPP)": path}}, newest week first. Each report is written for TEAM
+    about OPP. On duplicates demo/ wins over runs/, and a later folder wins over an earlier one."""
     weeks: dict[str, dict[str, Path]] = {}
     for base in reversed(SOURCES["Live reports"]):
         for path in sorted(base.glob("*/**/*.json")):
@@ -46,9 +47,8 @@ def load_runs() -> dict[str, dict[str, Path]]:
                 continue
             r = run["request"]
             week = f"{r['season']} week {r['week']}"
-            special = "special_teams_analyst" in run.get("sections", {})
-            label = f"{r['team']} vs {r['opponent']}" + (" (with special teams)" * special)
-            weeks.setdefault(week, {})[label] = path
+            weeks.setdefault(week, {})[f"{r['team']} (vs {r['opponent']})"] = path
+    weeks = {w: dict(sorted(games.items())) for w, games in weeks.items()}
     return dict(sorted(weeks.items(), key=lambda kv: int(kv[0].split()[-1]), reverse=True))
 
 
@@ -112,8 +112,9 @@ def page_reports() -> None:
     week = st.sidebar.selectbox("Week", list(runs))
     games = runs[week]
     default = next((i for i, g in enumerate(games) if g.startswith("BUF")), 0)
-    game = st.sidebar.selectbox("Game", list(games), index=default)
-    show_report(games[game])
+    team = st.sidebar.selectbox("Your team", list(games), index=default)
+    st.sidebar.caption("Each report scouts your team's opponent for that week.")
+    show_report(games[team])
 
 
 def page_results() -> None:

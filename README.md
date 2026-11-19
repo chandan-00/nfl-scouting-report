@@ -54,7 +54,7 @@ How the numbers are kept honest:
 
   The full graph beats the single agent clearly: +0.72, interval +0.33 to +1.10. Its lead over the no-checker graph is suggestive but not conclusive with 10 games: +0.35, interval −0.05 to +0.68. The grader also caught two errors no number check can see: titles with the venue backwards (now fixed: every node is told the home team) and one single-agent report written from the wrong team's point of view.
 
-**Live reports.** Week 10 produced 14 reports (one per game) for $0.51, with 874 of 875 report numbers checked. From week 11, live reports add a special-teams section: field goals by distance and kicker changes, punting, kickoffs, returns and special-teams EPA.
+**Live reports.** Week 10 produced 14 reports, one per game from the home team's view, for $0.51, with 874 of 875 report numbers checked. From week 11, every team gets a report on its opponent, and each report adds a special-teams section: field goals by distance and kicker changes, punting, kickoffs, returns and special-teams EPA.
 
 ## Limitations
 
@@ -90,7 +90,7 @@ uv run pytest
 uv run python -m nfl_scout.data.ingest                  # download nflverse data into data/nfl.duckdb
 uv run python -m nfl_scout.graph.run --team BUF --opponent NYJ --week 10 --graph full_st
 uv run python -m nfl_scout.live --week 11               # check data readiness and estimate cost
-uv run python -m nfl_scout.live --week 11 --yes         # one report per game
+uv run python -m nfl_scout.live --week 11 --yes         # one report per team
 uv run streamlit run app/streamlit_app.py               # demo: hover any number to see its claim
 ```
 
