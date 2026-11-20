@@ -18,6 +18,10 @@ ROOT = Path(__file__).resolve().parents[1]
 # On Streamlit Community Cloud only app/requirements.txt is installed, not the package itself.
 sys.path.insert(0, str(ROOT / "src"))
 
+# Streamlit Cloud pulls new commits into the running process, where an older app_render may
+# already be imported; Streamlit reruns only this script. Drop the cached copy so the helpers
+# always match this script.
+sys.modules.pop("nfl_scout.app_render", None)
 from nfl_scout.app_render import annotate_report, cost_rows  # noqa: E402
 
 SOURCES = {"Live reports": [ROOT / "demo" / "live", ROOT / "runs" / "live"]}
