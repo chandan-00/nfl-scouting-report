@@ -238,3 +238,11 @@ def test_surname_handles_suffixes_and_initials(name, surname):
     from nfl_scout.checker import _surname
 
     assert _surname(name) == surname
+
+
+def test_wrong_team_names_in_the_prose_fail_the_names_check(db):
+    calls = run_calls(db, ("pass_rate", {"team": "KC"}))
+    sections = section("Indiana drops back on 66.7% [c1].", claim("c1", 66.7))
+    found = failures(check_sections(sections, calls, db))
+    assert [(c, k) for c, k, _ in found] == [(None, "names")]
+    assert "Indianapolis" in found[0][2]

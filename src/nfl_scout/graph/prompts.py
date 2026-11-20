@@ -2,6 +2,8 @@
 across its tool-loop turns and across runs, and gets cached. Request details go in the first user
 message."""
 
+from nfl_scout.names import TEAM_NAMES
+
 SYSTEM = """\
 You are an NFL analyst writing one section of an opponent scouting report for a coaching staff.
 
@@ -163,7 +165,12 @@ def matchup_line(team: str, opponent: str, season: int, week: int, home: str | N
         return line + ". "
     away = opponent if home == team else team
     where = "at home" if home == team else "away"
-    return line + f", {where} ({away} at {home}). "
+    return line + f", {where} ({away} at {home}). " + full_names(team, opponent)
+
+
+def full_names(team: str, opponent: str) -> str:
+    """Live reports only: the agents once wrote "Indiana" for Indianapolis."""
+    return f"{team} is the {TEAM_NAMES[team]} and {opponent} is the {TEAM_NAMES[opponent]}. "
 
 
 def planner_message(
@@ -253,6 +260,7 @@ def _venue(team: str, opponent: str, home: str | None) -> str:
     away = opponent if home == team else team
     return (
         f"{home} is the home team ({away} at {home}); keep that order if the title names a venue. "
+        + full_names(team, opponent)
     )
 
 
@@ -278,6 +286,14 @@ def editor_message(
         + _venue(team, opponent, home)
         + f'The title must include "Week {week}".{extra}\n\n'
         + sections_context(sections, with_claims=True)
+    )
+
+
+def editor_fix_names(problems: list[str]) -> str:
+    return (
+        "That report gets team names wrong: "
+        + "; ".join(problems)
+        + ". Fix those names and change nothing else. Return the whole report again."
     )
 
 

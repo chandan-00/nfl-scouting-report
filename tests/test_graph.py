@@ -629,6 +629,34 @@ def test_editor_keeps_the_first_draft_if_the_retry_is_no_shorter(con):
     assert 700 <= len(out["report"].text().split()) < 800
 
 
+def test_editor_asks_once_to_fix_a_wrong_team_name(con):
+    build_db(con, [{}, {**RUN}])
+    scripts = _scripts()
+    bad = _long_report(300)
+    bad["summary"] = "Indiana drops back on 50.0% of plays [oc1]."
+    scripts["editor"] = [text_response(bad), text_response(_long_report(300))]
+    client = FakeClient(scripts)
+    out = _run(con, client)
+
+    editor_calls = [
+        r for r in client.requests if "<role>editor</role>" in r["messages"][0]["content"]
+    ]
+    assert len(editor_calls) == 2
+    assert "Indianapolis" in editor_calls[1]["messages"][-1]["content"]
+    assert "Indiana " not in out["report"].text()
+    assert out["name_problems"] == []
+
+
+def test_editor_records_a_team_name_it_did_not_fix(con):
+    build_db(con, [{}, {**RUN}])
+    scripts = _scripts()
+    bad = _long_report(300)
+    bad["summary"] = "Indiana drops back on 50.0% of plays [oc1]."
+    scripts["editor"] = [text_response(bad), text_response(bad)]
+    out = _run(con, FakeClient(scripts))
+    assert len(out["name_problems"]) == 1
+
+
 # --- Special teams (live reports only) ----------------------------------------------------------
 
 
@@ -710,6 +738,8 @@ def test_messages_state_the_venue_when_the_home_team_is_known():
     editor = prompts.editor_message("GB", "DAL", 2026, 6, {}, home="DAL")
     analyst = prompts.analyst_message("offense_analyst", "GB", "DAL", 2026, 6, 5, [], home="DAL")
     assert "(GB at DAL)" in editor and "(GB at DAL)" in analyst
+    for msg in (away, home, editor, analyst):
+        assert "GB is the Green Bay Packers" in msg and "DAL is the Dallas Cowboys" in msg
 
 
 def test_messages_are_unchanged_without_a_venue():

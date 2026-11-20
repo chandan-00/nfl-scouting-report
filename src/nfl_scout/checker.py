@@ -5,6 +5,7 @@
 2. wording: the claim text must match the call's arguments (team, side, play kind, down, split,
    player, week range, season). Rule-based; an LLM check for free-text descriptors is a stretch.
 3. prose: every number in the prose must link to one of the section's claims.
+4. names: the prose must not call a team by a state or former name ("Indiana" for Indianapolis).
 """
 
 from __future__ import annotations
@@ -19,11 +20,12 @@ from typing import Any, Literal
 import duckdb
 
 from nfl_scout.graph.state import Claim, Section, ToolCall
+from nfl_scout.names import team_name_problems
 from nfl_scout.numbers import check_numbers
 from nfl_scout.tools import TOOLS
 from nfl_scout.tools.base import default_connection
 
-Check = Literal["value", "wording", "prose"]
+Check = Literal["value", "wording", "prose", "names"]
 
 # Tools whose side is fixed (no `side` argument).
 OFFENSE_ONLY = {
@@ -340,8 +342,9 @@ def check_sections(
     con: duckdb.DuckDBPyConnection | None = None,
     checker: Checker | None = None,
 ) -> list[CheckResult]:
-    """Run all three checks over every section. One value and one wording result per claim,
-    plus one prose result per number that doesn't link to a matching claim. Pass a `checker`
+    """Run all four checks over every section. One value and one wording result per claim,
+    one prose result per number that doesn't link to a matching claim, and one names result
+    per wrong team name. Pass a `checker`
     built on the same tool calls to reuse its cached re-runs."""
     checker = checker or Checker(tool_calls, con)
     claims = {c.claim_id: c for s in sections.values() for c in s.claims}
@@ -361,4 +364,6 @@ def check_sections(
             if nc.status != "ok":
                 detail = f"{nc.mention.text!r} in the prose: {nc.status.replace('_', ' ')}"
                 results.append(CheckResult(role, nc.mention.claim_id, "prose", False, detail))
+        for problem in team_name_problems(section.prose):
+            results.append(CheckResult(role, None, "names", False, problem))
     return results

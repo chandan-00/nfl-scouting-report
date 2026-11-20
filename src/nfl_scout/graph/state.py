@@ -124,6 +124,7 @@ class ScoutState(TypedDict, total=False):
     dropped: list[dict[str, Any]]  # claims and numbers still failing after the last loop
     report: Report
     number_checks: list[Any]  # nfl_scout.numbers.NumberCheck, over the final report
+    name_problems: list[str]  # wrong team names left in the final report
     tool_calls: Annotated[list[ToolCall], operator.add]
     usage: Annotated[list[Usage], operator.add]
 

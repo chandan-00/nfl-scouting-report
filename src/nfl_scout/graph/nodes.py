@@ -24,6 +24,7 @@ from nfl_scout.graph.state import (
     parse_section,
     parse_single,
 )
+from nfl_scout.names import team_name_problems
 from nfl_scout.numbers import check_numbers
 
 # Model turns per analyst before giving up (each turn may hold several parallel tool calls).
@@ -292,8 +293,27 @@ def editor(state: ScoutState, llm: LLM) -> dict[str, Any]:
         shorter = Report(**final_json(response))
         if report_words(shorter) < words:
             report = shorter
+    problems = report_name_problems(report)
+    if problems:
+        retry = [
+            *messages,
+            {"role": "assistant", "content": report.model_dump_json()},
+            {"role": "user", "content": prompts.editor_fix_names(problems)},
+        ]
+        response, usage = llm.call(
+            "editor", system=prompts.EDITOR_SYSTEM, messages=retry, output_schema=REPORT_SCHEMA
+        )
+        usages.append(usage)
+        fixed = Report(**final_json(response))
+        if len(report_name_problems(fixed)) < len(problems):
+            report, problems = fixed, report_name_problems(fixed)
     report = report.model_copy(update={"title": with_week(report.title, r.week)})
-    return {"report": report, "usage": usages}
+    return {"report": report, "usage": usages, "name_problems": problems}
+
+
+def report_name_problems(report: Report) -> list[str]:
+    """Wrong team names anywhere in the report, title included."""
+    return team_name_problems(f"{report.title}\n\n{report.text()}")
 
 
 def number_check(state: ScoutState) -> dict[str, Any]:

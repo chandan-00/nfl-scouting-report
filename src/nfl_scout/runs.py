@@ -67,6 +67,7 @@ def save_run(
         "dropped": _plain(out.get("dropped", [])),
         "report": _plain(out.get("report")),
         "number_checks": _plain(out.get("number_checks", [])),
+        "name_problems": out.get("name_problems", []),
         "tool_calls": _plain(out.get("tool_calls", [])),
         "usage": _plain(out.get("usage", [])),
         "cost_usd": {"total": sum(costs.values()), "by_node": costs},
