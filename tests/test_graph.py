@@ -457,6 +457,10 @@ def test_run_is_saved_with_draft_final_and_cost(con, tmp_path):
     assert run["report"]["title"] == "KC scouting report (Week 2)"
     assert run["tool_calls"][0]["call_id"] in {"o1", "i1"}
     assert run["cost_usd"]["total"] > 0
+    rows = run["cost_usd"]["by_node"]
+    assert [set(r) for r in rows] == [{"node", "cost_usd"}] * len(rows)
+    assert len({r["node"] for r in rows}) == len(rows)
+    assert abs(sum(r["cost_usd"] for r in rows) - run["cost_usd"]["total"]) < 1e-5
     assert run["number_checks"][0]["status"] == "ok"
 
 

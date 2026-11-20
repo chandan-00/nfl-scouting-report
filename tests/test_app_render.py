@@ -1,6 +1,6 @@
 """The demo's report rendering: numbers become highlighted spans with their claim and check."""
 
-from nfl_scout.app_render import annotate_report
+from nfl_scout.app_render import annotate_report, cost_rows
 
 
 def _run():
@@ -59,3 +59,18 @@ def test_sample_sizes_show_the_n_plays_and_unlinked_numbers_are_flagged():
     assert "n_plays = 40" in body
     assert 'class="num unlinked"' in body and ">3</span>" in body
     assert "&lt;b&gt;" in body  # report text is escaped
+
+
+def test_cost_rows_read_the_table_format():
+    cost = {"total": 0.03, "by_node": [{"node": "planner", "cost_usd": 0.01},
+                                       {"node": "editor", "cost_usd": 0.02}]}  # fmt: skip
+    assert cost_rows(cost) == cost["by_node"]
+
+
+def test_cost_rows_read_older_runs_saved_as_a_dict():
+    cost = {"total": 0.03, "by_node": {"planner": 0.01, "editor": 0.02}}
+    assert cost_rows(cost) == [
+        {"node": "planner", "cost_usd": 0.01},
+        {"node": "editor", "cost_usd": 0.02},
+    ]
+    assert cost_rows({}) == []

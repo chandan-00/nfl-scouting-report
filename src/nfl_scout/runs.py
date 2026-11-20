@@ -70,7 +70,11 @@ def save_run(
         "name_problems": out.get("name_problems", []),
         "tool_calls": _plain(out.get("tool_calls", [])),
         "usage": _plain(out.get("usage", [])),
-        "cost_usd": {"total": sum(costs.values()), "by_node": costs},
+        # by_node is a table (one row per node), so pd.DataFrame(by_node) reads it directly.
+        "cost_usd": {
+            "total": round(sum(costs.values()), 6),
+            "by_node": [{"node": n, "cost_usd": round(c, 6)} for n, c in costs.items()],
+        },
     }
     path.write_text(json.dumps(record, indent=1))
     return path

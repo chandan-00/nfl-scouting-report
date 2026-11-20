@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 # On Streamlit Community Cloud only app/requirements.txt is installed, not the package itself.
 sys.path.insert(0, str(ROOT / "src"))
 
-from nfl_scout.app_render import annotate_report  # noqa: E402
+from nfl_scout.app_render import annotate_report, cost_rows  # noqa: E402
 
 SOURCES = {"Live reports": [ROOT / "demo" / "live", ROOT / "runs" / "live"]}
 RESULTS = ROOT / "docs" / "results.md"
@@ -98,9 +98,9 @@ def show_report(path: Path) -> None:
             }
             for c in run["tool_calls"]
         ]
-        st.dataframe(rows, use_container_width=True, hide_index=True)
+        st.dataframe(rows, width="stretch", hide_index=True)
     with st.expander("Cost by node"):
-        st.json(run.get("cost_usd", {}).get("by_node", {}))
+        st.dataframe(cost_rows(run.get("cost_usd", {})), width="stretch", hide_index=True)
 
 
 def page_reports() -> None:

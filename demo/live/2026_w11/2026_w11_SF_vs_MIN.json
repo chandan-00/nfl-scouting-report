@@ -10825,15 +10825,36 @@
   }
  ],
  "cost_usd": {
-  "total": 0.053359884999999996,
-  "by_node": {
-   "planner": 0.00035879999999999994,
-   "defense_analyst": 0.007998095,
-   "injury_analyst": 0.005103875,
-   "offense_analyst": 0.01684999,
-   "special_teams_analyst": 0.005402334999999999,
-   "matchup_analyst": 0.009209855,
-   "editor": 0.008436935
-  }
+  "total": 0.05336,
+  "by_node": [
+   {
+    "node": "planner",
+    "cost_usd": 0.000359
+   },
+   {
+    "node": "defense_analyst",
+    "cost_usd": 0.007998
+   },
+   {
+    "node": "injury_analyst",
+    "cost_usd": 0.005104
+   },
+   {
+    "node": "offense_analyst",
+    "cost_usd": 0.01685
+   },
+   {
+    "node": "special_teams_analyst",
+    "cost_usd": 0.005402
+   },
+   {
+    "node": "matchup_analyst",
+    "cost_usd": 0.00921
+   },
+   {
+    "node": "editor",
+    "cost_usd": 0.008437
+   }
+  ]
  }
 }

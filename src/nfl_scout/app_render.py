@@ -66,3 +66,11 @@ def annotate_report(run: dict[str, Any]) -> list[tuple[str, str]]:
         out.append((heading, _render(text, base, checks, claims, calls)))
         base += len(text) + 2  # the "\n\n" between parts
     return out
+
+
+def cost_rows(cost: dict[str, Any]) -> list[dict[str, Any]]:
+    """Cost by node as table rows. Runs saved before 2026-11-20 stored a {node: cost} dict."""
+    by_node = cost.get("by_node", [])
+    if isinstance(by_node, dict):
+        return [{"node": n, "cost_usd": c} for n, c in by_node.items()]
+    return list(by_node)
