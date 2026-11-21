@@ -125,6 +125,7 @@ class ScoutState(TypedDict, total=False):
     report: Report
     number_checks: list[Any]  # nfl_scout.numbers.NumberCheck, over the final report
     name_problems: list[str]  # wrong team names left in the final report
+    venue_problems: list[str]  # backwards venues left in the final report (live runs only)
     tool_calls: Annotated[list[ToolCall], operator.add]
     usage: Annotated[list[Usage], operator.add]
 

@@ -289,11 +289,11 @@ def editor_message(
     )
 
 
-def editor_fix_names(problems: list[str]) -> str:
+def editor_fix(problems: list[str]) -> str:
     return (
-        "That report gets team names wrong: "
+        "That report has these errors: "
         + "; ".join(problems)
-        + ". Fix those names and change nothing else. Return the whole report again."
+        + ". Fix them and change nothing else. Return the whole report again."
     )
 
 

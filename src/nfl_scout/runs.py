@@ -68,6 +68,7 @@ def save_run(
         "report": _plain(out.get("report")),
         "number_checks": _plain(out.get("number_checks", [])),
         "name_problems": out.get("name_problems", []),
+        "venue_problems": out.get("venue_problems", []),
         "tool_calls": _plain(out.get("tool_calls", [])),
         "usage": _plain(out.get("usage", [])),
         # by_node is a table (one row per node), so pd.DataFrame(by_node) reads it directly.

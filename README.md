@@ -62,7 +62,7 @@ How the numbers are kept honest:
 - **Special teams is not in the measured evaluation.** It was added after the evaluation ran, for live reports only. Its numbers go through the same fact-checker.
 - **One model.** Haiku 5.5 on every node. No comparison with Sonnet, Opus or a local model (a planned Ollama run was dropped).
 - **One grader, 10 games.** Usefulness is graded by one person, blind to the configuration but not independent. The single agent's reports are also shorter, which may affect its coverage grades.
-- **The eval's reports were made before the venue and team-name fixes.** About a third of the titles that name a venue have it backwards. One eval report (and one week-11 live report) calls Indianapolis "Indiana". The fact-checker and editor now flag state and former team names, and live prompts give both teams' full names.
+- **The eval's reports were made before the venue and team-name fixes.** About a third of the titles that name a venue have it backwards. One eval report (and one week-11 live report) calls Indianapolis "Indiana". The fact-checker and editor now flag state and former team names. The editor also flags a backwards venue on live reports, and live prompts give both teams' full names. The saved reports were left as generated.
 - **Synthetic errors.** Planted errors may be easier to catch than natural ones.
 - **Data limits.** There is no personnel, coverage (man/zone), true pressure or route data. "Pressure proxy" means sacks plus QB hits, and it undercounts real pressure. Special-teams samples are small, and the data has no hang time or snap timing.
 

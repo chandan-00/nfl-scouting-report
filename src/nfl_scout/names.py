@@ -90,3 +90,41 @@ def team_name_problems(text: str) -> list[str]:
         if re.search(rf"\b{re.escape(wrong)}\b", text):
             problems.append(f'"{wrong}" is a former team name: write {right}')
     return problems
+
+
+# --- Venue -------------------------------------------------------------------------------------
+# The eval's titles had the venue backwards in about a third of the reports that named one
+# ("Green Bay at Dallas" for a game at Green Bay). "A at B", "A @ B" and "A visits B" put the game
+# at B; "A hosts B" puts it at A.
+_AT = r"\s+(?:at|@|visits?|travels?\s+to)\s+(?:the\s+)?"
+_HOSTS = r"\s+(?:hosts?|welcomes?)\s+(?:the\s+)?"
+
+
+def _names(abbr: str) -> list[str]:
+    """Ways to name a team: abbreviation, full name, city, nickname (longest first)."""
+    full = TEAM_NAMES[abbr]
+    nick = full.split()[-1]
+    city = full[: -len(nick)].strip()
+    codes = {"LA", "LAR"} if abbr in ("LA", "LAR") else {abbr}
+    return sorted({*codes, full, city, nick}, key=len, reverse=True)
+
+
+def _team_pattern(abbr: str) -> str:
+    # Codes match in capitals only: "NO" is the Saints, "no" is a word.
+    names = [f"(?-i:{n})" if n.isupper() else re.escape(n) for n in _names(abbr)]
+    return "(?:" + "|".join(rf"\b{n}\b" for n in names) + ")"
+
+
+def venue_problems(text: str, home: str, away: str) -> list[str]:
+    """One message per phrase that puts the game at the away team's stadium."""
+    h, a = _team_pattern(home), _team_pattern(away)
+    wrong = [
+        rf"{h}{_AT}{a}",  # "HOU at IND": the game is at IND
+        rf"{a}{_HOSTS}{h}",  # "IND hosts HOU"
+    ]
+    right = f"{away} at {home}"
+    return [
+        f'"{m.group(0)}" puts the game at the wrong stadium: it is {right}'
+        for pattern in wrong
+        for m in re.finditer(pattern, text, re.I)
+    ]

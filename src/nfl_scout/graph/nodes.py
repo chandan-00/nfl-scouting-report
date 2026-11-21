@@ -24,7 +24,7 @@ from nfl_scout.graph.state import (
     parse_section,
     parse_single,
 )
-from nfl_scout.names import team_name_problems
+from nfl_scout.names import team_name_problems, venue_problems
 from nfl_scout.numbers import check_numbers
 
 # Model turns per analyst before giving up (each turn may hold several parallel tool calls).
@@ -293,27 +293,37 @@ def editor(state: ScoutState, llm: LLM) -> dict[str, Any]:
         shorter = Report(**final_json(response))
         if report_words(shorter) < words:
             report = shorter
-    problems = report_name_problems(report)
-    if problems:
+    # One request fixes wrong team names and a backwards venue (only checked when the home team
+    # is known, so the eval's runs are unchanged).
+    check = report_checker(r.home, r.opponent if r.home == r.team else r.team)
+    names, venue = check(report)
+    if names or venue:
         retry = [
             *messages,
             {"role": "assistant", "content": report.model_dump_json()},
-            {"role": "user", "content": prompts.editor_fix_names(problems)},
+            {"role": "user", "content": prompts.editor_fix(names + venue)},
         ]
         response, usage = llm.call(
             "editor", system=prompts.EDITOR_SYSTEM, messages=retry, output_schema=REPORT_SCHEMA
         )
         usages.append(usage)
         fixed = Report(**final_json(response))
-        if len(report_name_problems(fixed)) < len(problems):
-            report, problems = fixed, report_name_problems(fixed)
+        fixed_names, fixed_venue = check(fixed)
+        if len(fixed_names) + len(fixed_venue) < len(names) + len(venue):
+            report, names, venue = fixed, fixed_names, fixed_venue
     report = report.model_copy(update={"title": with_week(report.title, r.week)})
-    return {"report": report, "usage": usages, "name_problems": problems}
+    return {"report": report, "usage": usages, "name_problems": names, "venue_problems": venue}
 
 
-def report_name_problems(report: Report) -> list[str]:
-    """Wrong team names anywhere in the report, title included."""
-    return team_name_problems(f"{report.title}\n\n{report.text()}")
+def report_checker(home: str | None, away: str):
+    """(wrong team names, backwards venues) anywhere in a report, title included."""
+
+    def check(report: Report) -> tuple[list[str], list[str]]:
+        text = f"{report.title}\n\n{report.text()}"
+        venue = venue_problems(text, home, away) if home else []
+        return team_name_problems(text), venue
+
+    return check
 
 
 def number_check(state: ScoutState) -> dict[str, Any]:

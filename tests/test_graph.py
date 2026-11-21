@@ -661,6 +661,41 @@ def test_editor_records_a_team_name_it_did_not_fix(con):
     assert len(out["name_problems"]) == 1
 
 
+def _run_home(con, client):
+    return build_graph(client=client, con=con, teams=TEAMS).invoke(
+        {"request": Request(team="DEN", opponent="KC", season=2026, week=2, home="KC")}
+    )
+
+
+def test_editor_asks_once_to_fix_a_backwards_venue(con):
+    build_db(con, [{}, {**RUN}])
+    scripts = _scripts()
+    scripts["editor"] = [
+        text_response(_long_report(300, title="KC at DEN, Week 2")),
+        text_response(_long_report(300, title="DEN at KC, Week 2")),
+    ]
+    client = FakeClient(scripts)
+    out = _run_home(con, client)
+
+    editor_calls = [
+        r for r in client.requests if "<role>editor</role>" in r["messages"][0]["content"]
+    ]
+    assert len(editor_calls) == 2
+    assert "DEN at KC" in editor_calls[1]["messages"][-1]["content"]
+    assert out["report"].title == "DEN at KC, Week 2"
+    assert out["venue_problems"] == []
+
+
+def test_editor_skips_the_venue_check_without_a_home_team(con):
+    """The eval's requests have no home team: their runs must not change."""
+    build_db(con, [{}, {**RUN}])
+    scripts = _scripts()
+    scripts["editor"] = [text_response(_long_report(300, title="KC at DEN, Week 2"))]
+    out = _run(con, FakeClient(scripts))
+    assert sum(u.node == "editor" for u in out["usage"]) == 1
+    assert out["venue_problems"] == []
+
+
 # --- Special teams (live reports only) ----------------------------------------------------------
 
 
