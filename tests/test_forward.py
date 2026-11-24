@@ -72,3 +72,36 @@ def test_the_same_game_metric_and_split_counts_once_across_repeats(plays):
     # Three repeats citing the same call are one prediction, not three.
     rows = forward_rows(run(), plays, min_n=5) * 3
     assert aggregate_forward(rows)["claims"] == 1
+
+
+# --- Weekly document ----------------------------------------------------------------------------
+
+
+def _row(matchup, tool, team, report, game, league):
+    return {"matchup": matchup, "tool": tool, "args": {"team": team}, "report_value": report,
+            "next_game": game, "league": league, "report_error": abs(report - game),
+            "naive_error": abs(league - game)}  # fmt: skip
+
+
+def test_week_document_has_headline_metric_and_game_tables():
+    from nfl_scout.evaluation.forward import week_markdown
+
+    rows = [
+        _row("w11_IND_vs_HOU", "pass_rate", "HOU", 59.0, 39.0, 55.0),  # league closer
+        _row("w11_HOU_vs_IND", "pass_rate", "HOU", 59.0, 39.0, 55.0),  # same stat, other view
+        _row("w11_HOU_vs_IND", "sack_rate", "IND", 6.6, 6.0, 7.5),  # report closer
+    ]
+    games = [{"game_id": "2026_11_IND_HOU", "away": "IND", "home": "HOU",
+              "away_score": 3, "home_score": 26}]  # fmt: skip
+    md = week_markdown(
+        "2026_w11", rows, games, reports=2, generated="2026-11-24", data_loaded="2026-11-24 16:13"
+    )
+
+    assert md.startswith("# Forward check: 2026 week 11")
+    assert "Generated 2026-11-24" in md
+    assert "data file loaded 2026-11-24 16:13" in md
+    assert "2 reports" in md
+    # Pooled over reports: 1 of 2 unique (report, stat) pairs; per game the shared stat counts once.
+    assert "50.0% of 2 claims" in md
+    assert "| pass_rate | 1 | 0% |" in md
+    assert "| IND 3 at HOU 26 | 2 | 50% |" in md

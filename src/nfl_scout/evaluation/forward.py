@@ -9,7 +9,8 @@ are noisy; claims whose game sample is under `min_n` plays (or drives) are skipp
     uv run python -m nfl_scout.evaluation.forward --live 2026_w10 --config full
 
 With --live, it scores saved live reports (runs/live/<dir>/) against the current data file, once
-their games have been played, and writes runs/scores/forward_live_<dir>.json.
+their games have been played, and writes runs/scores/forward_live_<dir>.json plus a document for
+the week, docs/forward/<dir>.md, linked from docs/forward/README.md.
 """
 
 from __future__ import annotations
@@ -101,6 +102,84 @@ def aggregate_forward(rows: list[dict]) -> dict[str, Any]:
     return {"claims": len(rows), "report_closer": _closer(rows), "by_tool": by_tool}
 
 
+def _game_key(row: dict) -> str:
+    """The two teams of a row's game, sorted: both reports of one game share it."""
+    _, team, _, opponent = row["matchup"].split("_")
+    return "_".join(sorted((team, opponent)))
+
+
+def per_game(rows: list[dict]) -> list[dict]:
+    """Each (game, metric, split) once. With one report per team, both reports of a game can cite
+    the same stat; counting it twice would weight that game double."""
+    unique = {(_game_key(r), r["tool"], json.dumps(r["args"], sort_keys=True)): r for r in rows}
+    return list(unique.values())
+
+
+def week_markdown(
+    name: str,
+    rows: list[dict],
+    games: list[dict],
+    reports: int,
+    generated: str,
+    data_loaded: str | None = None,
+) -> str:
+    """The week's forward check as a document: headline, by metric, by game."""
+    season, week = name.split("_w")
+    rows = per_game(rows)
+    lines = [
+        f"# Forward check: {season} week {int(week)}",
+        "",
+        f"Generated {generated}. {reports} reports, data through week {int(week) - 1}, scored "
+        "against the games once they were final"
+        + (f", on the data file loaded {data_loaded}." if data_loaded else "."),
+        "",
+        "nflverse revises play-by-play during the season (EPA and success were re-computed for "
+        "every 2026 game between Nov 2 and Nov 24), so a re-run on a later data file can differ.",
+        "",
+        "For each team stat a report cites: is the report's season-to-date value closer to the "
+        "same stat in the game itself than the league average through the same week? A stat "
+        "cited in both reports of a game counts once. About 50% means no better than the league "
+        "average.",
+        "",
+    ]
+    if not rows:
+        return "\n".join([*lines, "No claims could be scored.", ""])
+    lines += [
+        f"**Report closer than league average: {_closer(rows):.1%} of {len(rows)} claims.**",
+        "",
+        "## By metric",
+        "",
+        "| Metric | Claims | Report closer | MAE report | MAE league |",
+        "|---|---|---|---|---|",
+    ]
+    for tool in sorted({r["tool"] for r in rows}):
+        rs = [r for r in rows if r["tool"] == tool]
+        mae_report = mean(r["report_error"] for r in rs)
+        mae_league = mean(r["naive_error"] for r in rs)
+        lines.append(
+            f"| {tool} | {len(rs)} | {_closer(rs):.0%} | {mae_report:.3f} | {mae_league:.3f} |"
+        )
+    lines += ["", "## By game", "", "| Game | Claims | Report closer |", "|---|---|---|"]
+    for g in sorted(games, key=lambda g: g["game_id"]):
+        rs = [r for r in rows if _game_key(r) == "_".join(sorted((g["away"], g["home"])))]
+        if rs:
+            score = f"{g['away']} {g['away_score']} at {g['home']} {g['home_score']}"
+            lines.append(f"| {score} | {len(rs)} | {_closer(rs):.0%} |")
+    return "\n".join([*lines, ""])
+
+
+def _write_week_doc(docs: Path, name: str, md: str) -> Path:
+    """Write docs/forward/<name>.md and rebuild the index of weeks."""
+    docs.mkdir(parents=True, exist_ok=True)
+    path = docs / f"{name}.md"
+    path.write_text(md)
+    weeks = sorted(p.stem for p in docs.glob("*_w*.md"))
+    index = ["# Forward checks by week", "", "One document per week of live reports.", ""]
+    index += [f"- [{w.replace('_w', ' week ')}]({w}.md)" for w in weeks]
+    (docs / "README.md").write_text("\n".join([*index, ""]))
+    return path
+
+
 def main() -> None:
     from nfl_scout.config import load_settings
     from nfl_scout.evaluation.snapshot import snapshot_connection
@@ -139,6 +218,27 @@ def main() -> None:
     path = base / "scores" / name
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(out, indent=1))
+    if a.live:
+        from datetime import date
+
+        season, week = (int(x) for x in a.live.split("_w"))
+        games = [
+            dict(zip(("game_id", "away", "home", "away_score", "home_score"), g, strict=True))
+            for g in con.execute(
+                "SELECT game_id, away_team, home_team, away_score, home_score FROM schedules "
+                "WHERE season = ? AND week = ? AND game_type = 'REG'",
+                [season, week],
+            ).fetchall()
+        ]
+        rows = [row for config in a.config for row in out[config]["rows"]]
+        reports = sum(len(list((runs_dir / c).glob("r*/*.json"))) for c in a.config)
+        loaded = con.execute(
+            "SELECT strftime(loaded_at, '%Y-%m-%d %H:%M') FROM _ingest_log WHERE table_name = 'pbp'"
+        ).fetchone()
+        md = week_markdown(
+            a.live, rows, games, reports, date.today().isoformat(), loaded[0] if loaded else None
+        )
+        print("wrote", _write_week_doc(settings.resolve(Path("docs/forward")), a.live, md))
 
 
 if __name__ == "__main__":
