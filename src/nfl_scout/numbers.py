@@ -35,6 +35,16 @@ MASKS = [
     # Thresholds in definitions: "5+ rushers", "20-plus yards", "10 or more yards".
     re.compile(r"\d+(?:\+|-plus\b|\s+or\s+more\b)", re.I),
     re.compile(r"#\d+"),  # jersey numbers
+    # Yard lines: "inside the 20", "inside the opponent's 20", "reaching the 20-yard line".
+    re.compile(
+        r"\b(?:inside|within|reach\w*|past)\s+(?:the\s+)?"
+        r"(?:(?:opponent'?s'?|their|its|own)\s+)?(?:5|10|20)\b(?:-yard(?:[- ]line)?)?",
+        re.I,
+    ),
+    re.compile(r"\b49ers\b", re.I),
+    # League size: "among 32 teams", "11th of 32" (but "10 of 32 attempts" is a count).
+    re.compile(r"\b(?:all\s+)?32\s+(?:NFL\s+)?teams\b", re.I),
+    re.compile(r"(?<=st|nd|rd|th)\s+(?:of|out\s+of)\s+32\b", re.I),
 ]
 
 _WORD_ORD = "first second third fourth fifth sixth seventh eighth ninth tenth".split()

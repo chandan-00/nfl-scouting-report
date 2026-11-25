@@ -95,3 +95,27 @@ def test_check_pairs_one_marker_with_the_number_it_states():
         ("80.7%", "oc4", "ok"),
         ("57", None, "unlinked"),
     ]
+
+
+def test_ignores_field_position_team_names_and_league_size():
+    """Not stats: a yard line ("inside the 20"), the 49ers, and the 32 teams in the league. These
+    were 40 of the 44 unlinked numbers in the live reports."""
+    text = (
+        "Only 34.1% [kc7] land inside the 20, 40.0% [kc8] inside the opponent's 20, and 31.6% "
+        "[kc9] pin them inside their 20. The 49ers rank 24th [oc9] among 32 teams and 11th of 32 "
+        "[sc11] in EPA."
+    )
+    assert values(text) == [
+        ("34.1%", 34.1, "percent"),
+        ("40.0%", 40.0, "percent"),
+        ("31.6%", 31.6, "percent"),
+        ("24th", 24.0, "ordinal"),
+        ("11th", 11.0, "ordinal"),
+    ]
+
+
+def test_a_count_out_of_32_is_still_a_number():
+    assert values("He converted 10 of 32 attempts [oc1].") == [
+        ("10", 10.0, "number"),
+        ("32", 32.0, "number"),
+    ]
