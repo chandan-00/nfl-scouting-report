@@ -1,0 +1,8507 @@
+{
+ "config": "full_st",
+ "repeat": 1,
+ "created_at": "2026-11-25T17:56:25+00:00",
+ "models": {
+  "planner": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "offense_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "defense_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "injury_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "matchup_analyst": {
+   "model": "claude-haiku-5-5",
+   "effort": "medium"
+  },
+  "fact_checker": {
+   "model": "claude-haiku-5-5",
+   "effort": "low"
+  },
+  "editor": {
+   "model": "claude-haiku-5-5",
+   "effort": "medium"
+  },
+  "single_agent": {
+   "model": "claude-haiku-5-5",
+   "effort": "medium"
+  }
+ },
+ "max_revision_loops": 2,
+ "request": {
+  "team": "IND",
+  "opponent": "NYG",
+  "season": 2026,
+  "week": 12,
+  "home": "IND",
+  "through_week": 11
+ },
+ "plan": {
+  "offense_focus": [
+   "How does NYG's pass rate over expected and early-down run/pass split change against IND's defense, and which downs do they favor passing?",
+   "Do NYG's EPA and success rate on play action, RPO, or motion plays hold up, and how often do they use them versus IND's pressure proxy (sacks plus QB hits)?",
+   "Where do NYG's explosive plays come from by depth of target and run direction, and can IND's defense limit them?",
+   "How do NYG's third down and red zone efficiency compare to league ranks, and what do they run in those situations?",
+   "Which target and rush share leaders does NYG rely on, and does IND's defense allow big plays to those players?"
+  ],
+  "defense_focus": [
+   "Does the NYG defense's blitz rate and sack total (with QB hits) suggest they can pressure IND's quarterback, and how often do they blitz on early downs?",
+   "Where does NYG's defense allow explosive plays by depth of target and run direction, and how does that match IND's offensive tendencies?",
+   "How do IND's pass and run tendencies by down and distance expose NYG's defense on third down and in the red zone?",
+   "Does NYG's box count and run-stopping EPA suggest IND's running game will be efficient, and how do IND's run directions match up?",
+   "Which NYG pass rushers and league-rank defensive metrics are strongest, and how do they fit against IND's play action and screen rates?"
+  ],
+  "injury_focus": [
+   "Which NYG starters are listed as out, doubtful, or limited on the latest injury report, and how do their snap shares shift offensive or defensive usage?",
+   "Which IND starters are listed as out, doubtful, or limited, and how would their absence change IND's target or rush share distribution?",
+   "Are any NYG skill players or pass rushers with high target, rush, or snap shares at risk, and what backups would absorb those snaps?",
+   "Does any IND injury affect the pass rush, pressure proxy, or offensive line that NYG would attack, and how would that change NYG's blitz and sack expectations?"
+  ]
+ },
+ "draft": {
+  "defense_analyst": {
+   "role": "defense_analyst",
+   "prose": "NYG blitzes on 38.7% of dropbacks [dc1] over 377 plays [dc2], third-highest in the league [dc3], yet the 5.3% sack rate [dc4] ranks only 24th [dc5] and the pressure proxy sits at 13.3% [dc6]. Expect IND's quarterback to face about 4.5 rushers per dropback [dc7], so quick game and play-action boots are the answer; IND uses play action at the 5th-highest rate in the league [dc8] and screens at the 20th [dc9]. Against the pass, NYG allows explosive plays on 7.7% of dropbacks [dc10] and converts third downs at 38.8% [dc11] on 129 plays [dc12]. Against the run, NYG has 6.8 defenders in the box [dc13] and allows -0.05 EPA per carry [dc14] with a 10.2% explosive rate [dc15]. IND's rushing EPA is 0.02 per play [dc16], so the run game should be efficient if they lean on it, though IND funnels runs up the middle at only the 27th-highest rate [dc17]. Red zone: NYG allows TDs on 68.0% of trips [dc18] over only 25 drives [dc19], a small sample; IND scores on 59.3% [dc20] over 27 trips [dc21]. Overall NYG defensive EPA ranks 12th [dc22]. IND's passing EPA is -0.21 per pass play [dc23], so the game plan should lean on the run and attack NYG's blitz with quick throws.",
+   "claims": [
+    {
+     "claim_id": "dc1",
+     "text": "NYG defense blitz rate: share of dropbacks faced with 5+ pass rushers",
+     "stated_value": 38.7,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc2",
+     "text": "Sample size behind NYG defense blitz rate (dropbacks)",
+     "stated_value": 377.0,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc3",
+     "text": "NYG blitz rate rank among 32 teams (3rd = highest blitz rate)",
+     "stated_value": 3.0,
+     "tool_call_id": "d17",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc4",
+     "text": "NYG defense sack rate (sacks per dropback)",
+     "stated_value": 5.3,
+     "tool_call_id": "d2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc5",
+     "text": "NYG defense sack rate rank among 32 teams (24th)",
+     "stated_value": 24.0,
+     "tool_call_id": "d21",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc6",
+     "text": "NYG defense pressure proxy rate (sacks plus QB hits per dropback; proxy, not true pressure)",
+     "stated_value": 13.3,
+     "tool_call_id": "d3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc7",
+     "text": "NYG defense average pass rushers per dropback",
+     "stated_value": 4.5,
+     "tool_call_id": "d4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc8",
+     "text": "IND offense play-action play rate rank among 32 teams (5th = highest)",
+     "stated_value": 5.0,
+     "tool_call_id": "d19",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc9",
+     "text": "IND offense screen play rate rank among 32 teams (20th = highest)",
+     "stated_value": 20.0,
+     "tool_call_id": "d20",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc10",
+     "text": "NYG defense explosive pass play rate allowed (20+ yards)",
+     "stated_value": 7.7,
+     "tool_call_id": "d7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc11",
+     "text": "NYG defense third-down conversion rate allowed",
+     "stated_value": 38.8,
+     "tool_call_id": "d9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc12",
+     "text": "Sample size behind NYG third-down conversion rate allowed (plays)",
+     "stated_value": 129.0,
+     "tool_call_id": "d9",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc13",
+     "text": "NYG defense average defenders in the box on run plays",
+     "stated_value": 6.8,
+     "tool_call_id": "d5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc14",
+     "text": "NYG defense EPA per run play allowed",
+     "stated_value": -0.05,
+     "tool_call_id": "d6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc15",
+     "text": "NYG defense explosive run rate allowed (10+ yards)",
+     "stated_value": 10.2,
+     "tool_call_id": "d8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc16",
+     "text": "IND offense EPA per run play",
+     "stated_value": 0.02,
+     "tool_call_id": "d12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc17",
+     "text": "IND offense run direction rate, middle, rank among 32 teams (27th = highest)",
+     "stated_value": 27.0,
+     "tool_call_id": "d22",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc18",
+     "text": "NYG defense red-zone drive TD rate allowed",
+     "stated_value": 68.0,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc19",
+     "text": "Sample size behind NYG red-zone TD rate allowed (red-zone drives)",
+     "stated_value": 25.0,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc20",
+     "text": "IND offense red-zone drive TD rate",
+     "stated_value": 59.3,
+     "tool_call_id": "d15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc21",
+     "text": "Sample size behind IND red-zone TD rate (red-zone drives)",
+     "stated_value": 27.0,
+     "tool_call_id": "d15",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc22",
+     "text": "NYG defense EPA per play rank among 32 teams (12th = best/lowest)",
+     "stated_value": 12.0,
+     "tool_call_id": "d18",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc23",
+     "text": "IND offense EPA per pass play",
+     "stated_value": -0.21,
+     "tool_call_id": "d13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "injury_analyst": {
+   "role": "injury_analyst",
+   "prose": "The Giants list no players on their week 11 report [ic1]. Indianapolis lists eight players [ic2] on its week 11 report [ic3]. Tackle Bernhard Raimann is Out [ic4] with an 88.6% snap share [ic5] over 10 games [ic6]. Cornerback Charvarius Ward is also Out [ic7], playing 87.2% of snaps [ic8] over 10 games [ic9]. Tackle Jalen Travis and tight end Will Mallory are Out too, and Mallory takes just 2.7% of targets [ic10]. Cornerback Sauce Gardner is Questionable [ic11] with an 87.2% snap share [ic12] over 9 games [ic13]. Losing Raimann and Travis thins the line NYG would attack, and Ward's absence thins cornerback depth, so expect the Giants to test those edges. Nothing on the Giants' side changes their own usage.",
+   "claims": [
+    {
+     "claim_id": "ic1",
+     "text": "NYG players listed on the week 11 injury report (none listed)",
+     "stated_value": 11.0,
+     "tool_call_id": "i1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic2",
+     "text": "IND players listed on the injury report",
+     "stated_value": 8.0,
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic3",
+     "text": "IND injury report week",
+     "stated_value": 11.0,
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic4",
+     "text": "IND T Bernhard Raimann game status on week 11 report",
+     "stated_value": "Out",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic5",
+     "text": "Bernhard Raimann mean snap share per game, IND, weeks 1-11",
+     "stated_value": 88.6,
+     "tool_call_id": "i3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic6",
+     "text": "Games in Raimann snap share sample",
+     "stated_value": 10.0,
+     "tool_call_id": "i3",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic7",
+     "text": "IND CB Charvarius Ward game status on week 11 report",
+     "stated_value": "Out",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic8",
+     "text": "Charvarius Ward mean snap share per game, IND, weeks 1-11",
+     "stated_value": 87.2,
+     "tool_call_id": "i4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic9",
+     "text": "Games in Ward snap share sample",
+     "stated_value": 10.0,
+     "tool_call_id": "i4",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic10",
+     "text": "Will Mallory percent of IND team targets, weeks 1-11",
+     "stated_value": 2.7,
+     "tool_call_id": "i5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic11",
+     "text": "IND CB Sauce Gardner game status on week 11 report",
+     "stated_value": "Questionable",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic12",
+     "text": "Sauce Gardner mean snap share per game, IND, weeks 1-11",
+     "stated_value": 87.2,
+     "tool_call_id": "i6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic13",
+     "text": "Games in Gardner snap share sample",
+     "stated_value": 9.0,
+     "tool_call_id": "i6",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    }
+   ],
+   "unsourced": []
+  },
+  "offense_analyst": {
+   "role": "offense_analyst",
+   "prose": "NYG is not pass-happy relative to situation: its pass rate over expected is -2.8 [oc1], 22nd in the league [oc2]. On early downs it drops back on 55.3% of plays [oc3] over 492 plays [oc4], so expect a run-leaning first and second down, while on third down it drops back on 79.4% [oc5] over 136 plays [oc6]. Its passing EPA is 0.06 [oc7] over 384 plays [oc8] and its run EPA is -0.10 [oc9] over 256 plays [oc10], so the run game is the weaker side to attack. Overall success rate is 41.7% [oc11]. Play action is 20.3% of dropbacks [oc12], RPOs are 4.7% [oc13] and motion is 50.2% of plays [oc14]. Against IND, the pressure proxy is 14.0% [oc15] over 365 dropbacks [oc16], and IND allows explosive passes on 10.4% of attempts [oc17] with 0.08 EPA per pass [oc18]. NYG's average depth of target is 9.8 yards [oc19] over 338 attempts [oc20], so its shots are mostly intermediate. Designed runs go left 43.4% [oc21], middle 28.9% [oc22] and right 27.7% [oc23]; explosive rates are 7.0% on runs [oc24] and 8.6% on passes [oc25]. Third-down conversion is 39.7% [oc26], 15th in the league [oc27]. Red-zone TD rate is 63.3% [oc28] over 30 red-zone drives [oc29], 12th in the league [oc30]. Malik Nabers takes 29.2% of targets [oc31] and Ivan Likely 25.0% [oc32]; Cam Skattebo gets 50.8% of rushes [oc33]. Game plan: keep the pass rush honest, force NYG into long-yardage passing downs, and make the run defense wall off Skattebo to the left.",
+   "claims": [
+    {
+     "claim_id": "oc1",
+     "text": "NYG offense pass rate over expected, all downs",
+     "stated_value": -2.8,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc2",
+     "text": "NYG rank in league on pass rate over expected",
+     "stated_value": 22.0,
+     "tool_call_id": "o26",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc3",
+     "text": "NYG offense dropback rate on early downs",
+     "stated_value": 55.3,
+     "tool_call_id": "o3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc4",
+     "text": "NYG early-down plays sample for dropback rate",
+     "stated_value": 492.0,
+     "tool_call_id": "o3",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc5",
+     "text": "NYG offense dropback rate on third down",
+     "stated_value": 79.4,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc6",
+     "text": "NYG third-down plays sample",
+     "stated_value": 136.0,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc7",
+     "text": "NYG offense EPA per pass play",
+     "stated_value": 0.06,
+     "tool_call_id": "o5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc8",
+     "text": "NYG pass play sample for EPA",
+     "stated_value": 384.0,
+     "tool_call_id": "o5",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc9",
+     "text": "NYG offense EPA per run play",
+     "stated_value": -0.1,
+     "tool_call_id": "o6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc10",
+     "text": "NYG run play sample for EPA",
+     "stated_value": 256.0,
+     "tool_call_id": "o6",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc11",
+     "text": "NYG offense success rate, all plays",
+     "stated_value": 41.7,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc12",
+     "text": "NYG play action share of dropbacks",
+     "stated_value": 20.3,
+     "tool_call_id": "o8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc13",
+     "text": "NYG RPO share of scrimmage plays",
+     "stated_value": 4.7,
+     "tool_call_id": "o9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc14",
+     "text": "NYG pre-snap motion share of scrimmage plays",
+     "stated_value": 50.2,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc15",
+     "text": "IND defense pressure proxy (sacks plus QB hits per dropback)",
+     "stated_value": 14.0,
+     "tool_call_id": "o11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc16",
+     "text": "IND defense dropback sample for pressure proxy",
+     "stated_value": 365.0,
+     "tool_call_id": "o11",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc17",
+     "text": "IND defense explosive pass plays allowed (20+ yards) rate",
+     "stated_value": 10.4,
+     "tool_call_id": "o22",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc18",
+     "text": "IND defense EPA per pass play allowed",
+     "stated_value": 0.08,
+     "tool_call_id": "o23",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc19",
+     "text": "NYG offense average depth of target (air yards per attempt)",
+     "stated_value": 9.8,
+     "tool_call_id": "o14",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc20",
+     "text": "NYG pass attempt sample for average depth of target",
+     "stated_value": 338.0,
+     "tool_call_id": "o14",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc21",
+     "text": "NYG designed runs to the left",
+     "stated_value": 43.4,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc22",
+     "text": "NYG designed runs to the middle",
+     "stated_value": 28.9,
+     "tool_call_id": "o16",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc23",
+     "text": "NYG designed runs to the right",
+     "stated_value": 27.7,
+     "tool_call_id": "o17",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc24",
+     "text": "NYG explosive run rate (10+ yards)",
+     "stated_value": 7.0,
+     "tool_call_id": "o13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc25",
+     "text": "NYG explosive pass rate (20+ yards)",
+     "stated_value": 8.6,
+     "tool_call_id": "o12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc26",
+     "text": "NYG offense third-down conversion rate",
+     "stated_value": 39.7,
+     "tool_call_id": "o18",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc27",
+     "text": "NYG rank in league on third-down conversion rate",
+     "stated_value": 15.0,
+     "tool_call_id": "o24",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc28",
+     "text": "NYG offense red-zone drive TD rate",
+     "stated_value": 63.3,
+     "tool_call_id": "o19",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc29",
+     "text": "NYG red-zone drive sample",
+     "stated_value": 30.0,
+     "tool_call_id": "o19",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc30",
+     "text": "NYG rank in league on red-zone TD rate",
+     "stated_value": 12.0,
+     "tool_call_id": "o25",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc31",
+     "text": "Malik Nabers share of NYG targets",
+     "stated_value": 29.2,
+     "tool_call_id": "o20",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc32",
+     "text": "Ivan Likely share of NYG targets",
+     "stated_value": 25.0,
+     "tool_call_id": "o20",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc33",
+     "text": "Cam Skattebo share of NYG designed rushes",
+     "stated_value": 50.8,
+     "tool_call_id": "o21",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "special_teams_analyst": {
+   "role": "special_teams_analyst",
+   "prose": "Giants kicker D.Zvada, the only kicker used all season, has made 20 [kc1] of 27 [kc2] field goal tries (74.1% [kc3]), and is 72.7% [kc4] on 11 [kc5] long attempts, so treat his longest tries as live but not automatic. Their punts net 44.7 yards [kc6] on 42 [kc7] punts, with 47.6% [kc8] landing inside the 20. Kickoffs rarely end in touchbacks at 7.7% [kc9] over 52 [kc10] kickoffs, so expect IND to start from returns. Their return unit averages 25.4 yards [kc11] on 39 [kc12] returns, and their coverage allows 24.2 yards [kc13] on 45 [kc14] returns, so do not give them easy starts late. Special-teams EPA is 0.01 [kc15] per play over 275 [kc16] plays, against IND's 0.03 [kc17] over 306 [kc18]. Late in close games, a long field goal is worth taking only when the kick is clean, and a deep kick to a returner who is starting from the endzone is the bigger risk.",
+   "claims": [
+    {
+     "claim_id": "kc1",
+     "text": "NYG field goals made by kicker D.Zvada (made count, all distances)",
+     "stated_value": 20.0,
+     "tool_call_id": "k3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc2",
+     "text": "NYG field goal attempts by D.Zvada",
+     "stated_value": 27.0,
+     "tool_call_id": "k3",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc3",
+     "text": "NYG field goal make rate, all distances",
+     "stated_value": 74.1,
+     "tool_call_id": "k1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc4",
+     "text": "NYG field goal make rate, 50+ yards",
+     "stated_value": 72.7,
+     "tool_call_id": "k2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc5",
+     "text": "NYG 50+ yard field goal attempts",
+     "stated_value": 11.0,
+     "tool_call_id": "k2",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc6",
+     "text": "NYG punting net average",
+     "stated_value": 44.7,
+     "tool_call_id": "k4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc7",
+     "text": "NYG punts",
+     "stated_value": 42.0,
+     "tool_call_id": "k4",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc8",
+     "text": "NYG punt inside-the-20 rate",
+     "stated_value": 47.6,
+     "tool_call_id": "k5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc9",
+     "text": "NYG kickoff touchback rate",
+     "stated_value": 7.7,
+     "tool_call_id": "k6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc10",
+     "text": "NYG kickoffs",
+     "stated_value": 52.0,
+     "tool_call_id": "k6",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc11",
+     "text": "NYG kickoff return average by its return unit (offense)",
+     "stated_value": 25.4,
+     "tool_call_id": "k7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc12",
+     "text": "NYG kickoff returns by its return unit",
+     "stated_value": 39.0,
+     "tool_call_id": "k7",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc13",
+     "text": "Kickoff return yards allowed per return by NYG coverage (defense)",
+     "stated_value": 24.2,
+     "tool_call_id": "k8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc14",
+     "text": "Kickoff returns allowed by NYG coverage",
+     "stated_value": 45.0,
+     "tool_call_id": "k8",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc15",
+     "text": "NYG special-teams EPA per play",
+     "stated_value": 0.01,
+     "tool_call_id": "k9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc16",
+     "text": "NYG special-teams plays",
+     "stated_value": 275.0,
+     "tool_call_id": "k9",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc17",
+     "text": "IND special-teams EPA per play",
+     "stated_value": 0.03,
+     "tool_call_id": "k10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc18",
+     "text": "IND special-teams plays",
+     "stated_value": 306.0,
+     "tool_call_id": "k10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    }
+   ],
+   "unsourced": []
+  },
+  "matchup_analyst": {
+   "role": "matchup_analyst",
+   "prose": "Pass protection against the blitz decides the first half. NYG sends five or more rushers on 38.7% of dropbacks [mc1] over 377 plays [mc2], and IND's passing EPA is -0.21 [mc3]. With tackle Bernhard Raimann out [mc4] after an 88.6% snap share [mc5], and Jalen Travis also out, the edge and tackle spots are the weak point. Lean on play action, which IND already uses at the 5th-highest rate [mc6], and quick throws to beat the rush. Run game against a light box: NYG averages 6.8 defenders in the box on runs [mc7] and allows -0.05 EPA per carry [mc8], while IND's run EPA is 0.02 [mc9]. Commit to the run to keep NYG's rushers honest and to limit the 4.5 rushers per dropback [mc10] IND's quarterback will face. Red zone decides points. IND scores on 59.3% of trips [mc11] over 27 trips [mc12], while NYG allows touchdowns on 68.0% [mc13] over only 25 drives [mc14], a small sample. Attack the middle and finish with a clean call rather than settle for field goals. Skattebo drives NYG's rushing: he takes 50.8% of rushes [mc15], and 43.4% of designed runs go left [mc16]. Wall off the left side and keep NYG in long-yardage spots, where its third-down conversion is 39.7% [mc17].",
+   "claims": [
+    {
+     "claim_id": "mc1",
+     "text": "NYG defense blitz rate: share of IND dropbacks faced with 5+ pass rushers, all downs",
+     "stated_value": 38.7,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc2",
+     "text": "Sample size (dropbacks) behind NYG defense blitz rate",
+     "stated_value": 377.0,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc3",
+     "text": "IND offense EPA per pass play",
+     "stated_value": -0.21,
+     "tool_call_id": "d13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc4",
+     "text": "IND T Bernhard Raimann game status on week 11 report",
+     "stated_value": "Out",
+     "tool_call_id": "i2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc5",
+     "text": "Bernhard Raimann mean snap share per game, IND, weeks 1-11",
+     "stated_value": 88.6,
+     "tool_call_id": "i3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc6",
+     "text": "IND offense play-action play rate rank among 32 teams (5th = highest)",
+     "stated_value": 5.0,
+     "tool_call_id": "d19",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc7",
+     "text": "NYG defense average defenders in the box on run plays",
+     "stated_value": 6.8,
+     "tool_call_id": "d5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc8",
+     "text": "NYG defense EPA per run play allowed",
+     "stated_value": -0.05,
+     "tool_call_id": "d6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc9",
+     "text": "IND offense EPA per run play",
+     "stated_value": 0.02,
+     "tool_call_id": "d12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc10",
+     "text": "NYG defense average pass rushers per dropback",
+     "stated_value": 4.5,
+     "tool_call_id": "d4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc11",
+     "text": "IND offense red-zone drive TD rate",
+     "stated_value": 59.3,
+     "tool_call_id": "d15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc12",
+     "text": "Sample size (red-zone drives) behind IND red-zone TD rate",
+     "stated_value": 27.0,
+     "tool_call_id": "d15",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc13",
+     "text": "NYG defense red-zone drive TD rate allowed",
+     "stated_value": 68.0,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc14",
+     "text": "Sample size (red-zone drives) behind NYG red-zone TD rate allowed",
+     "stated_value": 25.0,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc15",
+     "text": "Cam Skattebo share of NYG designed rushes",
+     "stated_value": 50.8,
+     "tool_call_id": "o21",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc16",
+     "text": "NYG designed runs to the left, share of designed runs",
+     "stated_value": 43.4,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc17",
+     "text": "NYG offense third-down conversion rate",
+     "stated_value": 39.7,
+     "tool_call_id": "o18",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  }
+ },
+ "sections": {
+  "defense_analyst": {
+   "role": "defense_analyst",
+   "prose": "NYG blitzes on 38.7% of dropbacks [dc1] over 377 plays [dc2], third-highest in the league [dc3], yet the 5.3% sack rate [dc4] ranks only 24th [dc5] and the pressure proxy sits at 13.3% [dc6]. Expect IND's quarterback to face about 4.5 rushers per dropback [dc7], so quick game and play-action boots are the answer; IND uses play action at the 5th-highest rate in the league [dc8] and screens at the 20th [dc9]. Against the pass, NYG allows explosive plays on 7.7% of dropbacks [dc10] and converts third downs at 38.8% [dc11] on 129 plays [dc12]. Against the run, NYG has 6.8 defenders in the box [dc13] and allows -0.05 EPA per carry [dc14] with a 10.2% explosive rate [dc15]. IND's rushing EPA is 0.02 per play [dc16], so the run game should be efficient if they lean on it, though IND funnels runs up the middle at only the 27th-highest rate [dc17]. Red zone: NYG allows TDs on 68.0% of trips [dc18] over only 25 drives [dc19], a small sample; IND scores on 59.3% [dc20] over 27 trips [dc21]. Overall NYG defensive EPA ranks 12th [dc22]. IND's passing EPA is -0.21 per pass play [dc23], so the game plan should lean on the run and attack NYG's blitz with quick throws.",
+   "claims": [
+    {
+     "claim_id": "dc1",
+     "text": "NYG defense blitz rate: share of dropbacks faced with 5+ pass rushers",
+     "stated_value": 38.7,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc2",
+     "text": "Sample size behind NYG defense blitz rate (dropbacks)",
+     "stated_value": 377.0,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc3",
+     "text": "NYG blitz rate rank among 32 teams (3rd = highest blitz rate)",
+     "stated_value": 3.0,
+     "tool_call_id": "d17",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc4",
+     "text": "NYG defense sack rate (sacks per dropback)",
+     "stated_value": 5.3,
+     "tool_call_id": "d2",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc5",
+     "text": "NYG defense sack rate rank among 32 teams (24th)",
+     "stated_value": 24.0,
+     "tool_call_id": "d21",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc6",
+     "text": "NYG defense pressure proxy rate (sacks plus QB hits per dropback; proxy, not true pressure)",
+     "stated_value": 13.3,
+     "tool_call_id": "d3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc7",
+     "text": "NYG defense average pass rushers per dropback",
+     "stated_value": 4.5,
+     "tool_call_id": "d4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc8",
+     "text": "IND offense play-action play rate rank among 32 teams (5th = highest)",
+     "stated_value": 5.0,
+     "tool_call_id": "d19",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc9",
+     "text": "IND offense screen play rate rank among 32 teams (20th = highest)",
+     "stated_value": 20.0,
+     "tool_call_id": "d20",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc10",
+     "text": "NYG defense explosive pass play rate allowed (20+ yards)",
+     "stated_value": 7.7,
+     "tool_call_id": "d7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc11",
+     "text": "NYG defense third-down conversion rate allowed",
+     "stated_value": 38.8,
+     "tool_call_id": "d9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc12",
+     "text": "Sample size behind NYG third-down conversion rate allowed (plays)",
+     "stated_value": 129.0,
+     "tool_call_id": "d9",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc13",
+     "text": "NYG defense average defenders in the box on run plays",
+     "stated_value": 6.8,
+     "tool_call_id": "d5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc14",
+     "text": "NYG defense EPA per run play allowed",
+     "stated_value": -0.05,
+     "tool_call_id": "d6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc15",
+     "text": "NYG defense explosive run rate allowed (10+ yards)",
+     "stated_value": 10.2,
+     "tool_call_id": "d8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc16",
+     "text": "IND offense EPA per run play",
+     "stated_value": 0.02,
+     "tool_call_id": "d12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc17",
+     "text": "IND offense run direction rate, middle, rank among 32 teams (27th = highest)",
+     "stated_value": 27.0,
+     "tool_call_id": "d22",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc18",
+     "text": "NYG defense red-zone drive TD rate allowed",
+     "stated_value": 68.0,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc19",
+     "text": "Sample size behind NYG red-zone TD rate allowed (red-zone drives)",
+     "stated_value": 25.0,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc20",
+     "text": "IND offense red-zone drive TD rate",
+     "stated_value": 59.3,
+     "tool_call_id": "d15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc21",
+     "text": "Sample size behind IND red-zone TD rate (red-zone drives)",
+     "stated_value": 27.0,
+     "tool_call_id": "d15",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "dc22",
+     "text": "NYG defense EPA per play rank among 32 teams (12th = best/lowest)",
+     "stated_value": 12.0,
+     "tool_call_id": "d18",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "dc23",
+     "text": "IND offense EPA per pass play",
+     "stated_value": -0.21,
+     "tool_call_id": "d13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "injury_analyst": {
+   "role": "injury_analyst",
+   "prose": "The Giants list no players on their week 11 report [ic1], so their own usage holds. Indianapolis lists eight players [ic2] on its week 11 report. Bernhard Raimann is Out [ic3] with an 88.6% snap share [ic4] over 10 games [ic5], so losing him is the biggest hole on the line. Charvarius Ward is Out [ic6] and plays 87.2% of snaps [ic7] over 10 games [ic8], which thins cornerback depth. Jalen Travis is also Out [ic9], and Will Mallory is Out [ic10] but takes just 2.7% of team targets [ic11] on 334 team targets [ic12], so his absence barely moves the target distribution. Sauce Gardner is Questionable [ic13] with an 87.2% snap share [ic14] over 9 games [ic15]. Losing Raimann and Travis thins the line NYG would attack, so expect the Giants to test the edges.",
+   "claims": [
+    {
+     "claim_id": "ic3",
+     "text": "IND T Bernhard Raimann game status on week 11 report",
+     "stated_value": "Out",
+     "tool_call_id": "i14",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic4",
+     "text": "Bernhard Raimann mean snap share per game, IND, weeks 1-10",
+     "stated_value": 88.6,
+     "tool_call_id": "i15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic5",
+     "text": "Games in Raimann snap share sample",
+     "stated_value": 10.0,
+     "tool_call_id": "i15",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic6",
+     "text": "IND CB Charvarius Ward game status on week 11 report",
+     "stated_value": "Out",
+     "tool_call_id": "i14",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic7",
+     "text": "Charvarius Ward mean snap share per game, IND, weeks 1-10",
+     "stated_value": 87.2,
+     "tool_call_id": "i16",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic8",
+     "text": "Games in Ward snap share sample",
+     "stated_value": 10.0,
+     "tool_call_id": "i16",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic9",
+     "text": "IND T Jalen Travis game status on week 11 report",
+     "stated_value": "Out",
+     "tool_call_id": "i14",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic10",
+     "text": "IND TE Will Mallory game status on week 11 report",
+     "stated_value": "Out",
+     "tool_call_id": "i14",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic11",
+     "text": "Will Mallory percent of IND team targets, weeks 1-11",
+     "stated_value": 2.7,
+     "tool_call_id": "i18",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic12",
+     "text": "IND team targets in the Mallory target share sample",
+     "stated_value": 334.0,
+     "tool_call_id": "i18",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "ic13",
+     "text": "IND CB Sauce Gardner game status on week 11 report",
+     "stated_value": "Questionable",
+     "tool_call_id": "i14",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "ic15",
+     "text": "Games in Gardner snap share sample",
+     "stated_value": 9.0,
+     "tool_call_id": "i17",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    }
+   ],
+   "unsourced": []
+  },
+  "offense_analyst": {
+   "role": "offense_analyst",
+   "prose": "NYG is not pass-happy relative to situation: its pass rate over expected is -2.8 [oc1], 22nd in the league [oc2]. On early downs it drops back on 55.3% of plays [oc3] over 492 plays [oc4], so expect a run-leaning first and second down, while on third down it drops back on 79.4% [oc5] over 136 plays [oc6]. Its passing EPA is 0.06 [oc7] over 384 plays [oc8] and its run EPA is -0.10 [oc9] over 256 plays [oc10], so the run game is the weaker side to attack. Overall success rate is 41.7% [oc11]. Play action is 20.3% of dropbacks [oc12], RPOs are 4.7% [oc13] and motion is 50.2% of plays [oc14]. Against IND, the pressure proxy is 14.0% [oc15] over 365 dropbacks [oc16], and IND allows explosive passes on 10.4% of attempts [oc17] with 0.08 EPA per pass [oc18]. NYG's average depth of target is 9.8 yards [oc19] over 338 attempts [oc20], so its shots are mostly intermediate. Designed runs go left 43.4% [oc21], middle 28.9% [oc22] and right 27.7% [oc23]; explosive rates are 7.0% on runs [oc24] and 8.6% on passes [oc25]. Third-down conversion is 39.7% [oc26], 15th in the league [oc27]. Red-zone TD rate is 63.3% [oc28] over 30 red-zone drives [oc29], 12th in the league [oc30]. Malik Nabers takes 29.2% of targets [oc31] and Ivan Likely 25.0% [oc32]; Cam Skattebo gets 50.8% of rushes [oc33]. Game plan: keep the pass rush honest, force NYG into long-yardage passing downs, and make the run defense wall off Skattebo to the left.",
+   "claims": [
+    {
+     "claim_id": "oc1",
+     "text": "NYG offense pass rate over expected, all downs",
+     "stated_value": -2.8,
+     "tool_call_id": "o1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc2",
+     "text": "NYG rank in league on pass rate over expected",
+     "stated_value": 22.0,
+     "tool_call_id": "o26",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc3",
+     "text": "NYG offense dropback rate on early downs",
+     "stated_value": 55.3,
+     "tool_call_id": "o3",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc4",
+     "text": "NYG early-down plays sample for dropback rate",
+     "stated_value": 492.0,
+     "tool_call_id": "o3",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc5",
+     "text": "NYG offense dropback rate on third down",
+     "stated_value": 79.4,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc6",
+     "text": "NYG third-down plays sample",
+     "stated_value": 136.0,
+     "tool_call_id": "o4",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc7",
+     "text": "NYG offense EPA per pass play",
+     "stated_value": 0.06,
+     "tool_call_id": "o5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc8",
+     "text": "NYG pass play sample for EPA",
+     "stated_value": 384.0,
+     "tool_call_id": "o5",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc9",
+     "text": "NYG offense EPA per run play",
+     "stated_value": -0.1,
+     "tool_call_id": "o6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc10",
+     "text": "NYG run play sample for EPA",
+     "stated_value": 256.0,
+     "tool_call_id": "o6",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc11",
+     "text": "NYG offense success rate, all plays",
+     "stated_value": 41.7,
+     "tool_call_id": "o7",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc12",
+     "text": "NYG play action share of dropbacks",
+     "stated_value": 20.3,
+     "tool_call_id": "o8",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc13",
+     "text": "NYG RPO share of scrimmage plays",
+     "stated_value": 4.7,
+     "tool_call_id": "o9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc14",
+     "text": "NYG pre-snap motion share of scrimmage plays",
+     "stated_value": 50.2,
+     "tool_call_id": "o10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc15",
+     "text": "IND defense pressure proxy (sacks plus QB hits per dropback)",
+     "stated_value": 14.0,
+     "tool_call_id": "o11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc16",
+     "text": "IND defense dropback sample for pressure proxy",
+     "stated_value": 365.0,
+     "tool_call_id": "o11",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc17",
+     "text": "IND defense explosive pass plays allowed (20+ yards) rate",
+     "stated_value": 10.4,
+     "tool_call_id": "o22",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc18",
+     "text": "IND defense EPA per pass play allowed",
+     "stated_value": 0.08,
+     "tool_call_id": "o23",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc19",
+     "text": "NYG offense average depth of target (air yards per attempt)",
+     "stated_value": 9.8,
+     "tool_call_id": "o14",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc20",
+     "text": "NYG pass attempt sample for average depth of target",
+     "stated_value": 338.0,
+     "tool_call_id": "o14",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc21",
+     "text": "NYG designed runs to the left",
+     "stated_value": 43.4,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc22",
+     "text": "NYG designed runs to the middle",
+     "stated_value": 28.9,
+     "tool_call_id": "o16",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc23",
+     "text": "NYG designed runs to the right",
+     "stated_value": 27.7,
+     "tool_call_id": "o17",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc24",
+     "text": "NYG explosive run rate (10+ yards)",
+     "stated_value": 7.0,
+     "tool_call_id": "o13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc25",
+     "text": "NYG explosive pass rate (20+ yards)",
+     "stated_value": 8.6,
+     "tool_call_id": "o12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc26",
+     "text": "NYG offense third-down conversion rate",
+     "stated_value": 39.7,
+     "tool_call_id": "o18",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc27",
+     "text": "NYG rank in league on third-down conversion rate",
+     "stated_value": 15.0,
+     "tool_call_id": "o24",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc28",
+     "text": "NYG offense red-zone drive TD rate",
+     "stated_value": 63.3,
+     "tool_call_id": "o19",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc29",
+     "text": "NYG red-zone drive sample",
+     "stated_value": 30.0,
+     "tool_call_id": "o19",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "oc30",
+     "text": "NYG rank in league on red-zone TD rate",
+     "stated_value": 12.0,
+     "tool_call_id": "o25",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc31",
+     "text": "Malik Nabers share of NYG targets",
+     "stated_value": 29.2,
+     "tool_call_id": "o20",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc32",
+     "text": "Ivan Likely share of NYG targets",
+     "stated_value": 25.0,
+     "tool_call_id": "o20",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "oc33",
+     "text": "Cam Skattebo share of NYG designed rushes",
+     "stated_value": 50.8,
+     "tool_call_id": "o21",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  },
+  "special_teams_analyst": {
+   "role": "special_teams_analyst",
+   "prose": "Giants kicker D.Zvada has made 20 [kc1] of 27 [kc2] field goal tries (74.1% [kc3]) and is the only kicker used all season. He is 72.7% [kc4] on 11 [kc5] long attempts, so treat his longest tries as live but not automatic. Their punts net 44.7 yards [kc6] on 42 [kc7] punts, with 47.6% [kc8] landing inside the twenty. Kickoffs rarely end in touchbacks at 7.7% [kc9] over 52 [kc10] kickoffs, so expect IND to start from returns. Their return unit averages 25.4 yards [kc11] on 39 [kc12] returns, and their coverage allows 24.2 yards [kc13] on 45 [kc14] returns, so do not give them easy starts late. Special-teams EPA is 0.01 [kc15] per play over 275 [kc16] plays, against IND's 0.03 [kc17] over 306 [kc18]. Late in close games, take a long field goal only when the kick is clean, and treat a deep kick to a returner starting from the endzone as the bigger risk.",
+   "claims": [
+    {
+     "claim_id": "kc1",
+     "text": "NYG field goals made by kicker D.Zvada, all distances",
+     "stated_value": 20.0,
+     "tool_call_id": "k13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc2",
+     "text": "NYG field goal attempts by kicker D.Zvada, all distances",
+     "stated_value": 27.0,
+     "tool_call_id": "k13",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc3",
+     "text": "NYG field goal make rate, all distances (offense)",
+     "stated_value": 74.1,
+     "tool_call_id": "k11",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc4",
+     "text": "NYG field goal make rate, 50+ yard attempts",
+     "stated_value": 72.7,
+     "tool_call_id": "k12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc5",
+     "text": "NYG 50+ yard field goal attempts",
+     "stated_value": 11.0,
+     "tool_call_id": "k12",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc6",
+     "text": "NYG punting net average, yards per punt",
+     "stated_value": 44.7,
+     "tool_call_id": "k14",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc7",
+     "text": "NYG punts (net average sample)",
+     "stated_value": 42.0,
+     "tool_call_id": "k14",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc8",
+     "text": "NYG punt inside-the-20 rate, percent of punts",
+     "stated_value": 47.6,
+     "tool_call_id": "k15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc9",
+     "text": "NYG kickoff touchback rate, percent of kickoffs (offense/coverage kickoffs)",
+     "stated_value": 7.7,
+     "tool_call_id": "k16",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc10",
+     "text": "NYG kickoffs (touchback sample)",
+     "stated_value": 52.0,
+     "tool_call_id": "k16",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc11",
+     "text": "NYG kickoff return average by its return unit (offense), yards per return",
+     "stated_value": 25.4,
+     "tool_call_id": "k17",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc12",
+     "text": "NYG kickoff returns by its return unit (offense)",
+     "stated_value": 39.0,
+     "tool_call_id": "k17",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc13",
+     "text": "Kickoff return yards allowed per return by NYG coverage (defense)",
+     "stated_value": 24.2,
+     "tool_call_id": "k18",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc14",
+     "text": "Kickoff returns allowed by NYG coverage (defense)",
+     "stated_value": 45.0,
+     "tool_call_id": "k18",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc15",
+     "text": "NYG special-teams EPA per play",
+     "stated_value": 0.01,
+     "tool_call_id": "k19",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc16",
+     "text": "NYG special-teams plays",
+     "stated_value": 275.0,
+     "tool_call_id": "k19",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "kc17",
+     "text": "IND special-teams EPA per play",
+     "stated_value": 0.03,
+     "tool_call_id": "k20",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "kc18",
+     "text": "IND special-teams plays",
+     "stated_value": 306.0,
+     "tool_call_id": "k20",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    }
+   ],
+   "unsourced": []
+  },
+  "matchup_analyst": {
+   "role": "matchup_analyst",
+   "prose": "Blitz pressure against IND's pass protection decides the first half. NYG sends five or more rushers on 38.7% of dropbacks [mc1] over 377 plays [mc2], and IND's passing EPA is -0.21 [mc3]. With tackle Bernhard Raimann out after an 88.6% snap share [mc4] over 10 games [mc5], the edge is exposed. Use play action, which IND runs at the 5th-highest rate in the league [mc6], and quick throws to get the ball out before the rush arrives. Run game into a light box: NYG averages 6.8 defenders in the box on runs [mc7] and allows -0.05 EPA per carry [mc8], while IND's run EPA is 0.02 [mc9]. IND runs up the middle at only the 27th-highest rate [mc10], so build the run game on the perimeter and keep NYG's linebackers honest. Red zone: IND scores on 59.3% of trips [mc11] over 27 trips [mc12], and NYG allows touchdowns on 68.0% [mc13] over only 25 drives [mc14], a small sample. Finish drives with a clean call rather than settling for field goals. Skattebo drives NYG's rushing, taking 50.8% of rushes [mc15], and 43.4% of designed runs go left [mc16]. Wall off that left side and keep NYG in long-yardage spots, since it converts third downs at 39.7% [mc17].",
+   "claims": [
+    {
+     "claim_id": "mc1",
+     "text": "NYG defense blitz rate, share of IND dropbacks faced with 5+ pass rushers, all downs",
+     "stated_value": 38.7,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc2",
+     "text": "Sample size (dropbacks) behind NYG defense blitz rate",
+     "stated_value": 377.0,
+     "tool_call_id": "d1",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc3",
+     "text": "IND offense EPA per pass play",
+     "stated_value": -0.21,
+     "tool_call_id": "d13",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc4",
+     "text": "Bernhard Raimann mean snap share per game, IND, games 1-10",
+     "stated_value": 88.6,
+     "tool_call_id": "i9",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc5",
+     "text": "Games in Raimann snap share sample",
+     "stated_value": 10.0,
+     "tool_call_id": "i9",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc6",
+     "text": "IND offense play-action play rate rank among 32 teams (5th = highest)",
+     "stated_value": 5.0,
+     "tool_call_id": "d19",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc7",
+     "text": "NYG defense average defenders in the box on run plays",
+     "stated_value": 6.8,
+     "tool_call_id": "d5",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc8",
+     "text": "NYG defense EPA per run play allowed",
+     "stated_value": -0.05,
+     "tool_call_id": "d6",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc9",
+     "text": "IND offense EPA per run play",
+     "stated_value": 0.02,
+     "tool_call_id": "d12",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc10",
+     "text": "IND offense run direction rate, middle, rank among 32 teams (27th = highest)",
+     "stated_value": 27.0,
+     "tool_call_id": "d22",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc11",
+     "text": "IND offense red-zone drive TD rate",
+     "stated_value": 59.3,
+     "tool_call_id": "d15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc12",
+     "text": "Sample size (red-zone drives) behind IND red-zone TD rate",
+     "stated_value": 27.0,
+     "tool_call_id": "d15",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc13",
+     "text": "NYG defense red-zone drive TD rate allowed",
+     "stated_value": 68.0,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc14",
+     "text": "Sample size (red-zone drives) behind NYG red-zone TD rate allowed",
+     "stated_value": 25.0,
+     "tool_call_id": "d10",
+     "derived_from": null,
+     "op": null,
+     "measure": "n_plays"
+    },
+    {
+     "claim_id": "mc15",
+     "text": "Cam Skattebo share of NYG designed rushes",
+     "stated_value": 50.8,
+     "tool_call_id": "o21",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc16",
+     "text": "NYG offense designed runs to the left, share of designed runs",
+     "stated_value": 43.4,
+     "tool_call_id": "o15",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    },
+    {
+     "claim_id": "mc17",
+     "text": "NYG offense third-down conversion rate",
+     "stated_value": 39.7,
+     "tool_call_id": "o18",
+     "derived_from": null,
+     "op": null,
+     "measure": "value"
+    }
+   ],
+   "unsourced": []
+  }
+ },
+ "checks": [
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc16",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc16",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc17",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc17",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc18",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc18",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc19",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc19",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc20",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc20",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc21",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc21",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc22",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc22",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc23",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "defense_analyst",
+   "claim_id": "dc23",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic1",
+   "check": "value",
+   "ok": false,
+   "detail": "names no player in the 0-player result"
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic2",
+   "check": "value",
+   "ok": false,
+   "detail": "8.0 doesn't match the result for Bernhard Raimann, Charvarius Ward, Jalen Travis, Jerry Tillery, Will Mallory, Anthony Gould, Luke Rhodes, Sauce Gardner"
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic14",
+   "check": "wording",
+   "ok": false,
+   "detail": "the text says weeks through 11, the data runs through week 10"
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "injury_analyst",
+   "claim_id": "ic15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc16",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc16",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc17",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc17",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc18",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc18",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc19",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc19",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc20",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc20",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc21",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc21",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc22",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc22",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc23",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc23",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc24",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc24",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc25",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc25",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc26",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc26",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc27",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc27",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc28",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc28",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc29",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc29",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc30",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc30",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc31",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc31",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc32",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc32",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc33",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "offense_analyst",
+   "claim_id": "oc33",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc16",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc16",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc17",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc17",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc18",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "special_teams_analyst",
+   "claim_id": "kc18",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc1",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc1",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc2",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc2",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc3",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc3",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc4",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc4",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc5",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc5",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc6",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc6",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc7",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc7",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc8",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc8",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc9",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc9",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc10",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc10",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc11",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc11",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc12",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc12",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc13",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc13",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc14",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc14",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc15",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc15",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc16",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc16",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc17",
+   "check": "value",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "role": "matchup_analyst",
+   "claim_id": "mc17",
+   "check": "wording",
+   "ok": true,
+   "detail": ""
+  }
+ ],
+ "check_log": [
+  {
+   "round": 1,
+   "role": "injury_analyst",
+   "claim_id": "ic1",
+   "check": "value",
+   "detail": "names no player in the 0-player result",
+   "text": "NYG players listed on the week 11 injury report (none listed)",
+   "stated_value": 11.0
+  },
+  {
+   "round": 1,
+   "role": "injury_analyst",
+   "claim_id": "ic3",
+   "check": "value",
+   "detail": "names no player in the 8-player result",
+   "text": "IND injury report week",
+   "stated_value": 11.0
+  },
+  {
+   "round": 1,
+   "role": "injury_analyst",
+   "claim_id": "ic5",
+   "check": "wording",
+   "detail": "the text says weeks through 11, the data runs through week 10",
+   "text": "Bernhard Raimann mean snap share per game, IND, weeks 1-11",
+   "stated_value": 88.6
+  },
+  {
+   "round": 1,
+   "role": "injury_analyst",
+   "claim_id": "ic8",
+   "check": "wording",
+   "detail": "the text says weeks through 11, the data runs through week 10",
+   "text": "Charvarius Ward mean snap share per game, IND, weeks 1-11",
+   "stated_value": 87.2
+  },
+  {
+   "round": 1,
+   "role": "injury_analyst",
+   "claim_id": "ic12",
+   "check": "wording",
+   "detail": "the text says weeks through 11, the data runs through week 10",
+   "text": "Sauce Gardner mean snap share per game, IND, weeks 1-11",
+   "stated_value": 87.2
+  },
+  {
+   "round": 1,
+   "role": "special_teams_analyst",
+   "claim_id": "kc7",
+   "check": "wording",
+   "detail": "the call is for net average, the text doesn't say so",
+   "text": "NYG punts",
+   "stated_value": 42.0
+  },
+  {
+   "round": 1,
+   "role": "special_teams_analyst",
+   "claim_id": null,
+   "check": "prose",
+   "detail": "'20' in the prose: unlinked",
+   "text": null,
+   "stated_value": null
+  },
+  {
+   "round": 1,
+   "role": "matchup_analyst",
+   "claim_id": "mc5",
+   "check": "wording",
+   "detail": "the text says weeks through 11, the data runs through week 10",
+   "text": "Bernhard Raimann mean snap share per game, IND, weeks 1-11",
+   "stated_value": 88.6
+  },
+  {
+   "round": 2,
+   "role": "injury_analyst",
+   "claim_id": "ic3",
+   "check": "value",
+   "detail": "names no player in the 8-player result",
+   "text": "IND injury report week",
+   "stated_value": 11.0
+  },
+  {
+   "round": 2,
+   "role": "matchup_analyst",
+   "claim_id": "mc6",
+   "check": "value",
+   "detail": "i3 snap_share gives 88.6 (n_plays 10); stated 10.0",
+   "text": "Games in Raimann snap share sample (games 1-10)",
+   "stated_value": 10.0
+  },
+  {
+   "round": 3,
+   "role": "injury_analyst",
+   "claim_id": "ic1",
+   "check": "value",
+   "detail": "names no player in the 0-player result",
+   "text": "NYG players listed on the week 11 injury report (none listed)",
+   "stated_value": 0.0
+  },
+  {
+   "round": 3,
+   "role": "injury_analyst",
+   "claim_id": "ic2",
+   "check": "value",
+   "detail": "8.0 doesn't match the result for Bernhard Raimann, Charvarius Ward, Jalen Travis, Jerry Tillery, Will Mallory, Anthony Gould, Luke Rhodes, Sauce Gardner",
+   "text": "IND players listed on the week 11 injury report (Raimann, Ward, Travis, Tillery, Mallory, Gould, Rhodes, Gardner)",
+   "stated_value": 8.0
+  },
+  {
+   "round": 3,
+   "role": "injury_analyst",
+   "claim_id": "ic14",
+   "check": "wording",
+   "detail": "the text says weeks through 11, the data runs through week 10",
+   "text": "Sauce Gardner mean snap share per game, IND, weeks 1-11",
+   "stated_value": 87.2
+  }
+ ],
+ "checks_run": 3,
+ "dropped": [
+  {
+   "round": 3,
+   "role": "injury_analyst",
+   "claim_id": "ic1",
+   "check": "value",
+   "detail": "names no player in the 0-player result",
+   "text": "NYG players listed on the week 11 injury report (none listed)",
+   "stated_value": 0.0
+  },
+  {
+   "round": 3,
+   "role": "injury_analyst",
+   "claim_id": "ic2",
+   "check": "value",
+   "detail": "8.0 doesn't match the result for Bernhard Raimann, Charvarius Ward, Jalen Travis, Jerry Tillery, Will Mallory, Anthony Gould, Luke Rhodes, Sauce Gardner",
+   "text": "IND players listed on the week 11 injury report (Raimann, Ward, Travis, Tillery, Mallory, Gould, Rhodes, Gardner)",
+   "stated_value": 8.0
+  },
+  {
+   "round": 3,
+   "role": "injury_analyst",
+   "claim_id": "ic14",
+   "check": "wording",
+   "detail": "the text says weeks through 11, the data runs through week 10",
+   "text": "Sauce Gardner mean snap share per game, IND, weeks 1-11",
+   "stated_value": 87.2
+  }
+ ],
+ "report": {
+  "title": "Indianapolis Colts vs. New York Giants: Week 12 Scouting Report",
+  "summary": "Indianapolis hosts New York in Week 12, and the Giants' blitz-heavy front is the main test. Quick throws and play action should answer the pressure, while the Colts' run game can work a light box. Raimann's absence leaves the line thin, so protection is the first concern. Special teams are close, so long field goals and late kick coverage could decide a tight game.",
+  "sections": [
+   {
+    "heading": "Opponent offense",
+    "body": "NYG is not pass-happy relative to situation, with a pass rate over expected of -2.8 [oc1], ranking 22nd [oc2] in the league. Expect a run-leaning first and second down, since early-down dropbacks run at 55.3% [oc3] over 492 plays [oc4]. Passing EPA is 0.06 [oc7] over 384 plays [oc8] against run EPA of -0.10 [oc9] over 256 plays [oc10], so the run game is the weaker side to attack. Against IND, the pressure proxy is 14.0% [oc15] over 365 dropbacks [oc16], and IND allows explosive passes on 10.4% [oc17] of attempts. Designed runs go left 43.4% [oc21] of the time, and Cam Skattebo gets 50.8% [oc33] of rushes. Third-down conversion is 39.7% [oc26], 15th [oc27] in the league, and Malik Nabers takes 29.2% [oc31] of targets."
+   },
+   {
+    "heading": "Opponent defense",
+    "body": "NYG blitzes on 38.7% [dc1] of dropbacks over 377 plays [dc2], third-highest in the league [dc3], yet its 5.3% [dc4] sack rate ranks only 24th [dc5]. Expect IND's quarterback to face about 4.5 rushers per dropback [dc7], so quick game and play-action boots are the answer, since IND uses play action at the fifth-highest rate [dc8]. NYG allows explosive passes on 7.7% [dc10] of dropbacks, and against the run it allows -0.05 [dc14] EPA per carry. IND's passing EPA is -0.21 [dc23] per pass play, so lean on the run and attack the blitz with quick throws."
+   },
+   {
+    "heading": "Special teams",
+    "body": "Giants kicker D.Zvada has made 20 [kc1] of 27 [kc2] field goal tries (74.1% [kc3]) and is 72.7% [kc4] on 11 [kc5] attempts from 50+ yards, so treat his longest tries as live but not automatic. Kickoffs rarely end in touchbacks at 7.7% [kc9] over 52 [kc10] kickoffs, so expect IND to start from returns. Their coverage allows 24.2 yards [kc13] on 45 [kc14] returns, so do not give them easy starts late. Late in close games, take a long field goal only when the kick is clean."
+   },
+   {
+    "heading": "Injuries and availability",
+    "body": "The Giants have no listed injuries on their week 11 report. Indianapolis is hit harder: Bernhard Raimann is Out [ic3] after an 88.6% [ic4] snap share over 10 games [ic5], which makes him the biggest hole on the line. Charvarius Ward is Out [ic6] and played 87.2% [ic7] of snaps over 10 games [ic8], thinning cornerback depth. Jalen Travis is also Out [ic9], and Sauce Gardner is Questionable [ic13]."
+   },
+   {
+    "heading": "Key matchups",
+    "body": "Blitz pressure decides the first half: NYG sends five or more rushers on 38.7% [mc1] of dropbacks over 377 plays [mc2], and with Raimann out after an 88.6% [mc4] snap share over 10 games [mc5], the edge is exposed. Use play action, which IND runs at the fifth-highest rate [mc6], and quick throws. Run into a light box: NYG averages 6.8 [mc7] defenders in the box on runs, and IND's run EPA is 0.02 [mc9], so build the run game on the perimeter since IND runs up the middle at only the 27th-highest rate [mc10]. Red zone: IND scores on 59.3% [mc11] of trips over 27 [mc12] trips, and NYG allows touchdowns on 68.0% [mc13] over only 25 [mc14] drives, so finish drives with a clean call. Skattebo takes 50.8% [mc15] of rushes, and 43.4% [mc16] of designed runs go left, so wall off that side and keep NYG in long-yardage spots, since it converts third downs at 39.7% [mc17]."
+   }
+  ]
+ },
+ "number_checks": [
+  {
+   "mention": {
+    "text": "-2.8",
+    "value": -2.8,
+    "kind": "number",
+    "decimals": 1,
+    "start": 448,
+    "claim_id": "oc1",
+    "group": 5,
+    "group_ids": [
+     "oc1"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "22nd",
+    "value": 22.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 468,
+    "claim_id": "oc2",
+    "group": 7,
+    "group_ids": [
+     "oc2"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "55.3%",
+    "value": 55.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 572,
+    "claim_id": "oc3",
+    "group": 10,
+    "group_ids": [
+     "oc3"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "492",
+    "value": 492.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 589,
+    "claim_id": "oc4",
+    "group": 12,
+    "group_ids": [
+     "oc4"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "0.06",
+    "value": 0.06,
+    "kind": "number",
+    "decimals": 2,
+    "start": 621,
+    "claim_id": "oc7",
+    "group": 15,
+    "group_ids": [
+     "oc7"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "384",
+    "value": 384.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 637,
+    "claim_id": "oc8",
+    "group": 17,
+    "group_ids": [
+     "oc8"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "-0.10",
+    "value": -0.1,
+    "kind": "number",
+    "decimals": 2,
+    "start": 672,
+    "claim_id": "oc9",
+    "group": 19,
+    "group_ids": [
+     "oc9"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "256",
+    "value": 256.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 689,
+    "claim_id": "oc10",
+    "group": 21,
+    "group_ids": [
+     "oc10"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "14.0%",
+    "value": 14.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 788,
+    "claim_id": "oc15",
+    "group": 24,
+    "group_ids": [
+     "oc15"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "365",
+    "value": 365.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 806,
+    "claim_id": "oc16",
+    "group": 26,
+    "group_ids": [
+     "oc16"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "10.4%",
+    "value": 10.4,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 863,
+    "claim_id": "oc17",
+    "group": 28,
+    "group_ids": [
+     "oc17"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "43.4%",
+    "value": 43.4,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 911,
+    "claim_id": "oc21",
+    "group": 31,
+    "group_ids": [
+     "oc21"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "50.8%",
+    "value": 50.8,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 959,
+    "claim_id": "oc33",
+    "group": 33,
+    "group_ids": [
+     "oc33"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "39.7%",
+    "value": 39.7,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1008,
+    "claim_id": "oc26",
+    "group": 36,
+    "group_ids": [
+     "oc26"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "15th",
+    "value": 15.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 1022,
+    "claim_id": "oc27",
+    "group": 38,
+    "group_ids": [
+     "oc27"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "29.2%",
+    "value": 29.2,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1072,
+    "claim_id": "oc31",
+    "group": 40,
+    "group_ids": [
+     "oc31"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "38.7%",
+    "value": 38.7,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1113,
+    "claim_id": "dc1",
+    "group": 43,
+    "group_ids": [
+     "dc1"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "377",
+    "value": 377.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1143,
+    "claim_id": "dc2",
+    "group": 45,
+    "group_ids": [
+     "dc2"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "third",
+    "value": 3.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 1160,
+    "claim_id": "dc3",
+    "group": 47,
+    "group_ids": [
+     "dc3"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "5.3%",
+    "value": 5.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1203,
+    "claim_id": "dc4",
+    "group": 49,
+    "group_ids": [
+     "dc4"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "24th",
+    "value": 24.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 1235,
+    "claim_id": "dc5",
+    "group": 51,
+    "group_ids": [
+     "dc5"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "4.5",
+    "value": 4.5,
+    "kind": "number",
+    "decimals": 1,
+    "start": 1286,
+    "claim_id": "dc7",
+    "group": 54,
+    "group_ids": [
+     "dc7"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "fifth",
+    "value": 5.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 1404,
+    "claim_id": "dc8",
+    "group": 56,
+    "group_ids": [
+     "dc8"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "7.7%",
+    "value": 7.7,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1461,
+    "claim_id": "dc10",
+    "group": 59,
+    "group_ids": [
+     "dc10"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "-0.05",
+    "value": -0.05,
+    "kind": "number",
+    "decimals": 2,
+    "start": 1517,
+    "claim_id": "dc14",
+    "group": 61,
+    "group_ids": [
+     "dc14"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "-0.21",
+    "value": -0.21,
+    "kind": "number",
+    "decimals": 2,
+    "start": 1566,
+    "claim_id": "dc23",
+    "group": 64,
+    "group_ids": [
+     "dc23"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "20",
+    "value": 20.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1685,
+    "claim_id": "kc1",
+    "group": 67,
+    "group_ids": [
+     "kc1"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "27",
+    "value": 27.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1697,
+    "claim_id": "kc2",
+    "group": 69,
+    "group_ids": [
+     "kc2"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "74.1%",
+    "value": 74.1,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1724,
+    "claim_id": "kc3",
+    "group": 71,
+    "group_ids": [
+     "kc3"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "72.7%",
+    "value": 72.7,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1744,
+    "claim_id": "kc4",
+    "group": 73,
+    "group_ids": [
+     "kc4"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "11",
+    "value": 11.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1759,
+    "claim_id": "kc5",
+    "group": 75,
+    "group_ids": [
+     "kc5"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "7.7%",
+    "value": 7.7,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 1884,
+    "claim_id": "kc9",
+    "group": 78,
+    "group_ids": [
+     "kc9"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "52",
+    "value": 52.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 1900,
+    "claim_id": "kc10",
+    "group": 80,
+    "group_ids": [
+     "kc10"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "24.2",
+    "value": 24.2,
+    "kind": "number",
+    "decimals": 1,
+    "start": 1979,
+    "claim_id": "kc13",
+    "group": 83,
+    "group_ids": [
+     "kc13"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "45",
+    "value": 45.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2000,
+    "claim_id": "kc14",
+    "group": 85,
+    "group_ids": [
+     "kc14"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "88.6%",
+    "value": 88.6,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2258,
+    "claim_id": "ic4",
+    "group": 91,
+    "group_ids": [
+     "ic4"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "10",
+    "value": 10.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2286,
+    "claim_id": "ic5",
+    "group": 93,
+    "group_ids": [
+     "ic5"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "87.2%",
+    "value": 87.2,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2388,
+    "claim_id": "ic7",
+    "group": 97,
+    "group_ids": [
+     "ic7"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "10",
+    "value": 10.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2414,
+    "claim_id": "ic8",
+    "group": 99,
+    "group_ids": [
+     "ic8"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "38.7%",
+    "value": 38.7,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2605,
+    "claim_id": "mc1",
+    "group": 105,
+    "group_ids": [
+     "mc1"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "377",
+    "value": 377.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2635,
+    "claim_id": "mc2",
+    "group": 107,
+    "group_ids": [
+     "mc2"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "88.6%",
+    "value": 88.6,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 2682,
+    "claim_id": "mc4",
+    "group": 109,
+    "group_ids": [
+     "mc4"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "10",
+    "value": 10.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 2710,
+    "claim_id": "mc5",
+    "group": 111,
+    "group_ids": [
+     "mc5"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "fifth",
+    "value": 5.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 2786,
+    "claim_id": "mc6",
+    "group": 114,
+    "group_ids": [
+     "mc6"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "6.8",
+    "value": 6.8,
+    "kind": "number",
+    "decimals": 1,
+    "start": 2865,
+    "claim_id": "mc7",
+    "group": 117,
+    "group_ids": [
+     "mc7"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "0.02",
+    "value": 0.02,
+    "kind": "number",
+    "decimals": 2,
+    "start": 2926,
+    "claim_id": "mc9",
+    "group": 119,
+    "group_ids": [
+     "mc9"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "27th",
+    "value": 27.0,
+    "kind": "ordinal",
+    "decimals": 0,
+    "start": 3018,
+    "claim_id": "mc10",
+    "group": 121,
+    "group_ids": [
+     "mc10"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "59.3%",
+    "value": 59.3,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3068,
+    "claim_id": "mc11",
+    "group": 124,
+    "group_ids": [
+     "mc11"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "27",
+    "value": 27.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 3095,
+    "claim_id": "mc12",
+    "group": 126,
+    "group_ids": [
+     "mc12"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "68.0%",
+    "value": 68.0,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3141,
+    "claim_id": "mc13",
+    "group": 128,
+    "group_ids": [
+     "mc13"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "25",
+    "value": 25.0,
+    "kind": "number",
+    "decimals": 0,
+    "start": 3164,
+    "claim_id": "mc14",
+    "group": 130,
+    "group_ids": [
+     "mc14"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "50.8%",
+    "value": 50.8,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3233,
+    "claim_id": "mc15",
+    "group": 133,
+    "group_ids": [
+     "mc15"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "43.4%",
+    "value": 43.4,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3261,
+    "claim_id": "mc16",
+    "group": 135,
+    "group_ids": [
+     "mc16"
+    ]
+   },
+   "status": "ok"
+  },
+  {
+   "mention": {
+    "text": "39.7%",
+    "value": 39.7,
+    "kind": "percent",
+    "decimals": 1,
+    "start": 3391,
+    "claim_id": "mc17",
+    "group": 137,
+    "group_ids": [
+     "mc17"
+    ]
+   },
+   "status": "ok"
+  }
+ ],
+ "name_problems": [],
+ "venue_problems": [],
+ "tool_calls": [
+  {
+   "call_id": "d1",
+   "node": "defense_analyst",
+   "tool": "blitz_rate",
+   "args": {
+    "team": "NYG",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 38.726790450928384,
+    "n_plays": 377,
+    "query_meta": {
+     "tool": "blitz_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks faced with 5+ pass rushers (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d2",
+   "node": "defense_analyst",
+   "tool": "sack_rate",
+   "args": {
+    "team": "NYG",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 5.305039787798409,
+    "n_plays": 377,
+    "query_meta": {
+     "tool": "sack_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks ending in a sack (defense).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d3",
+   "node": "defense_analyst",
+   "tool": "pressure_proxy_rate",
+   "args": {
+    "team": "NYG",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 13.262599469496022,
+    "n_plays": 377,
+    "query_meta": {
+     "tool": "pressure_proxy_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Pressure proxy: percent of dropbacks with a sack or QB hit (defense). Not true pressure rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d4",
+   "node": "defense_analyst",
+   "tool": "average_pass_rushers",
+   "args": {
+    "team": "NYG",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 4.472148541114058,
+    "n_plays": 377,
+    "query_meta": {
+     "tool": "average_pass_rushers",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11
+     },
+     "unit": "rushers",
+     "definition": "Mean pass rushers per dropback faced (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d5",
+   "node": "defense_analyst",
+   "tool": "average_box_defenders",
+   "args": {
+    "team": "NYG",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 6.765486725663717,
+    "n_plays": 226,
+    "query_meta": {
+     "tool": "average_box_defenders",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "play_kind": "run"
+     },
+     "unit": "defenders",
+     "definition": "Mean defenders in the box on run plays (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d6",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "NYG",
+    "side": "defense",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": -0.048303183996446106,
+    "n_plays": 226,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "side": "defense",
+      "play_kind": "run"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per run play allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d7",
+   "node": "defense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "NYG",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 7.671957671957672,
+    "n_plays": 378,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d8",
+   "node": "defense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "NYG",
+    "side": "defense",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 10.176991150442479,
+    "n_plays": 226,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "side": "defense",
+      "play_kind": "run"
+     },
+     "unit": "percent",
+     "definition": "Percent of run plays gaining 20+ yds (pass) or 10+ yds (run), allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d9",
+   "node": "defense_analyst",
+   "tool": "third_down_conversion_rate",
+   "args": {
+    "team": "NYG",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 38.759689922480625,
+    "n_plays": 129,
+    "query_meta": {
+     "tool": "third_down_conversion_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of third-down plays converted, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d10",
+   "node": "defense_analyst",
+   "tool": "red_zone_td_rate",
+   "args": {
+    "team": "NYG",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 68.0,
+    "n_plays": 25,
+    "query_meta": {
+     "tool": "red_zone_td_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Percent of red-zone drives ending in a TD, allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d11",
+   "node": "defense_analyst",
+   "tool": "blitz_rate",
+   "args": {
+    "team": "IND",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 20.82191780821918,
+    "n_plays": 365,
+    "query_meta": {
+     "tool": "blitz_rate",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks faced with 5+ pass rushers (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "n_games": 11
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d12",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "IND",
+    "side": "offense",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 0.018808237702280465,
+    "n_plays": 278,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11,
+      "side": "offense",
+      "play_kind": "run"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per run play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "n_games": 11
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d13",
+   "node": "defense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "IND",
+    "side": "offense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": -0.20722623527395903,
+    "n_plays": 398,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "n_games": 11
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d14",
+   "node": "defense_analyst",
+   "tool": "average_box_defenders",
+   "args": {
+    "team": "IND",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 6.742957746478873,
+    "n_plays": 284,
+    "query_meta": {
+     "tool": "average_box_defenders",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11,
+      "play_kind": "run"
+     },
+     "unit": "defenders",
+     "definition": "Mean defenders in the box on run plays (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "n_games": 11
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d15",
+   "node": "defense_analyst",
+   "tool": "red_zone_td_rate",
+   "args": {
+    "team": "IND",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 59.25925925925925,
+    "n_plays": 27,
+    "query_meta": {
+     "tool": "red_zone_td_rate",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Percent of red-zone drives ending in a TD, by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "n_games": 11
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d16",
+   "node": "defense_analyst",
+   "tool": "third_down_conversion_rate",
+   "args": {
+    "team": "IND",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 34.26573426573427,
+    "n_plays": 143,
+    "query_meta": {
+     "tool": "third_down_conversion_rate",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Percent of third-down plays converted, by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "n_games": 11
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d17",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "blitz_rate",
+    "team": "NYG",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 3,
+    "n_plays": 377,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "blitz_rate",
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11
+     },
+     "unit": "rank",
+     "metric": "blitz_rate",
+     "metric_args": {},
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "highest",
+     "team_value": 38.726790450928384,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d18",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "epa_per_play",
+    "team": "NYG",
+    "side": "defense",
+    "early_downs_only": false,
+    "direction": "left",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 12,
+    "n_plays": 604,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "epa_per_play",
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "side": "defense",
+      "early_downs_only": false,
+      "direction": "left"
+     },
+     "unit": "rank",
+     "metric": "epa_per_play",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [
+      "direction",
+      "early_downs_only"
+     ],
+     "rank_1_is": "best (lowest)",
+     "team_value": -0.017779629009750778,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d19",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "ftn_play_rate",
+    "team": "IND",
+    "feature": "play_action",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 5,
+    "n_plays": 398,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "ftn_play_rate",
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11,
+      "feature": "play_action"
+     },
+     "unit": "rank",
+     "metric": "ftn_play_rate",
+     "metric_args": {
+      "feature": "play_action"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "highest",
+     "team_value": 27.386934673366838,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "n_games": 11
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d20",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "ftn_play_rate",
+    "team": "IND",
+    "feature": "screen",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 20,
+    "n_plays": 398,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "ftn_play_rate",
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11,
+      "feature": "screen"
+     },
+     "unit": "rank",
+     "metric": "ftn_play_rate",
+     "metric_args": {
+      "feature": "screen"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "highest",
+     "team_value": 8.040201005025125,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "n_games": 11
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d21",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "sack_rate",
+    "team": "NYG",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 24,
+    "n_plays": 377,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "sack_rate",
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "side": "defense"
+     },
+     "unit": "rank",
+     "metric": "sack_rate",
+     "metric_args": {
+      "side": "defense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (highest)",
+     "team_value": 5.305039787798409,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "d22",
+   "node": "defense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "run_direction_rate",
+    "team": "IND",
+    "direction": "middle",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 27,
+    "n_plays": 275,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "run_direction_rate",
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11,
+      "direction": "middle"
+     },
+     "unit": "rank",
+     "metric": "run_direction_rate",
+     "metric_args": {
+      "direction": "middle"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "highest",
+     "team_value": 22.90909090909091,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "n_games": 11
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i1",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "NYG",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": [],
+    "n_plays": 0,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 11,
+     "weeks": [
+      11
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i2",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "IND",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Bernhard Raimann",
+      "player_id": "00-0037757",
+      "position": "T",
+      "status": "Out",
+      "injury": "Concussion",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Charvarius Ward",
+      "player_id": "00-0034573",
+      "position": "CB",
+      "status": "Out",
+      "injury": "Knee",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Jalen Travis",
+      "player_id": "00-0040163",
+      "position": "T",
+      "status": "Out",
+      "injury": "Knee",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Jerry Tillery",
+      "player_id": "00-0035674",
+      "position": "DT",
+      "status": "Out",
+      "injury": "Calf",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Will Mallory",
+      "player_id": "00-0038394",
+      "position": "TE",
+      "status": "Out",
+      "injury": "Hamstring",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Anthony Gould",
+      "player_id": "00-0039816",
+      "position": "WR",
+      "status": "Questionable",
+      "injury": "Toe",
+      "practice_status": "Full Participation in Practice"
+     },
+     {
+      "player": "Luke Rhodes",
+      "player_id": "00-0032753",
+      "position": "LS",
+      "status": "Questionable",
+      "injury": "Hamstring",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Sauce Gardner",
+      "player_id": "00-0037190",
+      "position": "CB",
+      "status": "Questionable",
+      "injury": "Calf",
+      "practice_status": "Did Not Participate In Practice"
+     }
+    ],
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 11,
+     "weeks": [
+      11
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i3",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "IND",
+    "player": "Bernhard Raimann",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 88.60000000000001,
+    "n_plays": 10,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11,
+      "player": "Bernhard Raimann",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Bernhard Raimann's mean snap share per game, weeks 1-11.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i4",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "IND",
+    "player": "Charvarius Ward",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 87.20000000000002,
+    "n_plays": 10,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11,
+      "player": "Charvarius Ward",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Charvarius Ward's mean snap share per game, weeks 1-11.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i5",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "IND",
+    "player": "Will Mallory",
+    "kind": "target",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 2.694610778443114,
+    "n_plays": 334,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11,
+      "player": "Will Mallory",
+      "kind": "target"
+     },
+     "unit": "percent",
+     "definition": "W.Mallory's percent of team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "n_games": 11,
+     "player": {
+      "id": "00-0038394",
+      "name": "W.Mallory",
+      "count": 9
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i6",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "IND",
+    "player": "Sauce Gardner",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 87.22222222222223,
+    "n_plays": 9,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11,
+      "player": "Sauce Gardner",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Sauce Gardner's mean snap share per game, weeks 1-11.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o1",
+   "node": "offense_analyst",
+   "tool": "pass_rate_over_expected",
+   "args": {
+    "team": "NYG",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": -2.754032866214402,
+    "n_plays": 640,
+    "query_meta": {
+     "tool": "pass_rate_over_expected",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "early_downs_only": false
+     },
+     "unit": "percentage_points",
+     "definition": "Mean pass_oe (all downs).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o2",
+   "node": "offense_analyst",
+   "tool": "pass_rate_over_expected",
+   "args": {
+    "team": "NYG",
+    "early_downs_only": true,
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": -1.7087998133667601,
+    "n_plays": 492,
+    "query_meta": {
+     "tool": "pass_rate_over_expected",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "early_downs_only": true
+     },
+     "unit": "percentage_points",
+     "definition": "Mean pass_oe (early downs).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o3",
+   "node": "offense_analyst",
+   "tool": "pass_rate",
+   "args": {
+    "team": "NYG",
+    "early_downs_only": true,
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 55.28455284552846,
+    "n_plays": 492,
+    "query_meta": {
+     "tool": "pass_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "down": null,
+      "distance": null,
+      "early_downs_only": true
+     },
+     "unit": "percent",
+     "definition": "Percent of plays that are dropbacks (early downs).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o4",
+   "node": "offense_analyst",
+   "tool": "pass_rate",
+   "args": {
+    "team": "NYG",
+    "down": 3,
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 79.41176470588235,
+    "n_plays": 136,
+    "query_meta": {
+     "tool": "pass_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "down": 3,
+      "distance": null,
+      "early_downs_only": false
+     },
+     "unit": "percent",
+     "definition": "Percent of plays that are dropbacks (down 3).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o5",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "NYG",
+    "side": "offense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 0.061190650222787,
+    "n_plays": 384,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o6",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "NYG",
+    "side": "offense",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": -0.0957130866574813,
+    "n_plays": 256,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "side": "offense",
+      "play_kind": "run"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per run play by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o7",
+   "node": "offense_analyst",
+   "tool": "success_rate",
+   "args": {
+    "team": "NYG",
+    "side": "offense",
+    "play_kind": "all",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 41.71875,
+    "n_plays": 640,
+    "query_meta": {
+     "tool": "success_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "side": "offense",
+      "play_kind": "all"
+     },
+     "unit": "percent",
+     "definition": "Percent of all plays with EPA > 0, by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o8",
+   "node": "offense_analyst",
+   "tool": "ftn_play_rate",
+   "args": {
+    "team": "NYG",
+    "feature": "play_action",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 20.3125,
+    "n_plays": 384,
+    "query_meta": {
+     "tool": "ftn_play_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "feature": "play_action"
+     },
+     "unit": "percent",
+     "definition": "Percent of dropbacks with play action (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o9",
+   "node": "offense_analyst",
+   "tool": "ftn_play_rate",
+   "args": {
+    "team": "NYG",
+    "feature": "rpo",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 4.6875,
+    "n_plays": 640,
+    "query_meta": {
+     "tool": "ftn_play_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "feature": "rpo"
+     },
+     "unit": "percent",
+     "definition": "Percent of scrimmage plays with rpo (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o10",
+   "node": "offense_analyst",
+   "tool": "ftn_play_rate",
+   "args": {
+    "team": "NYG",
+    "feature": "motion",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 50.15625,
+    "n_plays": 640,
+    "query_meta": {
+     "tool": "ftn_play_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "feature": "motion"
+     },
+     "unit": "percent",
+     "definition": "Percent of scrimmage plays with motion (FTN charting).",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o11",
+   "node": "offense_analyst",
+   "tool": "pressure_proxy_rate",
+   "args": {
+    "team": "IND",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 13.972602739726028,
+    "n_plays": 365,
+    "query_meta": {
+     "tool": "pressure_proxy_rate",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11,
+      "side": "defense"
+     },
+     "unit": "percent",
+     "definition": "Pressure proxy: percent of dropbacks with a sack or QB hit (defense). Not true pressure rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "n_games": 11
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o12",
+   "node": "offense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "NYG",
+    "side": "offense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 8.59375,
+    "n_plays": 384,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "side": "offense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o13",
+   "node": "offense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "NYG",
+    "side": "offense",
+    "play_kind": "run",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 7.03125,
+    "n_plays": 256,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "side": "offense",
+      "play_kind": "run"
+     },
+     "unit": "percent",
+     "definition": "Percent of run plays gaining 20+ yds (pass) or 10+ yds (run), by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o14",
+   "node": "offense_analyst",
+   "tool": "average_depth_of_target",
+   "args": {
+    "team": "NYG",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 9.781065088757396,
+    "n_plays": 338,
+    "query_meta": {
+     "tool": "average_depth_of_target",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11
+     },
+     "unit": "yards",
+     "definition": "Mean air yards per pass attempt.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o15",
+   "node": "offense_analyst",
+   "tool": "run_direction_rate",
+   "args": {
+    "team": "NYG",
+    "direction": "left",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 43.359375,
+    "n_plays": 256,
+    "query_meta": {
+     "tool": "run_direction_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "direction": "left"
+     },
+     "unit": "percent",
+     "definition": "Percent of designed runs to the left.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o16",
+   "node": "offense_analyst",
+   "tool": "run_direction_rate",
+   "args": {
+    "team": "NYG",
+    "direction": "middle",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 28.90625,
+    "n_plays": 256,
+    "query_meta": {
+     "tool": "run_direction_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "direction": "middle"
+     },
+     "unit": "percent",
+     "definition": "Percent of designed runs to the middle.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o17",
+   "node": "offense_analyst",
+   "tool": "run_direction_rate",
+   "args": {
+    "team": "NYG",
+    "direction": "right",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 27.734375,
+    "n_plays": 256,
+    "query_meta": {
+     "tool": "run_direction_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "direction": "right"
+     },
+     "unit": "percent",
+     "definition": "Percent of designed runs to the right.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o18",
+   "node": "offense_analyst",
+   "tool": "third_down_conversion_rate",
+   "args": {
+    "team": "NYG",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 39.705882352941174,
+    "n_plays": 136,
+    "query_meta": {
+     "tool": "third_down_conversion_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Percent of third-down plays converted, by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o19",
+   "node": "offense_analyst",
+   "tool": "red_zone_td_rate",
+   "args": {
+    "team": "NYG",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 63.33333333333333,
+    "n_plays": 30,
+    "query_meta": {
+     "tool": "red_zone_td_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "side": "offense"
+     },
+     "unit": "percent",
+     "definition": "Percent of red-zone drives ending in a TD, by the offense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o20",
+   "node": "offense_analyst",
+   "tool": "usage_leaders",
+   "args": {
+    "team": "NYG",
+    "kind": "target",
+    "top_n": 3,
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": [
+     {
+      "player": "M.Nabers",
+      "player_id": "00-0039337",
+      "count": 97,
+      "share": 29.216867469879517
+     },
+     {
+      "player": "I.Likely",
+      "player_id": "00-0037838",
+      "count": 83,
+      "share": 25.0
+     },
+     {
+      "player": "M.Fields",
+      "player_id": "00-0041042",
+      "count": 44,
+      "share": 13.25301204819277
+     }
+    ],
+    "n_plays": 332,
+    "query_meta": {
+     "tool": "usage_leaders",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "kind": "target",
+      "top_n": 3
+     },
+     "unit": "players",
+     "definition": "Top 3 players by team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o21",
+   "node": "offense_analyst",
+   "tool": "usage_leaders",
+   "args": {
+    "team": "NYG",
+    "kind": "rush",
+    "top_n": 3,
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": [
+     {
+      "player": "C.Skattebo",
+      "player_id": "00-0040715",
+      "count": 130,
+      "share": 50.78125
+     },
+     {
+      "player": "D.Singletary",
+      "player_id": "00-0035250",
+      "count": 41,
+      "share": 16.015625
+     },
+     {
+      "player": "N.Harris",
+      "player_id": "00-0036893",
+      "count": 31,
+      "share": 12.109375
+     }
+    ],
+    "n_plays": 256,
+    "query_meta": {
+     "tool": "usage_leaders",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "kind": "rush",
+      "top_n": 3
+     },
+     "unit": "players",
+     "definition": "Top 3 players by team rushs.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o22",
+   "node": "offense_analyst",
+   "tool": "explosive_play_rate",
+   "args": {
+    "team": "IND",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 10.41095890410959,
+    "n_plays": 365,
+    "query_meta": {
+     "tool": "explosive_play_rate",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "percent",
+     "definition": "Percent of pass plays gaining 20+ yds (pass) or 10+ yds (run), allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "n_games": 11
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o23",
+   "node": "offense_analyst",
+   "tool": "epa_per_play",
+   "args": {
+    "team": "IND",
+    "side": "defense",
+    "play_kind": "pass",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 0.07670135022362025,
+    "n_plays": 365,
+    "query_meta": {
+     "tool": "epa_per_play",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11,
+      "side": "defense",
+      "play_kind": "pass"
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per pass play allowed by the defense.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "n_games": 11
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o24",
+   "node": "offense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "third_down_conversion_rate",
+    "team": "NYG",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 15,
+    "n_plays": 136,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "third_down_conversion_rate",
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "side": "offense"
+     },
+     "unit": "rank",
+     "metric": "third_down_conversion_rate",
+     "metric_args": {
+      "side": "offense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (highest)",
+     "team_value": 39.705882352941174,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o25",
+   "node": "offense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "red_zone_td_rate",
+    "team": "NYG",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 12,
+    "n_plays": 30,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "red_zone_td_rate",
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "side": "offense"
+     },
+     "unit": "rank",
+     "metric": "red_zone_td_rate",
+     "metric_args": {
+      "side": "offense"
+     },
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "best (highest)",
+     "team_value": 63.33333333333333,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "o26",
+   "node": "offense_analyst",
+   "tool": "league_rank",
+   "args": {
+    "metric": "pass_rate_over_expected",
+    "team": "NYG",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 22,
+    "n_plays": 640,
+    "query_meta": {
+     "tool": "league_rank",
+     "args": {
+      "metric": "pass_rate_over_expected",
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11
+     },
+     "unit": "rank",
+     "metric": "pass_rate_over_expected",
+     "metric_args": {},
+     "n_teams": 32,
+     "ignored_splits": [],
+     "rank_1_is": "highest",
+     "team_value": -2.754032866214402,
+     "tied": false,
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k1",
+   "node": "special_teams_analyst",
+   "tool": "field_goal_rate",
+   "args": {
+    "team": "NYG",
+    "distance": "all",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 74.07407407407408,
+    "n_plays": 27,
+    "query_meta": {
+     "tool": "field_goal_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "distance": "all"
+     },
+     "unit": "percent",
+     "definition": "Percent of field goal attempts made (all yards).",
+     "weeks": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k2",
+   "node": "special_teams_analyst",
+   "tool": "field_goal_rate",
+   "args": {
+    "team": "NYG",
+    "distance": "50_plus",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 72.72727272727273,
+    "n_plays": 11,
+    "query_meta": {
+     "tool": "field_goal_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "distance": "50_plus"
+     },
+     "unit": "percent",
+     "definition": "Percent of field goal attempts made (50 plus yards).",
+     "weeks": [
+      2,
+      4,
+      5,
+      7,
+      9,
+      11
+     ],
+     "n_games": 6
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k3",
+   "node": "special_teams_analyst",
+   "tool": "kicker_summary",
+   "args": {
+    "team": "NYG",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": [
+     {
+      "player": "D.Zvada",
+      "fg_attempts": 27,
+      "fg_made": 20,
+      "longest_made": 56.0,
+      "xp_attempts": 18,
+      "xp_made": 18,
+      "first_week": 1,
+      "last_week": 11
+     }
+    ],
+    "n_plays": 27,
+    "query_meta": {
+     "tool": "kicker_summary",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11
+     },
+     "unit": "players",
+     "definition": "Field goals and extra points by kicker.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k4",
+   "node": "special_teams_analyst",
+   "tool": "punting",
+   "args": {
+    "team": "NYG",
+    "stat": "net_average",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 44.73809523809524,
+    "n_plays": 42,
+    "query_meta": {
+     "tool": "punting",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "stat": "net_average"
+     },
+     "unit": "yards_or_percent",
+     "definition": "Punting net average.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k5",
+   "node": "special_teams_analyst",
+   "tool": "punting",
+   "args": {
+    "team": "NYG",
+    "stat": "inside_20_rate",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 47.61904761904761,
+    "n_plays": 42,
+    "query_meta": {
+     "tool": "punting",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "stat": "inside_20_rate"
+     },
+     "unit": "yards_or_percent",
+     "definition": "Punting inside 20 rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k6",
+   "node": "special_teams_analyst",
+   "tool": "kickoff_touchback_rate",
+   "args": {
+    "team": "NYG",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 7.6923076923076925,
+    "n_plays": 52,
+    "query_meta": {
+     "tool": "kickoff_touchback_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11
+     },
+     "unit": "percent",
+     "definition": "Percent of kickoffs that are touchbacks.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k7",
+   "node": "special_teams_analyst",
+   "tool": "return_average",
+   "args": {
+    "team": "NYG",
+    "kind": "kickoff",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 25.358974358974358,
+    "n_plays": 39,
+    "query_meta": {
+     "tool": "return_average",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "kind": "kickoff",
+      "side": "offense"
+     },
+     "unit": "yards",
+     "definition": "Yards per kickoff return, by the return unit.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      10,
+      11
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k8",
+   "node": "special_teams_analyst",
+   "tool": "return_average",
+   "args": {
+    "team": "NYG",
+    "kind": "kickoff",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 24.244444444444444,
+    "n_plays": 45,
+    "query_meta": {
+     "tool": "return_average",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "kind": "kickoff",
+      "side": "defense"
+     },
+     "unit": "yards",
+     "definition": "Yards per kickoff return, allowed by the coverage unit.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k9",
+   "node": "special_teams_analyst",
+   "tool": "special_teams_epa",
+   "args": {
+    "team": "NYG",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 0.010558387747597996,
+    "n_plays": 275,
+    "query_meta": {
+     "tool": "special_teams_epa",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per special-teams play, from the team's side.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k10",
+   "node": "special_teams_analyst",
+   "tool": "special_teams_epa",
+   "args": {
+    "team": "IND",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 0.03249009559477657,
+    "n_plays": 306,
+    "query_meta": {
+     "tool": "special_teams_epa",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per special-teams play, from the team's side.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "n_games": 11
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i7",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "NYG",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": [],
+    "n_plays": 0,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 11,
+     "weeks": [
+      11
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i8",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "IND",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Bernhard Raimann",
+      "player_id": "00-0037757",
+      "position": "T",
+      "status": "Out",
+      "injury": "Concussion",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Charvarius Ward",
+      "player_id": "00-0034573",
+      "position": "CB",
+      "status": "Out",
+      "injury": "Knee",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Jalen Travis",
+      "player_id": "00-0040163",
+      "position": "T",
+      "status": "Out",
+      "injury": "Knee",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Jerry Tillery",
+      "player_id": "00-0035674",
+      "position": "DT",
+      "status": "Out",
+      "injury": "Calf",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Will Mallory",
+      "player_id": "00-0038394",
+      "position": "TE",
+      "status": "Out",
+      "injury": "Hamstring",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Anthony Gould",
+      "player_id": "00-0039816",
+      "position": "WR",
+      "status": "Questionable",
+      "injury": "Toe",
+      "practice_status": "Full Participation in Practice"
+     },
+     {
+      "player": "Luke Rhodes",
+      "player_id": "00-0032753",
+      "position": "LS",
+      "status": "Questionable",
+      "injury": "Hamstring",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Sauce Gardner",
+      "player_id": "00-0037190",
+      "position": "CB",
+      "status": "Questionable",
+      "injury": "Calf",
+      "practice_status": "Did Not Participate In Practice"
+     }
+    ],
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 11,
+     "weeks": [
+      11
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i9",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "IND",
+    "player": "Bernhard Raimann",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 88.60000000000001,
+    "n_plays": 10,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11,
+      "player": "Bernhard Raimann",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Bernhard Raimann's mean snap share per game, weeks 1-11.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i10",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "IND",
+    "player": "Charvarius Ward",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 87.20000000000002,
+    "n_plays": 10,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11,
+      "player": "Charvarius Ward",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Charvarius Ward's mean snap share per game, weeks 1-11.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i11",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "IND",
+    "player": "Sauce Gardner",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 87.22222222222223,
+    "n_plays": 9,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11,
+      "player": "Sauce Gardner",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Sauce Gardner's mean snap share per game, weeks 1-11.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i12",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "IND",
+    "player": "Will Mallory",
+    "kind": "target",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 2.694610778443114,
+    "n_plays": 334,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11,
+      "player": "Will Mallory",
+      "kind": "target"
+     },
+     "unit": "percent",
+     "definition": "W.Mallory's percent of team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "n_games": 11,
+     "player": {
+      "id": "00-0038394",
+      "name": "W.Mallory",
+      "count": 9
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k11",
+   "node": "special_teams_analyst",
+   "tool": "field_goal_rate",
+   "args": {
+    "team": "NYG",
+    "distance": "all",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 74.07407407407408,
+    "n_plays": 27,
+    "query_meta": {
+     "tool": "field_goal_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "distance": "all"
+     },
+     "unit": "percent",
+     "definition": "Percent of field goal attempts made (all yards).",
+     "weeks": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k12",
+   "node": "special_teams_analyst",
+   "tool": "field_goal_rate",
+   "args": {
+    "team": "NYG",
+    "distance": "50_plus",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 72.72727272727273,
+    "n_plays": 11,
+    "query_meta": {
+     "tool": "field_goal_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "distance": "50_plus"
+     },
+     "unit": "percent",
+     "definition": "Percent of field goal attempts made (50 plus yards).",
+     "weeks": [
+      2,
+      4,
+      5,
+      7,
+      9,
+      11
+     ],
+     "n_games": 6
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k13",
+   "node": "special_teams_analyst",
+   "tool": "kicker_summary",
+   "args": {
+    "team": "NYG",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": [
+     {
+      "player": "D.Zvada",
+      "fg_attempts": 27,
+      "fg_made": 20,
+      "longest_made": 56.0,
+      "xp_attempts": 18,
+      "xp_made": 18,
+      "first_week": 1,
+      "last_week": 11
+     }
+    ],
+    "n_plays": 27,
+    "query_meta": {
+     "tool": "kicker_summary",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11
+     },
+     "unit": "players",
+     "definition": "Field goals and extra points by kicker.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k14",
+   "node": "special_teams_analyst",
+   "tool": "punting",
+   "args": {
+    "team": "NYG",
+    "stat": "net_average",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 44.73809523809524,
+    "n_plays": 42,
+    "query_meta": {
+     "tool": "punting",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "stat": "net_average"
+     },
+     "unit": "yards_or_percent",
+     "definition": "Punting net average.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k15",
+   "node": "special_teams_analyst",
+   "tool": "punting",
+   "args": {
+    "team": "NYG",
+    "stat": "inside_20_rate",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 47.61904761904761,
+    "n_plays": 42,
+    "query_meta": {
+     "tool": "punting",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "stat": "inside_20_rate"
+     },
+     "unit": "yards_or_percent",
+     "definition": "Punting inside 20 rate.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k16",
+   "node": "special_teams_analyst",
+   "tool": "kickoff_touchback_rate",
+   "args": {
+    "team": "NYG",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 7.6923076923076925,
+    "n_plays": 52,
+    "query_meta": {
+     "tool": "kickoff_touchback_rate",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11
+     },
+     "unit": "percent",
+     "definition": "Percent of kickoffs that are touchbacks.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k17",
+   "node": "special_teams_analyst",
+   "tool": "return_average",
+   "args": {
+    "team": "NYG",
+    "kind": "kickoff",
+    "side": "offense",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 25.358974358974358,
+    "n_plays": 39,
+    "query_meta": {
+     "tool": "return_average",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "kind": "kickoff",
+      "side": "offense"
+     },
+     "unit": "yards",
+     "definition": "Yards per kickoff return, by the return unit.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      10,
+      11
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k18",
+   "node": "special_teams_analyst",
+   "tool": "return_average",
+   "args": {
+    "team": "NYG",
+    "kind": "kickoff",
+    "side": "defense",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 24.244444444444444,
+    "n_plays": 45,
+    "query_meta": {
+     "tool": "return_average",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11,
+      "kind": "kickoff",
+      "side": "defense"
+     },
+     "unit": "yards",
+     "definition": "Yards per kickoff return, allowed by the coverage unit.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k19",
+   "node": "special_teams_analyst",
+   "tool": "special_teams_epa",
+   "args": {
+    "team": "NYG",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 0.010558387747597996,
+    "n_plays": 275,
+    "query_meta": {
+     "tool": "special_teams_epa",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per special-teams play, from the team's side.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "k20",
+   "node": "special_teams_analyst",
+   "tool": "special_teams_epa",
+   "args": {
+    "team": "IND",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 0.03249009559477657,
+    "n_plays": 306,
+    "query_meta": {
+     "tool": "special_teams_epa",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11
+     },
+     "unit": "epa_per_play",
+     "definition": "Mean EPA per special-teams play, from the team's side.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "n_games": 11
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i13",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "NYG",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": [],
+    "n_plays": 0,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "NYG",
+      "season": 2026,
+      "through_week": 11
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 11,
+     "weeks": [
+      11
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i14",
+   "node": "injury_analyst",
+   "tool": "injury_report",
+   "args": {
+    "team": "IND",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": [
+     {
+      "player": "Bernhard Raimann",
+      "player_id": "00-0037757",
+      "position": "T",
+      "status": "Out",
+      "injury": "Concussion",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Charvarius Ward",
+      "player_id": "00-0034573",
+      "position": "CB",
+      "status": "Out",
+      "injury": "Knee",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Jalen Travis",
+      "player_id": "00-0040163",
+      "position": "T",
+      "status": "Out",
+      "injury": "Knee",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Jerry Tillery",
+      "player_id": "00-0035674",
+      "position": "DT",
+      "status": "Out",
+      "injury": "Calf",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Will Mallory",
+      "player_id": "00-0038394",
+      "position": "TE",
+      "status": "Out",
+      "injury": "Hamstring",
+      "practice_status": "Did Not Participate In Practice"
+     },
+     {
+      "player": "Anthony Gould",
+      "player_id": "00-0039816",
+      "position": "WR",
+      "status": "Questionable",
+      "injury": "Toe",
+      "practice_status": "Full Participation in Practice"
+     },
+     {
+      "player": "Luke Rhodes",
+      "player_id": "00-0032753",
+      "position": "LS",
+      "status": "Questionable",
+      "injury": "Hamstring",
+      "practice_status": "Limited Participation in Practice"
+     },
+     {
+      "player": "Sauce Gardner",
+      "player_id": "00-0037190",
+      "position": "CB",
+      "status": "Questionable",
+      "injury": "Calf",
+      "practice_status": "Did Not Participate In Practice"
+     }
+    ],
+    "n_plays": 8,
+    "query_meta": {
+     "tool": "injury_report",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11
+     },
+     "unit": "players",
+     "definition": "Game statuses on the latest injury report up to through_week.",
+     "report_week": 11,
+     "weeks": [
+      11
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i15",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "IND",
+    "player": "Bernhard Raimann",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 88.60000000000001,
+    "n_plays": 10,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11,
+      "player": "Bernhard Raimann",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Bernhard Raimann's mean snap share per game, weeks 1-11.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i16",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "IND",
+    "player": "Charvarius Ward",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 87.20000000000002,
+    "n_plays": 10,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11,
+      "player": "Charvarius Ward",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Charvarius Ward's mean snap share per game, weeks 1-11.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n_games": 10
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i17",
+   "node": "injury_analyst",
+   "tool": "snap_share",
+   "args": {
+    "team": "IND",
+    "player": "Sauce Gardner",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 87.22222222222223,
+    "n_plays": 9,
+    "query_meta": {
+     "tool": "snap_share",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11,
+      "player": "Sauce Gardner",
+      "last_n_weeks": null
+     },
+     "unit": "percent",
+     "definition": "Sauce Gardner's mean snap share per game, weeks 1-11.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10
+     ],
+     "n_games": 9
+    }
+   },
+   "error": null
+  },
+  {
+   "call_id": "i18",
+   "node": "injury_analyst",
+   "tool": "player_share",
+   "args": {
+    "team": "IND",
+    "player": "Will Mallory",
+    "kind": "target",
+    "season": 2026,
+    "through_week": 11
+   },
+   "result": {
+    "value": 2.694610778443114,
+    "n_plays": 334,
+    "query_meta": {
+     "tool": "player_share",
+     "args": {
+      "team": "IND",
+      "season": 2026,
+      "through_week": 11,
+      "player": "Will Mallory",
+      "kind": "target"
+     },
+     "unit": "percent",
+     "definition": "W.Mallory's percent of team targets.",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "n_games": 11,
+     "player": {
+      "id": "00-0038394",
+      "name": "W.Mallory",
+      "count": 9
+     }
+    }
+   },
+   "error": null
+  }
+ ],
+ "usage": [
+  {
+   "node": "planner",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 655,
+   "cache_read_input_tokens": 540,
+   "cache_creation_input_tokens": 173,
+   "latency_s": 4.470711746951565
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 1442,
+   "cache_read_input_tokens": 5976,
+   "cache_creation_input_tokens": 439,
+   "latency_s": 4.988797020167112
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 377,
+   "cache_read_input_tokens": 6415,
+   "cache_creation_input_tokens": 3681,
+   "latency_s": 2.5080370290670544
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 520,
+   "cache_read_input_tokens": 10096,
+   "cache_creation_input_tokens": 697,
+   "latency_s": 2.599466683110222
+  },
+  {
+   "node": "defense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 4880,
+   "cache_read_input_tokens": 10793,
+   "cache_creation_input_tokens": 1146,
+   "latency_s": 18.77353897714056
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 125,
+   "cache_read_input_tokens": 2987,
+   "cache_creation_input_tokens": 487,
+   "latency_s": 1.56207932299003
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 553,
+   "cache_read_input_tokens": 3474,
+   "cache_creation_input_tokens": 891,
+   "latency_s": 3.2877209479920566
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 4018,
+   "cache_read_input_tokens": 4365,
+   "cache_creation_input_tokens": 1120,
+   "latency_s": 17.34788684407249
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 2126,
+   "cache_read_input_tokens": 7496,
+   "cache_creation_input_tokens": 423,
+   "latency_s": 6.7845414250623435
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 479,
+   "cache_read_input_tokens": 7919,
+   "cache_creation_input_tokens": 5428,
+   "latency_s": 2.6599142639897764
+  },
+  {
+   "node": "offense_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 4910,
+   "cache_read_input_tokens": 13347,
+   "cache_creation_input_tokens": 955,
+   "latency_s": 17.827074388973415
+  },
+  {
+   "node": "special_teams_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 844,
+   "cache_read_input_tokens": 4407,
+   "cache_creation_input_tokens": 371,
+   "latency_s": 3.9272998820524663
+  },
+  {
+   "node": "special_teams_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 4202,
+   "cache_read_input_tokens": 4778,
+   "cache_creation_input_tokens": 2198,
+   "latency_s": 18.03401584387757
+  },
+  {
+   "node": "matchup_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 6079,
+   "cache_read_input_tokens": 6451,
+   "cache_creation_input_tokens": 5034,
+   "latency_s": 24.934541040100157
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 247,
+   "cache_read_input_tokens": 2987,
+   "cache_creation_input_tokens": 1485,
+   "latency_s": 2.1327895137947053
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 448,
+   "cache_read_input_tokens": 4472,
+   "cache_creation_input_tokens": 1013,
+   "latency_s": 2.2920875640120357
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 3398,
+   "cache_read_input_tokens": 5485,
+   "cache_creation_input_tokens": 1015,
+   "latency_s": 13.11156578711234
+  },
+  {
+   "node": "matchup_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 3931,
+   "cache_read_input_tokens": 6451,
+   "cache_creation_input_tokens": 6281,
+   "latency_s": 14.13225695118308
+  },
+  {
+   "node": "special_teams_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 993,
+   "cache_read_input_tokens": 4407,
+   "cache_creation_input_tokens": 1462,
+   "latency_s": 4.285572838038206
+  },
+  {
+   "node": "special_teams_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 3115,
+   "cache_read_input_tokens": 5869,
+   "cache_creation_input_tokens": 2347,
+   "latency_s": 11.912660046014935
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 250,
+   "cache_read_input_tokens": 2987,
+   "cache_creation_input_tokens": 1506,
+   "latency_s": 1.8095185339916497
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 509,
+   "cache_read_input_tokens": 4493,
+   "cache_creation_input_tokens": 1016,
+   "latency_s": 2.475318593904376
+  },
+  {
+   "node": "injury_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2,
+   "output_tokens": 3026,
+   "cache_read_input_tokens": 5509,
+   "cache_creation_input_tokens": 1076,
+   "latency_s": 11.84480464993976
+  },
+  {
+   "node": "matchup_analyst",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 4633,
+   "cache_read_input_tokens": 6451,
+   "cache_creation_input_tokens": 6510,
+   "latency_s": 17.51864081202075
+  },
+  {
+   "node": "editor",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4,
+   "output_tokens": 9778,
+   "cache_read_input_tokens": 747,
+   "cache_creation_input_tokens": 6080,
+   "latency_s": 33.88720327289775
+  }
+ ],
+ "cost_usd": {
+  "total": 0.03877,
+  "by_node": [
+   {
+    "node": "planner",
+    "cost_usd": 0.000355
+   },
+   {
+    "node": "defense_analyst",
+    "cost_usd": 0.004689
+   },
+   {
+    "node": "injury_analyst",
+    "cost_usd": 0.007858
+   },
+   {
+    "node": "offense_analyst",
+    "cost_usd": 0.004897
+   },
+   {
+    "node": "special_teams_analyst",
+    "cost_usd": 0.00557
+   },
+   {
+    "node": "matchup_analyst",
+    "cost_usd": 0.009744
+   },
+   {
+    "node": "editor",
+    "cost_usd": 0.005657
+   }
+  ]
+ }
+}
